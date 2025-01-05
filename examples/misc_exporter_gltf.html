@@ -4,7 +4,7 @@
 		<title>three.js webgl - exporter - gltf</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 	<body>
 		<div id="info">
@@ -193,7 +193,7 @@
 				// Simple geometry with basic material
 				// ---------------------------------------------------------------------
 				// Icosahedron
-				const mapGrid = new THREE.TextureLoader().load( 'textures/uv_grid_opengl.jpg' );
+				const mapGrid = new THREE.TextureLoader().load( '../res/textures/uv_grid_opengl.jpg' );
 				mapGrid.wrapS = mapGrid.wrapT = THREE.RepeatWrapping;
 				mapGrid.colorSpace = THREE.SRGBColorSpace;
 				material = new THREE.MeshBasicMaterial( {

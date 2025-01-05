@@ -4,7 +4,7 @@
 		<title>three.js webgl - Fast subsurface scattering in Blinn-Phong shading demo</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
   </head>
   <body>
 
@@ -95,10 +95,10 @@
 		function initMaterial() {
 
 			const loader = new THREE.TextureLoader();
-			const imgTexture = loader.load( 'models/fbx/white.jpg' );
+			const imgTexture = loader.load( '../res/models/fbx/white.jpg' );
 			imgTexture.colorSpace = THREE.SRGBColorSpace;
 
-			const thicknessTexture = loader.load( 'models/fbx/bunny_thickness.jpg' );
+			const thicknessTexture = loader.load( '../res/models/fbx/bunny_thickness.jpg' );
 			imgTexture.wrapS = imgTexture.wrapT = THREE.RepeatWrapping;
 
 			const shader = SubsurfaceScatteringShader;

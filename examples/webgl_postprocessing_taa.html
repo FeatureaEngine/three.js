@@ -4,7 +4,7 @@
 		<title>three.js webgl - postprocessing manual taa and ssaa</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 	<body>
 		<div id="info">
@@ -115,7 +115,7 @@
 				mesh1.position.x = - 100;
 				scene.add( mesh1 );
 
-				const texture = new THREE.TextureLoader().load( 'textures/brick_diffuse.jpg' );
+				const texture = new THREE.TextureLoader().load( '../res/textures/brick_diffuse.jpg' );
 				texture.minFilter = THREE.NearestFilter;
 				texture.magFilter = THREE.NearestFilter;
 				texture.anisotropy = 1;

@@ -4,7 +4,7 @@
 	<title>three.js webgl - indexed instancing (single box), interleaved buffers</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<link type="text/css" rel="stylesheet" href="main.css">
+	<link type="text/css" rel="stylesheet" href="../files/example.css">
 </head>
 <body>
 
@@ -116,7 +116,7 @@
 			// material
 
 			const material = new THREE.MeshBasicMaterial();
-			material.map = new THREE.TextureLoader().load( 'textures/crate.gif' );
+			material.map = new THREE.TextureLoader().load( '../res/textures/crate.gif' );
 			material.map.colorSpace = THREE.SRGBColorSpace;
 			material.map.flipY = false;
 

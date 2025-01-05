@@ -4,7 +4,7 @@
 		<title>three.js webgl - geometry - NURBS</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 		<style>
 			body {
 				background-color: #f0f0f0;
@@ -153,7 +153,7 @@
 					const knots2 = [ 0, 0, 0, 0, 1, 1, 1, 1 ];
 					const nurbsSurface = new NURBSSurface( degree1, degree2, knots1, knots2, nsControlPoints );
 
-					const map = new THREE.TextureLoader().load( 'textures/uv_grid_opengl.jpg' );
+					const map = new THREE.TextureLoader().load( '../res/textures/uv_grid_opengl.jpg' );
 					map.wrapS = map.wrapT = THREE.RepeatWrapping;
 					map.anisotropy = 16;
 					map.colorSpace = THREE.SRGBColorSpace;

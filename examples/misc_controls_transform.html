@@ -4,7 +4,7 @@
 		<title>three.js webgl - transform controls</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 	<body>
 
@@ -65,7 +65,7 @@
 				light.position.set( 1, 1, 1 );
 				scene.add( light );
 
-				const texture = new THREE.TextureLoader().load( 'textures/crate.gif', render );
+				const texture = new THREE.TextureLoader().load( '../res/textures/crate.gif', render );
 				texture.colorSpace = THREE.SRGBColorSpace;
 				texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
 

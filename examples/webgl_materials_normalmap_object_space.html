@@ -4,7 +4,7 @@
 		<title>three.js webgl - materials - normal map [object space]</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 
 	<body>
@@ -66,7 +66,7 @@
 				camera.add( light );
 
 				// model
-				new GLTFLoader().load( 'models/gltf/Nefertiti/Nefertiti.glb', function ( gltf ) {
+				new GLTFLoader().load( '../res/models/gltf/Nefertiti/Nefertiti.glb', function ( gltf ) {
 
 					gltf.scene.traverse( function ( child ) {
 

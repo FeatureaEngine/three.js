@@ -4,7 +4,7 @@
 		<title>three.js - misc - octree collisions</title>
 		<meta charset=utf-8 />
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 	<body>
 		<div id="info">
@@ -411,9 +411,9 @@
 
 			}
 
-			const loader = new GLTFLoader().setPath( './models/gltf/' );
+			const loader = new GLTFLoader().setPath( '../res/models/gltf/' );
 
-			loader.load( 'collision-world.glb', ( gltf ) => {
+			loader.load( '../res/collision-world.glb', ( gltf ) => {
 
 				scene.add( gltf.scene );
 

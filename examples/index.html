@@ -33,7 +33,7 @@
 				</div>
 
 				<div id="content">
-					<img id="previewsToggler" src="./files/thumbnails.svg" width="20" height="20" />
+					<img id="previewsToggler" src="../files/thumbnails.svg" width="20" height="20" />
 				</div>
 			</div>
 
@@ -70,8 +70,8 @@
 
 			viewSrcButton.style.display = 'none';
 
-			const files = await ( await fetch( 'files.json' ) ).json();
-			const tags = await ( await fetch( 'tags.json' ) ).json();
+			const files = await ( await fetch( '../files/index.json' ) ).json();
+			const tags = await ( await fetch( '../files/tags.json' ) ).json();
 
 			for ( const key in files ) {
 
@@ -209,7 +209,7 @@
 				<div class="card">
 					<a href="${ file }.html" target="viewer">
 						<div class="cover">
-							<img src="screenshots/${ file }.jpg" loading="lazy" width="400" />
+							<img src="../files/screenshots/${ file }.jpg" loading="lazy" width="400" />
 						</div>
 						<div class="title">${ getName( file ) }${ external }</div>
 					</a>

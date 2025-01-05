@@ -4,7 +4,7 @@
 		<title>three.js webgl - lights - physical lights</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 	<body>
 
@@ -113,7 +113,7 @@
 					bumpScale: 1
 				} );
 				const textureLoader = new THREE.TextureLoader();
-				textureLoader.load( 'textures/hardwood2_diffuse.jpg', function ( map ) {
+				textureLoader.load( '../res/textures/hardwood2_diffuse.jpg', function ( map ) {
 
 					map.wrapS = THREE.RepeatWrapping;
 					map.wrapT = THREE.RepeatWrapping;
@@ -124,7 +124,7 @@
 					floorMat.needsUpdate = true;
 
 				} );
-				textureLoader.load( 'textures/hardwood2_bump.jpg', function ( map ) {
+				textureLoader.load( '../res/textures/hardwood2_bump.jpg', function ( map ) {
 
 					map.wrapS = THREE.RepeatWrapping;
 					map.wrapT = THREE.RepeatWrapping;
@@ -134,7 +134,7 @@
 					floorMat.needsUpdate = true;
 
 				} );
-				textureLoader.load( 'textures/hardwood2_roughness.jpg', function ( map ) {
+				textureLoader.load( '../res/textures/hardwood2_roughness.jpg', function ( map ) {
 
 					map.wrapS = THREE.RepeatWrapping;
 					map.wrapT = THREE.RepeatWrapping;
@@ -151,7 +151,7 @@
 					bumpScale: 1,
 					metalness: 0.2
 				} );
-				textureLoader.load( 'textures/brick_diffuse.jpg', function ( map ) {
+				textureLoader.load( '../res/textures/brick_diffuse.jpg', function ( map ) {
 
 					map.wrapS = THREE.RepeatWrapping;
 					map.wrapT = THREE.RepeatWrapping;
@@ -162,7 +162,7 @@
 					cubeMat.needsUpdate = true;
 
 				} );
-				textureLoader.load( 'textures/brick_bump.jpg', function ( map ) {
+				textureLoader.load( '../res/textures/brick_bump.jpg', function ( map ) {
 
 					map.wrapS = THREE.RepeatWrapping;
 					map.wrapT = THREE.RepeatWrapping;
@@ -178,7 +178,7 @@
 					roughness: 0.5,
 					metalness: 1.0
 				} );
-				textureLoader.load( 'textures/planets/earth_atmos_2048.jpg', function ( map ) {
+				textureLoader.load( '../res/textures/planets/earth_atmos_2048.jpg', function ( map ) {
 
 					map.anisotropy = 4;
 					map.colorSpace = THREE.SRGBColorSpace;

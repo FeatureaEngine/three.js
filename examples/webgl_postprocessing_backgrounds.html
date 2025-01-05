@@ -4,7 +4,7 @@
 		<title>three.js webgl - postprocessing backgrounds</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 	<body>
 		<div id="info">
@@ -161,7 +161,7 @@
 				composer.addPass( texturePass );
 
 				const textureLoader = new THREE.TextureLoader();
-				textureLoader.load( 'textures/hardwood2_diffuse.jpg', function ( map ) {
+				textureLoader.load( '../res/textures/hardwood2_diffuse.jpg', function ( map ) {
 
 					map.colorSpace = THREE.SRGBColorSpace;
 					texturePass.map = map;

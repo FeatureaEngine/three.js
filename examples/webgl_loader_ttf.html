@@ -4,7 +4,7 @@
 		<title>three.js webgl - loader - ttf</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 	<body>
 		<div id="info">
@@ -93,7 +93,7 @@
 
 				const loader = new TTFLoader();
 
-				loader.load( 'fonts/ttf/kenpixel.ttf', function ( json ) {
+				loader.load( '../res/fonts/ttf/kenpixel.ttf', function ( json ) {
 
 					font = new Font( json );
 					createText();

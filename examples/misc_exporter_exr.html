@@ -4,7 +4,7 @@
 		<title>three.js webgl - exporter - exr</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 	<body>
 		<div id="info">
@@ -63,7 +63,7 @@
 				const pmremGenerator = new THREE.PMREMGenerator( renderer );
 				pmremGenerator.compileEquirectangularShader();
 
-				rgbeloader.load( 'textures/equirectangular/san_giuseppe_bridge_2k.hdr', function ( texture ) {
+				rgbeloader.load( '../res/textures/equirectangular/san_giuseppe_bridge_2k.hdr', function ( texture ) {
 
 					texture.mapping = THREE.EquirectangularReflectionMapping;
 

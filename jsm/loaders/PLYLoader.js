@@ -15,7 +15,7 @@ import {
  *
  * Usage:
  *	const loader = new PLYLoader();
- *	loader.load('./models/ply/ascii/dolphins.ply', function (geometry) {
+ *	loader.load('../res/models/ply/ascii/dolphins.ply', function (geometry) {
  *
  *		scene.add( new THREE.Mesh( geometry ) );
  *

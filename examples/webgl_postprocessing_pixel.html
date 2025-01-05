@@ -5,7 +5,7 @@
 	<title>three.js webgl - post processing - pixelation</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<link type="text/css" rel="stylesheet" href="main.css">
+	<link type="text/css" rel="stylesheet" href="../files/example.css">
 </head>
 
 <body>
@@ -89,8 +89,8 @@
 			// textures
 
 			const loader = new THREE.TextureLoader();
-			const texChecker = pixelTexture( loader.load( 'textures/checker.png' ) );
-			const texChecker2 = pixelTexture( loader.load( 'textures/checker.png' ) );
+			const texChecker = pixelTexture( loader.load( '../res/textures/checker.png' ) );
+			const texChecker2 = pixelTexture( loader.load( '../res/textures/checker.png' ) );
 			texChecker.repeat.set( 3, 3 );
 			texChecker2.repeat.set( 1.5, 1.5 );
 

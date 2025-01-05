@@ -4,7 +4,7 @@
 		<title>three.js webgl - lottie loader</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 	<body>
 
@@ -44,11 +44,11 @@
 
 				const loader = new LottieLoader();
 				loader.setQuality( 2 );
-				loader.load( 'textures/lottie/24017-lottie-logo-animation.json', function ( texture ) {
+				loader.load( '../res/textures/lottie/24017-lottie-logo-animation.json', function ( texture ) {
 
 					setupControls( texture.animation );
 
-					// texture = new THREE.TextureLoader().load( 'textures/uv_grid_directx.jpg' );
+					// texture = new THREE.TextureLoader().load( '../res/textures/uv_grid_directx.jpg' );
 					// texture.colorSpace = THREE.SRGBColorSpace;
 
 					const geometry = new RoundedBoxGeometry( 1, 1, 1, 7, 0.2 );

@@ -4,7 +4,7 @@
 		<title>three.js webgl - materials - clearcoat</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 	<body>
 		<div id="info">
@@ -62,20 +62,20 @@
 
 							const textureLoader = new THREE.TextureLoader();
 
-							const diffuse = textureLoader.load( 'textures/carbon/Carbon.png' );
+							const diffuse = textureLoader.load( '../res/textures/carbon/Carbon.png' );
 							diffuse.colorSpace = THREE.SRGBColorSpace;
 							diffuse.wrapS = THREE.RepeatWrapping;
 							diffuse.wrapT = THREE.RepeatWrapping;
 							diffuse.repeat.x = 10;
 							diffuse.repeat.y = 10;
 
-							const normalMap = textureLoader.load( 'textures/carbon/Carbon_Normal.png' );
+							const normalMap = textureLoader.load( '../res/textures/carbon/Carbon_Normal.png' );
 							normalMap.wrapS = THREE.RepeatWrapping;
 							normalMap.wrapT = THREE.RepeatWrapping;
 							normalMap.repeat.x = 10;
 							normalMap.repeat.y = 10;
 
-							const normalMap2 = textureLoader.load( 'textures/water/Water_1_M_Normal.jpg' );
+							const normalMap2 = textureLoader.load( '../res/textures/water/Water_1_M_Normal.jpg' );
 
 							const normalMap3 = new THREE.CanvasTexture( new FlakesTexture() );
 							normalMap3.wrapS = THREE.RepeatWrapping;
@@ -84,9 +84,9 @@
 							normalMap3.repeat.y = 6;
 							normalMap3.anisotropy = 16;
 
-							const normalMap4 = textureLoader.load( 'textures/golfball.jpg' );
+							const normalMap4 = textureLoader.load( '../res/textures/golfball.jpg' );
 
-							const clearcoatNormalMap = textureLoader.load( 'textures/pbr/Scratched_gold/Scratched_gold_01_1K_Normal.png' );
+							const clearcoatNormalMap = textureLoader.load( '../res/textures/pbr/Scratched_gold/Scratched_gold_01_1K_Normal.png' );
 
 							// car paint
 

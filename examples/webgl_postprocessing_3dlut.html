@@ -4,7 +4,7 @@
 		<title>three.js webgl - 3d luts</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 
 	<body>
@@ -76,7 +76,7 @@
 
 				new RGBELoader()
 					.setPath( 'textures/equirectangular/' )
-					.load( 'royal_esplanade_1k.hdr', function ( texture ) {
+					.load( '../res/royal_esplanade_1k.hdr', function ( texture ) {
 
 						texture.mapping = THREE.EquirectangularReflectionMapping;
 
@@ -86,7 +86,7 @@
 						// model
 
 						const loader = new GLTFLoader().setPath( 'models/gltf/DamagedHelmet/glTF/' );
-						loader.load( 'DamagedHelmet.gltf', function ( gltf ) {
+						loader.load( '../res/DamagedHelmet.gltf', function ( gltf ) {
 
 							scene.add( gltf.scene );
 
@@ -99,7 +99,7 @@
 					if ( /\.CUBE$/i.test( name ) ) {
 
 						new LUTCubeLoader()
-							.load( 'luts/' + name, function ( result ) {
+							.load( '../res/luts/' + name, function ( result ) {
 
 								lutMap[ name ] = result;
 
@@ -117,7 +117,7 @@
 					} else {
 
 						new LUT3dlLoader()
-							.load( 'luts/' + name, function ( result ) {
+							.load( '../res/luts/' + name, function ( result ) {
 
 								lutMap[ name ] = result;
 

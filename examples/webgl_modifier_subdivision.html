@@ -4,7 +4,7 @@
 		<title>three.js webgl - modifier - subdivision</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 	<body>
 
@@ -78,7 +78,7 @@
 				backLight.position.set( 0, 1, - 1 );
 				scene.add( frontLight, backLight );
 
-				texture = new THREE.TextureLoader().load( './textures/uv_grid_opengl.jpg', () => {
+				texture = new THREE.TextureLoader().load( '/textures/uv_grid_opengl.jpg', () => {
 
 					texture.wrapS = THREE.RepeatWrapping;
 					texture.wrapT = THREE.RepeatWrapping;

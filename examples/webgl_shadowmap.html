@@ -4,7 +4,7 @@
 		<title>three.js webgl - shadow map</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 
 	<body>
@@ -195,7 +195,7 @@
 				// TEXT
 
 				const loader = new FontLoader();
-				loader.load( 'fonts/helvetiker_bold.typeface.json', function ( font ) {
+				loader.load( '../res/fonts/helvetiker_bold.typeface.json', function ( font ) {
 
 					const textGeo = new TextGeometry( 'THREE.JS', {
 
@@ -286,7 +286,7 @@
 
 				const gltfloader = new GLTFLoader();
 
-				gltfloader.load( 'models/gltf/Horse.glb', function ( gltf ) {
+				gltfloader.load( '../res/models/gltf/Horse.glb', function ( gltf ) {
 
 					const mesh = gltf.scene.children[ 0 ];
 
@@ -302,7 +302,7 @@
 
 				} );
 
-				gltfloader.load( 'models/gltf/Flamingo.glb', function ( gltf ) {
+				gltfloader.load( '../res/models/gltf/Flamingo.glb', function ( gltf ) {
 
 					const mesh = gltf.scene.children[ 0 ];
 					const clip = gltf.animations[ 0 ];
@@ -311,7 +311,7 @@
 
 				} );
 
-				gltfloader.load( 'models/gltf/Stork.glb', function ( gltf ) {
+				gltfloader.load( '../res/models/gltf/Stork.glb', function ( gltf ) {
 
 					const mesh = gltf.scene.children[ 0 ];
 					const clip = gltf.animations[ 0 ];

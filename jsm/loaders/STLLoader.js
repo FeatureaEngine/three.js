@@ -23,7 +23,7 @@ import {
  *
  * Usage:
  *  const loader = new STLLoader();
- *  loader.load( './models/stl/slotted_disk.stl', function ( geometry ) {
+ *  loader.load( '/models/stl/slotted_disk.stl', function ( geometry ) {
  *    scene.add( new THREE.Mesh( geometry ) );
  *  });
  *

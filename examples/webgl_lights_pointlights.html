@@ -4,7 +4,7 @@
 		<title>three.js webgl - lights - point lights</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 	<body>
 
@@ -48,7 +48,7 @@
 				//model
 
 				const loader = new OBJLoader();
-				loader.load( 'models/obj/walt/WaltHead.obj', function ( obj ) {
+				loader.load( '../res/models/obj/walt/WaltHead.obj', function ( obj ) {
 
 					object = obj;
 					object.scale.multiplyScalar( 0.8 );

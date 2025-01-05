@@ -4,7 +4,7 @@
 		<title>three.js webgl - PLY</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="../files/example.css">
 	</head>
 	<body>
 		<div id="info">
@@ -67,7 +67,7 @@
 				// PLY file
 
 				const loader = new PLYLoader();
-				loader.load( './models/ply/ascii/dolphins.ply', function ( geometry ) {
+				loader.load( '../res//models/ply/ascii/dolphins.ply', function ( geometry ) {
 
 					geometry.computeVertexNormals();
 
@@ -86,7 +86,7 @@
 
 				} );
 
-				loader.load( './models/ply/binary/Lucy100k.ply', function ( geometry ) {
+				loader.load( '../res//models/ply/binary/Lucy100k.ply', function ( geometry ) {
 
 					geometry.computeVertexNormals();
 
