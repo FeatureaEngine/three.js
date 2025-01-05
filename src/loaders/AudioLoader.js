@@ -41,5 +41,4 @@ class AudioLoader extends Loader {
 
 }
 
-
 export {AudioLoader};

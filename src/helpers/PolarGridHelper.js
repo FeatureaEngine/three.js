@@ -58,5 +58,4 @@ class PolarGridHelper extends LineSegments {
 
 }
 
-
 export {PolarGridHelper};

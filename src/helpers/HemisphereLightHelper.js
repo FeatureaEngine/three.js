@@ -55,5 +55,4 @@ class HemisphereLightHelper extends Object3D {
 
 }
 
-
 export {HemisphereLightHelper};

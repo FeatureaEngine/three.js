@@ -29,5 +29,4 @@ class IcosahedronGeometry extends PolyhedronGeometry {
 
 }
 
-
 export {IcosahedronGeometry};

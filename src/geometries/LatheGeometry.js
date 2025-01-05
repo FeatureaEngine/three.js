@@ -118,5 +118,4 @@ class LatheGeometry extends BufferGeometry {
 
 }
 
-
 export {LatheGeometry};

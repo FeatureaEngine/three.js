@@ -48,5 +48,4 @@ class EventDispatcher {
 
 }
 
-
 export {EventDispatcher};

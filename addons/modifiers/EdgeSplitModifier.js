@@ -164,5 +164,4 @@ class EdgeSplitModifier {
 
 }
 
-
 export {EdgeSplitModifier};

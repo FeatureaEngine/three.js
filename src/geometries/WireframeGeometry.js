@@ -87,5 +87,4 @@ function isUniqueEdge(start, end, edges) {
 
 }
 
-
 export {WireframeGeometry};

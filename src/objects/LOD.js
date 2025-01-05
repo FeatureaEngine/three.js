@@ -136,5 +136,4 @@ class LOD extends Object3D {
 
 }
 
-
 export {LOD};

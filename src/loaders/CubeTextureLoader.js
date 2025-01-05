@@ -36,5 +36,4 @@ class CubeTextureLoader extends Loader {
 
 }
 
-
 export {CubeTextureLoader};

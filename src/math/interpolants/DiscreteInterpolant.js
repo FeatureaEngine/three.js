@@ -17,5 +17,4 @@ class DiscreteInterpolant extends Interpolant {
 
 }
 
-
 export {DiscreteInterpolant};

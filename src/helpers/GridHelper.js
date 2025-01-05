@@ -41,5 +41,4 @@ class GridHelper extends LineSegments {
 
 }
 
-
 export {GridHelper};

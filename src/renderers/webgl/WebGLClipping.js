@@ -101,5 +101,4 @@ function WebGLClipping(properties) {
 
 }
 
-
 export {WebGLClipping};

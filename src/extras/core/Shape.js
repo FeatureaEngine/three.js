@@ -60,5 +60,4 @@ class Shape extends Path {
 
 }
 
-
 export {Shape};

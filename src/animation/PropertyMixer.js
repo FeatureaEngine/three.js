@@ -205,5 +205,4 @@ class PropertyMixer {
 
 }
 
-
 export {PropertyMixer};

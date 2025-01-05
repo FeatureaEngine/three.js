@@ -25,5 +25,4 @@ class TextureLoader extends Loader {
 
 }
 
-
 export {TextureLoader};

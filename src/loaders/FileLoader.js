@@ -178,5 +178,4 @@ class FileLoader extends Loader {
 
 }
 
-
 export {FileLoader};

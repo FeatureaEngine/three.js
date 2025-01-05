@@ -132,5 +132,4 @@ class TubeGeometry extends BufferGeometry {
 
 }
 
-
 export {TubeGeometry};

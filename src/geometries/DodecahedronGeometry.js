@@ -49,5 +49,4 @@ class DodecahedronGeometry extends PolyhedronGeometry {
 
 }
 
-
 export {DodecahedronGeometry};

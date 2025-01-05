@@ -64,5 +64,4 @@ class DirectionalLightHelper extends Object3D {
 
 }
 
-
 export {DirectionalLightHelper};

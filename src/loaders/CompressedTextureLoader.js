@@ -83,5 +83,4 @@ class CompressedTextureLoader extends Loader {
 
 }
 
-
 export {CompressedTextureLoader};

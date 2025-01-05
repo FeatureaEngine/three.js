@@ -77,5 +77,4 @@ class DataTextureLoader extends Loader {
 
 }
 
-
 export {DataTextureLoader};

@@ -159,5 +159,4 @@ class CurvePath extends Curve {
 
 }
 
-
 export {CurvePath};

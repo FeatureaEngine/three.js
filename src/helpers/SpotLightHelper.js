@@ -71,5 +71,4 @@ class SpotLightHelper extends Object3D {
 
 }
 
-
 export {SpotLightHelper};

@@ -266,5 +266,4 @@ class Curve {
 
 }
 
-
 export {Curve};

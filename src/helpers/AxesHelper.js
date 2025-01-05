@@ -48,5 +48,4 @@ class AxesHelper extends LineSegments {
 
 }
 
-
 export {AxesHelper};

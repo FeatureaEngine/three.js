@@ -123,5 +123,4 @@ class Path extends CurvePath {
 
 }
 
-
 export {Path};

@@ -94,5 +94,4 @@ class BoxHelper extends LineSegments {
 
 }
 
-
 export {BoxHelper};

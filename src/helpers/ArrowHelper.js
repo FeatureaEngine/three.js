@@ -75,5 +75,4 @@ class ArrowHelper extends Object3D {
 
 }
 
-
 export {ArrowHelper};

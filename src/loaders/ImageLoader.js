@@ -54,5 +54,4 @@ class ImageLoader extends Loader {
 
 }
 
-
 export {ImageLoader};

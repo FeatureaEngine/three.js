@@ -176,5 +176,4 @@ class CylinderGeometry extends BufferGeometry {
 
 }
 
-
 export {CylinderGeometry};

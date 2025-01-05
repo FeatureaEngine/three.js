@@ -24,5 +24,4 @@ class LinearInterpolant extends Interpolant {
 
 }
 
-
 export {LinearInterpolant};

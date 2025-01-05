@@ -56,5 +56,4 @@ class PointLightHelper extends Mesh {
 
 }
 
-
 export {PointLightHelper};

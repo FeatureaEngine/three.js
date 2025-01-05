@@ -69,5 +69,4 @@ class PositionalAudioHelper extends Line {
 
 }
 
-
 export {PositionalAudioHelper};

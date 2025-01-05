@@ -212,5 +212,4 @@ class InterleavedBufferAttribute {
 
 }
 
-
 export {InterleavedBufferAttribute};

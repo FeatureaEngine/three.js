@@ -24,5 +24,4 @@ class QuaternionLinearInterpolant extends Interpolant {
 
 }
 
-
 export {QuaternionLinearInterpolant};

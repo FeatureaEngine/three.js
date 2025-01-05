@@ -181,5 +181,4 @@ class ShapePath {
 
 }
 
-
 export {ShapePath};
