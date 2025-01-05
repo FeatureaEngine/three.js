@@ -19,7 +19,7 @@ import {FloatType} from '../../constants.js';
 const _morphTextures = new WeakMap();
 const _morphVec4 = new Vector4();
 
-const getMorph = /*@__PURE__*/ Fn(({bufferMap, influence, stride, width, depth, offset}) => {
+const getMorph = Fn(({bufferMap, influence, stride, width, depth, offset}) => {
     const texelIndex = int(vertexIndex).mul(stride).add(offset);
     const y = texelIndex.div(width);
     const x = texelIndex.sub(y.mul(width));
@@ -218,4 +218,4 @@ export default MorphNode;
  * @param {Mesh} mesh - The mesh holding the morph targets.
  * @returns {MorphNode}
  */
-export const morphReference = /*@__PURE__*/ nodeProxy(MorphNode);
+export const morphReference = nodeProxy(MorphNode);

@@ -52,5 +52,4 @@ function WebGLInfo(gl) {
     };
 }
 
-
 export {WebGLInfo};

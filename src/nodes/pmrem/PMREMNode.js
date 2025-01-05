@@ -274,4 +274,4 @@ function isEquirectangularMapReady(image) {
  * @param {Node<float>} [levelNode=null] - The level node.
  * @returns {PMREMNode}
  */
-export const pmremTexture = /*@__PURE__*/ nodeProxy(PMREMNode);
+export const pmremTexture = nodeProxy(PMREMNode);

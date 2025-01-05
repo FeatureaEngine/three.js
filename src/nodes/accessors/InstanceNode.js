@@ -167,4 +167,4 @@ export default InstanceNode;
  * @param {InstancedBufferAttribute} instanceColor - Instanced buffer attribute representing the instance colors.
  * @returns {InstanceNode}
  */
-export const instance = /*@__PURE__*/ nodeProxy(InstanceNode);
+export const instance = nodeProxy(InstanceNode);

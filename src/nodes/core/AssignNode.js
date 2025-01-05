@@ -120,6 +120,6 @@ export default AssignNode;
  * @param {Node} sourceNode - The source type.
  * @returns {AssignNode}
  */
-export const assign = /*@__PURE__*/ nodeProxy(AssignNode);
+export const assign = nodeProxy(AssignNode);
 
 addMethodChaining('assign', assign);

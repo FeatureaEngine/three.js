@@ -103,18 +103,18 @@ export const sharedUniformGroup = (name, order = 0) => new UniformGroupNode(name
  *
  * @type {UniformGroupNode}
  */
-export const frameGroup = /*@__PURE__*/ sharedUniformGroup('frame');
+export const frameGroup = sharedUniformGroup('frame');
 
 /**
  * TSL object that represents a shared uniform group node which is updated once per render.
  *
  * @type {UniformGroupNode}
  */
-export const renderGroup = /*@__PURE__*/ sharedUniformGroup('render');
+export const renderGroup = sharedUniformGroup('render');
 
 /**
  * TSL object that represents a uniform group node which is updated once per object.
  *
  * @type {UniformGroupNode}
  */
-export const objectGroup = /*@__PURE__*/ uniformGroup('object');
+export const objectGroup = uniformGroup('object');

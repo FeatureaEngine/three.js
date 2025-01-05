@@ -13,7 +13,7 @@ import {mul, sub, div} from '../math/OperatorNode.js';
  * @param {Node<float>} exposure - The exposure.
  * @return {Node<vec3>} The tone mapped color.
  */
-export const linearToneMapping = /*@__PURE__*/ Fn(([color, exposure]) => {
+export const linearToneMapping = Fn(([color, exposure]) => {
     return color.mul(exposure).clamp();
 
 }).setLayout({
@@ -35,7 +35,7 @@ export const linearToneMapping = /*@__PURE__*/ Fn(([color, exposure]) => {
  * @param {Node<float>} exposure - The exposure.
  * @return {Node<vec3>} The tone mapped color.
  */
-export const reinhardToneMapping = /*@__PURE__*/ Fn(([color, exposure]) => {
+export const reinhardToneMapping = Fn(([color, exposure]) => {
     color = color.mul(exposure);
     return color.div(color.add(1.0)).clamp();
 
@@ -58,7 +58,7 @@ export const reinhardToneMapping = /*@__PURE__*/ Fn(([color, exposure]) => {
  * @param {Node<float>} exposure - The exposure.
  * @return {Node<vec3>} The tone mapped color.
  */
-export const cineonToneMapping = /*@__PURE__*/ Fn(([color, exposure]) => {
+export const cineonToneMapping = Fn(([color, exposure]) => {
     // filmic operator by Jim Hejl and Richard Burgess-Dawson
     color = color.mul(exposure);
     color = color.sub(0.004).max(0.0);
@@ -77,7 +77,7 @@ export const cineonToneMapping = /*@__PURE__*/ Fn(([color, exposure]) => {
 
 // source: https://github.com/selfshadow/ltc_code/blob/master/webgl/shaders/ltc/ltc_blit.fs
 
-const RRTAndODTFit = /*@__PURE__*/ Fn(([color]) => {
+const RRTAndODTFit = Fn(([color]) => {
     const a = color.mul(color.add(0.0245786)).sub(0.000090537);
     const b = color.mul(color.add(0.4329510).mul(0.983729)).add(0.238081);
     return a.div(b);
@@ -94,7 +94,7 @@ const RRTAndODTFit = /*@__PURE__*/ Fn(([color]) => {
  * @param {Node<float>} exposure - The exposure.
  * @return {Node<vec3>} The tone mapped color.
  */
-export const acesFilmicToneMapping = /*@__PURE__*/ Fn(([color, exposure]) => {
+export const acesFilmicToneMapping = Fn(([color, exposure]) => {
     // sRGB => XYZ => D65_2_D60 => AP1 => RRT_SAT
     const ACESInputMat = mat3(
         0.59719, 0.35458, 0.04823,
@@ -124,10 +124,10 @@ export const acesFilmicToneMapping = /*@__PURE__*/ Fn(([color, exposure]) => {
     ]
 });
 
-const LINEAR_REC2020_TO_LINEAR_SRGB = /*@__PURE__*/ mat3(vec3(1.6605, -0.1246, -0.0182), vec3(-0.5876, 1.1329, -0.1006), vec3(-0.0728, -0.0083, 1.1187));
-const LINEAR_SRGB_TO_LINEAR_REC2020 = /*@__PURE__*/ mat3(vec3(0.6274, 0.0691, 0.0164), vec3(0.3293, 0.9195, 0.0880), vec3(0.0433, 0.0113, 0.8956));
+const LINEAR_REC2020_TO_LINEAR_SRGB = mat3(vec3(1.6605, -0.1246, -0.0182), vec3(-0.5876, 1.1329, -0.1006), vec3(-0.0728, -0.0083, 1.1187));
+const LINEAR_SRGB_TO_LINEAR_REC2020 = mat3(vec3(0.6274, 0.0691, 0.0164), vec3(0.3293, 0.9195, 0.0880), vec3(0.0433, 0.0113, 0.8956));
 
-const agxDefaultContrastApprox = /*@__PURE__*/ Fn(([x_immutable]) => {
+const agxDefaultContrastApprox = Fn(([x_immutable]) => {
     const x = vec3(x_immutable).toVar();
     const x2 = vec3(x.mul(x)).toVar();
     const x4 = vec3(x2.mul(x2)).toVar();
@@ -143,7 +143,7 @@ const agxDefaultContrastApprox = /*@__PURE__*/ Fn(([x_immutable]) => {
  * @param {Node<float>} exposure - The exposure.
  * @return {Node<vec3>} The tone mapped color.
  */
-export const agxToneMapping = /*@__PURE__*/ Fn(([color, exposure]) => {
+export const agxToneMapping = Fn(([color, exposure]) => {
     const colortone = vec3(color).toVar();
     const AgXInsetMatrix = mat3(vec3(0.856627153315983, 0.137318972929847, 0.11189821299995), vec3(0.0951212405381588, 0.761241990602591, 0.0767994186031903), vec3(0.0482516061458583, 0.101439036467562, 0.811302368396859));
     const AgXOutsetMatrix = mat3(vec3(1.1271005818144368, -0.1413297634984383, -0.14132976349843826), vec3(-0.11060664309660323, 1.157823702216272, -0.11060664309660294), vec3(-0.016493938717834573, -0.016493938717834257, 1.2519364065950405));
@@ -182,7 +182,7 @@ export const agxToneMapping = /*@__PURE__*/ Fn(([color, exposure]) => {
  * @param {Node<float>} exposure - The exposure.
  * @return {Node<vec3>} The tone mapped color.
  */
-export const neutralToneMapping = /*@__PURE__*/ Fn(([color, exposure]) => {
+export const neutralToneMapping = Fn(([color, exposure]) => {
     const StartCompression = float(0.8 - 0.04);
     const Desaturation = float(0.15);
     color = color.mul(exposure);

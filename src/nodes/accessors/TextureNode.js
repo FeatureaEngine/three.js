@@ -550,7 +550,7 @@ export default TextureNode;
  * @param {Node<float>?} [biasNode=null] - The bias node.
  * @returns {TextureNode}
  */
-export const texture = /*@__PURE__*/ nodeProxy(TextureNode);
+export const texture = nodeProxy(TextureNode);
 
 /**
  * TSL function for creating a texture node that fetches/loads texels without interpolation.

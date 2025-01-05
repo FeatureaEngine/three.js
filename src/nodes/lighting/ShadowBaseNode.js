@@ -76,6 +76,6 @@ class ShadowBaseNode extends Node {
  *
  * @type {Node<vec3>}
  */
-export const shadowPositionWorld = /*@__PURE__*/ vec3().toVar('shadowPositionWorld');
+export const shadowPositionWorld = vec3().toVar('shadowPositionWorld');
 
 export default ShadowBaseNode;

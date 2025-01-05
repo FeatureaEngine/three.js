@@ -152,5 +152,4 @@ function WebGLRenderLists() {
     };
 }
 
-
 export {WebGLRenderLists, WebGLRenderList};

@@ -15,7 +15,7 @@ import {TangentSpaceNormalMap, ObjectSpaceNormalMap} from '../../constants.js';
 // Normal Mapping Without Precomputed Tangents
 // http://www.thetenthplanet.de/archives/1180
 
-const perturbNormal2Arb = /*@__PURE__*/ Fn((inputs) => {
+const perturbNormal2Arb = Fn((inputs) => {
     const {eye_pos, surf_norm, mapN, uv} = inputs;
     const q0 = eye_pos.dFdx();
     const q1 = eye_pos.dFdy();
@@ -114,4 +114,4 @@ export default NormalMapNode;
  * @param {Node?} [scaleNode=null] - Controls the intensity of the effect.
  * @returns {NormalMapNode}
  */
-export const normalMap = /*@__PURE__*/ nodeProxy(NormalMapNode);
+export const normalMap = nodeProxy(NormalMapNode);

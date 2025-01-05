@@ -74,5 +74,4 @@ function WebGLRenderStates(extensions) {
     };
 }
 
-
 export {WebGLRenderStates};

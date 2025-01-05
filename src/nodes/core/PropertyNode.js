@@ -109,193 +109,193 @@ export const varyingProperty = (type, name) => nodeObject(new PropertyNode(type,
  *
  * @type {PropertyNode<vec4>}
  */
-export const diffuseColor = /*@__PURE__*/ nodeImmutable(PropertyNode, 'vec4', 'DiffuseColor');
+export const diffuseColor = nodeImmutable(PropertyNode, 'vec4', 'DiffuseColor');
 
 /**
  * TSL object that represents the shader variable `EmissiveColor`.
  *
  * @type {PropertyNode<vec3>}
  */
-export const emissive = /*@__PURE__*/ nodeImmutable(PropertyNode, 'vec3', 'EmissiveColor');
+export const emissive = nodeImmutable(PropertyNode, 'vec3', 'EmissiveColor');
 
 /**
  * TSL object that represents the shader variable `Roughness`.
  *
  * @type {PropertyNode<float>}
  */
-export const roughness = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'Roughness');
+export const roughness = nodeImmutable(PropertyNode, 'float', 'Roughness');
 
 /**
  * TSL object that represents the shader variable `Metalness`.
  *
  * @type {PropertyNode<float>}
  */
-export const metalness = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'Metalness');
+export const metalness = nodeImmutable(PropertyNode, 'float', 'Metalness');
 
 /**
  * TSL object that represents the shader variable `Clearcoat`.
  *
  * @type {PropertyNode<float>}
  */
-export const clearcoat = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'Clearcoat');
+export const clearcoat = nodeImmutable(PropertyNode, 'float', 'Clearcoat');
 
 /**
  * TSL object that represents the shader variable `ClearcoatRoughness`.
  *
  * @type {PropertyNode<float>}
  */
-export const clearcoatRoughness = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'ClearcoatRoughness');
+export const clearcoatRoughness = nodeImmutable(PropertyNode, 'float', 'ClearcoatRoughness');
 
 /**
  * TSL object that represents the shader variable `Sheen`.
  *
  * @type {PropertyNode<vec3>}
  */
-export const sheen = /*@__PURE__*/ nodeImmutable(PropertyNode, 'vec3', 'Sheen');
+export const sheen = nodeImmutable(PropertyNode, 'vec3', 'Sheen');
 
 /**
  * TSL object that represents the shader variable `SheenRoughness`.
  *
  * @type {PropertyNode<float>}
  */
-export const sheenRoughness = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'SheenRoughness');
+export const sheenRoughness = nodeImmutable(PropertyNode, 'float', 'SheenRoughness');
 
 /**
  * TSL object that represents the shader variable `Iridescence`.
  *
  * @type {PropertyNode<float>}
  */
-export const iridescence = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'Iridescence');
+export const iridescence = nodeImmutable(PropertyNode, 'float', 'Iridescence');
 
 /**
  * TSL object that represents the shader variable `IridescenceIOR`.
  *
  * @type {PropertyNode<float>}
  */
-export const iridescenceIOR = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'IridescenceIOR');
+export const iridescenceIOR = nodeImmutable(PropertyNode, 'float', 'IridescenceIOR');
 
 /**
  * TSL object that represents the shader variable `IridescenceThickness`.
  *
  * @type {PropertyNode<float>}
  */
-export const iridescenceThickness = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'IridescenceThickness');
+export const iridescenceThickness = nodeImmutable(PropertyNode, 'float', 'IridescenceThickness');
 
 /**
  * TSL object that represents the shader variable `AlphaT`.
  *
  * @type {PropertyNode<float>}
  */
-export const alphaT = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'AlphaT');
+export const alphaT = nodeImmutable(PropertyNode, 'float', 'AlphaT');
 
 /**
  * TSL object that represents the shader variable `Anisotropy`.
  *
  * @type {PropertyNode<float>}
  */
-export const anisotropy = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'Anisotropy');
+export const anisotropy = nodeImmutable(PropertyNode, 'float', 'Anisotropy');
 
 /**
  * TSL object that represents the shader variable `AnisotropyT`.
  *
  * @type {PropertyNode<vec3>}
  */
-export const anisotropyT = /*@__PURE__*/ nodeImmutable(PropertyNode, 'vec3', 'AnisotropyT');
+export const anisotropyT = nodeImmutable(PropertyNode, 'vec3', 'AnisotropyT');
 
 /**
  * TSL object that represents the shader variable `AnisotropyB`.
  *
  * @type {PropertyNode<vec3>}
  */
-export const anisotropyB = /*@__PURE__*/ nodeImmutable(PropertyNode, 'vec3', 'AnisotropyB');
+export const anisotropyB = nodeImmutable(PropertyNode, 'vec3', 'AnisotropyB');
 
 /**
  * TSL object that represents the shader variable `SpecularColor`.
  *
  * @type {PropertyNode<color>}
  */
-export const specularColor = /*@__PURE__*/ nodeImmutable(PropertyNode, 'color', 'SpecularColor');
+export const specularColor = nodeImmutable(PropertyNode, 'color', 'SpecularColor');
 
 /**
  * TSL object that represents the shader variable `SpecularF90`.
  *
  * @type {PropertyNode<float>}
  */
-export const specularF90 = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'SpecularF90');
+export const specularF90 = nodeImmutable(PropertyNode, 'float', 'SpecularF90');
 
 /**
  * TSL object that represents the shader variable `Shininess`.
  *
  * @type {PropertyNode<float>}
  */
-export const shininess = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'Shininess');
+export const shininess = nodeImmutable(PropertyNode, 'float', 'Shininess');
 
 /**
  * TSL object that represents the shader variable `Output`.
  *
  * @type {PropertyNode<vec4>}
  */
-export const output = /*@__PURE__*/ nodeImmutable(PropertyNode, 'vec4', 'Output');
+export const output = nodeImmutable(PropertyNode, 'vec4', 'Output');
 
 /**
  * TSL object that represents the shader variable `dashSize`.
  *
  * @type {PropertyNode<float>}
  */
-export const dashSize = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'dashSize');
+export const dashSize = nodeImmutable(PropertyNode, 'float', 'dashSize');
 
 /**
  * TSL object that represents the shader variable `gapSize`.
  *
  * @type {PropertyNode<float>}
  */
-export const gapSize = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'gapSize');
+export const gapSize = nodeImmutable(PropertyNode, 'float', 'gapSize');
 
 /**
  * TSL object that represents the shader variable `pointWidth`.
  *
  * @type {PropertyNode<float>}
  */
-export const pointWidth = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'pointWidth');
+export const pointWidth = nodeImmutable(PropertyNode, 'float', 'pointWidth');
 
 /**
  * TSL object that represents the shader variable `IOR`.
  *
  * @type {PropertyNode<float>}
  */
-export const ior = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'IOR');
+export const ior = nodeImmutable(PropertyNode, 'float', 'IOR');
 
 /**
  * TSL object that represents the shader variable `Transmission`.
  *
  * @type {PropertyNode<float>}
  */
-export const transmission = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'Transmission');
+export const transmission = nodeImmutable(PropertyNode, 'float', 'Transmission');
 
 /**
  * TSL object that represents the shader variable `Thickness`.
  *
  * @type {PropertyNode<float>}
  */
-export const thickness = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'Thickness');
+export const thickness = nodeImmutable(PropertyNode, 'float', 'Thickness');
 
 /**
  * TSL object that represents the shader variable `AttenuationDistance`.
  *
  * @type {PropertyNode<float>}
  */
-export const attenuationDistance = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'AttenuationDistance');
+export const attenuationDistance = nodeImmutable(PropertyNode, 'float', 'AttenuationDistance');
 
 /**
  * TSL object that represents the shader variable `AttenuationColor`.
  *
  * @type {PropertyNode<color>}
  */
-export const attenuationColor = /*@__PURE__*/ nodeImmutable(PropertyNode, 'color', 'AttenuationColor');
+export const attenuationColor = nodeImmutable(PropertyNode, 'color', 'AttenuationColor');
 
 /**
  * TSL object that represents the shader variable `Dispersion`.
  *
  * @type {PropertyNode<float>}
  */
-export const dispersion = /*@__PURE__*/ nodeImmutable(PropertyNode, 'float', 'Dispersion');
+export const dispersion = nodeImmutable(PropertyNode, 'float', 'Dispersion');

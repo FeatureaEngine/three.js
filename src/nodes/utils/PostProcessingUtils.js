@@ -15,7 +15,7 @@ import {WebGPUCoordinateSystem} from '../../constants.js';
  * @param {Node<mat4>} projectionMatrixInverse - The camera's inverse projection matrix.
  * @return {Node<vec3>} The fragments position in view space.
  */
-export const getViewPosition = /*@__PURE__*/ Fn(([screenPosition, depth, projectionMatrixInverse], builder) => {
+export const getViewPosition = Fn(([screenPosition, depth, projectionMatrixInverse], builder) => {
     let clipSpacePosition;
     if (builder.renderer.coordinateSystem === WebGPUCoordinateSystem) {
         screenPosition = vec2(screenPosition.x, screenPosition.y.oneMinus()).mul(2.0).sub(1.0);
@@ -37,7 +37,7 @@ export const getViewPosition = /*@__PURE__*/ Fn(([screenPosition, depth, project
  * @param {Node<mat4>} projectionMatrix - The camera's projection matrix.
  * @return {Node<vec2>} The fragment's screen position expressed as uv coordinates.
  */
-export const getScreenPosition = /*@__PURE__*/ Fn(([viewPosition, projectionMatrix]) => {
+export const getScreenPosition = Fn(([viewPosition, projectionMatrix]) => {
     const sampleClipPos = projectionMatrix.mul(vec4(viewPosition, 1.0));
     const sampleUv = sampleClipPos.xy.div(sampleClipPos.w).mul(0.5).add(0.5).toVar();
     return vec2(sampleUv.x, sampleUv.y.oneMinus());
@@ -54,7 +54,7 @@ export const getScreenPosition = /*@__PURE__*/ Fn(([viewPosition, projectionMatr
  * @param {Node<mat4>} projectionMatrixInverse - The camera's inverse projection matrix.
  * @return {Node<vec3>} The computed normal vector.
  */
-export const getNormalFromDepth = /*@__PURE__*/ Fn(([uv, depthTexture, projectionMatrixInverse]) => {
+export const getNormalFromDepth = Fn(([uv, depthTexture, projectionMatrixInverse]) => {
     const size = textureSize(textureLoad(depthTexture));
     const p = ivec2(uv.mul(size)).toVar();
     const c0 = textureLoad(depthTexture, p).toVar();

@@ -102,7 +102,7 @@ class FunctionOverloadingNode extends Node {
 
 export default FunctionOverloadingNode;
 
-const overloadingBaseFn = /*@__PURE__*/ nodeProxy(FunctionOverloadingNode);
+const overloadingBaseFn = nodeProxy(FunctionOverloadingNode);
 
 /**
  * TSL function for creating a function overloading node.

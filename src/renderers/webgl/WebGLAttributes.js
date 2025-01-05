@@ -140,5 +140,4 @@ function WebGLAttributes(gl) {
     };
 }
 
-
 export {WebGLAttributes};

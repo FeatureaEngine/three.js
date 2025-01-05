@@ -94,6 +94,6 @@ export const toneMapping = (mapping, exposure, color) => nodeObject(new ToneMapp
  *
  * @type {RendererReferenceNode<vec3>}
  */
-export const toneMappingExposure = /*@__PURE__*/ rendererReference('toneMappingExposure', 'float');
+export const toneMappingExposure = rendererReference('toneMappingExposure', 'float');
 
 addMethodChaining('toneMapping', (color, mapping, exposure) => toneMapping(mapping, exposure, color));

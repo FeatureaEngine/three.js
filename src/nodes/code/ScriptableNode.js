@@ -534,4 +534,4 @@ export default ScriptableNode;
  * @param {Object} [parameters={}] - The parameters definition.
  * @returns {ScriptableNode}
  */
-export const scriptable = /*@__PURE__*/ nodeProxy(ScriptableNode);
+export const scriptable = nodeProxy(ScriptableNode);

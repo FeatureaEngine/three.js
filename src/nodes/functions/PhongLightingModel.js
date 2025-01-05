@@ -9,12 +9,12 @@ import {Fn, float} from '../tsl/TSLBase.js';
 
 const G_BlinnPhong_Implicit = () => float(0.25);
 
-const D_BlinnPhong = /*@__PURE__*/ Fn(({dotNH}) => {
+const D_BlinnPhong = Fn(({dotNH}) => {
     return shininess.mul(float(0.5)).add(1.0).mul(float(1 / Math.PI)).mul(dotNH.pow(shininess));
 
 });
 
-const BRDF_BlinnPhong = /*@__PURE__*/ Fn(({lightDirection}) => {
+const BRDF_BlinnPhong = Fn(({lightDirection}) => {
     const halfDir = lightDirection.add(positionViewDirection).normalize();
     const dotNH = transformedNormalView.dot(halfDir).clamp();
     const dotVH = positionViewDirection.dot(halfDir).clamp();

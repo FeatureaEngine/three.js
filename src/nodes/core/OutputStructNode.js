@@ -70,4 +70,4 @@ export default OutputStructNode;
  * @param {...Node} members - A parameter list of nodes.
  * @returns {OutputStructNode}
  */
-export const outputStruct = /*@__PURE__*/ nodeProxy(OutputStructNode);
+export const outputStruct = nodeProxy(OutputStructNode);

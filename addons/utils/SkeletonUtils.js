@@ -238,7 +238,6 @@ function getBones(skeleton) {
     return Array.isArray(skeleton) ? skeleton : skeleton.bones;
 }
 
-
 function getHelperFromSkeleton(skeleton) {
     const source = new SkeletonHelper(skeleton.bones[0]);
     source.skeleton = skeleton;

@@ -49,5 +49,4 @@ function WebGLObjects(gl, geometries, attributes, info) {
     };
 }
 
-
 export {WebGLObjects};

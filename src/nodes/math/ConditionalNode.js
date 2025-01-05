@@ -143,7 +143,7 @@ export default ConditionalNode;
  * @param {Node?} [elseNode=null] - The node that is evaluate when the condition ends up `false`.
  * @returns {ConditionalNode}
  */
-export const select = /*@__PURE__*/ nodeProxy(ConditionalNode);
+export const select = nodeProxy(ConditionalNode);
 
 addMethodChaining('select', select);
 

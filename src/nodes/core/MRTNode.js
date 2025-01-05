@@ -118,4 +118,4 @@ export default MRTNode;
  * @param {Object<String, Node>} outputNodes - The MRT outputs.
  * @returns {MRTNode}
  */
-export const mrt = /*@__PURE__*/ nodeProxy(MRTNode);
+export const mrt = nodeProxy(MRTNode);

@@ -142,21 +142,21 @@ export default ScreenNode;
  *
  * @type {ScreenNode<vec2>}
  */
-export const screenUV = /*@__PURE__*/ nodeImmutable(ScreenNode, ScreenNode.UV);
+export const screenUV = nodeImmutable(ScreenNode, ScreenNode.UV);
 
 /**
  * TSL object that represents the screen resolution in physical pixel units.
  *
  * @type {ScreenNode<vec2>}
  */
-export const screenSize = /*@__PURE__*/ nodeImmutable(ScreenNode, ScreenNode.SIZE);
+export const screenSize = nodeImmutable(ScreenNode, ScreenNode.SIZE);
 
 /**
  * TSL object that represents the current `x`/`y` pixel position on the screen in physical pixel units.
  *
  * @type {ScreenNode<vec2>}
  */
-export const screenCoordinate = /*@__PURE__*/ nodeImmutable(ScreenNode, ScreenNode.COORDINATE);
+export const screenCoordinate = nodeImmutable(ScreenNode, ScreenNode.COORDINATE);
 
 // Viewport
 
@@ -165,7 +165,7 @@ export const screenCoordinate = /*@__PURE__*/ nodeImmutable(ScreenNode, ScreenNo
  *
  * @type {ScreenNode<vec4>}
  */
-export const viewport = /*@__PURE__*/ nodeImmutable(ScreenNode, ScreenNode.VIEWPORT);
+export const viewport = nodeImmutable(ScreenNode, ScreenNode.VIEWPORT);
 
 /**
  * TSL object that represents the viewport resolution in physical pixel units.
@@ -179,30 +179,30 @@ export const viewportSize = viewport.zw;
  *
  * @type {ScreenNode<vec2>}
  */
-export const viewportCoordinate = /*@__PURE__*/ screenCoordinate.sub(viewport.xy);
+export const viewportCoordinate = screenCoordinate.sub(viewport.xy);
 
 /**
  * TSL object that represents normalized viewport coordinates, unitless in `[0, 1]`.
  *
  * @type {ScreenNode<vec2>}
  */
-export const viewportUV = /*@__PURE__*/ viewportCoordinate.div(viewportSize);
+export const viewportUV = viewportCoordinate.div(viewportSize);
 
 // Deprecated
 
-export const viewportResolution = /*@__PURE__*/ (Fn(() => { // @deprecated, r169
+export const viewportResolution = (Fn(() => { // @deprecated, r169
     console.warn('TSL.ViewportNode: "viewportResolution" is deprecated. Use "screenSize" instead.');
     return screenSize;
 
 }, 'vec2').once())();
 
-export const viewportTopLeft = /*@__PURE__*/ (Fn(() => { // @deprecated, r168
+export const viewportTopLeft = (Fn(() => { // @deprecated, r168
     console.warn('TSL.ViewportNode: "viewportTopLeft" is deprecated. Use "screenUV" instead.');
     return screenUV;
 
 }, 'vec2').once())();
 
-export const viewportBottomLeft = /*@__PURE__*/ (Fn(() => { // @deprecated, r168
+export const viewportBottomLeft = (Fn(() => { // @deprecated, r168
     console.warn('TSL.ViewportNode: "viewportBottomLeft" is deprecated. Use "screenUV.flipY()" instead.');
     return screenUV.flipY();
 

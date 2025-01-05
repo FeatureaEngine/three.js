@@ -46,4 +46,4 @@ export default ViewportDepthTextureNode;
  * @param {Node?} [levelNode=null] - The level node.
  * @returns {ViewportDepthTextureNode}
  */
-export const viewportDepthTexture = /*@__PURE__*/ nodeProxy(ViewportDepthTextureNode);
+export const viewportDepthTexture = nodeProxy(ViewportDepthTextureNode);

@@ -352,5 +352,4 @@ function WebGLBindingStates(gl, attributes) {
     };
 }
 
-
 export {WebGLBindingStates};

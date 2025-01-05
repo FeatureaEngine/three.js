@@ -188,4 +188,4 @@ export default ScriptableValueNode;
  * @param {Any} [value=null] - The value.
  * @returns {ScriptableValueNode}
  */
-export const scriptableValue = /*@__PURE__*/ nodeProxy(ScriptableValueNode);
+export const scriptableValue = nodeProxy(ScriptableValueNode);

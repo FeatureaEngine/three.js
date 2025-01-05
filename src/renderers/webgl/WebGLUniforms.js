@@ -562,7 +562,6 @@ function setValueV4uiArray(gl, v) {
     gl.uniform4uiv(this.addr, v);
 }
 
-
 // Array of textures (2D / 3D / Cube / 2DArray)
 
 function setValueT1Array(gl, v, textures) {

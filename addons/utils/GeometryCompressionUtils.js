@@ -78,7 +78,6 @@ function compressNormals(geometry, encodeMethod) {
     geometry.attributes.normal.packingMethod = encodeMethod;
 }
 
-
 /**
  * Make the input geometry's position attribute encoded and compressed.
  *
@@ -359,7 +358,6 @@ function quantizedEncodeUV(array, bytes) {
         decodeMat: decodeMat
     };
 }
-
 
 export {
     compressNormals,

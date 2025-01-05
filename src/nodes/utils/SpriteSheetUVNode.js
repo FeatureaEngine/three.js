@@ -74,4 +74,4 @@ export default SpriteSheetUVNode;
  * @param {Node<float>} [frameNode=float()] - The node that defines the current frame/sprite.
  * @returns {SpriteSheetUVNode}
  */
-export const spritesheetUV = /*@__PURE__*/ nodeProxy(SpriteSheetUVNode);
+export const spritesheetUV = nodeProxy(SpriteSheetUVNode);

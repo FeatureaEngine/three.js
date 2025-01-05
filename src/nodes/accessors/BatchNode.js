@@ -124,4 +124,4 @@ export default BatchNode;
  * @param {BatchedMesh} batchMesh - A reference to batched mesh.
  * @returns {BatchNode}
  */
-export const batch = /*@__PURE__*/ nodeProxy(BatchNode);
+export const batch = nodeProxy(BatchNode);

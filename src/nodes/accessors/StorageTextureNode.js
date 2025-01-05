@@ -174,7 +174,7 @@ export default StorageTextureNode;
  * @param {Node?} [storeNode=null] - The value node that should be stored in the texture.
  * @returns {StorageTextureNode}
  */
-export const storageTexture = /*@__PURE__*/ nodeProxy(StorageTextureNode);
+export const storageTexture = nodeProxy(StorageTextureNode);
 
 
 /**

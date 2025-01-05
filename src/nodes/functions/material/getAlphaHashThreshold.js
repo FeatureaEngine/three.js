@@ -4,17 +4,17 @@ import {abs, add, ceil, clamp, dFdx, dFdy, exp2, float, floor, Fn, fract, length
 
 const ALPHA_HASH_SCALE = 0.05; // Derived from trials only, and may be changed.
 
-const hash2D = /*@__PURE__*/ Fn(([value]) => {
+const hash2D = Fn(([value]) => {
     return fract(mul(1.0e4, sin(mul(17.0, value.x).add(mul(0.1, value.y)))).mul(add(0.1, abs(sin(mul(13.0, value.y).add(value.x))))));
 
 });
 
-const hash3D = /*@__PURE__*/ Fn(([value]) => {
+const hash3D = Fn(([value]) => {
     return hash2D(vec2(hash2D(value.xy), value.z));
 
 });
 
-const getAlphaHashThreshold = /*@__PURE__*/ Fn(([position]) => {
+const getAlphaHashThreshold = Fn(([position]) => {
     // Find the discretized derivatives of our coordinates
     const maxDeriv = max(
         length(dFdx(position.xyz)),

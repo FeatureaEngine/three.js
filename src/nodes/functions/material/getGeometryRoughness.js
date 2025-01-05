@@ -1,7 +1,7 @@
 import {normalView} from '../../accessors/Normal.js';
 import {float, Fn} from '../../tsl/TSLBase.js';
 
-const getGeometryRoughness = /*@__PURE__*/ Fn((builder) => {
+const getGeometryRoughness = Fn((builder) => {
     if (builder.geometry.hasAttribute('normal') === false) {
         return float(0);
     }

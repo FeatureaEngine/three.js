@@ -1,6 +1,6 @@
 import {Fn, mul} from '../../tsl/TSLBase.js';
 
-const getShIrradianceAt = /*@__PURE__*/ Fn(([normal, shCoefficients]) => {
+const getShIrradianceAt = Fn(([normal, shCoefficients]) => {
     // normal is assumed to have unit length
     const x = normal.x, y = normal.y, z = normal.z;
     // band 0

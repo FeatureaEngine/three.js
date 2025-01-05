@@ -22,7 +22,7 @@ import {getDataFromObject} from '../core/NodeUtils.js';
 /** @module ShadowNode **/
 
 const shadowMaterialLib = new WeakMap();
-const linearDistance = /*@__PURE__*/ Fn(([position, cameraNear, cameraFar]) => {
+const linearDistance = Fn(([position, cameraNear, cameraFar]) => {
     let dist = positionWorld.sub(position).length();
     dist = dist.sub(cameraNear).div(cameraFar.sub(cameraNear));
     dist = dist.saturate(); // clamp to [ 0, 1 ]
@@ -65,7 +65,7 @@ const getShadowMaterial = (light) => {
  * @param {Node<vec3>} inputs.shadowCoord - The shadow coordinates.
  * @return {Node<float>} The filtering result.
  */
-export const BasicShadowFilter = /*@__PURE__*/ Fn(({depthTexture, shadowCoord}) => {
+export const BasicShadowFilter = Fn(({depthTexture, shadowCoord}) => {
     return texture(depthTexture, shadowCoord.xy).compare(shadowCoord.z);
 
 });
@@ -80,7 +80,7 @@ export const BasicShadowFilter = /*@__PURE__*/ Fn(({depthTexture, shadowCoord}) 
  * @param {LightShadow} inputs.shadow - The light shadow.
  * @return {Node<float>} The filtering result.
  */
-export const PCFShadowFilter = /*@__PURE__*/ Fn(({depthTexture, shadowCoord, shadow}) => {
+export const PCFShadowFilter = Fn(({depthTexture, shadowCoord, shadow}) => {
     const depthCompare = (uv, compare) => texture(depthTexture, uv).compare(compare);
     const mapSize = reference('mapSize', 'vec2', shadow).setGroup(renderGroup);
     const radius = reference('radius', 'float', shadow).setGroup(renderGroup);
@@ -125,7 +125,7 @@ export const PCFShadowFilter = /*@__PURE__*/ Fn(({depthTexture, shadowCoord, sha
  * @param {LightShadow} inputs.shadow - The light shadow.
  * @return {Node<float>} The filtering result.
  */
-export const PCFSoftShadowFilter = /*@__PURE__*/ Fn(({depthTexture, shadowCoord, shadow}) => {
+export const PCFSoftShadowFilter = Fn(({depthTexture, shadowCoord, shadow}) => {
     const depthCompare = (uv, compare) => texture(depthTexture, uv).compare(compare);
     const mapSize = reference('mapSize', 'vec2', shadow).setGroup(renderGroup);
     const texelSize = vec2(1).div(mapSize);
@@ -185,7 +185,7 @@ export const PCFSoftShadowFilter = /*@__PURE__*/ Fn(({depthTexture, shadowCoord,
  * @param {Node<vec3>} inputs.shadowCoord - The shadow coordinates.
  * @return {Node<float>} The filtering result.
  */
-export const VSMShadowFilter = /*@__PURE__*/ Fn(({depthTexture, shadowCoord}) => {
+export const VSMShadowFilter = Fn(({depthTexture, shadowCoord}) => {
     const occlusion = float(1).toVar();
     const distribution = texture(depthTexture).sample(shadowCoord.xy).rg;
     const hardShadow = step(shadowCoord.z, distribution.x);
@@ -211,7 +211,7 @@ export const VSMShadowFilter = /*@__PURE__*/ Fn(({depthTexture, shadowCoord}) =>
  * @param {TextureNode} inputs.shadowPass - A reference to the render target's depth data.
  * @return {Node<vec2>} The VSM output.
  */
-const VSMPassVertical = /*@__PURE__*/ Fn(({samples, radius, size, shadowPass}) => {
+const VSMPassVertical = Fn(({samples, radius, size, shadowPass}) => {
     const mean = float(0).toVar();
     const squaredMean = float(0).toVar();
     const uvStride = samples.lessThanEqual(float(1)).select(float(0), float(2).div(samples.sub(1)));
@@ -240,7 +240,7 @@ const VSMPassVertical = /*@__PURE__*/ Fn(({samples, radius, size, shadowPass}) =
  * @param {TextureNode} inputs.shadowPass - The result of the first VSM render pass.
  * @return {Node<vec2>} The VSM output.
  */
-const VSMPassHorizontal = /*@__PURE__*/ Fn(({samples, radius, size, shadowPass}) => {
+const VSMPassHorizontal = Fn(({samples, radius, size, shadowPass}) => {
     const mean = float(0).toVar();
     const squaredMean = float(0).toVar();
     const uvStride = samples.lessThanEqual(float(1)).select(float(0), float(2).div(samples.sub(1)));

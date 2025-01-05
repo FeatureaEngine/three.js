@@ -1,6 +1,7 @@
 import {Earcut} from './Earcut.js';
 
 class ShapeUtils {
+
     // calculate area of the contour polygon
     static area(contour) {
         const n = contour.length;

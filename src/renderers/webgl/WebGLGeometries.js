@@ -103,5 +103,4 @@ function WebGLGeometries(gl, attributes, info, bindingStates) {
     };
 }
 
-
 export {WebGLGeometries};

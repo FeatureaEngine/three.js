@@ -65,4 +65,4 @@ export default TextureSizeNode;
  * @param {Node<int>?} [levelNode=null] - A level node which defines the requested mip.
  * @returns {TextureSizeNode}
  */
-export const textureSize = /*@__PURE__*/ nodeProxy(TextureSizeNode);
+export const textureSize = nodeProxy(TextureSizeNode);

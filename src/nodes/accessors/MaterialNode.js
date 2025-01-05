@@ -288,7 +288,7 @@ export default MaterialNode;
  *
  * @type {Node<float>}
  */
-export const materialAlphaTest = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.ALPHA_TEST);
+export const materialAlphaTest = nodeImmutable(MaterialNode, MaterialNode.ALPHA_TEST);
 
 /**
  * TSL object that represents the diffuse color of the current material.
@@ -296,14 +296,14 @@ export const materialAlphaTest = /*@__PURE__*/ nodeImmutable(MaterialNode, Mater
  *
  * @type {Node<vec3>}
  */
-export const materialColor = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.COLOR);
+export const materialColor = nodeImmutable(MaterialNode, MaterialNode.COLOR);
 
 /**
  * TSL object that represents the shininess of the current material.
  *
  * @type {Node<float>}
  */
-export const materialShininess = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.SHININESS);
+export const materialShininess = nodeImmutable(MaterialNode, MaterialNode.SHININESS);
 
 /**
  * TSL object that represents the emissive color of the current material.
@@ -311,7 +311,7 @@ export const materialShininess = /*@__PURE__*/ nodeImmutable(MaterialNode, Mater
  *
  * @type {Node<vec3>}
  */
-export const materialEmissive = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.EMISSIVE);
+export const materialEmissive = nodeImmutable(MaterialNode, MaterialNode.EMISSIVE);
 
 /**
  * TSL object that represents the opacity of the current material.
@@ -319,14 +319,14 @@ export const materialEmissive = /*@__PURE__*/ nodeImmutable(MaterialNode, Materi
  *
  * @type {Node<float>}
  */
-export const materialOpacity = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.OPACITY);
+export const materialOpacity = nodeImmutable(MaterialNode, MaterialNode.OPACITY);
 
 /**
  * TSL object that represents the specular of the current material.
  *
  * @type {Node<vec3>}
  */
-export const materialSpecular = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.SPECULAR);
+export const materialSpecular = nodeImmutable(MaterialNode, MaterialNode.SPECULAR);
 
 /**
  * TSL object that represents the specular intensity of the current material.
@@ -334,7 +334,7 @@ export const materialSpecular = /*@__PURE__*/ nodeImmutable(MaterialNode, Materi
  *
  * @type {Node<float>}
  */
-export const materialSpecularIntensity = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.SPECULAR_INTENSITY);
+export const materialSpecularIntensity = nodeImmutable(MaterialNode, MaterialNode.SPECULAR_INTENSITY);
 
 /**
  * TSL object that represents the specular color of the current material.
@@ -342,7 +342,7 @@ export const materialSpecularIntensity = /*@__PURE__*/ nodeImmutable(MaterialNod
  *
  * @type {Node<vec3>}
  */
-export const materialSpecularColor = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.SPECULAR_COLOR);
+export const materialSpecularColor = nodeImmutable(MaterialNode, MaterialNode.SPECULAR_COLOR);
 
 /**
  * TSL object that represents the specular strength of the current material.
@@ -350,14 +350,14 @@ export const materialSpecularColor = /*@__PURE__*/ nodeImmutable(MaterialNode, M
  *
  * @type {Node<float>}
  */
-export const materialSpecularStrength = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.SPECULAR_STRENGTH);
+export const materialSpecularStrength = nodeImmutable(MaterialNode, MaterialNode.SPECULAR_STRENGTH);
 
 /**
  * TSL object that represents the reflectivity of the current material.
  *
  * @type {Node<float>}
  */
-export const materialReflectivity = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.REFLECTIVITY);
+export const materialReflectivity = nodeImmutable(MaterialNode, MaterialNode.REFLECTIVITY);
 
 /**
  * TSL object that represents the roughness of the current material.
@@ -365,7 +365,7 @@ export const materialReflectivity = /*@__PURE__*/ nodeImmutable(MaterialNode, Ma
  *
  * @type {Node<float>}
  */
-export const materialRoughness = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.ROUGHNESS);
+export const materialRoughness = nodeImmutable(MaterialNode, MaterialNode.ROUGHNESS);
 
 /**
  * TSL object that represents the metalness of the current material.
@@ -373,7 +373,7 @@ export const materialRoughness = /*@__PURE__*/ nodeImmutable(MaterialNode, Mater
  *
  * @type {Node<float>}
  */
-export const materialMetalness = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.METALNESS);
+export const materialMetalness = nodeImmutable(MaterialNode, MaterialNode.METALNESS);
 
 /**
  * TSL object that represents the normal of the current material.
@@ -381,7 +381,7 @@ export const materialMetalness = /*@__PURE__*/ nodeImmutable(MaterialNode, Mater
  *
  * @type {Node<vec3>}
  */
-export const materialNormal = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.NORMAL).context({getUV: null});
+export const materialNormal = nodeImmutable(MaterialNode, MaterialNode.NORMAL).context({getUV: null});
 
 /**
  * TSL object that represents the clearcoat of the current material.
@@ -389,7 +389,7 @@ export const materialNormal = /*@__PURE__*/ nodeImmutable(MaterialNode, Material
  *
  * @type {Node<float>}
  */
-export const materialClearcoat = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.CLEARCOAT);
+export const materialClearcoat = nodeImmutable(MaterialNode, MaterialNode.CLEARCOAT);
 
 /**
  * TSL object that represents the clearcoat roughness of the current material.
@@ -397,7 +397,7 @@ export const materialClearcoat = /*@__PURE__*/ nodeImmutable(MaterialNode, Mater
  *
  * @type {Node<float>}
  */
-export const materialClearcoatRoughness = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.CLEARCOAT_ROUGHNESS);
+export const materialClearcoatRoughness = nodeImmutable(MaterialNode, MaterialNode.CLEARCOAT_ROUGHNESS);
 
 /**
  * TSL object that represents the clearcoat normal of the current material.
@@ -405,14 +405,14 @@ export const materialClearcoatRoughness = /*@__PURE__*/ nodeImmutable(MaterialNo
  *
  * @type {Node<vec3>}
  */
-export const materialClearcoatNormal = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.CLEARCOAT_NORMAL).context({getUV: null});
+export const materialClearcoatNormal = nodeImmutable(MaterialNode, MaterialNode.CLEARCOAT_NORMAL).context({getUV: null});
 
 /**
  * TSL object that represents the rotation of the current sprite material.
  *
  * @type {Node<float>}
  */
-export const materialRotation = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.ROTATION);
+export const materialRotation = nodeImmutable(MaterialNode, MaterialNode.ROTATION);
 
 /**
  * TSL object that represents the sheen color of the current material.
@@ -420,7 +420,7 @@ export const materialRotation = /*@__PURE__*/ nodeImmutable(MaterialNode, Materi
  *
  * @type {Node<vec3>}
  */
-export const materialSheen = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.SHEEN);
+export const materialSheen = nodeImmutable(MaterialNode, MaterialNode.SHEEN);
 
 /**
  * TSL object that represents the sheen roughness of the current material.
@@ -428,35 +428,35 @@ export const materialSheen = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialN
  *
  * @type {Node<float>}
  */
-export const materialSheenRoughness = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.SHEEN_ROUGHNESS);
+export const materialSheenRoughness = nodeImmutable(MaterialNode, MaterialNode.SHEEN_ROUGHNESS);
 
 /**
  * TSL object that represents the anisotropy of the current material.
  *
  * @type {Node<vec2>}
  */
-export const materialAnisotropy = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.ANISOTROPY);
+export const materialAnisotropy = nodeImmutable(MaterialNode, MaterialNode.ANISOTROPY);
 
 /**
  * TSL object that represents the iridescence of the current material.
  *
  * @type {Node<float>}
  */
-export const materialIridescence = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.IRIDESCENCE);
+export const materialIridescence = nodeImmutable(MaterialNode, MaterialNode.IRIDESCENCE);
 
 /**
  * TSL object that represents the iridescence IOR of the current material.
  *
  * @type {Node<float>}
  */
-export const materialIridescenceIOR = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.IRIDESCENCE_IOR);
+export const materialIridescenceIOR = nodeImmutable(MaterialNode, MaterialNode.IRIDESCENCE_IOR);
 
 /**
  * TSL object that represents the iridescence thickness of the current material.
  *
  * @type {Node<float>}
  */
-export const materialIridescenceThickness = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.IRIDESCENCE_THICKNESS);
+export const materialIridescenceThickness = nodeImmutable(MaterialNode, MaterialNode.IRIDESCENCE_THICKNESS);
 
 /**
  * TSL object that represents the transmission of the current material.
@@ -464,7 +464,7 @@ export const materialIridescenceThickness = /*@__PURE__*/ nodeImmutable(Material
  *
  * @type {Node<float>}
  */
-export const materialTransmission = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.TRANSMISSION);
+export const materialTransmission = nodeImmutable(MaterialNode, MaterialNode.TRANSMISSION);
 
 /**
  * TSL object that represents the thickness of the current material.
@@ -472,77 +472,77 @@ export const materialTransmission = /*@__PURE__*/ nodeImmutable(MaterialNode, Ma
  *
  * @type {Node<float>}
  */
-export const materialThickness = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.THICKNESS);
+export const materialThickness = nodeImmutable(MaterialNode, MaterialNode.THICKNESS);
 
 /**
  * TSL object that represents the IOR of the current material.
  *
  * @type {Node<float>}
  */
-export const materialIOR = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.IOR);
+export const materialIOR = nodeImmutable(MaterialNode, MaterialNode.IOR);
 
 /**
  * TSL object that represents the attenuation distance of the current material.
  *
  * @type {Node<float>}
  */
-export const materialAttenuationDistance = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.ATTENUATION_DISTANCE);
+export const materialAttenuationDistance = nodeImmutable(MaterialNode, MaterialNode.ATTENUATION_DISTANCE);
 
 /**
  * TSL object that represents the attenuation color of the current material.
  *
  * @type {Node<vec3>}
  */
-export const materialAttenuationColor = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.ATTENUATION_COLOR);
+export const materialAttenuationColor = nodeImmutable(MaterialNode, MaterialNode.ATTENUATION_COLOR);
 
 /**
  * TSL object that represents the scale of the current dashed line material.
  *
  * @type {Node<float>}
  */
-export const materialLineScale = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.LINE_SCALE);
+export const materialLineScale = nodeImmutable(MaterialNode, MaterialNode.LINE_SCALE);
 
 /**
  * TSL object that represents the dash size of the current dashed line material.
  *
  * @type {Node<float>}
  */
-export const materialLineDashSize = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.LINE_DASH_SIZE);
+export const materialLineDashSize = nodeImmutable(MaterialNode, MaterialNode.LINE_DASH_SIZE);
 
 /**
  * TSL object that represents the gap size of the current dashed line material.
  *
  * @type {Node<float>}
  */
-export const materialLineGapSize = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.LINE_GAP_SIZE);
+export const materialLineGapSize = nodeImmutable(MaterialNode, MaterialNode.LINE_GAP_SIZE);
 
 /**
  * TSL object that represents the line width of the current line material.
  *
  * @type {Node<float>}
  */
-export const materialLineWidth = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.LINE_WIDTH);
+export const materialLineWidth = nodeImmutable(MaterialNode, MaterialNode.LINE_WIDTH);
 
 /**
  * TSL object that represents the dash offset of the current line material.
  *
  * @type {Node<float>}
  */
-export const materialLineDashOffset = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.LINE_DASH_OFFSET);
+export const materialLineDashOffset = nodeImmutable(MaterialNode, MaterialNode.LINE_DASH_OFFSET);
 
 /**
  * TSL object that represents the point width of the current points material.
  *
  * @type {Node<float>}
  */
-export const materialPointWidth = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.POINT_WIDTH);
+export const materialPointWidth = nodeImmutable(MaterialNode, MaterialNode.POINT_WIDTH);
 
 /**
  * TSL object that represents the dispersion of the current material.
  *
  * @type {Node<float>}
  */
-export const materialDispersion = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.DISPERSION);
+export const materialDispersion = nodeImmutable(MaterialNode, MaterialNode.DISPERSION);
 
 /**
  * TSL object that represents the light map of the current material.
@@ -550,7 +550,7 @@ export const materialDispersion = /*@__PURE__*/ nodeImmutable(MaterialNode, Mate
  *
  * @type {Node<vec3>}
  */
-export const materialLightMap = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.LIGHT_MAP);
+export const materialLightMap = nodeImmutable(MaterialNode, MaterialNode.LIGHT_MAP);
 
 /**
  * TSL object that represents the ambient occlusion map of the current material.
@@ -558,14 +558,14 @@ export const materialLightMap = /*@__PURE__*/ nodeImmutable(MaterialNode, Materi
  *
  * @type {Node<float>}
  */
-export const materialAO = /*@__PURE__*/ nodeImmutable(MaterialNode, MaterialNode.AO);
+export const materialAO = nodeImmutable(MaterialNode, MaterialNode.AO);
 
 /**
  * TSL object that represents the anisotropy vector of the current material.
  *
  * @type {Node<vec2>}
  */
-export const materialAnisotropyVector = /*@__PURE__*/ uniform(new Vector2()).onReference(function (frame) {
+export const materialAnisotropyVector = uniform(new Vector2()).onReference(function (frame) {
     return frame.material;
 
 }).onRenderUpdate(function ({material}) {

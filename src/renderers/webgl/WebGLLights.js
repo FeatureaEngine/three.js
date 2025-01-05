@@ -106,7 +106,6 @@ function ShadowUniformsCache() {
     };
 }
 
-
 let nextVersion = 0;
 
 function shadowCastingAndTexturingLightsFirst(lightA, lightB) {
@@ -387,6 +386,5 @@ function WebGLLights(extensions) {
         state: state
     };
 }
-
 
 export {WebGLLights};

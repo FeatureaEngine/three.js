@@ -797,7 +797,6 @@ function mergeGroups(geometry) {
     return geometry;
 }
 
-
 /**
  * Modifies the supplied geometry if it is non-indexed, otherwise creates a new,
  * non-indexed geometry. Returns the geometry with smooth normals everywhere except

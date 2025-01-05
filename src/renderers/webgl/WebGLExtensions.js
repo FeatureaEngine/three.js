@@ -50,5 +50,4 @@ function WebGLExtensions(gl) {
     };
 }
 
-
 export {WebGLExtensions};

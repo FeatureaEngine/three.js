@@ -18,7 +18,7 @@ import {float, Fn, min, normalize, sub, vec3} from '../../tsl/TSLBase.js';
  * @param {Node<vec3>} cubePos - The cube position.
  * @return {Node<vec3>} The parallax corrected normal.
  */
-const getParallaxCorrectNormal = /*@__PURE__*/ Fn(([normal, cubeSize, cubePos]) => {
+const getParallaxCorrectNormal = Fn(([normal, cubeSize, cubePos]) => {
     const nDir = normalize(normal).toVar('nDir');
     const rbmax = sub(float(0.5).mul(cubeSize.sub(cubePos)), positionWorld).div(nDir).toVar('rbmax');
     const rbmin = sub(float(-0.5).mul(cubeSize.sub(cubePos)), positionWorld).div(nDir).toVar('rbmin');

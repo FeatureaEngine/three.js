@@ -101,7 +101,7 @@ export default ContextNode;
  * @param {Object} [value={}] - The modified context data.
  * @returns {ContextNode}
  */
-export const context = /*@__PURE__*/ nodeProxy(ContextNode);
+export const context = nodeProxy(ContextNode);
 
 /**
  * TSL function for defining a label context value for a given node.

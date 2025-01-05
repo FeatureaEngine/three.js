@@ -42,7 +42,6 @@ function findSpan(p, u, U) {
     return mid;
 }
 
-
 /*
 Calculate basis functions. See The NURBS Book, page 70, algorithm A2.2
 
@@ -74,7 +73,6 @@ function calcBasisFunctions(span, u, p, U) {
     return N;
 }
 
-
 /*
 Calculate B-Spline curve points. See The NURBS Book, page 82, algorithm A3.1.
 
@@ -100,7 +98,6 @@ function calcBSplinePoint(p, U, P, u) {
     }
     return C;
 }
-
 
 /*
 Calculate basis functions derivatives. See The NURBS Book, page 72, algorithm A2.3.
@@ -185,7 +182,6 @@ function calcBasisFunctionDerivatives(span, u, p, n, U) {
     return ders;
 }
 
-
 /*
 	Calculate derivatives of a B-Spline. See The NURBS Book, page 93, algorithm A3.2.
 	p  : degree
@@ -222,7 +218,6 @@ function calcBSplineDerivatives(p, U, P, u, nd) {
     return CK;
 }
 
-
 /*
 Calculate "K over I"
 
@@ -242,7 +237,6 @@ function calcKoverI(k, i) {
     }
     return nom / denom;
 }
-
 
 /*
 Calculate derivatives (0-nd) of rational curve. See The NURBS Book, page 127, algorithm A4.2.
@@ -271,7 +265,6 @@ function calcRationalCurveDerivatives(Pders) {
     return CK;
 }
 
-
 /*
 Calculate NURBS curve derivatives. See The NURBS Book, page 127, algorithm A4.2.
 
@@ -287,7 +280,6 @@ function calcNURBSDerivatives(p, U, P, u, nd) {
     const Pders = calcBSplineDerivatives(p, U, P, u, nd);
     return calcRationalCurveDerivatives(Pders);
 }
-
 
 /*
 Calculate rational B-Spline surface point. See The NURBS Book, page 134, algorithm A4.3.
@@ -365,7 +357,6 @@ function calcVolumePoint(p, q, r, U, V, W, P, u, v, w, target) {
     Sw.divideScalar(Sw.w);
     target.set(Sw.x, Sw.y, Sw.z);
 }
-
 
 export {
     findSpan,

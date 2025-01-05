@@ -54,4 +54,4 @@ export default ExpressionNode;
  * @param {String} [nodeType='void'] - The node type.
  * @returns {ExpressionNode}
  */
-export const expression = /*@__PURE__*/ nodeProxy(ExpressionNode);
+export const expression = nodeProxy(ExpressionNode);

@@ -5,7 +5,7 @@ import {int, float, vec3, If, Fn} from '../../tsl/TSLBase.js';
 import {add} from '../../math/OperatorNode.js';
 import {floor, trunc, max, min} from '../../math/MathNode.js';
 
-export const mx_hsvtorgb = /*@__PURE__*/ Fn(([hsv]) => {
+export const mx_hsvtorgb = Fn(([hsv]) => {
     const s = hsv.y;
     const v = hsv.z;
     const result = vec3().toVar();
@@ -43,7 +43,7 @@ export const mx_hsvtorgb = /*@__PURE__*/ Fn(([hsv]) => {
     ]
 });
 
-export const mx_rgbtohsv = /*@__PURE__*/ Fn(([c_immutable]) => {
+export const mx_rgbtohsv = Fn(([c_immutable]) => {
     const c = vec3(c_immutable).toVar();
     const r = float(c.x).toVar();
     const g = float(c.y).toVar();

@@ -166,7 +166,6 @@ function gosper(size = 1) {
     return points;
 }
 
-
 export {
     hilbert2D,
     hilbert3D,

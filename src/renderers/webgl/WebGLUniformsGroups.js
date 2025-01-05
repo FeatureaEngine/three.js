@@ -231,5 +231,4 @@ function WebGLUniformsGroups(gl, info, capabilities, state) {
     };
 }
 
-
 export {WebGLUniformsGroups};

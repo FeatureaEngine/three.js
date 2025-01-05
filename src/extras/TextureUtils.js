@@ -94,7 +94,6 @@ function fill(texture) {
     return texture;
 }
 
-
 /**
  * Given the width, height, format, and type of a texture. Determines how many
  * bytes must be used to represent the texture.

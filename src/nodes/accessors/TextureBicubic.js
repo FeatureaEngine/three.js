@@ -55,7 +55,7 @@ const bicubic = (textureNode, texelSize, lod) => {
  * @param {Node<float>} [lodNode=float(3)] - Defines the LOD to sample from.
  * @return {Node} The filtered texture sample.
  */
-export const textureBicubic = /*@__PURE__*/ Fn(([textureNode, lodNode = float(3)]) => {
+export const textureBicubic = Fn(([textureNode, lodNode = float(3)]) => {
     const fLodSize = vec2(textureNode.size(int(lodNode)));
     const cLodSize = vec2(textureNode.size(int(lodNode.add(1.0))));
     const fLodSizeInv = div(1.0, fLodSize);

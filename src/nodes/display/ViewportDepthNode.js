@@ -218,14 +218,14 @@ export const logarithmicDepthToViewZ = (depth, near, far) => {
  * @param {Node<float>} value - The depth value to set.
  * @returns {ViewportDepthNode<float>}
  */
-const depthBase = /*@__PURE__*/ nodeProxy(ViewportDepthNode, ViewportDepthNode.DEPTH_BASE);
+const depthBase = nodeProxy(ViewportDepthNode, ViewportDepthNode.DEPTH_BASE);
 
 /**
  * TSL object that represents the depth value for the current fragment.
  *
  * @type {ViewportDepthNode}
  */
-export const depth = /*@__PURE__*/ nodeImmutable(ViewportDepthNode, ViewportDepthNode.DEPTH);
+export const depth = nodeImmutable(ViewportDepthNode, ViewportDepthNode.DEPTH);
 
 /**
  * TSL function for converting a perspective depth value to linear depth.
@@ -234,13 +234,13 @@ export const depth = /*@__PURE__*/ nodeImmutable(ViewportDepthNode, ViewportDept
  * @param {Node<float>} value - The perspective depth.
  * @returns {ViewportDepthNode<float>}
  */
-export const linearDepth = /*@__PURE__*/ nodeProxy(ViewportDepthNode, ViewportDepthNode.LINEAR_DEPTH);
+export const linearDepth = nodeProxy(ViewportDepthNode, ViewportDepthNode.LINEAR_DEPTH);
 
 /**
  * TSL object that represents the linear (orthographic) depth value of the current fragment
  *
  * @type {ViewportDepthNode}
  */
-export const viewportLinearDepth = /*@__PURE__*/ linearDepth(viewportDepthTexture());
+export const viewportLinearDepth = linearDepth(viewportDepthTexture());
 
 depth.assign = (value) => depthBase(value);

@@ -192,5 +192,4 @@ function WebGLUtils(gl, extensions) {
     return {convert: convert};
 }
 
-
 export {WebGLUtils};

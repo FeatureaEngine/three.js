@@ -172,4 +172,4 @@ export default VelocityNode;
  *
  * @type {VelocityNode}
  */
-export const velocity = /*@__PURE__*/ nodeImmutable(VelocityNode);
+export const velocity = nodeImmutable(VelocityNode);

@@ -10,7 +10,7 @@ import {Fn, vec4} from '../tsl/TSLBase.js';
  *
  * @type {Node<vec4>}
  */
-export const tangentGeometry = /*@__PURE__*/ Fn((builder) => {
+export const tangentGeometry = Fn((builder) => {
     if (builder.geometry.hasAttribute('tangent') === false) {
         builder.geometry.computeTangents();
     }
@@ -23,32 +23,32 @@ export const tangentGeometry = /*@__PURE__*/ Fn((builder) => {
  *
  * @type {Node<vec3>}
  */
-export const tangentLocal = /*@__PURE__*/ tangentGeometry.xyz.toVar('tangentLocal');
+export const tangentLocal = tangentGeometry.xyz.toVar('tangentLocal');
 
 /**
  * TSL object that represents the vertex tangent in view space of the current rendered object.
  *
  * @type {Node<vec3>}
  */
-export const tangentView = /*@__PURE__*/ modelViewMatrix.mul(vec4(tangentLocal, 0)).xyz.varying('v_tangentView').normalize().toVar('tangentView');
+export const tangentView = modelViewMatrix.mul(vec4(tangentLocal, 0)).xyz.varying('v_tangentView').normalize().toVar('tangentView');
 
 /**
  * TSL object that represents the vertex tangent in world space of the current rendered object.
  *
  * @type {Node<vec3>}
  */
-export const tangentWorld = /*@__PURE__*/ tangentView.transformDirection(cameraViewMatrix).varying('v_tangentWorld').normalize().toVar('tangentWorld');
+export const tangentWorld = tangentView.transformDirection(cameraViewMatrix).varying('v_tangentWorld').normalize().toVar('tangentWorld');
 
 /**
  * TSL object that represents the transformed vertex tangent in view space of the current rendered object.
  *
  * @type {Node<vec3>}
  */
-export const transformedTangentView = /*@__PURE__*/ tangentView.toVar('transformedTangentView');
+export const transformedTangentView = tangentView.toVar('transformedTangentView');
 
 /**
  * TSL object that represents the transformed vertex tangent in world space of the current rendered object.
  *
  * @type {Node<vec3>}
  */
-export const transformedTangentWorld = /*@__PURE__*/ transformedTangentView.transformDirection(cameraViewMatrix).normalize().toVar('transformedTangentWorld');
+export const transformedTangentWorld = transformedTangentView.transformDirection(cameraViewMatrix).normalize().toVar('transformedTangentWorld');

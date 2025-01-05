@@ -46,4 +46,4 @@ export default PointUVNode;
  *
  * @type {PointUVNode}
  */
-export const pointUV = /*@__PURE__*/ nodeImmutable(PointUVNode);
+export const pointUV = nodeImmutable(PointUVNode);

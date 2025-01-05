@@ -40,4 +40,4 @@ export default MatcapUVNode;
  * @function
  * @returns {MatcapUVNode}
  */
-export const matcapUV = /*@__PURE__*/ nodeImmutable(MatcapUVNode);
+export const matcapUV = nodeImmutable(MatcapUVNode);

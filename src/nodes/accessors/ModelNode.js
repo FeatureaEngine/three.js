@@ -51,56 +51,56 @@ export default ModelNode;
  *
  * @type {ModelNode<vec3>}
  */
-export const modelDirection = /*@__PURE__*/ nodeImmutable(ModelNode, ModelNode.DIRECTION);
+export const modelDirection = nodeImmutable(ModelNode, ModelNode.DIRECTION);
 
 /**
  * TSL object that represents the object's world matrix.
  *
  * @type {ModelNode<mat4>}
  */
-export const modelWorldMatrix = /*@__PURE__*/ nodeImmutable(ModelNode, ModelNode.WORLD_MATRIX);
+export const modelWorldMatrix = nodeImmutable(ModelNode, ModelNode.WORLD_MATRIX);
 
 /**
  * TSL object that represents the object's position in world space.
  *
  * @type {ModelNode<vec3>}
  */
-export const modelPosition = /*@__PURE__*/ nodeImmutable(ModelNode, ModelNode.POSITION);
+export const modelPosition = nodeImmutable(ModelNode, ModelNode.POSITION);
 
 /**
  * TSL object that represents the object's scale in world space.
  *
  * @type {ModelNode<vec3>}
  */
-export const modelScale = /*@__PURE__*/ nodeImmutable(ModelNode, ModelNode.SCALE);
+export const modelScale = nodeImmutable(ModelNode, ModelNode.SCALE);
 
 /**
  * TSL object that represents the object's position in view/camera space.
  *
  * @type {ModelNode<vec3>}
  */
-export const modelViewPosition = /*@__PURE__*/ nodeImmutable(ModelNode, ModelNode.VIEW_POSITION);
+export const modelViewPosition = nodeImmutable(ModelNode, ModelNode.VIEW_POSITION);
 
 /**
  * TSL object that represents the object's normal matrix.
  *
  * @type {UniformNode<mat3>}
  */
-export const modelNormalMatrix = /*@__PURE__*/ uniform(new Matrix3()).onObjectUpdate(({object}, self) => self.value.getNormalMatrix(object.matrixWorld));
+export const modelNormalMatrix = uniform(new Matrix3()).onObjectUpdate(({object}, self) => self.value.getNormalMatrix(object.matrixWorld));
 
 /**
  * TSL object that represents the object's inverse world matrix.
  *
  * @type {UniformNode<mat4>}
  */
-export const modelWorldMatrixInverse = /*@__PURE__*/ uniform(new Matrix4()).onObjectUpdate(({object}, self) => self.value.copy(object.matrixWorld).invert());
+export const modelWorldMatrixInverse = uniform(new Matrix4()).onObjectUpdate(({object}, self) => self.value.copy(object.matrixWorld).invert());
 
 /**
  * TSL object that represents the object's model view matrix.
  *
  * @type {Node<mat4>}
  */
-export const modelViewMatrix = /*@__PURE__*/ (Fn((builder) => {
+export const modelViewMatrix = (Fn((builder) => {
     return builder.renderer.nodes.modelViewMatrix || mediumpModelViewMatrix;
 
 }).once())().toVar('modelViewMatrix');
@@ -112,7 +112,7 @@ export const modelViewMatrix = /*@__PURE__*/ (Fn((builder) => {
  *
  * @type {Node<mat4>}
  */
-export const mediumpModelViewMatrix = /*@__PURE__*/ cameraViewMatrix.mul(modelWorldMatrix);
+export const mediumpModelViewMatrix = cameraViewMatrix.mul(modelWorldMatrix);
 
 // CPU Precision
 
@@ -122,7 +122,7 @@ export const mediumpModelViewMatrix = /*@__PURE__*/ cameraViewMatrix.mul(modelWo
  *
  * @type {Node<mat4>}
  */
-export const highpModelViewMatrix = /*@__PURE__*/ (Fn((builder) => {
+export const highpModelViewMatrix = (Fn((builder) => {
     builder.context.isHighPrecisionModelViewMatrix = true;
     return uniform('mat4').onObjectUpdate(({object, camera}) => {
         return object.modelViewMatrix.multiplyMatrices(camera.matrixWorldInverse, object.matrixWorld);
@@ -136,7 +136,7 @@ export const highpModelViewMatrix = /*@__PURE__*/ (Fn((builder) => {
  *
  * @type {Node<mat3>}
  */
-export const highpModelNormalViewMatrix = /*@__PURE__*/ (Fn((builder) => {
+export const highpModelNormalViewMatrix = (Fn((builder) => {
     const isHighPrecisionModelViewMatrix = builder.context.isHighPrecisionModelViewMatrix;
     return uniform('mat3').onObjectUpdate(({object, camera}) => {
         if (isHighPrecisionModelViewMatrix !== true) {

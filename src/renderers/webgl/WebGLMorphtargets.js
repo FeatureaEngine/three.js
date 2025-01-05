@@ -104,5 +104,4 @@ function WebGLMorphtargets(gl, capabilities, textures) {
     };
 }
 
-
 export {WebGLMorphtargets};

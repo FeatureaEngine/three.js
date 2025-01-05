@@ -4,7 +4,7 @@ import {Fn, vec2, vec4} from '../../tsl/TSLBase.js';
 // split-sum approximation used in indirect specular lighting.
 // via 'environmentBRDF' from "Physically Based Shading on Mobile"
 // https://www.unrealengine.com/blog/physically-based-shading-on-mobile
-const DFGApprox = /*@__PURE__*/ Fn(({roughness, dotNV}) => {
+const DFGApprox = Fn(({roughness, dotNV}) => {
     const c0 = vec4(-1, -0.0275, -0.572, 0.022);
     const c1 = vec4(1, 0.0425, 1.04, -0.04);
     const r = roughness.mul(c0).add(c1);

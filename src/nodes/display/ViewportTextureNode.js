@@ -100,7 +100,7 @@ export default ViewportTextureNode;
  * @param {Texture?} [framebufferTexture=null] - A framebuffer texture holding the viewport data. If not provided, a framebuffer texture is created automatically.
  * @returns {ViewportTextureNode}
  */
-export const viewportTexture = /*@__PURE__*/ nodeProxy(ViewportTextureNode);
+export const viewportTexture = nodeProxy(ViewportTextureNode);
 
 /**
  * TSL function for creating a viewport texture node with enabled mipmap generation.
@@ -111,4 +111,4 @@ export const viewportTexture = /*@__PURE__*/ nodeProxy(ViewportTextureNode);
  * @param {Texture?} [framebufferTexture=null] - A framebuffer texture holding the viewport data. If not provided, a framebuffer texture is created automatically.
  * @returns {ViewportTextureNode}
  */
-export const viewportMipTexture = /*@__PURE__*/ nodeProxy(ViewportTextureNode, null, null, {generateMipmaps: true});
+export const viewportMipTexture = nodeProxy(ViewportTextureNode, null, null, {generateMipmaps: true});

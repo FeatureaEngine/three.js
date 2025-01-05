@@ -149,7 +149,7 @@ export default Object3DNode;
  * @param {Object3D?} [object3d=null] - The 3D object.
  * @returns {Object3DNode<vec3>}
  */
-export const objectDirection = /*@__PURE__*/ nodeProxy(Object3DNode, Object3DNode.DIRECTION);
+export const objectDirection = nodeProxy(Object3DNode, Object3DNode.DIRECTION);
 
 /**
  * TSL function for creating an object 3D node that represents the object's world matrix.
@@ -158,7 +158,7 @@ export const objectDirection = /*@__PURE__*/ nodeProxy(Object3DNode, Object3DNod
  * @param {Object3D?} [object3d=null] - The 3D object.
  * @returns {Object3DNode<mat4>}
  */
-export const objectWorldMatrix = /*@__PURE__*/ nodeProxy(Object3DNode, Object3DNode.WORLD_MATRIX);
+export const objectWorldMatrix = nodeProxy(Object3DNode, Object3DNode.WORLD_MATRIX);
 
 /**
  * TSL function for creating an object 3D node that represents the object's position in world space.
@@ -167,7 +167,7 @@ export const objectWorldMatrix = /*@__PURE__*/ nodeProxy(Object3DNode, Object3DN
  * @param {Object3D?} [object3d=null] - The 3D object.
  * @returns {Object3DNode<vec3>}
  */
-export const objectPosition = /*@__PURE__*/ nodeProxy(Object3DNode, Object3DNode.POSITION);
+export const objectPosition = nodeProxy(Object3DNode, Object3DNode.POSITION);
 
 /**
  * TSL function for creating an object 3D node that represents the object's scale in world space.
@@ -176,7 +176,7 @@ export const objectPosition = /*@__PURE__*/ nodeProxy(Object3DNode, Object3DNode
  * @param {Object3D?} [object3d=null] - The 3D object.
  * @returns {Object3DNode<vec3>}
  */
-export const objectScale = /*@__PURE__*/ nodeProxy(Object3DNode, Object3DNode.SCALE);
+export const objectScale = nodeProxy(Object3DNode, Object3DNode.SCALE);
 
 /**
  * TSL function for creating an object 3D node that represents the object's position in view/camera space.
@@ -185,4 +185,4 @@ export const objectScale = /*@__PURE__*/ nodeProxy(Object3DNode, Object3DNode.SC
  * @param {Object3D?} [object3d=null] - The 3D object.
  * @returns {Object3DNode<vec3>}
  */
-export const objectViewPosition = /*@__PURE__*/ nodeProxy(Object3DNode, Object3DNode.VIEW_POSITION);
+export const objectViewPosition = nodeProxy(Object3DNode, Object3DNode.VIEW_POSITION);

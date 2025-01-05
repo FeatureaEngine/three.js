@@ -113,7 +113,7 @@ export default TriplanarTexturesNode;
  * @param {Node<vec3>?} [normalNode=normalLocal] - Normals in local space.
  * @returns {TriplanarTexturesNode}
  */
-export const triplanarTextures = /*@__PURE__*/ nodeProxy(TriplanarTexturesNode);
+export const triplanarTextures = nodeProxy(TriplanarTexturesNode);
 
 /**
  * TSL function for creating a triplanar textures node.

@@ -145,7 +145,7 @@ const computeBuiltin = (name, nodeType) => nodeObject(new ComputeBuiltinNode(nam
  * @function
  * @returns {ComputeBuiltinNode<uvec3>}
  */
-export const numWorkgroups = /*@__PURE__*/ computeBuiltin('numWorkgroups', 'uvec3');
+export const numWorkgroups = computeBuiltin('numWorkgroups', 'uvec3');
 
 /**
  * TSL function for creating a `workgroupId` builtin node.
@@ -173,7 +173,7 @@ export const numWorkgroups = /*@__PURE__*/ computeBuiltin('numWorkgroups', 'uvec
  * @function
  * @returns {ComputeBuiltinNode<uvec3>}
  */
-export const workgroupId = /*@__PURE__*/ computeBuiltin('workgroupId', 'uvec3');
+export const workgroupId = computeBuiltin('workgroupId', 'uvec3');
 
 /**
  * TSL function for creating a `localId` builtin node. A non-linearized 3-dimensional
@@ -182,7 +182,7 @@ export const workgroupId = /*@__PURE__*/ computeBuiltin('workgroupId', 'uvec3');
  * @function
  * @returns {ComputeBuiltinNode<uvec3>}
  */
-export const localId = /*@__PURE__*/ computeBuiltin('localId', 'uvec3');
+export const localId = computeBuiltin('localId', 'uvec3');
 
 /**
  * TSL function for creating a `subgroupSize` builtin node. A device dependent variable
@@ -191,5 +191,5 @@ export const localId = /*@__PURE__*/ computeBuiltin('localId', 'uvec3');
  * @function
  * @returns {ComputeBuiltinNode<uint>}
  */
-export const subgroupSize = /*@__PURE__*/ computeBuiltin('subgroupSize', 'uint');
+export const subgroupSize = computeBuiltin('subgroupSize', 'uint');
 

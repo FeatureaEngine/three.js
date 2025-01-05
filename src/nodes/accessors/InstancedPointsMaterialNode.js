@@ -30,4 +30,4 @@ export default InstancedPointsMaterialNode;
  *
  * @type {InstancedPointsMaterialNode<float>}
  */
-export const materialPointWidth = /*@__PURE__*/ nodeImmutable(InstancedPointsMaterialNode, InstancedPointsMaterialNode.POINT_WIDTH);
+export const materialPointWidth = nodeImmutable(InstancedPointsMaterialNode, InstancedPointsMaterialNode.POINT_WIDTH);

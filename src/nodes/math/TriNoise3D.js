@@ -5,7 +5,7 @@ import {float, Fn, vec3} from '../tsl/TSLBase.js';
 
 /** @module TriNoise3D **/
 
-const tri = /*@__PURE__*/ Fn(([x]) => {
+const tri = Fn(([x]) => {
     return x.fract().sub(.5).abs();
 
 }).setLayout({
@@ -16,7 +16,7 @@ const tri = /*@__PURE__*/ Fn(([x]) => {
     ]
 });
 
-const tri3 = /*@__PURE__*/ Fn(([p]) => {
+const tri3 = Fn(([p]) => {
     return vec3(tri(p.z.add(tri(p.y.mul(1.)))), tri(p.z.add(tri(p.x.mul(1.)))), tri(p.y.add(tri(p.x.mul(1.)))));
 
 }).setLayout({
@@ -36,7 +36,7 @@ const tri3 = /*@__PURE__*/ Fn(([p]) => {
  * @param {Node<float>} time - The time.
  * @return {Node<float>} The generated noise.
  */
-export const triNoise3D = /*@__PURE__*/ Fn(([position, speed, time]) => {
+export const triNoise3D = Fn(([position, speed, time]) => {
     const p = vec3(position).toVar();
     const z = float(1.4).toVar();
     const rz = float(0.0).toVar();

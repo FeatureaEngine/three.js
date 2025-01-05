@@ -2749,5 +2749,4 @@ function slice(a, b, from, to) {
     return a;
 }
 
-
 export {FBXLoader};

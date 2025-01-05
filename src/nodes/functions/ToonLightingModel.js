@@ -6,7 +6,7 @@ import {Fn, float, vec2, vec3} from '../tsl/TSLBase.js';
 import {mix, smoothstep} from '../math/MathNode.js';
 import {materialReference} from '../accessors/MaterialReferenceNode.js';
 
-const getGradientIrradiance = /*@__PURE__*/ Fn(({normal, lightDirection, builder}) => {
+const getGradientIrradiance = Fn(({normal, lightDirection, builder}) => {
     // dotNL will be from -1.0 to 1.0
     const dotNL = normal.dot(lightDirection);
     const coord = vec2(dotNL.mul(0.5).add(0.5), 0.0);

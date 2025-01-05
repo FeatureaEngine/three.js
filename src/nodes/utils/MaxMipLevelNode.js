@@ -85,4 +85,4 @@ export default MaxMipLevelNode;
  * @param {TextureNode} textureNode - The texture node to compute the max mip level for.
  * @returns {MaxMipLevelNode}
  */
-export const maxMipLevel = /*@__PURE__*/ nodeProxy(MaxMipLevelNode);
+export const maxMipLevel = nodeProxy(MaxMipLevelNode);

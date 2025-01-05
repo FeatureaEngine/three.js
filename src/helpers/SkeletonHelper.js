@@ -81,5 +81,4 @@ function getBoneList(object) {
     return boneList;
 }
 
-
 export {SkeletonHelper};

@@ -352,5 +352,4 @@ function generateMagicSquare(size) {
     return magicSquare;
 }
 
-
 export {generateMagicSquareNoise, GTAOShader, GTAODepthShader, GTAOBlendShader};

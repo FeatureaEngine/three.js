@@ -1,4 +1,6 @@
 // Original src: https://github.com/zz85/threejs-path-flow
+// noinspection PointlessArithmeticExpressionJS
+
 const CHANNELS = 4;
 const TEXTURE_WIDTH = 1024;
 const TEXTURE_HEIGHT = 4;
@@ -66,7 +68,6 @@ export function updateSplineTexture(texture, splineCurve, offset = 0) {
     }
     texture.needsUpdate = true;
 }
-
 
 function setTextureValue(texture, index, x, y, z, o) {
     const image = texture.image;

@@ -488,7 +488,6 @@ function buildVector2(vector) {
     return `(${vector.x}, ${vector.y})`;
 }
 
-
 function buildCamera(camera) {
     const name = camera.name ? camera.name : 'Camera_' + camera.id;
     const transform = buildMatrix(camera.matrixWorld);

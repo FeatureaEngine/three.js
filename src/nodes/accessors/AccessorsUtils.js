@@ -13,14 +13,14 @@ import {positionViewDirection} from './Position.js';
  *
  * @type {Node<mat3>}
  */
-export const TBNViewMatrix = /*@__PURE__*/ mat3(tangentView, bitangentView, normalView);
+export const TBNViewMatrix = mat3(tangentView, bitangentView, normalView);
 
 /**
  * TSL object that represents the parallax direction.
  *
  * @type {Node<mat3>}
  */
-export const parallaxDirection = /*@__PURE__*/ positionViewDirection.mul(TBNViewMatrix)/*.normalize()*/;
+export const parallaxDirection = positionViewDirection.mul(TBNViewMatrix)/*.normalize()*/;
 
 /**
  * TSL function for computing parallax uv coordinates.
@@ -38,7 +38,7 @@ export const parallaxUV = (uv, scale) => uv.sub(parallaxDirection.mul(scale));
  * @function
  * @returns {Node<vec3>} Bent normals.
  */
-export const transformedBentNormalView = /*@__PURE__*/ (() => {
+export const transformedBentNormalView = (() => {
     // https://google.github.io/filament/Filament.md.html#lighting/imagebasedlights/anisotropy
     let bentNormal = anisotropyB.cross(positionViewDirection);
     bentNormal = bentNormal.cross(anisotropyB).normalize();

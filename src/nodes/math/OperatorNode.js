@@ -195,7 +195,7 @@ export default OperatorNode;
  * @param {...Node} params - Additional input parameters.
  * @returns {OperatorNode}
  */
-export const add = /*@__PURE__*/ nodeProxy(OperatorNode, '+');
+export const add = nodeProxy(OperatorNode, '+');
 
 /**
  * Returns the subtraction of two or more value.
@@ -206,7 +206,7 @@ export const add = /*@__PURE__*/ nodeProxy(OperatorNode, '+');
  * @param {...Node} params - Additional input parameters.
  * @returns {OperatorNode}
  */
-export const sub = /*@__PURE__*/ nodeProxy(OperatorNode, '-');
+export const sub = nodeProxy(OperatorNode, '-');
 
 /**
  * Returns the multiplication of two or more value.
@@ -217,7 +217,7 @@ export const sub = /*@__PURE__*/ nodeProxy(OperatorNode, '-');
  * @param {...Node} params - Additional input parameters.
  * @returns {OperatorNode}
  */
-export const mul = /*@__PURE__*/ nodeProxy(OperatorNode, '*');
+export const mul = nodeProxy(OperatorNode, '*');
 
 /**
  * Returns the division of two or more value.
@@ -228,7 +228,7 @@ export const mul = /*@__PURE__*/ nodeProxy(OperatorNode, '*');
  * @param {...Node} params - Additional input parameters.
  * @returns {OperatorNode}
  */
-export const div = /*@__PURE__*/ nodeProxy(OperatorNode, '/');
+export const div = nodeProxy(OperatorNode, '/');
 
 /**
  * Computes the remainder of dividing the first node by the second, for integer values.
@@ -238,7 +238,7 @@ export const div = /*@__PURE__*/ nodeProxy(OperatorNode, '/');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const modInt = /*@__PURE__*/ nodeProxy(OperatorNode, '%');
+export const modInt = nodeProxy(OperatorNode, '%');
 
 /**
  * Checks if two nodes are equal.
@@ -248,7 +248,7 @@ export const modInt = /*@__PURE__*/ nodeProxy(OperatorNode, '%');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const equal = /*@__PURE__*/ nodeProxy(OperatorNode, '==');
+export const equal = nodeProxy(OperatorNode, '==');
 
 /**
  * Checks if two nodes are not equal.
@@ -258,7 +258,7 @@ export const equal = /*@__PURE__*/ nodeProxy(OperatorNode, '==');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const notEqual = /*@__PURE__*/ nodeProxy(OperatorNode, '!=');
+export const notEqual = nodeProxy(OperatorNode, '!=');
 
 /**
  * Checks if the first node is less than the second.
@@ -268,7 +268,7 @@ export const notEqual = /*@__PURE__*/ nodeProxy(OperatorNode, '!=');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const lessThan = /*@__PURE__*/ nodeProxy(OperatorNode, '<');
+export const lessThan = nodeProxy(OperatorNode, '<');
 
 /**
  * Checks if the first node is greater than the second.
@@ -278,7 +278,7 @@ export const lessThan = /*@__PURE__*/ nodeProxy(OperatorNode, '<');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const greaterThan = /*@__PURE__*/ nodeProxy(OperatorNode, '>');
+export const greaterThan = nodeProxy(OperatorNode, '>');
 
 /**
  * Checks if the first node is less than or equal to the second.
@@ -288,7 +288,7 @@ export const greaterThan = /*@__PURE__*/ nodeProxy(OperatorNode, '>');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const lessThanEqual = /*@__PURE__*/ nodeProxy(OperatorNode, '<=');
+export const lessThanEqual = nodeProxy(OperatorNode, '<=');
 
 /**
  * Checks if the first node is greater than or equal to the second.
@@ -298,7 +298,7 @@ export const lessThanEqual = /*@__PURE__*/ nodeProxy(OperatorNode, '<=');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const greaterThanEqual = /*@__PURE__*/ nodeProxy(OperatorNode, '>=');
+export const greaterThanEqual = nodeProxy(OperatorNode, '>=');
 
 /**
  * Performs logical AND on two nodes.
@@ -308,7 +308,7 @@ export const greaterThanEqual = /*@__PURE__*/ nodeProxy(OperatorNode, '>=');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const and = /*@__PURE__*/ nodeProxy(OperatorNode, '&&');
+export const and = nodeProxy(OperatorNode, '&&');
 
 /**
  * Performs logical OR on two nodes.
@@ -318,7 +318,7 @@ export const and = /*@__PURE__*/ nodeProxy(OperatorNode, '&&');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const or = /*@__PURE__*/ nodeProxy(OperatorNode, '||');
+export const or = nodeProxy(OperatorNode, '||');
 
 /**
  * Performs logical NOT on a node.
@@ -328,7 +328,7 @@ export const or = /*@__PURE__*/ nodeProxy(OperatorNode, '||');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const not = /*@__PURE__*/ nodeProxy(OperatorNode, '!');
+export const not = nodeProxy(OperatorNode, '!');
 
 /**
  * Performs logical XOR on two nodes.
@@ -338,7 +338,7 @@ export const not = /*@__PURE__*/ nodeProxy(OperatorNode, '!');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const xor = /*@__PURE__*/ nodeProxy(OperatorNode, '^^');
+export const xor = nodeProxy(OperatorNode, '^^');
 
 /**
  * Performs bitwise AND on two nodes.
@@ -348,7 +348,7 @@ export const xor = /*@__PURE__*/ nodeProxy(OperatorNode, '^^');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const bitAnd = /*@__PURE__*/ nodeProxy(OperatorNode, '&');
+export const bitAnd = nodeProxy(OperatorNode, '&');
 
 /**
  * Performs bitwise NOT on a node.
@@ -358,7 +358,7 @@ export const bitAnd = /*@__PURE__*/ nodeProxy(OperatorNode, '&');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const bitNot = /*@__PURE__*/ nodeProxy(OperatorNode, '~');
+export const bitNot = nodeProxy(OperatorNode, '~');
 
 /**
  * Performs bitwise OR on two nodes.
@@ -368,7 +368,7 @@ export const bitNot = /*@__PURE__*/ nodeProxy(OperatorNode, '~');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const bitOr = /*@__PURE__*/ nodeProxy(OperatorNode, '|');
+export const bitOr = nodeProxy(OperatorNode, '|');
 
 /**
  * Performs bitwise XOR on two nodes.
@@ -378,7 +378,7 @@ export const bitOr = /*@__PURE__*/ nodeProxy(OperatorNode, '|');
  * @param {Node} bNode - The second input.
  * @returns {OperatorNode}
  */
-export const bitXor = /*@__PURE__*/ nodeProxy(OperatorNode, '^');
+export const bitXor = nodeProxy(OperatorNode, '^');
 
 /**
  * Shifts a node to the left.
@@ -388,7 +388,7 @@ export const bitXor = /*@__PURE__*/ nodeProxy(OperatorNode, '^');
  * @param {Node} bNode - The value to shift.
  * @returns {OperatorNode}
  */
-export const shiftLeft = /*@__PURE__*/ nodeProxy(OperatorNode, '<<');
+export const shiftLeft = nodeProxy(OperatorNode, '<<');
 
 /**
  * Shifts a node to the right.
@@ -398,7 +398,7 @@ export const shiftLeft = /*@__PURE__*/ nodeProxy(OperatorNode, '<<');
  * @param {Node} bNode - The value to shift.
  * @returns {OperatorNode}
  */
-export const shiftRight = /*@__PURE__*/ nodeProxy(OperatorNode, '>>');
+export const shiftRight = nodeProxy(OperatorNode, '>>');
 
 addMethodChaining('add', add);
 addMethodChaining('sub', sub);

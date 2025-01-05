@@ -121,7 +121,7 @@ export default CodeNode;
  * @param {('js'|'wgsl'|'glsl')} [language=''] - The used language.
  * @returns {CodeNode}
  */
-export const code = /*@__PURE__*/ nodeProxy(CodeNode);
+export const code = nodeProxy(CodeNode);
 
 /**
  * TSL function for creating a JS code node.

@@ -50,7 +50,7 @@ export default FrontFacingNode;
  *
  * @type {FrontFacingNode<bool>}
  */
-export const frontFacing = /*@__PURE__*/ nodeImmutable(FrontFacingNode);
+export const frontFacing = nodeImmutable(FrontFacingNode);
 
 /**
  * TSL object that represents the front facing status as a number instead of a bool.
@@ -58,4 +58,4 @@ export const frontFacing = /*@__PURE__*/ nodeImmutable(FrontFacingNode);
  *
  * @type {Node<float>}
  */
-export const faceDirection = /*@__PURE__*/ float(frontFacing).mul(2.0).sub(1.0);
+export const faceDirection = float(frontFacing).mul(2.0).sub(1.0);

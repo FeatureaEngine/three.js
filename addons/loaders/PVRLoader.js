@@ -118,7 +118,6 @@ function _parseV2(pvrDatas) {
     return _extract(pvrDatas);
 }
 
-
 function _extract(pvrDatas) {
     const pvr = {
         mipmaps: [],

@@ -87,7 +87,7 @@ export default VarNode;
  * @param {String?} name - The name of the variable in the shader.
  * @returns {VarNode}
  */
-const createVar = /*@__PURE__*/ nodeProxy(VarNode);
+const createVar = nodeProxy(VarNode);
 
 addMethodChaining('toVar', (...params) => createVar(...params).append());
 

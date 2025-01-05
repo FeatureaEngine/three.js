@@ -97,4 +97,4 @@ export default BumpMapNode;
  * @param {Node?} [scaleNode=null] - Controls the intensity of the bump effect.
  * @returns {BumpMapNode}
  */
-export const bumpMap = /*@__PURE__*/ nodeProxy(BumpMapNode);
+export const bumpMap = nodeProxy(BumpMapNode);

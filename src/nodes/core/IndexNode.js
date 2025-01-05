@@ -90,39 +90,39 @@ export default IndexNode;
  *
  * @type {IndexNode}
  */
-export const vertexIndex = /*@__PURE__*/ nodeImmutable(IndexNode, IndexNode.VERTEX);
+export const vertexIndex = nodeImmutable(IndexNode, IndexNode.VERTEX);
 
 /**
  * TSL object that represents the index of either a mesh instance or an invocation of a compute shader.
  *
  * @type {IndexNode}
  */
-export const instanceIndex = /*@__PURE__*/ nodeImmutable(IndexNode, IndexNode.INSTANCE);
+export const instanceIndex = nodeImmutable(IndexNode, IndexNode.INSTANCE);
 
 /**
  * TSL object that represents the index of the subgroup the current compute invocation belongs to.
  *
  * @type {IndexNode}
  */
-export const subgroupIndex = /*@__PURE__*/ nodeImmutable(IndexNode, IndexNode.SUBGROUP);
+export const subgroupIndex = nodeImmutable(IndexNode, IndexNode.SUBGROUP);
 
 /**
  * TSL object that represents the index of a compute invocation within the scope of a subgroup.
  *
  * @type {IndexNode}
  */
-export const invocationSubgroupIndex = /*@__PURE__*/ nodeImmutable(IndexNode, IndexNode.INVOCATION_SUBGROUP);
+export const invocationSubgroupIndex = nodeImmutable(IndexNode, IndexNode.INVOCATION_SUBGROUP);
 
 /**
  * TSL object that represents the index of a compute invocation within the scope of a workgroup load.
  *
  * @type {IndexNode}
  */
-export const invocationLocalIndex = /*@__PURE__*/ nodeImmutable(IndexNode, IndexNode.INVOCATION_LOCAL);
+export const invocationLocalIndex = nodeImmutable(IndexNode, IndexNode.INVOCATION_LOCAL);
 
 /**
  * TSL object that represents the index of a draw call.
  *
  * @type {IndexNode}
  */
-export const drawIndex = /*@__PURE__*/ nodeImmutable(IndexNode, IndexNode.DRAW);
+export const drawIndex = nodeImmutable(IndexNode, IndexNode.DRAW);

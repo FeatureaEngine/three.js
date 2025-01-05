@@ -54,4 +54,4 @@ export default EquirectUVNode;
  * @param {Node<vec3>} [dirNode=positionWorldDirection] - A direction vector for sampling which is by default `positionWorldDirection`.
  * @returns {EquirectUVNode}
  */
-export const equirectUV = /*@__PURE__*/ nodeProxy(EquirectUVNode);
+export const equirectUV = nodeProxy(EquirectUVNode);

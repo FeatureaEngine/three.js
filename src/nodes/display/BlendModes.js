@@ -1,7 +1,7 @@
 import {Fn, vec4} from '../tsl/TSLBase.js';
 import {mix, min, step} from '../math/MathNode.js';
 
-export const blendBurn = /*@__PURE__*/ Fn(([base, blend]) => {
+export const blendBurn = Fn(([base, blend]) => {
     return min(1.0, base.oneMinus().div(blend)).oneMinus();
 
 }).setLayout({
@@ -13,7 +13,7 @@ export const blendBurn = /*@__PURE__*/ Fn(([base, blend]) => {
     ]
 });
 
-export const blendDodge = /*@__PURE__*/ Fn(([base, blend]) => {
+export const blendDodge = Fn(([base, blend]) => {
     return min(base.div(blend.oneMinus()), 1.0);
 
 }).setLayout({
@@ -25,7 +25,7 @@ export const blendDodge = /*@__PURE__*/ Fn(([base, blend]) => {
     ]
 });
 
-export const blendScreen = /*@__PURE__*/ Fn(([base, blend]) => {
+export const blendScreen = Fn(([base, blend]) => {
     return base.oneMinus().mul(blend.oneMinus()).oneMinus();
 
 }).setLayout({
@@ -37,7 +37,7 @@ export const blendScreen = /*@__PURE__*/ Fn(([base, blend]) => {
     ]
 });
 
-export const blendOverlay = /*@__PURE__*/ Fn(([base, blend]) => {
+export const blendOverlay = Fn(([base, blend]) => {
     return mix(base.mul(2.0).mul(blend), base.oneMinus().mul(2.0).mul(blend.oneMinus()).oneMinus(), step(0.5, base));
 
 }).setLayout({
@@ -49,7 +49,7 @@ export const blendOverlay = /*@__PURE__*/ Fn(([base, blend]) => {
     ]
 });
 
-export const blendColor = /*@__PURE__*/ Fn(([base, blend]) => {
+export const blendColor = Fn(([base, blend]) => {
     const outAlpha = blend.a.add(base.a.mul(blend.a.oneMinus()));
     return vec4(blend.rgb.mul(blend.a).add(base.rgb.mul(base.a).mul(blend.a.oneMinus())).div(outAlpha), outAlpha);
 

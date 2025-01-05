@@ -10,7 +10,7 @@ import {Fn} from '../tsl/TSLBase.js';
  * @param {Node<vec2>} coord - The uv coordinates.
  * @return {Node<float>} The result data.
  */
-export const checker = /*@__PURE__*/ Fn(([coord = uv()]) => {
+export const checker = Fn(([coord = uv()]) => {
     const uv = coord.mul(2.0);
     const cx = uv.x.floor();
     const cy = uv.y.floor();

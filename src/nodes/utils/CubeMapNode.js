@@ -174,4 +174,4 @@ function mapTextureMapping(texture, mapping) {
  * @param {Node} envNode - The node representing the environment map.
  * @returns {CubeMapNode}
  */
-export const cubeMapNode = /*@__PURE__*/ nodeProxy(CubeMapNode);
+export const cubeMapNode = nodeProxy(CubeMapNode);

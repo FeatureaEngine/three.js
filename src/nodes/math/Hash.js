@@ -9,7 +9,7 @@ import {Fn} from '../tsl/TSLBase.js';
  * @param {Node<float>} seed - The seed.
  * @return {Node<float>} The hash value.
  */
-export const hash = /*@__PURE__*/ Fn(([seed]) => {
+export const hash = Fn(([seed]) => {
     // Taken from https://www.shadertoy.com/view/XlGcRh, originally from pcg-random.org
     const state = seed.toUint().mul(747796405).add(2891336453);
     const word = state.shiftRight(state.shiftRight(28).add(4)).bitXor(state).mul(277803737);

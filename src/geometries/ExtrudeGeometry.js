@@ -506,5 +506,4 @@ function toJSON(shapes, options, data) {
     return data;
 }
 
-
 export {ExtrudeGeometry};

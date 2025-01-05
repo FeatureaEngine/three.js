@@ -61,5 +61,4 @@ function WebGLIndexedBufferRenderer(gl, extensions, info) {
     this.renderMultiDrawInstances = renderMultiDrawInstances;
 }
 
-
 export {WebGLIndexedBufferRenderer};

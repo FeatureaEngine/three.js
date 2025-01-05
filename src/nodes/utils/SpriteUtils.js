@@ -20,7 +20,7 @@ import {Fn, defined} from '../tsl/TSLBase.js';
  * @param {Boolean} [config.vertical=false] - Whether to follow the camera rotation vertically or not.
  * @return {Node<vec3>} The updated vertex position in clip space.
  */
-export const billboarding = /*@__PURE__*/ Fn(({position = null, horizontal = true, vertical = false}) => {
+export const billboarding = Fn(({position = null, horizontal = true, vertical = false}) => {
     let worldMatrix;
     if (position !== null) {
         worldMatrix = modelWorldMatrix.toVar();

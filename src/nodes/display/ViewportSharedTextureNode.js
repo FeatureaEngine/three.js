@@ -50,4 +50,4 @@ export default ViewportSharedTextureNode;
  * @param {Node?} [levelNode=null] - The level node.
  * @returns {ViewportSharedTextureNode}
  */
-export const viewportSharedTexture = /*@__PURE__*/ nodeProxy(ViewportSharedTextureNode);
+export const viewportSharedTexture = nodeProxy(ViewportSharedTextureNode);

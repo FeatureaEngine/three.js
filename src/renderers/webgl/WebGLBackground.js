@@ -203,5 +203,4 @@ function WebGLBackground(renderer, cubemaps, cubeuvmaps, state, objects, alpha, 
     };
 }
 
-
 export {WebGLBackground};

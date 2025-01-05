@@ -1,7 +1,7 @@
 import getGeometryRoughness from './getGeometryRoughness.js';
 import {Fn} from '../../tsl/TSLBase.js';
 
-const getRoughness = /*@__PURE__*/ Fn((inputs) => {
+const getRoughness = Fn((inputs) => {
     const {roughness} = inputs;
     const geometryRoughness = getGeometryRoughness();
     let roughnessFactor = roughness.max(0.0525); // 0.0525 corresponds to the base mip of a 256 cubemap.

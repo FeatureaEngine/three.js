@@ -35,5 +35,4 @@ function WebGLProperties() {
     };
 }
 
-
 export {WebGLProperties};
