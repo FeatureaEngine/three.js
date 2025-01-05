@@ -1,5 +1,5 @@
 import Node from '../core/Node.js';
-import {float, addMethodChaining, nodeProxy} from '../tsl/TSLCore.js';
+import {addMethodChaining, float, nodeProxy} from '../tsl/TSLCore.js';
 
 /** @module RemapNode **/
 
@@ -11,10 +11,6 @@ import {float, addMethodChaining, nodeProxy} from '../tsl/TSLCore.js';
  * @augments Node
  */
 class RemapNode extends Node {
-
-    static get type() {
-        return 'RemapNode';
-    }
 
     /**
      * Constructs a new remap node.
@@ -67,6 +63,10 @@ class RemapNode extends Node {
          * @default true
          */
         this.doClamp = true;
+    }
+
+    static get type() {
+        return 'RemapNode';
     }
 
     setup() {

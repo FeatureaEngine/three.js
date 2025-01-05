@@ -1,16 +1,5 @@
-import {
-    ColorManagement,
-    RawShaderMaterial,
-    UniformsUtils,
-    LinearToneMapping,
-    ReinhardToneMapping,
-    CineonToneMapping,
-    AgXToneMapping,
-    ACESFilmicToneMapping,
-    NeutralToneMapping,
-    SRGBTransfer
-} from '../../libs/three/Three.js';
-import {Pass, FullScreenQuad} from './Pass.js';
+import {ACESFilmicToneMapping, AgXToneMapping, CineonToneMapping, ColorManagement, LinearToneMapping, NeutralToneMapping, RawShaderMaterial, ReinhardToneMapping, SRGBTransfer, UniformsUtils} from '../../libs/three/Three.js';
+import {FullScreenQuad, Pass} from './Pass.js';
 import {OutputShader} from '../shaders/OutputShader.js';
 
 class OutputPass extends Pass {

@@ -2,6 +2,7 @@ import {
     AddEquation,
     Color,
     CustomBlending,
+    DepthStencilFormat,
     DepthTexture,
     DstAlphaFactor,
     DstColorFactor,
@@ -11,13 +12,12 @@ import {
     NoBlending,
     ShaderMaterial,
     UniformsUtils,
-    DepthStencilFormat,
     UnsignedInt248Type,
     Vector2,
     WebGLRenderTarget,
     ZeroFactor
 } from '../../libs/three/Three.js';
-import {Pass, FullScreenQuad} from './Pass.js';
+import {FullScreenQuad, Pass} from './Pass.js';
 import {SAOShader} from '../shaders/SAOShader.js';
 import {BlurShaderUtils, DepthLimitedBlurShader} from '../shaders/DepthLimitedBlurShader.js';
 import {CopyShader} from '../shaders/CopyShader.js';

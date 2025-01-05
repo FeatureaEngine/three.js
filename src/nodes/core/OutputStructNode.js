@@ -10,10 +10,6 @@ import {nodeProxy} from '../tsl/TSLBase.js';
  */
 class OutputStructNode extends Node {
 
-    static get type() {
-        return 'OutputStructNode';
-    }
-
     /**
      * Constructs a new output struct node. The constructor can be invoked with an
      * arbitrary number of nodes representing the members.
@@ -36,6 +32,10 @@ class OutputStructNode extends Node {
          * @default true
          */
         this.isOutputStructNode = true;
+    }
+
+    static get type() {
+        return 'OutputStructNode';
     }
 
     setup(builder) {

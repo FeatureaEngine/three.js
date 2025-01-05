@@ -1,11 +1,4 @@
-import {
-    AnimationClip,
-    BooleanKeyframeTrack,
-    ColorKeyframeTrack,
-    NumberKeyframeTrack,
-    Vector3,
-    VectorKeyframeTrack
-} from '../../libs/three/Three.js';
+import {AnimationClip, BooleanKeyframeTrack, ColorKeyframeTrack, NumberKeyframeTrack, Vector3, VectorKeyframeTrack} from '../../libs/three/Three.js';
 
 class AnimationClipCreator {
 

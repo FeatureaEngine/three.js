@@ -1,5 +1,5 @@
 import Node from '../core/Node.js';
-import {nodeImmutable, float} from '../tsl/TSLBase.js';
+import {float, nodeImmutable} from '../tsl/TSLBase.js';
 
 import {BackSide, WebGLCoordinateSystem} from '../../constants.js';
 
@@ -11,10 +11,6 @@ import {BackSide, WebGLCoordinateSystem} from '../../constants.js';
  * @augments Node
  */
 class FrontFacingNode extends Node {
-
-    static get type() {
-        return 'FrontFacingNode';
-    }
 
     /**
      * Constructs a new front facing node.
@@ -29,6 +25,10 @@ class FrontFacingNode extends Node {
          * @default true
          */
         this.isFrontFacingNode = true;
+    }
+
+    static get type() {
+        return 'FrontFacingNode';
     }
 
     generate(builder) {

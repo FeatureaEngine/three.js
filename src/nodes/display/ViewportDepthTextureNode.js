@@ -17,10 +17,6 @@ let sharedDepthbuffer = null;
  */
 class ViewportDepthTextureNode extends ViewportTextureNode {
 
-    static get type() {
-        return 'ViewportDepthTextureNode';
-    }
-
     /**
      * Constructs a new viewport depth texture node.
      *
@@ -32,6 +28,10 @@ class ViewportDepthTextureNode extends ViewportTextureNode {
             sharedDepthbuffer = new DepthTexture();
         }
         super(uvNode, levelNode, sharedDepthbuffer);
+    }
+
+    static get type() {
+        return 'ViewportDepthTextureNode';
     }
 
 }

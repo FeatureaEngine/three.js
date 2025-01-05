@@ -13,10 +13,6 @@ import {nodeObject} from '../tsl/TSLBase.js';
  */
 class ComputeBuiltinNode extends Node {
 
-    static get type() {
-        return 'ComputeBuiltinNode';
-    }
-
     /**
      * Constructs a new compute builtin node.
      *
@@ -32,6 +28,10 @@ class ComputeBuiltinNode extends Node {
          * @type {String}
          */
         this._builtinName = builtinName;
+    }
+
+    static get type() {
+        return 'ComputeBuiltinNode';
     }
 
     /**

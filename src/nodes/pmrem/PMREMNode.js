@@ -73,10 +73,6 @@ function _getPMREMFromTexture(texture) {
  */
 class PMREMNode extends TempNode {
 
-    static get type() {
-        return 'PMREMNode';
-    }
-
     /**
      * Constructs a new function overloading node.
      *
@@ -160,9 +156,8 @@ class PMREMNode extends TempNode {
         this.updateBeforeType = NodeUpdateType.RENDER;
     }
 
-    set value(value) {
-        this._value = value;
-        this._pmrem = null;
+    static get type() {
+        return 'PMREMNode';
     }
 
     /**
@@ -172,6 +167,11 @@ class PMREMNode extends TempNode {
      */
     get value() {
         return this._value;
+    }
+
+    set value(value) {
+        this._value = value;
+        this._pmrem = null;
     }
 
     /**

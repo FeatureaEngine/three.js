@@ -33,11 +33,11 @@ import {
     Skeleton,
     SkinnedMesh,
     SpotLight,
+    SRGBColorSpace,
     TextureLoader,
     Vector2,
     Vector3,
-    VectorKeyframeTrack,
-    SRGBColorSpace
+    VectorKeyframeTrack
 } from '../../libs/three/Three.js';
 import {TGALoader} from '../loaders/TGALoader.js';
 

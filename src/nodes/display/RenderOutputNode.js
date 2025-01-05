@@ -31,10 +31,6 @@ import {ColorManagement} from '../../math/ColorManagement.js';
  */
 class RenderOutputNode extends TempNode {
 
-    static get type() {
-        return 'RenderOutputNode';
-    }
-
     /**
      * Constructs a new render output node.
      *
@@ -70,6 +66,10 @@ class RenderOutputNode extends TempNode {
          * @default true
          */
         this.isRenderOutputNode = true;
+    }
+
+    static get type() {
+        return 'RenderOutputNode';
     }
 
     setup({context}) {

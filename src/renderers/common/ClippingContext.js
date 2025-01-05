@@ -87,6 +87,16 @@ class ClippingContext {
     }
 
     /**
+     * The count of union clipping planes.
+     *
+     * @type {Number}
+     * @readonly
+     */
+    get unionClippingCount() {
+        return this.unionPlanes.length;
+    }
+
+    /**
      * Projects the given source clipping planes and writes the result into the
      * destination array.
      *
@@ -180,16 +190,6 @@ class ClippingContext {
         }
         context.update(this, clippingGroup);
         return context;
-    }
-
-    /**
-     * The count of union clipping planes.
-     *
-     * @type {Number}
-     * @readonly
-     */
-    get unionClippingCount() {
-        return this.unionPlanes.length;
     }
 
 }

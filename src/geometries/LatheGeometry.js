@@ -106,14 +106,14 @@ class LatheGeometry extends BufferGeometry {
         this.setAttribute('normal', new Float32BufferAttribute(normals, 3));
     }
 
+    static fromJSON(data) {
+        return new LatheGeometry(data.points, data.segments, data.phiStart, data.phiLength);
+    }
+
     copy(source) {
         super.copy(source);
         this.parameters = Object.assign({}, source.parameters);
         return this;
-    }
-
-    static fromJSON(data) {
-        return new LatheGeometry(data.points, data.segments, data.phiStart, data.phiLength);
     }
 
 }

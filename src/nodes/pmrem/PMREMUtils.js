@@ -1,8 +1,8 @@
-import {Fn, int, float, vec2, vec3, vec4, If} from '../tsl/TSLBase.js';
-import {cos, sin, abs, max, exp2, log2, clamp, fract, mix, floor, normalize, cross, all} from '../math/MathNode.js';
+import {float, Fn, If, int, vec2, vec3, vec4} from '../tsl/TSLBase.js';
+import {abs, all, clamp, cos, cross, exp2, floor, fract, log2, max, mix, normalize, sin} from '../math/MathNode.js';
 import {mul} from '../math/OperatorNode.js';
 import {select} from '../math/ConditionalNode.js';
-import {Loop, Break} from '../utils/LoopNode.js';
+import {Break, Loop} from '../utils/LoopNode.js';
 
 // These defines must match with PMREMGenerator
 
@@ -181,19 +181,19 @@ const getSample = Fn(({envMap, mipInt, outputDirection, theta, axis, CUBEUV_TEXE
 });
 
 export const blur = Fn(({
-                                          n,
-                                          latitudinal,
-                                          poleAxis,
-                                          outputDirection,
-                                          weights,
-                                          samples,
-                                          dTheta,
-                                          mipInt,
-                                          envMap,
-                                          CUBEUV_TEXEL_WIDTH,
-                                          CUBEUV_TEXEL_HEIGHT,
-                                          CUBEUV_MAX_MIP
-                                      }) => {
+                            n,
+                            latitudinal,
+                            poleAxis,
+                            outputDirection,
+                            weights,
+                            samples,
+                            dTheta,
+                            mipInt,
+                            envMap,
+                            CUBEUV_TEXEL_WIDTH,
+                            CUBEUV_TEXEL_HEIGHT,
+                            CUBEUV_MAX_MIP
+                        }) => {
     const axis = vec3(select(latitudinal, poleAxis, cross(poleAxis, outputDirection))).toVar();
     If(all(axis.equals(vec3(0.0))), () => {
         axis.assign(vec3(outputDirection.z, 0.0, outputDirection.x.negate()));

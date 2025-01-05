@@ -1,7 +1,7 @@
 import {BufferAttribute} from '../core/BufferAttribute.js';
 import {BufferGeometry} from '../core/BufferGeometry.js';
 import {DataTexture} from '../textures/DataTexture.js';
-import {FloatType, RedIntegerFormat, UnsignedIntType, RGBAFormat} from '../constants.js';
+import {FloatType, RedIntegerFormat, RGBAFormat, UnsignedIntType} from '../constants.js';
 import {Matrix4} from '../math/Matrix4.js';
 import {Mesh} from './Mesh.js';
 import {ColorManagement} from '../math/ColorManagement.js';
@@ -106,22 +106,6 @@ function copyArrayContents(src, target) {
 }
 
 class BatchedMesh extends Mesh {
-    get maxInstanceCount() {
-        return this._maxInstanceCount;
-    }
-
-    get instanceCount() {
-        return this._instanceInfo.length - this._availableInstanceIds.length;
-    }
-
-    get unusedVertexCount() {
-        return this._maxVertexCount - this._nextVertexStart;
-    }
-
-    get unusedIndexCount() {
-        return this._maxIndexCount - this._nextIndexStart;
-    }
-
     constructor(maxInstanceCount, maxVertexCount, maxIndexCount = maxVertexCount * 2, material) {
         super(new BufferGeometry(), material);
         this.isBatchedMesh = true;
@@ -158,6 +142,22 @@ class BatchedMesh extends Mesh {
         this._colorsTexture = null;
         this._initMatricesTexture();
         this._initIndirectTexture();
+    }
+
+    get maxInstanceCount() {
+        return this._maxInstanceCount;
+    }
+
+    get instanceCount() {
+        return this._instanceInfo.length - this._availableInstanceIds.length;
+    }
+
+    get unusedVertexCount() {
+        return this._maxVertexCount - this._nextVertexStart;
+    }
+
+    get unusedIndexCount() {
+        return this._maxIndexCount - this._nextIndexStart;
     }
 
     _initMatricesTexture() {

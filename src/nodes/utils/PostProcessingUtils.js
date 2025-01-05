@@ -1,4 +1,4 @@
-import {abs, cross, float, Fn, normalize, ivec2, sub, vec2, vec3, vec4} from '../tsl/TSLBase.js';
+import {abs, cross, float, Fn, ivec2, normalize, sub, vec2, vec3, vec4} from '../tsl/TSLBase.js';
 import {textureSize} from '../accessors/TextureSizeNode.js';
 import {textureLoad} from '../accessors/TextureNode.js';
 import {WebGPUCoordinateSystem} from '../../constants.js';

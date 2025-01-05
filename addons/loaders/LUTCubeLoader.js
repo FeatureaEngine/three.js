@@ -1,15 +1,6 @@
 // https://wwwimages2.adobe.com/content/dam/acom/en/products/speedgrade/cc/pdfs/cube-lut-specification-1.0.pdf
 
-import {
-    ClampToEdgeWrapping,
-    Data3DTexture,
-    FileLoader,
-    FloatType,
-    LinearFilter,
-    Loader,
-    UnsignedByteType,
-    Vector3,
-} from '../../libs/three/Three.js';
+import {ClampToEdgeWrapping, Data3DTexture, FileLoader, FloatType, LinearFilter, Loader, UnsignedByteType, Vector3,} from '../../libs/three/Three.js';
 
 export class LUTCubeLoader extends Loader {
 

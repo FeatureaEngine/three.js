@@ -1,9 +1,4 @@
-import {
-    Frustum,
-    Vector3,
-    Matrix4,
-    Quaternion,
-} from '../../libs/three/Three.js';
+import {Frustum, Matrix4, Quaternion, Vector3,} from '../../libs/three/Three.js';
 
 /**
  * This is a class to check whether objects are in a selection area in 3D space

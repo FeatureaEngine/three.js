@@ -2,15 +2,7 @@
  * https://github.com/google/model-viewer/blob/master/packages/model-viewer/src/three-components/EnvironmentScene.ts
  */
 
-import {
-    BackSide,
-    BoxGeometry,
-    Mesh,
-    MeshBasicMaterial,
-    MeshStandardMaterial,
-    PointLight,
-    Scene,
-} from '../../libs/three/Three.js';
+import {BackSide, BoxGeometry, Mesh, MeshBasicMaterial, MeshStandardMaterial, PointLight, Scene,} from '../../libs/three/Three.js';
 
 class RoomEnvironment extends Scene {
 

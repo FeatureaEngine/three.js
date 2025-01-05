@@ -4,9 +4,9 @@ import {materialReference} from '../../nodes/accessors/MaterialReferenceNode.js'
 import {modelWorldMatrixInverse} from '../../nodes/accessors/ModelNode.js';
 import {cameraPosition} from '../../nodes/accessors/Camera.js';
 import {positionGeometry} from '../../nodes/accessors/Position.js';
-import {Fn, varying, float, vec2, vec3, vec4} from '../../nodes/tsl/TSLBase.js';
-import {min, max} from '../../nodes/math/MathNode.js';
-import {Loop, Break} from '../../nodes/utils/LoopNode.js';
+import {float, Fn, varying, vec2, vec3, vec4} from '../../nodes/tsl/TSLBase.js';
+import {max, min} from '../../nodes/math/MathNode.js';
+import {Break, Loop} from '../../nodes/utils/LoopNode.js';
 import {texture3D} from '../../nodes/accessors/Texture3DNode.js';
 import {Color} from '../../math/Color.js';
 
@@ -19,10 +19,6 @@ import {Color} from '../../math/Color.js';
  * @augments NodeMaterial
  */
 class VolumeNodeMaterial extends NodeMaterial {
-
-    static get type() {
-        return 'VolumeNodeMaterial';
-    }
 
     /**
      * Constructs a new volume node material.
@@ -87,6 +83,10 @@ class VolumeNodeMaterial extends NodeMaterial {
          */
         this.testNode = null;
         this.setValues(parameters);
+    }
+
+    static get type() {
+        return 'VolumeNodeMaterial';
     }
 
     /**

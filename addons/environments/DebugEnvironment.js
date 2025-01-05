@@ -1,12 +1,4 @@
-import {
-    BackSide,
-    BoxGeometry,
-    Mesh,
-    MeshLambertMaterial,
-    MeshStandardMaterial,
-    PointLight,
-    Scene,
-} from '../../libs/three/Three.js';
+import {BackSide, BoxGeometry, Mesh, MeshLambertMaterial, MeshStandardMaterial, PointLight, Scene,} from '../../libs/three/Three.js';
 
 class DebugEnvironment extends Scene {
 

@@ -1,7 +1,7 @@
 import {modelWorldMatrix} from '../accessors/ModelNode.js';
-import {cameraViewMatrix, cameraProjectionMatrix} from '../accessors/Camera.js';
+import {cameraProjectionMatrix, cameraViewMatrix} from '../accessors/Camera.js';
 import {positionLocal} from '../accessors/Position.js';
-import {Fn, defined} from '../tsl/TSLBase.js';
+import {defined, Fn} from '../tsl/TSLBase.js';
 
 /** @module SpriteUtils **/
 

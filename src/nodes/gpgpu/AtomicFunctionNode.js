@@ -16,10 +16,6 @@ import {nodeProxy} from '../tsl/TSLCore.js';
  */
 class AtomicFunctionNode extends TempNode {
 
-    static get type() {
-        return 'AtomicFunctionNode';
-    }
-
     /**
      * Constructs a new atomic function node.
      *
@@ -55,6 +51,10 @@ class AtomicFunctionNode extends TempNode {
          * @default null
          */
         this.storeNode = storeNode;
+    }
+
+    static get type() {
+        return 'AtomicFunctionNode';
     }
 
     /**

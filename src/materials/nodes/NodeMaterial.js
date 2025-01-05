@@ -1,10 +1,10 @@
 import {Material} from '../Material.js';
 import {NormalBlending} from '../../constants.js';
 
-import {getNodeChildren, getCacheKey} from '../../nodes/core/NodeUtils.js';
+import {getCacheKey, getNodeChildren} from '../../nodes/core/NodeUtils.js';
 import {attribute} from '../../nodes/core/AttributeNode.js';
-import {output, diffuseColor, emissive, varyingProperty} from '../../nodes/core/PropertyNode.js';
-import {materialAlphaTest, materialColor, materialOpacity, materialEmissive, materialNormal, materialLightMap, materialAO} from '../../nodes/accessors/MaterialNode.js';
+import {diffuseColor, emissive, output, varyingProperty} from '../../nodes/core/PropertyNode.js';
+import {materialAlphaTest, materialAO, materialColor, materialEmissive, materialLightMap, materialNormal, materialOpacity} from '../../nodes/accessors/MaterialNode.js';
 import {modelViewProjection} from '../../nodes/accessors/ModelViewProjectionNode.js';
 import {normalLocal} from '../../nodes/accessors/Normal.js';
 import {instancedMesh} from '../../nodes/accessors/InstancedMeshNode.js';
@@ -31,22 +31,6 @@ import {modelViewMatrix} from '../../nodes/accessors/ModelNode.js';
  * @augments Material
  */
 class NodeMaterial extends Material {
-
-    static get type() {
-        return 'NodeMaterial';
-    }
-
-    /**
-     * Represents the type of the node material.
-     *
-     * @type {String}
-     */
-    get type() {
-        return this.constructor.type;
-    }
-
-    set type(_value) { /* */
-    }
 
     /**
      * Constructs a new node material.
@@ -334,6 +318,22 @@ class NodeMaterial extends Material {
          * @default null
          */
         this.vertexNode = null;
+    }
+
+    static get type() {
+        return 'NodeMaterial';
+    }
+
+    set type(_value) { /* */
+    }
+
+    /**
+     * Represents the type of the node material.
+     *
+     * @type {String}
+     */
+    get type() {
+        return this.constructor.type;
     }
 
     /**

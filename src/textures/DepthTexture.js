@@ -1,5 +1,5 @@
 import {Texture} from './Texture.js';
-import {NearestFilter, UnsignedIntType, UnsignedInt248Type, DepthFormat, DepthStencilFormat} from '../constants.js';
+import {DepthFormat, DepthStencilFormat, NearestFilter, UnsignedInt248Type, UnsignedIntType} from '../constants.js';
 
 class DepthTexture extends Texture {
 

@@ -1,11 +1,4 @@
-import {
-    Controls,
-    MathUtils,
-    MOUSE,
-    Quaternion,
-    Vector2,
-    Vector3
-} from '../../libs/three/Three.js';
+import {Controls, MathUtils, MOUSE, Quaternion, Vector2, Vector3} from '../../libs/three/Three.js';
 
 const _changeEvent = {type: 'change'};
 const _startEvent = {type: 'start'};

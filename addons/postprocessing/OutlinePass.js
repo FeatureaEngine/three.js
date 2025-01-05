@@ -1,19 +1,5 @@
-import {
-    AdditiveBlending,
-    Color,
-    DoubleSide,
-    HalfFloatType,
-    Matrix4,
-    MeshDepthMaterial,
-    NoBlending,
-    RGBADepthPacking,
-    ShaderMaterial,
-    UniformsUtils,
-    Vector2,
-    Vector3,
-    WebGLRenderTarget
-} from '../../libs/three/Three.js';
-import {Pass, FullScreenQuad} from './Pass.js';
+import {AdditiveBlending, Color, DoubleSide, HalfFloatType, Matrix4, MeshDepthMaterial, NoBlending, RGBADepthPacking, ShaderMaterial, UniformsUtils, Vector2, Vector3, WebGLRenderTarget} from '../../libs/three/Three.js';
+import {FullScreenQuad, Pass} from './Pass.js';
 import {CopyShader} from '../shaders/CopyShader.js';
 
 class OutlinePass extends Pass {

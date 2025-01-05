@@ -12,10 +12,6 @@ import {addMethodChaining, nodeObject} from '../tsl/TSLCore.js';
  */
 class CacheNode extends Node {
 
-    static get type() {
-        return 'CacheNode';
-    }
-
     /**
      * Constructs a new cache node.
      *
@@ -45,6 +41,10 @@ class CacheNode extends Node {
          * @default true
          */
         this.isCacheNode = true;
+    }
+
+    static get type() {
+        return 'CacheNode';
     }
 
     getNodeType(builder) {

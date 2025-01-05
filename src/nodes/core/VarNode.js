@@ -15,10 +15,6 @@ import {addMethodChaining, nodeProxy} from '../tsl/TSLCore.js';
  */
 class VarNode extends Node {
 
-    static get type() {
-        return 'VarNode';
-    }
-
     /**
      * Constructs a new variable node.
      *
@@ -56,6 +52,10 @@ class VarNode extends Node {
          * @default true
          */
         this.isVarNode = true;
+    }
+
+    static get type() {
+        return 'VarNode';
     }
 
     getHash(builder) {

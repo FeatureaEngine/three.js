@@ -169,6 +169,16 @@ class WebGLBackend extends Backend {
     }
 
     /**
+     * The coordinate system of the backend.
+     *
+     * @type {Number}
+     * @readonly
+     */
+    get coordinateSystem() {
+        return WebGLCoordinateSystem;
+    }
+
+    /**
      * Initializes the backend so it is ready for usage.
      *
      * @param {Renderer} renderer - The renderer.
@@ -209,16 +219,6 @@ class WebGLBackend extends Backend {
         this.extensions.get('WEBGL_multi_draw');
         this.disjoint = this.extensions.get('EXT_disjoint_timer_query_webgl2');
         this.parallel = this.extensions.get('KHR_parallel_shader_compile');
-    }
-
-    /**
-     * The coordinate system of the backend.
-     *
-     * @type {Number}
-     * @readonly
-     */
-    get coordinateSystem() {
-        return WebGLCoordinateSystem;
     }
 
     /**

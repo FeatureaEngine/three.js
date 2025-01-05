@@ -13,15 +13,15 @@ import {nodeImmutable, vec2, vec3} from '../tsl/TSLBase.js';
  */
 class MatcapUVNode extends TempNode {
 
-    static get type() {
-        return 'MatcapUVNode';
-    }
-
     /**
      * Constructs a new matcap uv node.
      */
     constructor() {
         super('vec2');
+    }
+
+    static get type() {
+        return 'MatcapUVNode';
     }
 
     setup() {

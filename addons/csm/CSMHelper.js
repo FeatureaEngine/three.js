@@ -1,4 +1,16 @@
-import {Box3, Box3Helper, BufferAttribute, BufferGeometry, DoubleSide, Group, LineBasicMaterial, LineSegments, Mesh, MeshBasicMaterial, PlaneGeometry} from '../../libs/three/Three.js';
+import {
+    Box3,
+    Box3Helper,
+    BufferAttribute,
+    BufferGeometry,
+    DoubleSide,
+    Group,
+    LineBasicMaterial,
+    LineSegments,
+    Mesh,
+    MeshBasicMaterial,
+    PlaneGeometry
+} from '../../libs/three/Three.js';
 
 class CSMHelper extends Group {
 

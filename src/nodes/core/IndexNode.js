@@ -18,10 +18,6 @@ import {nodeImmutable, varying} from '../tsl/TSLBase.js';
  */
 class IndexNode extends Node {
 
-    static get type() {
-        return 'IndexNode';
-    }
-
     /**
      * Constructs a new index node.
      *
@@ -43,6 +39,10 @@ class IndexNode extends Node {
          * @default true
          */
         this.isIndexNode = true;
+    }
+
+    static get type() {
+        return 'IndexNode';
     }
 
     generate(builder) {

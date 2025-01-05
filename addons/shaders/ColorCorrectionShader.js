@@ -1,6 +1,4 @@
-import {
-    Vector3
-} from '../../libs/three/Three.js';
+import {Vector3} from '../../libs/three/Three.js';
 
 /**
  * Color correction

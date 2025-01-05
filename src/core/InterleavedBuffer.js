@@ -14,11 +14,11 @@ class InterleavedBuffer {
         this.uuid = generateUUID();
     }
 
-    onUploadCallback() {
-    }
-
     set needsUpdate(value) {
         if (value === true) this.version++;
+    }
+
+    onUploadCallback() {
     }
 
     setUsage(value) {

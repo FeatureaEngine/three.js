@@ -3,25 +3,25 @@ import {GLSLNodeParser, NodeBuilder, TextureNode, vectorComponents} from '../../
 import NodeUniformBuffer from '../../common/nodes/NodeUniformBuffer.js';
 import NodeUniformsGroup from '../../common/nodes/NodeUniformsGroup.js';
 
-import {NodeSampledTexture, NodeSampledCubeTexture, NodeSampledTexture3D} from '../../common/nodes/NodeSampledTexture.js';
+import {NodeSampledCubeTexture, NodeSampledTexture, NodeSampledTexture3D} from '../../common/nodes/NodeSampledTexture.js';
 
 import {
-    NoColorSpace,
     ByteType,
-    ShortType,
-    RGBAIntegerFormat,
-    RGBIntegerFormat,
+    FloatType,
+    IntType,
+    NoColorSpace,
+    RedFormat,
     RedIntegerFormat,
+    RGBAFormat,
+    RGBAIntegerFormat,
+    RGBFormat,
+    RGBIntegerFormat,
+    RGFormat,
     RGIntegerFormat,
+    ShortType,
     UnsignedByteType,
     UnsignedIntType,
-    UnsignedShortType,
-    RedFormat,
-    RGFormat,
-    IntType,
-    RGBFormat,
-    RGBAFormat,
-    FloatType
+    UnsignedShortType
 } from '../../../constants.js';
 import {DataTexture} from '../../../textures/DataTexture.js';
 

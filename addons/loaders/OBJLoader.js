@@ -1,20 +1,4 @@
-import {
-    BufferGeometry,
-    Color,
-    FileLoader,
-    Float32BufferAttribute,
-    Group,
-    LineBasicMaterial,
-    LineSegments,
-    Loader,
-    Material,
-    Mesh,
-    MeshPhongMaterial,
-    Points,
-    PointsMaterial,
-    SRGBColorSpace,
-    Vector3
-} from '../../libs/three/Three.js';
+import {BufferGeometry, Color, FileLoader, Float32BufferAttribute, Group, LineBasicMaterial, LineSegments, Loader, Material, Mesh, MeshPhongMaterial, Points, PointsMaterial, SRGBColorSpace, Vector3} from '../../libs/three/Three.js';
 
 // o object_name | g group_name
 const _object_pattern = /^[og]\s*(.+)?/;

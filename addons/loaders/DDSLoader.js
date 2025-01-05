@@ -1,13 +1,4 @@
-import {
-    CompressedTextureLoader,
-    RGB_BPTC_SIGNED_Format,
-    RGB_BPTC_UNSIGNED_Format,
-    RGB_ETC1_Format,
-    RGB_S3TC_DXT1_Format,
-    RGBA_S3TC_DXT3_Format,
-    RGBA_S3TC_DXT5_Format,
-    RGBAFormat
-} from '../../libs/three/Three.js';
+import {CompressedTextureLoader, RGB_BPTC_SIGNED_Format, RGB_BPTC_UNSIGNED_Format, RGB_ETC1_Format, RGB_S3TC_DXT1_Format, RGBA_S3TC_DXT3_Format, RGBA_S3TC_DXT5_Format, RGBAFormat} from '../../libs/three/Three.js';
 
 class DDSLoader extends CompressedTextureLoader {
 

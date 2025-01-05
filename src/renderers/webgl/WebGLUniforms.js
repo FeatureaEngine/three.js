@@ -797,16 +797,6 @@ class WebGLUniforms {
         }
     }
 
-    setValue(gl, name, value, textures) {
-        const u = this.map[name];
-        if (u !== undefined) u.setValue(gl, value, textures);
-    }
-
-    setOptional(gl, object, name) {
-        const v = object[name];
-        if (v !== undefined) this.setValue(gl, name, v);
-    }
-
     static upload(gl, seq, values, textures) {
         for (let i = 0, n = seq.length; i !== n; ++i) {
             const u = seq[i],
@@ -825,6 +815,16 @@ class WebGLUniforms {
             if (u.id in values) r.push(u);
         }
         return r;
+    }
+
+    setValue(gl, name, value, textures) {
+        const u = this.map[name];
+        if (u !== undefined) u.setValue(gl, value, textures);
+    }
+
+    setOptional(gl, object, name) {
+        const v = object[name];
+        if (v !== undefined) this.setValue(gl, name, v);
     }
 
 }

@@ -52,10 +52,6 @@ let _inReflector = false;
  */
 class ReflectorNode extends TextureNode {
 
-    static get type() {
-        return 'ReflectorNode';
-    }
-
     /**
      * Constructs a new reflector node.
      *
@@ -87,6 +83,10 @@ class ReflectorNode extends TextureNode {
          */
         this._depthNode = null;
         this.setUpdateMatrix(false);
+    }
+
+    static get type() {
+        return 'ReflectorNode';
     }
 
     /**
@@ -150,10 +150,6 @@ class ReflectorNode extends TextureNode {
  * @augments Node
  */
 class ReflectorBaseNode extends Node {
-
-    static get type() {
-        return 'ReflectorBaseNode';
-    }
 
     /**
      * Constructs a new reflector base node.
@@ -236,6 +232,10 @@ class ReflectorBaseNode extends Node {
          * @type {WeakMap<Camera, RenderTarget>}
          */
         this.renderTargets = new WeakMap();
+    }
+
+    static get type() {
+        return 'ReflectorBaseNode';
     }
 
     /**

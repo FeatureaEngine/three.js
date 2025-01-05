@@ -1,12 +1,5 @@
-import {
-    AdditiveBlending,
-    HalfFloatType,
-    ShaderMaterial,
-    UniformsUtils,
-    Vector2,
-    WebGLRenderTarget
-} from '../../libs/three/Three.js';
-import {Pass, FullScreenQuad} from './Pass.js';
+import {AdditiveBlending, HalfFloatType, ShaderMaterial, UniformsUtils, Vector2, WebGLRenderTarget} from '../../libs/three/Three.js';
+import {FullScreenQuad, Pass} from './Pass.js';
 import {ConvolutionShader} from '../shaders/ConvolutionShader.js';
 
 class BloomPass extends Pass {

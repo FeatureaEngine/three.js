@@ -5,18 +5,7 @@ const CHANNELS = 4;
 const TEXTURE_WIDTH = 1024;
 const TEXTURE_HEIGHT = 4;
 
-import {
-    DataTexture,
-    DataUtils,
-    RGBAFormat,
-    HalfFloatType,
-    RepeatWrapping,
-    Mesh,
-    InstancedMesh,
-    LinearFilter,
-    DynamicDrawUsage,
-    Matrix4
-} from '../../libs/three/Three.js';
+import {DataTexture, DataUtils, DynamicDrawUsage, HalfFloatType, InstancedMesh, LinearFilter, Matrix4, Mesh, RepeatWrapping, RGBAFormat} from '../../libs/three/Three.js';
 
 /**
  * Make a new DataTexture to store the descriptions of the curves.

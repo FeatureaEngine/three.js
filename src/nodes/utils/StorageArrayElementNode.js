@@ -16,10 +16,6 @@ import ArrayElementNode from './ArrayElementNode.js';
  */
 class StorageArrayElementNode extends ArrayElementNode {
 
-    static get type() {
-        return 'StorageArrayElementNode';
-    }
-
     /**
      * Constructs storage buffer element node.
      *
@@ -38,6 +34,14 @@ class StorageArrayElementNode extends ArrayElementNode {
         this.isStorageArrayElementNode = true;
     }
 
+    static get type() {
+        return 'StorageArrayElementNode';
+    }
+
+    get storageBufferNode() {
+        return this.node;
+    }
+
     /**
      * The storage buffer node.
      *
@@ -46,10 +50,6 @@ class StorageArrayElementNode extends ArrayElementNode {
      */
     set storageBufferNode(value) {
         this.node = value;
-    }
-
-    get storageBufferNode() {
-        return this.node;
     }
 
     setup(builder) {

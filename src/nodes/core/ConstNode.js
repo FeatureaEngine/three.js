@@ -7,10 +7,6 @@ import InputNode from './InputNode.js';
  */
 class ConstNode extends InputNode {
 
-    static get type() {
-        return 'ConstNode';
-    }
-
     /**
      * Constructs a new input node.
      *
@@ -27,6 +23,10 @@ class ConstNode extends InputNode {
          * @default true
          */
         this.isConstNode = true;
+    }
+
+    static get type() {
+        return 'ConstNode';
     }
 
     /**

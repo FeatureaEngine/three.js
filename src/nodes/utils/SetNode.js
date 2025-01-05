@@ -14,10 +14,6 @@ import {vectorComponents} from '../core/constants.js';
  */
 class SetNode extends TempNode {
 
-    static get type() {
-        return 'SetNode';
-    }
-
     /**
      * Constructs a new set node.
      *
@@ -45,6 +41,10 @@ class SetNode extends TempNode {
          * @type {Node}
          */
         this.targetNode = targetNode;
+    }
+
+    static get type() {
+        return 'SetNode';
     }
 
     /**

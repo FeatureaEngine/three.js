@@ -1,5 +1,5 @@
 import TempNode from '../core/TempNode.js';
-import {nodeProxy, vec4, mat2, mat4} from '../tsl/TSLBase.js';
+import {mat2, mat4, nodeProxy, vec4} from '../tsl/TSLBase.js';
 import {cos, sin} from '../math/MathNode.js';
 
 /** @module RotateNode **/
@@ -10,10 +10,6 @@ import {cos, sin} from '../math/MathNode.js';
  * @augments TempNode
  */
 class RotateNode extends TempNode {
-
-    static get type() {
-        return 'RotateNode';
-    }
 
     /**
      * Constructs a new rotate node.
@@ -37,6 +33,10 @@ class RotateNode extends TempNode {
          * @type {Node}
          */
         this.rotationNode = rotationNode;
+    }
+
+    static get type() {
+        return 'RotateNode';
     }
 
     /**

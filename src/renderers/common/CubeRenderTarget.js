@@ -8,7 +8,7 @@ import {Scene} from '../../scenes/Scene.js';
 import {CubeCamera} from '../../cameras/CubeCamera.js';
 import {BoxGeometry} from '../../geometries/BoxGeometry.js';
 import {Mesh} from '../../objects/Mesh.js';
-import {BackSide, NoBlending, LinearFilter, LinearMipmapLinearFilter} from '../../constants.js';
+import {BackSide, LinearFilter, LinearMipmapLinearFilter, NoBlending} from '../../constants.js';
 
 // @TODO: Consider rename WebGLCubeRenderTarget to just CubeRenderTarget
 

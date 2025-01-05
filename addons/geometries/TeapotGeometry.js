@@ -1,10 +1,4 @@
-import {
-    BufferAttribute,
-    BufferGeometry,
-    Matrix4,
-    Vector3,
-    Vector4
-} from '../../libs/three/Three.js';
+import {BufferAttribute, BufferGeometry, Matrix4, Vector3, Vector4} from '../../libs/three/Three.js';
 
 /**
  * Tessellates the famous Utah teapot database by Martin Newell into triangles.

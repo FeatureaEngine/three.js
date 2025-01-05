@@ -66,10 +66,6 @@ class SSSLightingModel extends PhysicalLightingModel {
  */
 class MeshSSSNodeMaterial extends MeshPhysicalNodeMaterial {
 
-    static get type() {
-        return 'MeshSSSNodeMaterial';
-    }
-
     /**
      * Constructs a new mesh SSS node material.
      *
@@ -114,6 +110,10 @@ class MeshSSSNodeMaterial extends MeshPhysicalNodeMaterial {
          * @type {Node<float>?}
          */
         this.thicknessScaleNode = float(10.0);
+    }
+
+    static get type() {
+        return 'MeshSSSNodeMaterial';
     }
 
     /**

@@ -1,23 +1,23 @@
 import {
+    AlwaysCompare,
+    ClampToEdgeWrapping,
+    EqualCompare,
+    FloatType,
+    GreaterCompare,
+    GreaterEqualCompare,
+    LessCompare,
+    LessEqualCompare,
     LinearFilter,
     LinearMipmapLinearFilter,
     LinearMipmapNearestFilter,
+    MirroredRepeatWrapping,
     NearestFilter,
     NearestMipmapLinearFilter,
     NearestMipmapNearestFilter,
-    FloatType,
-    MirroredRepeatWrapping,
-    ClampToEdgeWrapping,
-    RepeatWrapping,
-    SRGBColorSpace,
     NeverCompare,
-    AlwaysCompare,
-    LessCompare,
-    LessEqualCompare,
-    EqualCompare,
-    GreaterEqualCompare,
-    GreaterCompare,
-    NotEqualCompare
+    NotEqualCompare,
+    RepeatWrapping,
+    SRGBColorSpace
 } from '../../../constants.js';
 
 let initialized = false, wrappingToGL, filterToGL, compareToGL;

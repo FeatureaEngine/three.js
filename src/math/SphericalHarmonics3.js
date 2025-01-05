@@ -20,12 +20,32 @@ class SphericalHarmonics3 {
         }
     }
 
+    // shBasis is an Array[ 9 ]
+    static getBasisAt(normal, shBasis) {
+        // normal is assumed to be unit length
+        const x = normal.x, y = normal.y, z = normal.z;
+        // band 0
+        shBasis[0] = 0.282095;
+        // band 1
+        shBasis[1] = 0.488603 * y;
+        shBasis[2] = 0.488603 * z;
+        shBasis[3] = 0.488603 * x;
+        // band 2
+        shBasis[4] = 1.092548 * x * y;
+        shBasis[5] = 1.092548 * y * z;
+        shBasis[6] = 0.315392 * (3 * z * z - 1);
+        shBasis[7] = 1.092548 * x * z;
+        shBasis[8] = 0.546274 * (x * x - y * y);
+    }
+
     set(coefficients) {
         for (let i = 0; i < 9; i++) {
             this.coefficients[i].copy(coefficients[i]);
         }
         return this;
     }
+
+    // get the radiance in the direction of the normal
 
     zero() {
         for (let i = 0; i < 9; i++) {
@@ -34,7 +54,9 @@ class SphericalHarmonics3 {
         return this;
     }
 
-    // get the radiance in the direction of the normal
+    // get the irradiance (radiance convolved with cosine lobe) in the direction of the normal
+    // target is a Vector3
+
     // target is a Vector3
     getAt(normal, target) {
         // normal is assumed to be unit length
@@ -55,8 +77,6 @@ class SphericalHarmonics3 {
         return target;
     }
 
-    // get the irradiance (radiance convolved with cosine lobe) in the direction of the normal
-    // target is a Vector3
     // https://graphics.stanford.edu/papers/envmap/envmap.pdf
     getIrradianceAt(normal, target) {
         // normal is assumed to be unit length
@@ -130,31 +150,14 @@ class SphericalHarmonics3 {
         return this;
     }
 
+    // evaluate the basis functions
+
     toArray(array = [], offset = 0) {
         const coefficients = this.coefficients;
         for (let i = 0; i < 9; i++) {
             coefficients[i].toArray(array, offset + (i * 3));
         }
         return array;
-    }
-
-    // evaluate the basis functions
-    // shBasis is an Array[ 9 ]
-    static getBasisAt(normal, shBasis) {
-        // normal is assumed to be unit length
-        const x = normal.x, y = normal.y, z = normal.z;
-        // band 0
-        shBasis[0] = 0.282095;
-        // band 1
-        shBasis[1] = 0.488603 * y;
-        shBasis[2] = 0.488603 * z;
-        shBasis[3] = 0.488603 * x;
-        // band 2
-        shBasis[4] = 1.092548 * x * y;
-        shBasis[5] = 1.092548 * y * z;
-        shBasis[6] = 0.315392 * (3 * z * z - 1);
-        shBasis[7] = 1.092548 * x * z;
-        shBasis[8] = 0.546274 * (x * x - y * y);
     }
 
 }

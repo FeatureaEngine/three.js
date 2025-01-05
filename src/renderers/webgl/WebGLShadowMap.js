@@ -1,4 +1,4 @@
-import {FrontSide, BackSide, DoubleSide, NearestFilter, PCFShadowMap, VSMShadowMap, RGBADepthPacking, NoBlending} from '../../constants.js';
+import {BackSide, DoubleSide, FrontSide, NearestFilter, NoBlending, PCFShadowMap, RGBADepthPacking, VSMShadowMap} from '../../constants.js';
 import {WebGLRenderTarget} from '../WebGLRenderTarget.js';
 import {MeshDepthMaterial} from '../../materials/MeshDepthMaterial.js';
 import {MeshDistanceMaterial} from '../../materials/MeshDistanceMaterial.js';

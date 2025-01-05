@@ -25,7 +25,7 @@ import {Matrix4} from '../../math/Matrix4.js';
 import {Vector2} from '../../math/Vector2.js';
 import {Vector4} from '../../math/Vector4.js';
 import {RenderTarget} from '../../core/RenderTarget.js';
-import {DoubleSide, BackSide, FrontSide, SRGBColorSpace, NoToneMapping, LinearFilter, LinearSRGBColorSpace, HalfFloatType, RGBAFormat, PCFShadowMap} from '../../constants.js';
+import {BackSide, DoubleSide, FrontSide, HalfFloatType, LinearFilter, LinearSRGBColorSpace, NoToneMapping, PCFShadowMap, RGBAFormat, SRGBColorSpace} from '../../constants.js';
 
 /** @module Renderer **/
 
@@ -608,6 +608,51 @@ class Renderer {
     }
 
     /**
+     * The coordinate system of the renderer. The value of this property
+     * depends on the selected backend. Either `THREE.WebGLCoordinateSystem` or
+     * `THREE.WebGPUCoordinateSystem`.
+     *
+     * @readonly
+     * @type {Number}
+     */
+    get coordinateSystem() {
+        return this.backend.coordinateSystem;
+    }
+
+    /**
+     * The current output tone mapping of the renderer. When a render target is set,
+     * the output tone mapping is always `NoToneMapping`.
+     *
+     * @type {Number}
+     */
+    get currentToneMapping() {
+        return this._renderTarget !== null ? NoToneMapping : this.toneMapping;
+    }
+
+    /**
+     * The current output color space of the renderer. When a render target is set,
+     * the output color space is always `LinearSRGBColorSpace`.
+     *
+     * @type {String}
+     */
+    get currentColorSpace() {
+        return this._renderTarget !== null ? LinearSRGBColorSpace : this.outputColorSpace;
+    }
+
+    /**
+     * Alias for `compileAsync()`.
+     *
+     * @method
+     * @param {Object3D} scene - The scene or 3D object to precompile.
+     * @param {Camera} camera - The camera that is used to render the scene.
+     * @param {Scene} targetScene - If the first argument is a 3D object, this parameter must represent the scene the 3D object is going to be added.
+     * @return {Promise} A Promise that resolves when the compile has been finished.
+     */
+    get compile() {
+        return this.compileAsync;
+    }
+
+    /**
      * Initializes the renderer so it is ready for usage.
      *
      * @async
@@ -657,18 +702,6 @@ class Renderer {
             resolve();
         });
         return this._initPromise;
-    }
-
-    /**
-     * The coordinate system of the renderer. The value of this property
-     * depends on the selected backend. Either `THREE.WebGLCoordinateSystem` or
-     * `THREE.WebGPUCoordinateSystem`.
-     *
-     * @readonly
-     * @type {Number}
-     */
-    get coordinateSystem() {
-        return this.backend.coordinateSystem;
     }
 
     /**
@@ -1524,26 +1557,6 @@ class Renderer {
     }
 
     /**
-     * The current output tone mapping of the renderer. When a render target is set,
-     * the output tone mapping is always `NoToneMapping`.
-     *
-     * @type {Number}
-     */
-    get currentToneMapping() {
-        return this._renderTarget !== null ? NoToneMapping : this.toneMapping;
-    }
-
-    /**
-     * The current output color space of the renderer. When a render target is set,
-     * the output color space is always `LinearSRGBColorSpace`.
-     *
-     * @type {String}
-     */
-    get currentColorSpace() {
-        return this._renderTarget !== null ? LinearSRGBColorSpace : this.outputColorSpace;
-    }
-
-    /**
      * Frees all internal resources of the renderer. Call this method if the renderer
      * is no longer in use by your app.
      */
@@ -2116,19 +2129,6 @@ class Renderer {
         this._bindings.updateForRender(renderObject);
         this._pipelines.getForRender(renderObject, this._compilationPromises);
         this._nodes.updateAfter(renderObject);
-    }
-
-    /**
-     * Alias for `compileAsync()`.
-     *
-     * @method
-     * @param {Object3D} scene - The scene or 3D object to precompile.
-     * @param {Camera} camera - The camera that is used to render the scene.
-     * @param {Scene} targetScene - If the first argument is a 3D object, this parameter must represent the scene the 3D object is going to be added.
-     * @return {Promise} A Promise that resolves when the compile has been finished.
-     */
-    get compile() {
-        return this.compileAsync;
     }
 
 }

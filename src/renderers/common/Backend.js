@@ -56,6 +56,16 @@ class Backend {
     }
 
     /**
+     * The coordinate system of the backend.
+     *
+     * @abstract
+     * @type {Number}
+     * @readonly
+     */
+    get coordinateSystem() {
+    }
+
+    /**
      * Initializes the backend so it is ready for usage. Concrete backends
      * are supposed to implement their rendering context creation and related
      * operations in this method.
@@ -66,16 +76,6 @@ class Backend {
      */
     async init(renderer) {
         this.renderer = renderer;
-    }
-
-    /**
-     * The coordinate system of the backend.
-     *
-     * @abstract
-     * @type {Number}
-     * @readonly
-     */
-    get coordinateSystem() {
     }
 
     // render context

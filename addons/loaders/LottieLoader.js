@@ -1,10 +1,4 @@
-import {
-    FileLoader,
-    Loader,
-    CanvasTexture,
-    NearestFilter,
-    SRGBColorSpace
-} from '../../libs/three/Three.js';
+import {CanvasTexture, FileLoader, Loader, NearestFilter, SRGBColorSpace} from '../../libs/three/Three.js';
 
 import lottie from '../../libs/lottie_canvas.module.js';
 

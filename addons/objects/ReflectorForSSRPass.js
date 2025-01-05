@@ -1,19 +1,4 @@
-import {
-    Color,
-    Matrix4,
-    Mesh,
-    PerspectiveCamera,
-    ShaderMaterial,
-    UniformsUtils,
-    Vector2,
-    Vector3,
-    WebGLRenderTarget,
-    DepthTexture,
-    UnsignedShortType,
-    NearestFilter,
-    Plane,
-    HalfFloatType
-} from '../../libs/three/Three.js';
+import {Color, DepthTexture, HalfFloatType, Matrix4, Mesh, NearestFilter, PerspectiveCamera, Plane, ShaderMaterial, UniformsUtils, UnsignedShortType, Vector2, Vector3, WebGLRenderTarget} from '../../libs/three/Three.js';
 
 class ReflectorForSSRPass extends Mesh {
 

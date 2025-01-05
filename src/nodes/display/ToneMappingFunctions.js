@@ -1,7 +1,7 @@
-import {Fn, float, mat3, vec3, If} from '../tsl/TSLBase.js';
+import {float, Fn, If, mat3, vec3} from '../tsl/TSLBase.js';
 import {select} from '../math/ConditionalNode.js';
-import {clamp, log2, max, min, pow, mix} from '../math/MathNode.js';
-import {mul, sub, div} from '../math/OperatorNode.js';
+import {clamp, log2, max, min, mix, pow} from '../math/MathNode.js';
+import {div, mul, sub} from '../math/OperatorNode.js';
 
 /** @module ToneMappingFunctions **/
 

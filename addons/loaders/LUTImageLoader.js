@@ -1,12 +1,4 @@
-import {
-    Loader,
-    TextureLoader,
-    Data3DTexture,
-    RGBAFormat,
-    UnsignedByteType,
-    ClampToEdgeWrapping,
-    LinearFilter,
-} from '../../libs/three/Three.js';
+import {ClampToEdgeWrapping, Data3DTexture, LinearFilter, Loader, RGBAFormat, TextureLoader, UnsignedByteType,} from '../../libs/three/Three.js';
 
 export class LUTImageLoader extends Loader {
 

@@ -34,10 +34,6 @@ export function getTextureIndex(textures, name) {
  */
 class MRTNode extends OutputStructNode {
 
-    static get type() {
-        return 'MRTNode';
-    }
-
     /**
      * Constructs a new output struct node.
      *
@@ -61,6 +57,10 @@ class MRTNode extends OutputStructNode {
          * @default true
          */
         this.isMRTNode = true;
+    }
+
+    static get type() {
+        return 'MRTNode';
     }
 
     /**

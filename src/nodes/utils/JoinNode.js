@@ -9,10 +9,6 @@ import TempNode from '../core/TempNode.js';
  */
 class JoinNode extends TempNode {
 
-    static get type() {
-        return 'JoinNode';
-    }
-
     /**
      * Constructs a new join node.
      *
@@ -27,6 +23,10 @@ class JoinNode extends TempNode {
          * @type {Array<Node>}
          */
         this.nodes = nodes;
+    }
+
+    static get type() {
+        return 'JoinNode';
     }
 
     /**

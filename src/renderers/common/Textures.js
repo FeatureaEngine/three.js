@@ -2,17 +2,7 @@ import DataMap from './DataMap.js';
 
 import {Vector3} from '../../math/Vector3.js';
 import {DepthTexture} from '../../textures/DepthTexture.js';
-import {
-    DepthStencilFormat,
-    DepthFormat,
-    UnsignedIntType,
-    UnsignedInt248Type,
-    EquirectangularReflectionMapping,
-    EquirectangularRefractionMapping,
-    CubeReflectionMapping,
-    CubeRefractionMapping,
-    UnsignedByteType
-} from '../../constants.js';
+import {CubeReflectionMapping, CubeRefractionMapping, DepthFormat, DepthStencilFormat, EquirectangularReflectionMapping, EquirectangularRefractionMapping, UnsignedByteType, UnsignedInt248Type, UnsignedIntType} from '../../constants.js';
 
 const _size = new Vector3();
 

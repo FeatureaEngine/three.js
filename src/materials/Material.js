@@ -1,6 +1,6 @@
 import {Color} from '../math/Color.js';
 import {EventDispatcher} from '../core/EventDispatcher.js';
-import {FrontSide, NormalBlending, LessEqualDepth, AddEquation, OneMinusSrcAlphaFactor, SrcAlphaFactor, AlwaysStencilFunc, KeepStencilOp} from '../constants.js';
+import {AddEquation, AlwaysStencilFunc, FrontSide, KeepStencilOp, LessEqualDepth, NormalBlending, OneMinusSrcAlphaFactor, SrcAlphaFactor} from '../constants.js';
 import {generateUUID} from '../math/MathUtils.js';
 
 let _materialId = 0;
@@ -68,6 +68,10 @@ class Material extends EventDispatcher {
             this.version++;
         }
         this._alphaTest = value;
+    }
+
+    set needsUpdate(value) {
+        if (value === true) this.version++;
     }
 
     // onBeforeRender and onBeforeCompile only supported in WebGLRenderer
@@ -345,10 +349,6 @@ class Material extends EventDispatcher {
 
     dispose() {
         this.dispatchEvent({type: 'dispose'});
-    }
-
-    set needsUpdate(value) {
-        if (value === true) this.version++;
     }
 
     onBuild( /* shaderobject, renderer */) {

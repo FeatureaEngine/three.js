@@ -2,26 +2,26 @@ import {WebGLUniforms} from './WebGLUniforms.js';
 import {WebGLShader} from './WebGLShader.js';
 import {ShaderChunk} from '../shaders/ShaderChunk.js';
 import {
-    NoToneMapping,
+    ACESFilmicToneMapping,
     AddOperation,
-    MixOperation,
-    MultiplyOperation,
+    AgXToneMapping,
+    CineonToneMapping,
+    CubeReflectionMapping,
     CubeRefractionMapping,
     CubeUVReflectionMapping,
-    CubeReflectionMapping,
-    PCFSoftShadowMap,
-    PCFShadowMap,
-    VSMShadowMap,
-    AgXToneMapping,
-    ACESFilmicToneMapping,
-    NeutralToneMapping,
-    CineonToneMapping,
     CustomToneMapping,
-    ReinhardToneMapping,
-    LinearToneMapping,
     GLSL3,
+    LinearToneMapping,
     LinearTransfer,
-    SRGBTransfer
+    MixOperation,
+    MultiplyOperation,
+    NeutralToneMapping,
+    NoToneMapping,
+    PCFShadowMap,
+    PCFSoftShadowMap,
+    ReinhardToneMapping,
+    SRGBTransfer,
+    VSMShadowMap
 } from '../../constants.js';
 import {ColorManagement} from '../../math/ColorManagement.js';
 import {Vector3} from '../../math/Vector3.js';

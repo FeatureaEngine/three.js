@@ -1,10 +1,4 @@
-import {
-    Matrix4,
-    Mesh,
-    MeshBasicMaterial,
-    EqualStencilFunc,
-    IncrementStencilOp
-} from '../../libs/three/Three.js';
+import {EqualStencilFunc, IncrementStencilOp, Matrix4, Mesh, MeshBasicMaterial} from '../../libs/three/Three.js';
 
 /**
  * A shadow Mesh that follows a shadow-casting Mesh in the scene, but is confined to a single plane.

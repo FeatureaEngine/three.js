@@ -1,12 +1,5 @@
-import {
-    DataTexture,
-    FloatType,
-    MathUtils,
-    RedFormat,
-    ShaderMaterial,
-    UniformsUtils
-} from '../../libs/three/Three.js';
-import {Pass, FullScreenQuad} from './Pass.js';
+import {DataTexture, FloatType, MathUtils, RedFormat, ShaderMaterial, UniformsUtils} from '../../libs/three/Three.js';
+import {FullScreenQuad, Pass} from './Pass.js';
 import {DigitalGlitch} from '../shaders/DigitalGlitch.js';
 
 class GlitchPass extends Pass {

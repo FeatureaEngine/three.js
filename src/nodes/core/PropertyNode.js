@@ -17,10 +17,6 @@ import {nodeImmutable, nodeObject} from '../tsl/TSLCore.js';
  */
 class PropertyNode extends Node {
 
-    static get type() {
-        return 'PropertyNode';
-    }
-
     /**
      * Constructs a new property node.
      *
@@ -53,6 +49,10 @@ class PropertyNode extends Node {
          * @default true
          */
         this.isPropertyNode = true;
+    }
+
+    static get type() {
+        return 'PropertyNode';
     }
 
     getHash(builder) {

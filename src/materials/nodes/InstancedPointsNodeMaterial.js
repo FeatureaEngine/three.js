@@ -4,8 +4,8 @@ import {cameraProjectionMatrix} from '../../nodes/accessors/Camera.js';
 import {materialColor, materialOpacity, materialPointWidth} from '../../nodes/accessors/MaterialNode.js'; // or should this be a property, instead?
 import {modelViewMatrix} from '../../nodes/accessors/ModelNode.js';
 import {positionGeometry} from '../../nodes/accessors/Position.js';
-import {smoothstep, lengthSq} from '../../nodes/math/MathNode.js';
-import {Fn, vec4, float} from '../../nodes/tsl/TSLBase.js';
+import {lengthSq, smoothstep} from '../../nodes/math/MathNode.js';
+import {float, Fn, vec4} from '../../nodes/tsl/TSLBase.js';
 import {uv} from '../../nodes/accessors/UV.js';
 import {viewport} from '../../nodes/display/ScreenNode.js';
 
@@ -23,10 +23,6 @@ const _defaultValues = new PointsMaterial();
  * @augments NodeMaterial
  */
 class InstancedPointsNodeMaterial extends NodeMaterial {
-
-    static get type() {
-        return 'InstancedPointsNodeMaterial';
-    }
 
     /**
      * Constructs a new instanced points node material.
@@ -75,6 +71,27 @@ class InstancedPointsNodeMaterial extends NodeMaterial {
         this._useAlphaToCoverage = true;
         this.setDefaultValues(_defaultValues);
         this.setValues(parameters);
+    }
+
+    static get type() {
+        return 'InstancedPointsNodeMaterial';
+    }
+
+    /**
+     * Whether alpha to coverage should be used or not.
+     *
+     * @type {Boolean}
+     * @default true
+     */
+    get alphaToCoverage() {
+        return this._useAlphaToCoverage;
+    }
+
+    set alphaToCoverage(value) {
+        if (this._useAlphaToCoverage !== value) {
+            this._useAlphaToCoverage = value;
+            this.needsUpdate = true;
+        }
     }
 
     /**
@@ -128,23 +145,6 @@ class InstancedPointsNodeMaterial extends NodeMaterial {
             return vec4(pointColorNode, alpha);
         })();
         super.setup(builder);
-    }
-
-    /**
-     * Whether alpha to coverage should be used or not.
-     *
-     * @type {Boolean}
-     * @default true
-     */
-    get alphaToCoverage() {
-        return this._useAlphaToCoverage;
-    }
-
-    set alphaToCoverage(value) {
-        if (this._useAlphaToCoverage !== value) {
-            this._useAlphaToCoverage = value;
-            this.needsUpdate = true;
-        }
     }
 
 }

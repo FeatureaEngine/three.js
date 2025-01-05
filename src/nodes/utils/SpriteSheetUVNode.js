@@ -1,6 +1,6 @@
 import Node from '../core/Node.js';
 import {uv} from '../accessors/UV.js';
-import {nodeProxy, float, vec2} from '../tsl/TSLBase.js';
+import {float, nodeProxy, vec2} from '../tsl/TSLBase.js';
 
 /** @module SpriteSheetUVNode **/
 
@@ -16,10 +16,6 @@ import {nodeProxy, float, vec2} from '../tsl/TSLBase.js';
  * @augments Node
  */
 class SpriteSheetUVNode extends Node {
-
-    static get type() {
-        return 'SpriteSheetUVNode';
-    }
 
     /**
      * Constructs a new sprite sheet uv node.
@@ -48,6 +44,10 @@ class SpriteSheetUVNode extends Node {
          * @type {Node<float>}
          */
         this.frameNode = frameNode;
+    }
+
+    static get type() {
+        return 'SpriteSheetUVNode';
     }
 
     setup() {

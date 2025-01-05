@@ -1,6 +1,6 @@
 import Node from '../core/Node.js';
 import {float, log, log2, nodeImmutable, nodeProxy} from '../tsl/TSLBase.js';
-import {cameraNear, cameraFar} from '../accessors/Camera.js';
+import {cameraFar, cameraNear} from '../accessors/Camera.js';
 import {positionView} from '../accessors/Position.js';
 import {viewportDepthTexture} from './ViewportDepthTextureNode.js';
 
@@ -14,10 +14,6 @@ import {viewportDepthTexture} from './ViewportDepthTextureNode.js';
  * @augments Node
  */
 class ViewportDepthNode extends Node {
-
-    static get type() {
-        return 'ViewportDepthNode';
-    }
 
     /**
      * Constructs a new viewport depth node.
@@ -54,6 +50,10 @@ class ViewportDepthNode extends Node {
          * @default true
          */
         this.isViewportDepthNode = true;
+    }
+
+    static get type() {
+        return 'ViewportDepthNode';
     }
 
     generate(builder) {

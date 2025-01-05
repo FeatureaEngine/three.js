@@ -13,10 +13,6 @@ import {EventDispatcher} from '../../core/EventDispatcher.js';
  */
 class ScriptableValueNode extends Node {
 
-    static get type() {
-        return 'ScriptableValueNode';
-    }
-
     /**
      * Constructs a new scriptable node.
      *
@@ -68,6 +64,10 @@ class ScriptableValueNode extends Node {
         this.isScriptableValueNode = true;
     }
 
+    static get type() {
+        return 'ScriptableValueNode';
+    }
+
     /**
      * Whether this node represents an output or not.
      *
@@ -79,6 +79,15 @@ class ScriptableValueNode extends Node {
         return this.outputType !== null;
     }
 
+    /**
+     * The node's value.
+     *
+     * @type {Any}
+     */
+    get value() {
+        return this._value;
+    }
+
     set value(val) {
         if (this._value === val) return;
         if (this._cache && this.inputType === 'URL' && this.value.value instanceof ArrayBuffer) {
@@ -88,15 +97,6 @@ class ScriptableValueNode extends Node {
         this._value = val;
         this.events.dispatchEvent({type: 'change'});
         this.refresh();
-    }
-
-    /**
-     * The node's value.
-     *
-     * @type {Any}
-     */
-    get value() {
-        return this._value;
     }
 
     /**

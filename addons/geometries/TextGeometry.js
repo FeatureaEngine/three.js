@@ -15,9 +15,7 @@
  * }
  */
 
-import {
-    ExtrudeGeometry
-} from '../../libs/three/Three.js';
+import {ExtrudeGeometry} from '../../libs/three/Three.js';
 
 class TextGeometry extends ExtrudeGeometry {
 

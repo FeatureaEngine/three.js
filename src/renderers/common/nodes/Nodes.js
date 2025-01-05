@@ -3,7 +3,7 @@ import ChainMap from '../ChainMap.js';
 import NodeBuilderState from './NodeBuilderState.js';
 import {cubeMapNode} from '../../../nodes/utils/CubeMapNode.js';
 import {NodeFrame} from '../../../nodes/Nodes.js';
-import {objectGroup, renderGroup, frameGroup, cubeTexture, texture, fog, rangeFogFactor, densityFogFactor, reference, pmremTexture, screenUV} from '../../../nodes/TSL.js';
+import {cubeTexture, densityFogFactor, fog, frameGroup, objectGroup, pmremTexture, rangeFogFactor, reference, renderGroup, screenUV, texture} from '../../../nodes/TSL.js';
 
 import {CubeUVReflectionMapping, EquirectangularReflectionMapping, EquirectangularRefractionMapping} from '../../../constants.js';
 import {hashArray} from '../../../nodes/core/NodeUtils.js';
@@ -72,6 +72,16 @@ class Nodes extends DataMap {
          * @type {Object<String,WeakMap>}
          */
         this.cacheLib = {};
+    }
+
+    /**
+     * A boolean that indicates whether tone mapping should be enabled
+     * or not.
+     *
+     * @type {Boolean}
+     */
+    get isToneMappingState() {
+        return this.renderer.getRenderTarget() ? false : true;
     }
 
     /**
@@ -300,16 +310,6 @@ class Nodes extends DataMap {
         }
         _chainKeys.length = 0;
         return cacheKeyData.cacheKey;
-    }
-
-    /**
-     * A boolean that indicates whether tone mapping should be enabled
-     * or not.
-     *
-     * @type {Boolean}
-     */
-    get isToneMappingState() {
-        return this.renderer.getRenderTarget() ? false : true;
     }
 
     /**

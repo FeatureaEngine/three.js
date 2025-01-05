@@ -1,15 +1,5 @@
-import {
-    Color,
-    HalfFloatType,
-    MeshDepthMaterial,
-    NearestFilter,
-    NoBlending,
-    RGBADepthPacking,
-    ShaderMaterial,
-    UniformsUtils,
-    WebGLRenderTarget
-} from '../../libs/three/Three.js';
-import {Pass, FullScreenQuad} from './Pass.js';
+import {Color, HalfFloatType, MeshDepthMaterial, NearestFilter, NoBlending, RGBADepthPacking, ShaderMaterial, UniformsUtils, WebGLRenderTarget} from '../../libs/three/Three.js';
+import {FullScreenQuad, Pass} from './Pass.js';
 import {BokehShader} from '../shaders/BokehShader.js';
 
 /**

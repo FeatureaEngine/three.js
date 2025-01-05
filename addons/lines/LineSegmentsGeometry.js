@@ -1,13 +1,4 @@
-import {
-    Box3,
-    Float32BufferAttribute,
-    InstancedBufferGeometry,
-    InstancedInterleavedBuffer,
-    InterleavedBufferAttribute,
-    Sphere,
-    Vector3,
-    WireframeGeometry
-} from '../../libs/three/Three.js';
+import {Box3, Float32BufferAttribute, InstancedBufferGeometry, InstancedInterleavedBuffer, InterleavedBufferAttribute, Sphere, Vector3, WireframeGeometry} from '../../libs/three/Three.js';
 
 const _box = new Box3();
 const _vector = new Vector3();

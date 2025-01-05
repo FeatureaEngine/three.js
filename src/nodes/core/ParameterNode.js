@@ -10,10 +10,6 @@ import PropertyNode from './PropertyNode.js';
  */
 class ParameterNode extends PropertyNode {
 
-    static get type() {
-        return 'ParameterNode';
-    }
-
     /**
      * Constructs a new parameter node.
      *
@@ -30,6 +26,10 @@ class ParameterNode extends PropertyNode {
          * @default true
          */
         this.isParameterNode = true;
+    }
+
+    static get type() {
+        return 'ParameterNode';
     }
 
     getHash() {

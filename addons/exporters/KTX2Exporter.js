@@ -1,24 +1,22 @@
 import {
     ColorManagement,
+    DataTexture,
     FloatType,
     HalfFloatType,
-    UnsignedByteType,
+    LinearSRGBColorSpace,
+    NoColorSpace,
+    RedFormat,
+    RedIntegerFormat,
+    REVISION,
     RGBAFormat,
     RGFormat,
     RGIntegerFormat,
-    RedFormat,
-    RedIntegerFormat,
-    NoColorSpace,
-    LinearSRGBColorSpace,
     SRGBColorSpace,
     SRGBTransfer,
-    DataTexture,
-    REVISION,
+    UnsignedByteType,
 } from '../../libs/three/Three.js';
 
 import {
-    write,
-    KTX2Container,
     KHR_DF_CHANNEL_RGBSDA_ALPHA,
     KHR_DF_CHANNEL_RGBSDA_BLUE,
     KHR_DF_CHANNEL_RGBSDA_GREEN,
@@ -31,6 +29,7 @@ import {
     KHR_DF_SAMPLE_DATATYPE_SIGNED,
     KHR_DF_TRANSFER_LINEAR,
     KHR_DF_TRANSFER_SRGB,
+    KTX2Container,
     VK_FORMAT_R16_SFLOAT,
     VK_FORMAT_R16G16_SFLOAT,
     VK_FORMAT_R16G16B16A16_SFLOAT,
@@ -43,6 +42,7 @@ import {
     VK_FORMAT_R8G8_UNORM,
     VK_FORMAT_R8G8B8A8_SRGB,
     VK_FORMAT_R8G8B8A8_UNORM,
+    write,
 } from '../../libs/ktx-parse.module.js';
 
 /**

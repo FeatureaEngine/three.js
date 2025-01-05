@@ -1,11 +1,11 @@
 import TempNode from '../core/TempNode.js';
-import {default as TextureNode/*, texture*/} from '../accessors/TextureNode.js';
+import {default as TextureNode} from '../accessors/TextureNode.js';
 import {NodeUpdateType} from '../core/constants.js';
 import {nodeObject} from '../tsl/TSLBase.js';
 import {uniform} from '../core/UniformNode.js';
-import {viewZToOrthographicDepth, perspectiveDepthToViewZ} from './ViewportDepthNode.js';
+import {perspectiveDepthToViewZ, viewZToOrthographicDepth} from './ViewportDepthNode.js';
 
-import {HalfFloatType/*, FloatType*/} from '../../constants.js';
+import {HalfFloatType} from '../../constants.js';
 import {Vector2} from '../../math/Vector2.js';
 import {DepthTexture} from '../../textures/DepthTexture.js';
 import {RenderTarget} from '../../core/RenderTarget.js';
@@ -20,10 +20,6 @@ const _size = new Vector2();
  * @augments module:TextureNode~TextureNode
  */
 class PassTextureNode extends TextureNode {
-
-    static get type() {
-        return 'PassTextureNode';
-    }
 
     /**
      * Constructs a new pass texture node.
@@ -40,6 +36,10 @@ class PassTextureNode extends TextureNode {
          */
         this.passNode = passNode;
         this.setUpdateMatrix(false);
+    }
+
+    static get type() {
+        return 'PassTextureNode';
     }
 
     setup(builder) {
@@ -60,10 +60,6 @@ class PassTextureNode extends TextureNode {
  * @augments module:PassTextureNode~PassTextureNode
  */
 class PassMultipleTextureNode extends PassTextureNode {
-
-    static get type() {
-        return 'PassMultipleTextureNode';
-    }
 
     /**
      * Constructs a new pass texture node.
@@ -89,6 +85,10 @@ class PassMultipleTextureNode extends PassTextureNode {
          * @type {Boolean}
          */
         this.previousTexture = previousTexture;
+    }
+
+    static get type() {
+        return 'PassMultipleTextureNode';
     }
 
     /**
@@ -125,10 +125,6 @@ class PassMultipleTextureNode extends PassTextureNode {
  * @augments TempNode
  */
 class PassNode extends TempNode {
-
-    static get type() {
-        return 'PassNode';
-    }
 
     /**
      * Constructs a new pass node.
@@ -284,6 +280,10 @@ class PassNode extends TempNode {
          * @default 'frame'
          */
         this.updateBeforeType = NodeUpdateType.FRAME;
+    }
+
+    static get type() {
+        return 'PassNode';
     }
 
     /**

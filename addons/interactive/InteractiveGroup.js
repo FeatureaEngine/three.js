@@ -1,8 +1,4 @@
-import {
-    Group,
-    Raycaster,
-    Vector2
-} from '../../libs/three/Three.js';
+import {Group, Raycaster, Vector2} from '../../libs/three/Three.js';
 
 const _pointer = new Vector2();
 const _event = {type: '', data: _pointer};

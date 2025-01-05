@@ -1,15 +1,6 @@
-import {
-    Color,
-    ShaderMaterial,
-    UniformsLib,
-    UniformsUtils,
-} from '../../libs/three/Three.js';
+import {Color, ShaderMaterial, UniformsLib, UniformsUtils,} from '../../libs/three/Three.js';
 
 class LDrawConditionalLineMaterial extends ShaderMaterial {
-
-    static get type() {
-        return 'LDrawConditionalLineMaterial';
-    }
 
     constructor(parameters) {
         super({
@@ -105,6 +96,10 @@ class LDrawConditionalLineMaterial extends ShaderMaterial {
         });
         this.setValues(parameters);
         this.isLDrawConditionalLineMaterial = true;
+    }
+
+    static get type() {
+        return 'LDrawConditionalLineMaterial';
     }
 
 }

@@ -12,10 +12,6 @@ import {vectorComponents} from '../core/constants.js';
  */
 class AssignNode extends TempNode {
 
-    static get type() {
-        return 'AssignNode';
-    }
-
     /**
      * Constructs a new assign node.
      *
@@ -36,6 +32,10 @@ class AssignNode extends TempNode {
          * @type {Node}
          */
         this.sourceNode = sourceNode;
+    }
+
+    static get type() {
+        return 'AssignNode';
     }
 
     /**

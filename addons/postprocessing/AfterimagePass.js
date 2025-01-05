@@ -1,12 +1,5 @@
-import {
-    HalfFloatType,
-    NearestFilter,
-    NoBlending,
-    ShaderMaterial,
-    UniformsUtils,
-    WebGLRenderTarget
-} from '../../libs/three/Three.js';
-import {Pass, FullScreenQuad} from './Pass.js';
+import {HalfFloatType, NearestFilter, NoBlending, ShaderMaterial, UniformsUtils, WebGLRenderTarget} from '../../libs/three/Three.js';
+import {FullScreenQuad, Pass} from './Pass.js';
 import {CopyShader} from '../shaders/CopyShader.js';
 import {AfterimageShader} from '../shaders/AfterimageShader.js';
 

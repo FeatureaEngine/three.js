@@ -1,17 +1,4 @@
-import {
-    Color,
-    Matrix4,
-    Mesh,
-    PerspectiveCamera,
-    Plane,
-    Quaternion,
-    ShaderMaterial,
-    UniformsUtils,
-    Vector3,
-    Vector4,
-    WebGLRenderTarget,
-    HalfFloatType
-} from '../../libs/three/Three.js';
+import {Color, HalfFloatType, Matrix4, Mesh, PerspectiveCamera, Plane, Quaternion, ShaderMaterial, UniformsUtils, Vector3, Vector4, WebGLRenderTarget} from '../../libs/three/Three.js';
 
 class Refractor extends Mesh {
 

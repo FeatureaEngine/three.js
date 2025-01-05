@@ -12,10 +12,6 @@ const _defaultValues = new ShadowMaterial();
  */
 class ShadowNodeMaterial extends NodeMaterial {
 
-    static get type() {
-        return 'ShadowNodeMaterial';
-    }
-
     /**
      * Constructs a new shadow node material.
      *
@@ -41,6 +37,10 @@ class ShadowNodeMaterial extends NodeMaterial {
         this.lights = true;
         this.setDefaultValues(_defaultValues);
         this.setValues(parameters);
+    }
+
+    static get type() {
+        return 'ShadowNodeMaterial';
     }
 
     /**

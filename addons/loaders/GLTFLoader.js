@@ -13,6 +13,7 @@ import {
     FrontSide,
     Group,
     ImageBitmapLoader,
+    InstancedBufferAttribute,
     InstancedMesh,
     InterleavedBuffer,
     InterleavedBufferAttribute,
@@ -20,13 +21,13 @@ import {
     InterpolateDiscrete,
     InterpolateLinear,
     Line,
-    LineBasicMaterial,
-    LineLoop,
-    LineSegments,
     LinearFilter,
     LinearMipmapLinearFilter,
     LinearMipmapNearestFilter,
     LinearSRGBColorSpace,
+    LineBasicMaterial,
+    LineLoop,
+    LineSegments,
     Loader,
     LoaderUtils,
     Material,
@@ -55,15 +56,14 @@ import {
     SkinnedMesh,
     Sphere,
     SpotLight,
+    SRGBColorSpace,
     Texture,
     TextureLoader,
     TriangleFanDrawMode,
     TriangleStripDrawMode,
     Vector2,
     Vector3,
-    VectorKeyframeTrack,
-    SRGBColorSpace,
-    InstancedBufferAttribute
+    VectorKeyframeTrack
 } from '../../libs/three/Three.js';
 import {toTrianglesDrawMode} from '../utils/BufferGeometryUtils.js';
 

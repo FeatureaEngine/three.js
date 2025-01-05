@@ -2,19 +2,11 @@ import NodeMaterial from './NodeMaterial.js';
 import {dashSize, gapSize, varyingProperty} from '../../nodes/core/PropertyNode.js';
 import {attribute} from '../../nodes/core/AttributeNode.js';
 import {cameraProjectionMatrix} from '../../nodes/accessors/Camera.js';
-import {
-    materialColor,
-    materialLineScale,
-    materialLineDashSize,
-    materialLineGapSize,
-    materialLineDashOffset,
-    materialLineWidth,
-    materialOpacity
-} from '../../nodes/accessors/MaterialNode.js';
+import {materialColor, materialLineDashOffset, materialLineDashSize, materialLineGapSize, materialLineScale, materialLineWidth, materialOpacity} from '../../nodes/accessors/MaterialNode.js';
 import {modelViewMatrix} from '../../nodes/accessors/ModelNode.js';
 import {positionGeometry} from '../../nodes/accessors/Position.js';
 import {mix, smoothstep} from '../../nodes/math/MathNode.js';
-import {Fn, float, vec2, vec3, vec4, If} from '../../nodes/tsl/TSLBase.js';
+import {float, Fn, If, vec2, vec3, vec4} from '../../nodes/tsl/TSLBase.js';
 import {uv} from '../../nodes/accessors/UV.js';
 import {viewport} from '../../nodes/display/ScreenNode.js';
 import {viewportSharedTexture} from '../../nodes/display/ViewportSharedTextureNode.js';
@@ -31,10 +23,6 @@ const _defaultValues = new LineDashedMaterial();
  * @augments NodeMaterial
  */
 class Line2NodeMaterial extends NodeMaterial {
-
-    static get type() {
-        return 'Line2NodeMaterial';
-    }
 
     /**
      * Constructs a new node material for wide line rendering.
@@ -120,6 +108,62 @@ class Line2NodeMaterial extends NodeMaterial {
         this._useAlphaToCoverage = true;
         this._useWorldUnits = false;
         this.setValues(parameters);
+    }
+
+    static get type() {
+        return 'Line2NodeMaterial';
+    }
+
+    /**
+     * Whether the lines should sized in world units or not.
+     * When set to `false` the unit is pixel.
+     *
+     * @type {Boolean}
+     * @default false
+     */
+    get worldUnits() {
+        return this._useWorldUnits;
+    }
+
+    set worldUnits(value) {
+        if (this._useWorldUnits !== value) {
+            this._useWorldUnits = value;
+            this.needsUpdate = true;
+        }
+    }
+
+    /**
+     * Whether the lines should be dashed or not.
+     *
+     * @type {Boolean}
+     * @default false
+     */
+    get dashed() {
+        return this._useDash;
+    }
+
+    set dashed(value) {
+        if (this._useDash !== value) {
+            this._useDash = value;
+            this.needsUpdate = true;
+        }
+    }
+
+    /**
+     * Whether alpha to coverage should be used or not.
+     *
+     * @type {Boolean}
+     * @default true
+     */
+    get alphaToCoverage() {
+        return this._useAlphaToCoverage;
+    }
+
+    set alphaToCoverage(value) {
+        if (this._useAlphaToCoverage !== value) {
+            this._useAlphaToCoverage = value;
+            this.needsUpdate = true;
+        }
     }
 
     /**
@@ -332,58 +376,6 @@ class Line2NodeMaterial extends NodeMaterial {
             this.outputNode = vec4(this.colorNode.rgb.mul(opacityNode).add(viewportSharedTexture().rgb.mul(opacityNode.oneMinus())), this.colorNode.a);
         }
         super.setup(builder);
-    }
-
-    /**
-     * Whether the lines should sized in world units or not.
-     * When set to `false` the unit is pixel.
-     *
-     * @type {Boolean}
-     * @default false
-     */
-    get worldUnits() {
-        return this._useWorldUnits;
-    }
-
-    set worldUnits(value) {
-        if (this._useWorldUnits !== value) {
-            this._useWorldUnits = value;
-            this.needsUpdate = true;
-        }
-    }
-
-    /**
-     * Whether the lines should be dashed or not.
-     *
-     * @type {Boolean}
-     * @default false
-     */
-    get dashed() {
-        return this._useDash;
-    }
-
-    set dashed(value) {
-        if (this._useDash !== value) {
-            this._useDash = value;
-            this.needsUpdate = true;
-        }
-    }
-
-    /**
-     * Whether alpha to coverage should be used or not.
-     *
-     * @type {Boolean}
-     * @default true
-     */
-    get alphaToCoverage() {
-        return this._useAlphaToCoverage;
-    }
-
-    set alphaToCoverage(value) {
-        if (this._useAlphaToCoverage !== value) {
-            this._useAlphaToCoverage = value;
-            this.needsUpdate = true;
-        }
     }
 
 }

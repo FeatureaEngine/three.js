@@ -1,10 +1,4 @@
-import {
-    DataTexture,
-    Matrix4,
-    RepeatWrapping,
-    Vector2,
-    Vector3,
-} from '../../libs/three/Three.js';
+import {DataTexture, Matrix4, RepeatWrapping, Vector2, Vector3,} from '../../libs/three/Three.js';
 
 /**
  * References:

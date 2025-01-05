@@ -1,13 +1,4 @@
-import {
-    BackSide,
-    BoxGeometry,
-    Mesh,
-    PerspectiveCamera,
-    Scene,
-    ShaderLib,
-    ShaderMaterial,
-    UniformsUtils
-} from '../../libs/three/Three.js';
+import {BackSide, BoxGeometry, Mesh, PerspectiveCamera, Scene, ShaderLib, ShaderMaterial, UniformsUtils} from '../../libs/three/Three.js';
 import {Pass} from './Pass.js';
 
 class CubeTexturePass extends Pass {

@@ -23,10 +23,6 @@ const _size = new Vector2();
  */
 class RTTNode extends TextureNode {
 
-    static get type() {
-        return 'RTTNode';
-    }
-
     /**
      * Constructs a new RTT node.
      *
@@ -109,6 +105,10 @@ class RTTNode extends TextureNode {
          * @default 'render'
          */
         this.updateBeforeType = NodeUpdateType.RENDER;
+    }
+
+    static get type() {
+        return 'RTTNode';
     }
 
     /**

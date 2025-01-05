@@ -19,10 +19,6 @@ const OUTPUT_COLOR_SPACE = 'OutputColorSpace';
  */
 class ColorSpaceNode extends TempNode {
 
-    static get type() {
-        return 'ColorSpaceNode';
-    }
-
     /**
      * Constructs a new color space node.
      *
@@ -50,6 +46,10 @@ class ColorSpaceNode extends TempNode {
          * @type {String}
          */
         this.target = target;
+    }
+
+    static get type() {
+        return 'ColorSpaceNode';
     }
 
     /**

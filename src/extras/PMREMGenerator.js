@@ -1,15 +1,4 @@
-import {
-    CubeReflectionMapping,
-    CubeRefractionMapping,
-    CubeUVReflectionMapping,
-    LinearFilter,
-    NoToneMapping,
-    NoBlending,
-    RGBAFormat,
-    HalfFloatType,
-    BackSide,
-    LinearSRGBColorSpace
-} from '../constants.js';
+import {BackSide, CubeReflectionMapping, CubeRefractionMapping, CubeUVReflectionMapping, HalfFloatType, LinearFilter, LinearSRGBColorSpace, NoBlending, NoToneMapping, RGBAFormat} from '../constants.js';
 
 import {BufferAttribute} from '../core/BufferAttribute.js';
 import {BufferGeometry} from '../core/BufferGeometry.js';

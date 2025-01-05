@@ -12,6 +12,801 @@ class SVGLoader extends Loader {
         this.defaultUnit = 'px';
     }
 
+    static createShapes(shapePath) {
+        // Param shapePath: a shapepath as returned by the parse function of this class
+        // Returns Shape object
+        const BIGNUMBER = 999999999;
+        const IntersectionLocationType = {
+            ORIGIN: 0,
+            DESTINATION: 1,
+            BETWEEN: 2,
+            LEFT: 3,
+            RIGHT: 4,
+            BEHIND: 5,
+            BEYOND: 6
+        };
+        const classifyResult = {
+            loc: IntersectionLocationType.ORIGIN,
+            t: 0
+        };
+
+        function findEdgeIntersection(a0, a1, b0, b1) {
+            const x1 = a0.x;
+            const x2 = a1.x;
+            const x3 = b0.x;
+            const x4 = b1.x;
+            const y1 = a0.y;
+            const y2 = a1.y;
+            const y3 = b0.y;
+            const y4 = b1.y;
+            const nom1 = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
+            const nom2 = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
+            const denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
+            const t1 = nom1 / denom;
+            const t2 = nom2 / denom;
+            if (((denom === 0) && (nom1 !== 0)) || (t1 <= 0) || (t1 >= 1) || (t2 < 0) || (t2 > 1)) {
+                //1. lines are parallel or edges don't intersect
+                return null;
+            } else if ((nom1 === 0) && (denom === 0)) {
+                //2. lines are colinear
+                //check if endpoints of edge2 (b0-b1) lies on edge1 (a0-a1)
+                for (let i = 0; i < 2; i++) {
+                    classifyPoint(i === 0 ? b0 : b1, a0, a1);
+                    //find position of this endpoints relatively to edge1
+                    if (classifyResult.loc == IntersectionLocationType.ORIGIN) {
+                        const point = (i === 0 ? b0 : b1);
+                        return {x: point.x, y: point.y, t: classifyResult.t};
+                    } else if (classifyResult.loc == IntersectionLocationType.BETWEEN) {
+                        const x = +((x1 + classifyResult.t * (x2 - x1)).toPrecision(10));
+                        const y = +((y1 + classifyResult.t * (y2 - y1)).toPrecision(10));
+                        return {x: x, y: y, t: classifyResult.t,};
+                    }
+                }
+                return null;
+            } else {
+                //3. edges intersect
+                for (let i = 0; i < 2; i++) {
+                    classifyPoint(i === 0 ? b0 : b1, a0, a1);
+                    if (classifyResult.loc == IntersectionLocationType.ORIGIN) {
+                        const point = (i === 0 ? b0 : b1);
+                        return {x: point.x, y: point.y, t: classifyResult.t};
+                    }
+                }
+                const x = +((x1 + t1 * (x2 - x1)).toPrecision(10));
+                const y = +((y1 + t1 * (y2 - y1)).toPrecision(10));
+                return {x: x, y: y, t: t1};
+            }
+        }
+
+        function classifyPoint(p, edgeStart, edgeEnd) {
+            const ax = edgeEnd.x - edgeStart.x;
+            const ay = edgeEnd.y - edgeStart.y;
+            const bx = p.x - edgeStart.x;
+            const by = p.y - edgeStart.y;
+            const sa = ax * by - bx * ay;
+            if ((p.x === edgeStart.x) && (p.y === edgeStart.y)) {
+                classifyResult.loc = IntersectionLocationType.ORIGIN;
+                classifyResult.t = 0;
+                return;
+            }
+            if ((p.x === edgeEnd.x) && (p.y === edgeEnd.y)) {
+                classifyResult.loc = IntersectionLocationType.DESTINATION;
+                classifyResult.t = 1;
+                return;
+            }
+            if (sa < -Number.EPSILON) {
+                classifyResult.loc = IntersectionLocationType.LEFT;
+                return;
+            }
+            if (sa > Number.EPSILON) {
+                classifyResult.loc = IntersectionLocationType.RIGHT;
+                return;
+
+            }
+            if (((ax * bx) < 0) || ((ay * by) < 0)) {
+                classifyResult.loc = IntersectionLocationType.BEHIND;
+                return;
+            }
+            if ((Math.sqrt(ax * ax + ay * ay)) < (Math.sqrt(bx * bx + by * by))) {
+                classifyResult.loc = IntersectionLocationType.BEYOND;
+                return;
+            }
+            let t;
+            if (ax !== 0) {
+                t = bx / ax;
+            } else {
+                t = by / ay;
+            }
+            classifyResult.loc = IntersectionLocationType.BETWEEN;
+            classifyResult.t = t;
+        }
+
+        function getIntersections(path1, path2) {
+            const intersectionsRaw = [];
+            const intersections = [];
+            for (let index = 1; index < path1.length; index++) {
+                const path1EdgeStart = path1[index - 1];
+                const path1EdgeEnd = path1[index];
+                for (let index2 = 1; index2 < path2.length; index2++) {
+                    const path2EdgeStart = path2[index2 - 1];
+                    const path2EdgeEnd = path2[index2];
+                    const intersection = findEdgeIntersection(path1EdgeStart, path1EdgeEnd, path2EdgeStart, path2EdgeEnd);
+                    if (intersection !== null && intersectionsRaw.find(i => i.t <= intersection.t + Number.EPSILON && i.t >= intersection.t - Number.EPSILON) === undefined) {
+                        intersectionsRaw.push(intersection);
+                        intersections.push(new Vector2(intersection.x, intersection.y));
+                    }
+                }
+            }
+            return intersections;
+        }
+
+        function getScanlineIntersections(scanline, boundingBox, paths) {
+            const center = new Vector2();
+            boundingBox.getCenter(center);
+            const allIntersections = [];
+            paths.forEach(path => {
+                // check if the center of the bounding box is in the bounding box of the paths.
+                // this is a pruning method to limit the search of intersections in paths that can't envelop of the current path.
+                // if a path envelops another path. The center of that other path, has to be inside the bounding box of the enveloping path.
+                if (path.boundingBox.containsPoint(center)) {
+                    const intersections = getIntersections(scanline, path.points);
+                    intersections.forEach(p => {
+                        allIntersections.push({identifier: path.identifier, isCW: path.isCW, point: p});
+                    });
+                }
+            });
+            allIntersections.sort((i1, i2) => {
+                return i1.point.x - i2.point.x;
+            });
+            return allIntersections;
+        }
+
+        function isHoleTo(simplePath, allPaths, scanlineMinX, scanlineMaxX, _fillRule) {
+            if (_fillRule === null || _fillRule === undefined || _fillRule === '') {
+                _fillRule = 'nonzero';
+            }
+            const centerBoundingBox = new Vector2();
+            simplePath.boundingBox.getCenter(centerBoundingBox);
+            const scanline = [new Vector2(scanlineMinX, centerBoundingBox.y), new Vector2(scanlineMaxX, centerBoundingBox.y)];
+            const scanlineIntersections = getScanlineIntersections(scanline, simplePath.boundingBox, allPaths);
+            scanlineIntersections.sort((i1, i2) => {
+                return i1.point.x - i2.point.x;
+            });
+            const baseIntersections = [];
+            const otherIntersections = [];
+            scanlineIntersections.forEach(i => {
+                if (i.identifier === simplePath.identifier) {
+                    baseIntersections.push(i);
+                } else {
+                    otherIntersections.push(i);
+                }
+            });
+            const firstXOfPath = baseIntersections[0].point.x;
+            // build up the path hierarchy
+            const stack = [];
+            let i = 0;
+            while (i < otherIntersections.length && otherIntersections[i].point.x < firstXOfPath) {
+                if (stack.length > 0 && stack[stack.length - 1] === otherIntersections[i].identifier) {
+                    stack.pop();
+                } else {
+                    stack.push(otherIntersections[i].identifier);
+                }
+                i++;
+            }
+            stack.push(simplePath.identifier);
+            if (_fillRule === 'evenodd') {
+                const isHole = stack.length % 2 === 0 ? true : false;
+                const isHoleFor = stack[stack.length - 2];
+                return {identifier: simplePath.identifier, isHole: isHole, for: isHoleFor};
+            } else if (_fillRule === 'nonzero') {
+                // check if path is a hole by counting the amount of paths with alternating rotations it has to cross.
+                let isHole = true;
+                let isHoleFor = null;
+                let lastCWValue = null;
+                for (let i = 0; i < stack.length; i++) {
+                    const identifier = stack[i];
+                    if (isHole) {
+                        lastCWValue = allPaths[identifier].isCW;
+                        isHole = false;
+                        isHoleFor = identifier;
+                    } else if (lastCWValue !== allPaths[identifier].isCW) {
+                        lastCWValue = allPaths[identifier].isCW;
+                        isHole = true;
+                    }
+                }
+                return {identifier: simplePath.identifier, isHole: isHole, for: isHoleFor};
+            } else {
+                console.warn('fill-rule: "' + _fillRule + '" is currently not implemented.');
+            }
+        }
+
+        // check for self intersecting paths
+        // TODO
+        // check intersecting paths
+        // TODO
+        // prepare paths for hole detection
+        let scanlineMinX = BIGNUMBER;
+        let scanlineMaxX = -BIGNUMBER;
+        let simplePaths = shapePath.subPaths.map(p => {
+            const points = p.getPoints();
+            let maxY = -BIGNUMBER;
+            let minY = BIGNUMBER;
+            let maxX = -BIGNUMBER;
+            let minX = BIGNUMBER;
+            //points.forEach(p => p.y *= -1);
+            for (let i = 0; i < points.length; i++) {
+                const p = points[i];
+                if (p.y > maxY) {
+                    maxY = p.y;
+                }
+                if (p.y < minY) {
+                    minY = p.y;
+                }
+                if (p.x > maxX) {
+                    maxX = p.x;
+                }
+                if (p.x < minX) {
+                    minX = p.x;
+                }
+            }
+            //
+            if (scanlineMaxX <= maxX) {
+                scanlineMaxX = maxX + 1;
+            }
+            if (scanlineMinX >= minX) {
+                scanlineMinX = minX - 1;
+            }
+            return {
+                curves: p.curves,
+                points: points,
+                isCW: ShapeUtils.isClockWise(points),
+                identifier: -1,
+                boundingBox: new Box2(new Vector2(minX, minY), new Vector2(maxX, maxY))
+            };
+        });
+        simplePaths = simplePaths.filter(sp => sp.points.length > 1);
+        for (let identifier = 0; identifier < simplePaths.length; identifier++) {
+            simplePaths[identifier].identifier = identifier;
+        }
+        // check if path is solid or a hole
+        const isAHole = simplePaths.map(p => isHoleTo(p, simplePaths, scanlineMinX, scanlineMaxX, (shapePath.userData ? shapePath.userData.style.fillRule : undefined)));
+
+        const shapesToReturn = [];
+        simplePaths.forEach(p => {
+            const amIAHole = isAHole[p.identifier];
+            if (!amIAHole.isHole) {
+                const shape = new Shape();
+                shape.curves = p.curves;
+                const holes = isAHole.filter(h => h.isHole && h.for === p.identifier);
+                holes.forEach(h => {
+                    const hole = simplePaths[h.identifier];
+                    const path = new Path();
+                    path.curves = hole.curves;
+                    shape.holes.push(path);
+                });
+                shapesToReturn.push(shape);
+            }
+        });
+        return shapesToReturn;
+    }
+
+    static getStrokeStyle(width, color, lineJoin, lineCap, miterLimit) {
+        // Param width: Stroke width
+        // Param color: As returned by THREE.Color.getStyle()
+        // Param lineJoin: One of "round", "bevel", "miter" or "miter-limit"
+        // Param lineCap: One of "round", "square" or "butt"
+        // Param miterLimit: Maximum join length, in multiples of the "width" parameter (join is truncated if it exceeds that distance)
+        // Returns style object
+        width = width !== undefined ? width : 1;
+        color = color !== undefined ? color : '#000';
+        lineJoin = lineJoin !== undefined ? lineJoin : 'miter';
+        lineCap = lineCap !== undefined ? lineCap : 'butt';
+        miterLimit = miterLimit !== undefined ? miterLimit : 4;
+        return {
+            strokeColor: color,
+            strokeWidth: width,
+            strokeLineJoin: lineJoin,
+            strokeLineCap: lineCap,
+            strokeMiterLimit: miterLimit
+        };
+    }
+
+    static pointsToStroke(points, style, arcDivisions, minDistance) {
+        // Generates a stroke with some width around the given path.
+        // The path can be open or closed (last point equals to first point)
+        // Param points: Array of Vector2D (the path). Minimum 2 points.
+        // Param style: Object with SVG properties as returned by SVGLoader.getStrokeStyle(), or SVGLoader.parse() in the path.userData.style object
+        // Params arcDivisions: Arc divisions for round joins and endcaps. (Optional)
+        // Param minDistance: Points closer to this distance will be merged. (Optional)
+        // Returns BufferGeometry with stroke triangles (In plane z = 0). UV coordinates are generated ('u' along path. 'v' across it, from left to right)
+        const vertices = [];
+        const normals = [];
+        const uvs = [];
+        if (SVGLoader.pointsToStrokeWithBuffers(points, style, arcDivisions, minDistance, vertices, normals, uvs) === 0) {
+            return null;
+        }
+        const geometry = new BufferGeometry();
+        geometry.setAttribute('position', new Float32BufferAttribute(vertices, 3));
+        geometry.setAttribute('normal', new Float32BufferAttribute(normals, 3));
+        geometry.setAttribute('uv', new Float32BufferAttribute(uvs, 2));
+        return geometry;
+    }
+
+    static pointsToStrokeWithBuffers(points, style, arcDivisions, minDistance, vertices, normals, uvs, vertexOffset) {
+        // This function can be called to update existing arrays or buffers.
+        // Accepts same parameters as pointsToStroke, plus the buffers and optional offset.
+        // Param vertexOffset: Offset vertices to start writing in the buffers (3 elements/vertex for vertices and normals, and 2 elements/vertex for uvs)
+        // Returns number of written vertices / normals / uvs pairs
+        // if 'vertices' parameter is undefined no triangles will be generated, but the returned vertices count will still be valid (useful to preallocate the buffers)
+        // 'normals' and 'uvs' buffers are optional
+        const tempV2_1 = new Vector2();
+        const tempV2_2 = new Vector2();
+        const tempV2_3 = new Vector2();
+        const tempV2_4 = new Vector2();
+        const tempV2_5 = new Vector2();
+        const tempV2_6 = new Vector2();
+        const tempV2_7 = new Vector2();
+        const lastPointL = new Vector2();
+        const lastPointR = new Vector2();
+        const point0L = new Vector2();
+        const point0R = new Vector2();
+        const currentPointL = new Vector2();
+        const currentPointR = new Vector2();
+        const nextPointL = new Vector2();
+        const nextPointR = new Vector2();
+        const innerPoint = new Vector2();
+        const outerPoint = new Vector2();
+        arcDivisions = arcDivisions !== undefined ? arcDivisions : 12;
+        minDistance = minDistance !== undefined ? minDistance : 0.001;
+        vertexOffset = vertexOffset !== undefined ? vertexOffset : 0;
+        // First ensure there are no duplicated points
+        points = removeDuplicatedPoints(points);
+        const numPoints = points.length;
+        if (numPoints < 2) return 0;
+        const isClosed = points[0].equals(points[numPoints - 1]);
+        let currentPoint;
+        let previousPoint = points[0];
+        let nextPoint;
+        const strokeWidth2 = style.strokeWidth / 2;
+        const deltaU = 1 / (numPoints - 1);
+        let u0 = 0, u1;
+        let innerSideModified;
+        let joinIsOnLeftSide;
+        let isMiter;
+        let initialJoinIsOnLeftSide = false;
+        let numVertices = 0;
+        let currentCoordinate = vertexOffset * 3;
+        let currentCoordinateUV = vertexOffset * 2;
+        // Get initial left and right stroke points
+        getNormal(points[0], points[1], tempV2_1).multiplyScalar(strokeWidth2);
+        lastPointL.copy(points[0]).sub(tempV2_1);
+        lastPointR.copy(points[0]).add(tempV2_1);
+        point0L.copy(lastPointL);
+        point0R.copy(lastPointR);
+        for (let iPoint = 1; iPoint < numPoints; iPoint++) {
+            currentPoint = points[iPoint];
+            // Get next point
+            if (iPoint === numPoints - 1) {
+                if (isClosed) {
+                    // Skip duplicated initial point
+                    nextPoint = points[1];
+                } else nextPoint = undefined;
+            } else {
+                nextPoint = points[iPoint + 1];
+            }
+            // Normal of previous segment in tempV2_1
+            const normal1 = tempV2_1;
+            getNormal(previousPoint, currentPoint, normal1);
+            tempV2_3.copy(normal1).multiplyScalar(strokeWidth2);
+            currentPointL.copy(currentPoint).sub(tempV2_3);
+            currentPointR.copy(currentPoint).add(tempV2_3);
+            u1 = u0 + deltaU;
+            innerSideModified = false;
+            if (nextPoint !== undefined) {
+                // Normal of next segment in tempV2_2
+                getNormal(currentPoint, nextPoint, tempV2_2);
+                tempV2_3.copy(tempV2_2).multiplyScalar(strokeWidth2);
+                nextPointL.copy(currentPoint).sub(tempV2_3);
+                nextPointR.copy(currentPoint).add(tempV2_3);
+                joinIsOnLeftSide = true;
+                tempV2_3.subVectors(nextPoint, previousPoint);
+                if (normal1.dot(tempV2_3) < 0) {
+                    joinIsOnLeftSide = false;
+                }
+                if (iPoint === 1) initialJoinIsOnLeftSide = joinIsOnLeftSide;
+                tempV2_3.subVectors(nextPoint, currentPoint);
+                tempV2_3.normalize();
+                const dot = Math.abs(normal1.dot(tempV2_3));
+                // If path is straight, don't create join
+                if (dot > Number.EPSILON) {
+                    // Compute inner and outer segment intersections
+                    const miterSide = strokeWidth2 / dot;
+                    tempV2_3.multiplyScalar(-miterSide);
+                    tempV2_4.subVectors(currentPoint, previousPoint);
+                    tempV2_5.copy(tempV2_4).setLength(miterSide).add(tempV2_3);
+                    innerPoint.copy(tempV2_5).negate();
+                    const miterLength2 = tempV2_5.length();
+                    const segmentLengthPrev = tempV2_4.length();
+                    tempV2_4.divideScalar(segmentLengthPrev);
+                    tempV2_6.subVectors(nextPoint, currentPoint);
+                    const segmentLengthNext = tempV2_6.length();
+                    tempV2_6.divideScalar(segmentLengthNext);
+                    // Check that previous and next segments doesn't overlap with the innerPoint of intersection
+                    if (tempV2_4.dot(innerPoint) < segmentLengthPrev && tempV2_6.dot(innerPoint) < segmentLengthNext) {
+                        innerSideModified = true;
+                    }
+                    outerPoint.copy(tempV2_5).add(currentPoint);
+                    innerPoint.add(currentPoint);
+                    isMiter = false;
+                    if (innerSideModified) {
+                        if (joinIsOnLeftSide) {
+                            nextPointR.copy(innerPoint);
+                            currentPointR.copy(innerPoint);
+                        } else {
+                            nextPointL.copy(innerPoint);
+                            currentPointL.copy(innerPoint);
+                        }
+                    } else {
+                        // The segment triangles are generated here if there was overlapping
+                        makeSegmentTriangles();
+                    }
+                    switch (style.strokeLineJoin) {
+                        case 'bevel':
+                            makeSegmentWithBevelJoin(joinIsOnLeftSide, innerSideModified, u1);
+                            break;
+                        case 'round':
+                            // Segment triangles
+                            createSegmentTrianglesWithMiddleSection(joinIsOnLeftSide, innerSideModified);
+                            // Join triangles
+                            if (joinIsOnLeftSide) {
+                                makeCircularSector(currentPoint, currentPointL, nextPointL, u1, 0);
+                            } else {
+                                makeCircularSector(currentPoint, nextPointR, currentPointR, u1, 1);
+                            }
+                            break;
+                        case 'miter':
+                        case 'miter-clip':
+                        default:
+                            const miterFraction = (strokeWidth2 * style.strokeMiterLimit) / miterLength2;
+                            if (miterFraction < 1) {
+                                // The join miter length exceeds the miter limit
+                                if (style.strokeLineJoin !== 'miter-clip') {
+                                    makeSegmentWithBevelJoin(joinIsOnLeftSide, innerSideModified, u1);
+                                    break;
+                                } else {
+                                    // Segment triangles
+                                    createSegmentTrianglesWithMiddleSection(joinIsOnLeftSide, innerSideModified);
+                                    // Miter-clip join triangles
+                                    if (joinIsOnLeftSide) {
+                                        tempV2_6.subVectors(outerPoint, currentPointL).multiplyScalar(miterFraction).add(currentPointL);
+                                        tempV2_7.subVectors(outerPoint, nextPointL).multiplyScalar(miterFraction).add(nextPointL);
+                                        addVertex(currentPointL, u1, 0);
+                                        addVertex(tempV2_6, u1, 0);
+                                        addVertex(currentPoint, u1, 0.5);
+                                        addVertex(currentPoint, u1, 0.5);
+                                        addVertex(tempV2_6, u1, 0);
+                                        addVertex(tempV2_7, u1, 0);
+                                        addVertex(currentPoint, u1, 0.5);
+                                        addVertex(tempV2_7, u1, 0);
+                                        addVertex(nextPointL, u1, 0);
+                                    } else {
+                                        tempV2_6.subVectors(outerPoint, currentPointR).multiplyScalar(miterFraction).add(currentPointR);
+                                        tempV2_7.subVectors(outerPoint, nextPointR).multiplyScalar(miterFraction).add(nextPointR);
+                                        addVertex(currentPointR, u1, 1);
+                                        addVertex(tempV2_6, u1, 1);
+                                        addVertex(currentPoint, u1, 0.5);
+                                        addVertex(currentPoint, u1, 0.5);
+                                        addVertex(tempV2_6, u1, 1);
+                                        addVertex(tempV2_7, u1, 1);
+                                        addVertex(currentPoint, u1, 0.5);
+                                        addVertex(tempV2_7, u1, 1);
+                                        addVertex(nextPointR, u1, 1);
+                                    }
+                                }
+                            } else {
+                                // Miter join segment triangles
+                                if (innerSideModified) {
+                                    // Optimized segment + join triangles
+                                    if (joinIsOnLeftSide) {
+                                        addVertex(lastPointR, u0, 1);
+                                        addVertex(lastPointL, u0, 0);
+                                        addVertex(outerPoint, u1, 0);
+                                        addVertex(lastPointR, u0, 1);
+                                        addVertex(outerPoint, u1, 0);
+                                        addVertex(innerPoint, u1, 1);
+                                    } else {
+                                        addVertex(lastPointR, u0, 1);
+                                        addVertex(lastPointL, u0, 0);
+                                        addVertex(outerPoint, u1, 1);
+                                        addVertex(lastPointL, u0, 0);
+                                        addVertex(innerPoint, u1, 0);
+                                        addVertex(outerPoint, u1, 1);
+                                    }
+
+                                    if (joinIsOnLeftSide) {
+                                        nextPointL.copy(outerPoint);
+                                    } else {
+                                        nextPointR.copy(outerPoint);
+                                    }
+
+                                } else {
+                                    // Add extra miter join triangles
+                                    if (joinIsOnLeftSide) {
+                                        addVertex(currentPointL, u1, 0);
+                                        addVertex(outerPoint, u1, 0);
+                                        addVertex(currentPoint, u1, 0.5);
+                                        addVertex(currentPoint, u1, 0.5);
+                                        addVertex(outerPoint, u1, 0);
+                                        addVertex(nextPointL, u1, 0);
+                                    } else {
+                                        addVertex(currentPointR, u1, 1);
+                                        addVertex(outerPoint, u1, 1);
+                                        addVertex(currentPoint, u1, 0.5);
+                                        addVertex(currentPoint, u1, 0.5);
+                                        addVertex(outerPoint, u1, 1);
+                                        addVertex(nextPointR, u1, 1);
+                                    }
+                                }
+                                isMiter = true;
+                            }
+                            break;
+                    }
+                } else {
+                    // The segment triangles are generated here when two consecutive points are collinear
+                    makeSegmentTriangles();
+                }
+            } else {
+                // The segment triangles are generated here if it is the ending segment
+                makeSegmentTriangles();
+            }
+            if (!isClosed && iPoint === numPoints - 1) {
+                // Start line endcap
+                addCapGeometry(points[0], point0L, point0R, joinIsOnLeftSide, true, u0);
+            }
+            // Increment loop variables
+            u0 = u1;
+            previousPoint = currentPoint;
+            lastPointL.copy(nextPointL);
+            lastPointR.copy(nextPointR);
+        }
+        if (!isClosed) {
+            // Ending line endcap
+            addCapGeometry(currentPoint, currentPointL, currentPointR, joinIsOnLeftSide, false, u1);
+        } else if (innerSideModified && vertices) {
+            // Modify path first segment vertices to adjust to the segments inner and outer intersections
+            let lastOuter = outerPoint;
+            let lastInner = innerPoint;
+            if (initialJoinIsOnLeftSide !== joinIsOnLeftSide) {
+                lastOuter = innerPoint;
+                lastInner = outerPoint;
+            }
+            if (joinIsOnLeftSide) {
+                if (isMiter || initialJoinIsOnLeftSide) {
+                    lastInner.toArray(vertices, 0 * 3);
+                    lastInner.toArray(vertices, 3 * 3);
+                    if (isMiter) {
+                        lastOuter.toArray(vertices, 1 * 3);
+                    }
+                }
+            } else {
+                if (isMiter || !initialJoinIsOnLeftSide) {
+                    lastInner.toArray(vertices, 1 * 3);
+                    lastInner.toArray(vertices, 3 * 3);
+                    if (isMiter) {
+                        lastOuter.toArray(vertices, 0 * 3);
+                    }
+                }
+            }
+        }
+        return numVertices;
+        // -- End of algorithm
+        // -- Functions
+        function getNormal(p1, p2, result) {
+            result.subVectors(p2, p1);
+            return result.set(-result.y, result.x).normalize();
+        }
+
+        function addVertex(position, u, v) {
+            if (vertices) {
+                vertices[currentCoordinate] = position.x;
+                vertices[currentCoordinate + 1] = position.y;
+                vertices[currentCoordinate + 2] = 0;
+                if (normals) {
+                    normals[currentCoordinate] = 0;
+                    normals[currentCoordinate + 1] = 0;
+                    normals[currentCoordinate + 2] = 1;
+                }
+                currentCoordinate += 3;
+                if (uvs) {
+                    uvs[currentCoordinateUV] = u;
+                    uvs[currentCoordinateUV + 1] = v;
+                    currentCoordinateUV += 2;
+                }
+            }
+            numVertices += 3;
+        }
+
+        function makeCircularSector(center, p1, p2, u, v) {
+            // param p1, p2: Points in the circle arc.
+            // p1 and p2 are in clockwise direction.
+            tempV2_1.copy(p1).sub(center).normalize();
+            tempV2_2.copy(p2).sub(center).normalize();
+            let angle = Math.PI;
+            const dot = tempV2_1.dot(tempV2_2);
+            if (Math.abs(dot) < 1) angle = Math.abs(Math.acos(dot));
+            angle /= arcDivisions;
+            tempV2_3.copy(p1);
+            for (let i = 0, il = arcDivisions - 1; i < il; i++) {
+                tempV2_4.copy(tempV2_3).rotateAround(center, angle);
+                addVertex(tempV2_3, u, v);
+                addVertex(tempV2_4, u, v);
+                addVertex(center, u, 0.5);
+                tempV2_3.copy(tempV2_4);
+            }
+            addVertex(tempV2_4, u, v);
+            addVertex(p2, u, v);
+            addVertex(center, u, 0.5);
+        }
+
+        function makeSegmentTriangles() {
+            addVertex(lastPointR, u0, 1);
+            addVertex(lastPointL, u0, 0);
+            addVertex(currentPointL, u1, 0);
+            addVertex(lastPointR, u0, 1);
+            addVertex(currentPointL, u1, 0);
+            addVertex(currentPointR, u1, 1);
+        }
+
+        function makeSegmentWithBevelJoin(joinIsOnLeftSide, innerSideModified, u) {
+            if (innerSideModified) {
+                // Optimized segment + bevel triangles
+                if (joinIsOnLeftSide) {
+                    // Path segments triangles
+                    addVertex(lastPointR, u0, 1);
+                    addVertex(lastPointL, u0, 0);
+                    addVertex(currentPointL, u1, 0);
+                    addVertex(lastPointR, u0, 1);
+                    addVertex(currentPointL, u1, 0);
+                    addVertex(innerPoint, u1, 1);
+                    // Bevel join triangle
+                    addVertex(currentPointL, u, 0);
+                    addVertex(nextPointL, u, 0);
+                    addVertex(innerPoint, u, 0.5);
+                } else {
+                    // Path segments triangles
+                    addVertex(lastPointR, u0, 1);
+                    addVertex(lastPointL, u0, 0);
+                    addVertex(currentPointR, u1, 1);
+                    addVertex(lastPointL, u0, 0);
+                    addVertex(innerPoint, u1, 0);
+                    addVertex(currentPointR, u1, 1);
+                    // Bevel join triangle
+                    addVertex(currentPointR, u, 1);
+                    addVertex(innerPoint, u, 0);
+                    addVertex(nextPointR, u, 1);
+                }
+            } else {
+                // Bevel join triangle. The segment triangles are done in the main loop
+                if (joinIsOnLeftSide) {
+                    addVertex(currentPointL, u, 0);
+                    addVertex(nextPointL, u, 0);
+                    addVertex(currentPoint, u, 0.5);
+                } else {
+                    addVertex(currentPointR, u, 1);
+                    addVertex(nextPointR, u, 0);
+                    addVertex(currentPoint, u, 0.5);
+                }
+            }
+        }
+
+        function createSegmentTrianglesWithMiddleSection(joinIsOnLeftSide, innerSideModified) {
+            if (innerSideModified) {
+                if (joinIsOnLeftSide) {
+                    addVertex(lastPointR, u0, 1);
+                    addVertex(lastPointL, u0, 0);
+                    addVertex(currentPointL, u1, 0);
+                    addVertex(lastPointR, u0, 1);
+                    addVertex(currentPointL, u1, 0);
+                    addVertex(innerPoint, u1, 1);
+                    addVertex(currentPointL, u0, 0);
+                    addVertex(currentPoint, u1, 0.5);
+                    addVertex(innerPoint, u1, 1);
+                    addVertex(currentPoint, u1, 0.5);
+                    addVertex(nextPointL, u0, 0);
+                    addVertex(innerPoint, u1, 1);
+                } else {
+                    addVertex(lastPointR, u0, 1);
+                    addVertex(lastPointL, u0, 0);
+                    addVertex(currentPointR, u1, 1);
+                    addVertex(lastPointL, u0, 0);
+                    addVertex(innerPoint, u1, 0);
+                    addVertex(currentPointR, u1, 1);
+                    addVertex(currentPointR, u0, 1);
+                    addVertex(innerPoint, u1, 0);
+                    addVertex(currentPoint, u1, 0.5);
+                    addVertex(currentPoint, u1, 0.5);
+                    addVertex(innerPoint, u1, 0);
+                    addVertex(nextPointR, u0, 1);
+                }
+            }
+        }
+
+        function addCapGeometry(center, p1, p2, joinIsOnLeftSide, start, u) {
+            // param center: End point of the path
+            // param p1, p2: Left and right cap points
+            switch (style.strokeLineCap) {
+                case 'round':
+                    if (start) {
+                        makeCircularSector(center, p2, p1, u, 0.5);
+                    } else {
+                        makeCircularSector(center, p1, p2, u, 0.5);
+                    }
+                    break;
+                case 'square':
+                    if (start) {
+                        tempV2_1.subVectors(p1, center);
+                        tempV2_2.set(tempV2_1.y, -tempV2_1.x);
+                        tempV2_3.addVectors(tempV2_1, tempV2_2).add(center);
+                        tempV2_4.subVectors(tempV2_2, tempV2_1).add(center);
+                        // Modify already existing vertices
+                        if (joinIsOnLeftSide) {
+                            tempV2_3.toArray(vertices, 1 * 3);
+                            tempV2_4.toArray(vertices, 0 * 3);
+                            tempV2_4.toArray(vertices, 3 * 3);
+                        } else {
+                            tempV2_3.toArray(vertices, 1 * 3);
+                            // using tempV2_4 to update 3rd vertex if the uv.y of 3rd vertex is 1
+                            uvs[3 * 2 + 1] === 1 ? tempV2_4.toArray(vertices, 3 * 3) : tempV2_3.toArray(vertices, 3 * 3);
+                            tempV2_4.toArray(vertices, 0 * 3);
+                        }
+                    } else {
+                        tempV2_1.subVectors(p2, center);
+                        tempV2_2.set(tempV2_1.y, -tempV2_1.x);
+                        tempV2_3.addVectors(tempV2_1, tempV2_2).add(center);
+                        tempV2_4.subVectors(tempV2_2, tempV2_1).add(center);
+                        const vl = vertices.length;
+                        // Modify already existing vertices
+                        if (joinIsOnLeftSide) {
+                            tempV2_3.toArray(vertices, vl - 1 * 3);
+                            tempV2_4.toArray(vertices, vl - 2 * 3);
+                            tempV2_4.toArray(vertices, vl - 4 * 3);
+                        } else {
+                            tempV2_4.toArray(vertices, vl - 2 * 3);
+                            tempV2_3.toArray(vertices, vl - 1 * 3);
+                            tempV2_4.toArray(vertices, vl - 4 * 3);
+                        }
+                    }
+                    break;
+                case 'butt':
+                default:
+                    // Nothing to do here
+                    break;
+            }
+        }
+
+        function removeDuplicatedPoints(points) {
+            // Creates a new array if necessary with duplicated points removed.
+            // This does not remove duplicated initial and ending points of a closed path.
+            let dupPoints = false;
+            for (let i = 1, n = points.length - 1; i < n; i++) {
+                if (points[i].distanceTo(points[i + 1]) < minDistance) {
+                    dupPoints = true;
+                    break;
+                }
+            }
+            if (!dupPoints) return points;
+            const newPoints = [];
+            newPoints.push(points[0]);
+            for (let i = 1, n = points.length - 1; i < n; i++) {
+                if (points[i].distanceTo(points[i + 1]) >= minDistance) {
+                    newPoints.push(points[i]);
+                }
+            }
+            newPoints.push(points[points.length - 1]);
+            return newPoints;
+        }
+    }
+
     load(url, onLoad, onProgress, onError) {
         const scope = this;
         const loader = new FileLoader(scope.manager);
@@ -1266,801 +2061,6 @@ class SVGLoader extends Loader {
         const data = {paths: paths, xml: xml.documentElement};
         // console.log( paths );
         return data;
-    }
-
-    static createShapes(shapePath) {
-        // Param shapePath: a shapepath as returned by the parse function of this class
-        // Returns Shape object
-        const BIGNUMBER = 999999999;
-        const IntersectionLocationType = {
-            ORIGIN: 0,
-            DESTINATION: 1,
-            BETWEEN: 2,
-            LEFT: 3,
-            RIGHT: 4,
-            BEHIND: 5,
-            BEYOND: 6
-        };
-        const classifyResult = {
-            loc: IntersectionLocationType.ORIGIN,
-            t: 0
-        };
-
-        function findEdgeIntersection(a0, a1, b0, b1) {
-            const x1 = a0.x;
-            const x2 = a1.x;
-            const x3 = b0.x;
-            const x4 = b1.x;
-            const y1 = a0.y;
-            const y2 = a1.y;
-            const y3 = b0.y;
-            const y4 = b1.y;
-            const nom1 = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
-            const nom2 = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
-            const denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
-            const t1 = nom1 / denom;
-            const t2 = nom2 / denom;
-            if (((denom === 0) && (nom1 !== 0)) || (t1 <= 0) || (t1 >= 1) || (t2 < 0) || (t2 > 1)) {
-                //1. lines are parallel or edges don't intersect
-                return null;
-            } else if ((nom1 === 0) && (denom === 0)) {
-                //2. lines are colinear
-                //check if endpoints of edge2 (b0-b1) lies on edge1 (a0-a1)
-                for (let i = 0; i < 2; i++) {
-                    classifyPoint(i === 0 ? b0 : b1, a0, a1);
-                    //find position of this endpoints relatively to edge1
-                    if (classifyResult.loc == IntersectionLocationType.ORIGIN) {
-                        const point = (i === 0 ? b0 : b1);
-                        return {x: point.x, y: point.y, t: classifyResult.t};
-                    } else if (classifyResult.loc == IntersectionLocationType.BETWEEN) {
-                        const x = +((x1 + classifyResult.t * (x2 - x1)).toPrecision(10));
-                        const y = +((y1 + classifyResult.t * (y2 - y1)).toPrecision(10));
-                        return {x: x, y: y, t: classifyResult.t,};
-                    }
-                }
-                return null;
-            } else {
-                //3. edges intersect
-                for (let i = 0; i < 2; i++) {
-                    classifyPoint(i === 0 ? b0 : b1, a0, a1);
-                    if (classifyResult.loc == IntersectionLocationType.ORIGIN) {
-                        const point = (i === 0 ? b0 : b1);
-                        return {x: point.x, y: point.y, t: classifyResult.t};
-                    }
-                }
-                const x = +((x1 + t1 * (x2 - x1)).toPrecision(10));
-                const y = +((y1 + t1 * (y2 - y1)).toPrecision(10));
-                return {x: x, y: y, t: t1};
-            }
-        }
-
-        function classifyPoint(p, edgeStart, edgeEnd) {
-            const ax = edgeEnd.x - edgeStart.x;
-            const ay = edgeEnd.y - edgeStart.y;
-            const bx = p.x - edgeStart.x;
-            const by = p.y - edgeStart.y;
-            const sa = ax * by - bx * ay;
-            if ((p.x === edgeStart.x) && (p.y === edgeStart.y)) {
-                classifyResult.loc = IntersectionLocationType.ORIGIN;
-                classifyResult.t = 0;
-                return;
-            }
-            if ((p.x === edgeEnd.x) && (p.y === edgeEnd.y)) {
-                classifyResult.loc = IntersectionLocationType.DESTINATION;
-                classifyResult.t = 1;
-                return;
-            }
-            if (sa < -Number.EPSILON) {
-                classifyResult.loc = IntersectionLocationType.LEFT;
-                return;
-            }
-            if (sa > Number.EPSILON) {
-                classifyResult.loc = IntersectionLocationType.RIGHT;
-                return;
-
-            }
-            if (((ax * bx) < 0) || ((ay * by) < 0)) {
-                classifyResult.loc = IntersectionLocationType.BEHIND;
-                return;
-            }
-            if ((Math.sqrt(ax * ax + ay * ay)) < (Math.sqrt(bx * bx + by * by))) {
-                classifyResult.loc = IntersectionLocationType.BEYOND;
-                return;
-            }
-            let t;
-            if (ax !== 0) {
-                t = bx / ax;
-            } else {
-                t = by / ay;
-            }
-            classifyResult.loc = IntersectionLocationType.BETWEEN;
-            classifyResult.t = t;
-        }
-
-        function getIntersections(path1, path2) {
-            const intersectionsRaw = [];
-            const intersections = [];
-            for (let index = 1; index < path1.length; index++) {
-                const path1EdgeStart = path1[index - 1];
-                const path1EdgeEnd = path1[index];
-                for (let index2 = 1; index2 < path2.length; index2++) {
-                    const path2EdgeStart = path2[index2 - 1];
-                    const path2EdgeEnd = path2[index2];
-                    const intersection = findEdgeIntersection(path1EdgeStart, path1EdgeEnd, path2EdgeStart, path2EdgeEnd);
-                    if (intersection !== null && intersectionsRaw.find(i => i.t <= intersection.t + Number.EPSILON && i.t >= intersection.t - Number.EPSILON) === undefined) {
-                        intersectionsRaw.push(intersection);
-                        intersections.push(new Vector2(intersection.x, intersection.y));
-                    }
-                }
-            }
-            return intersections;
-        }
-
-        function getScanlineIntersections(scanline, boundingBox, paths) {
-            const center = new Vector2();
-            boundingBox.getCenter(center);
-            const allIntersections = [];
-            paths.forEach(path => {
-                // check if the center of the bounding box is in the bounding box of the paths.
-                // this is a pruning method to limit the search of intersections in paths that can't envelop of the current path.
-                // if a path envelops another path. The center of that other path, has to be inside the bounding box of the enveloping path.
-                if (path.boundingBox.containsPoint(center)) {
-                    const intersections = getIntersections(scanline, path.points);
-                    intersections.forEach(p => {
-                        allIntersections.push({identifier: path.identifier, isCW: path.isCW, point: p});
-                    });
-                }
-            });
-            allIntersections.sort((i1, i2) => {
-                return i1.point.x - i2.point.x;
-            });
-            return allIntersections;
-        }
-
-        function isHoleTo(simplePath, allPaths, scanlineMinX, scanlineMaxX, _fillRule) {
-            if (_fillRule === null || _fillRule === undefined || _fillRule === '') {
-                _fillRule = 'nonzero';
-            }
-            const centerBoundingBox = new Vector2();
-            simplePath.boundingBox.getCenter(centerBoundingBox);
-            const scanline = [new Vector2(scanlineMinX, centerBoundingBox.y), new Vector2(scanlineMaxX, centerBoundingBox.y)];
-            const scanlineIntersections = getScanlineIntersections(scanline, simplePath.boundingBox, allPaths);
-            scanlineIntersections.sort((i1, i2) => {
-                return i1.point.x - i2.point.x;
-            });
-            const baseIntersections = [];
-            const otherIntersections = [];
-            scanlineIntersections.forEach(i => {
-                if (i.identifier === simplePath.identifier) {
-                    baseIntersections.push(i);
-                } else {
-                    otherIntersections.push(i);
-                }
-            });
-            const firstXOfPath = baseIntersections[0].point.x;
-            // build up the path hierarchy
-            const stack = [];
-            let i = 0;
-            while (i < otherIntersections.length && otherIntersections[i].point.x < firstXOfPath) {
-                if (stack.length > 0 && stack[stack.length - 1] === otherIntersections[i].identifier) {
-                    stack.pop();
-                } else {
-                    stack.push(otherIntersections[i].identifier);
-                }
-                i++;
-            }
-            stack.push(simplePath.identifier);
-            if (_fillRule === 'evenodd') {
-                const isHole = stack.length % 2 === 0 ? true : false;
-                const isHoleFor = stack[stack.length - 2];
-                return {identifier: simplePath.identifier, isHole: isHole, for: isHoleFor};
-            } else if (_fillRule === 'nonzero') {
-                // check if path is a hole by counting the amount of paths with alternating rotations it has to cross.
-                let isHole = true;
-                let isHoleFor = null;
-                let lastCWValue = null;
-                for (let i = 0; i < stack.length; i++) {
-                    const identifier = stack[i];
-                    if (isHole) {
-                        lastCWValue = allPaths[identifier].isCW;
-                        isHole = false;
-                        isHoleFor = identifier;
-                    } else if (lastCWValue !== allPaths[identifier].isCW) {
-                        lastCWValue = allPaths[identifier].isCW;
-                        isHole = true;
-                    }
-                }
-                return {identifier: simplePath.identifier, isHole: isHole, for: isHoleFor};
-            } else {
-                console.warn('fill-rule: "' + _fillRule + '" is currently not implemented.');
-            }
-        }
-
-        // check for self intersecting paths
-        // TODO
-        // check intersecting paths
-        // TODO
-        // prepare paths for hole detection
-        let scanlineMinX = BIGNUMBER;
-        let scanlineMaxX = -BIGNUMBER;
-        let simplePaths = shapePath.subPaths.map(p => {
-            const points = p.getPoints();
-            let maxY = -BIGNUMBER;
-            let minY = BIGNUMBER;
-            let maxX = -BIGNUMBER;
-            let minX = BIGNUMBER;
-            //points.forEach(p => p.y *= -1);
-            for (let i = 0; i < points.length; i++) {
-                const p = points[i];
-                if (p.y > maxY) {
-                    maxY = p.y;
-                }
-                if (p.y < minY) {
-                    minY = p.y;
-                }
-                if (p.x > maxX) {
-                    maxX = p.x;
-                }
-                if (p.x < minX) {
-                    minX = p.x;
-                }
-            }
-            //
-            if (scanlineMaxX <= maxX) {
-                scanlineMaxX = maxX + 1;
-            }
-            if (scanlineMinX >= minX) {
-                scanlineMinX = minX - 1;
-            }
-            return {
-                curves: p.curves,
-                points: points,
-                isCW: ShapeUtils.isClockWise(points),
-                identifier: -1,
-                boundingBox: new Box2(new Vector2(minX, minY), new Vector2(maxX, maxY))
-            };
-        });
-        simplePaths = simplePaths.filter(sp => sp.points.length > 1);
-        for (let identifier = 0; identifier < simplePaths.length; identifier++) {
-            simplePaths[identifier].identifier = identifier;
-        }
-        // check if path is solid or a hole
-        const isAHole = simplePaths.map(p => isHoleTo(p, simplePaths, scanlineMinX, scanlineMaxX, (shapePath.userData ? shapePath.userData.style.fillRule : undefined)));
-
-        const shapesToReturn = [];
-        simplePaths.forEach(p => {
-            const amIAHole = isAHole[p.identifier];
-            if (!amIAHole.isHole) {
-                const shape = new Shape();
-                shape.curves = p.curves;
-                const holes = isAHole.filter(h => h.isHole && h.for === p.identifier);
-                holes.forEach(h => {
-                    const hole = simplePaths[h.identifier];
-                    const path = new Path();
-                    path.curves = hole.curves;
-                    shape.holes.push(path);
-                });
-                shapesToReturn.push(shape);
-            }
-        });
-        return shapesToReturn;
-    }
-
-    static getStrokeStyle(width, color, lineJoin, lineCap, miterLimit) {
-        // Param width: Stroke width
-        // Param color: As returned by THREE.Color.getStyle()
-        // Param lineJoin: One of "round", "bevel", "miter" or "miter-limit"
-        // Param lineCap: One of "round", "square" or "butt"
-        // Param miterLimit: Maximum join length, in multiples of the "width" parameter (join is truncated if it exceeds that distance)
-        // Returns style object
-        width = width !== undefined ? width : 1;
-        color = color !== undefined ? color : '#000';
-        lineJoin = lineJoin !== undefined ? lineJoin : 'miter';
-        lineCap = lineCap !== undefined ? lineCap : 'butt';
-        miterLimit = miterLimit !== undefined ? miterLimit : 4;
-        return {
-            strokeColor: color,
-            strokeWidth: width,
-            strokeLineJoin: lineJoin,
-            strokeLineCap: lineCap,
-            strokeMiterLimit: miterLimit
-        };
-    }
-
-    static pointsToStroke(points, style, arcDivisions, minDistance) {
-        // Generates a stroke with some width around the given path.
-        // The path can be open or closed (last point equals to first point)
-        // Param points: Array of Vector2D (the path). Minimum 2 points.
-        // Param style: Object with SVG properties as returned by SVGLoader.getStrokeStyle(), or SVGLoader.parse() in the path.userData.style object
-        // Params arcDivisions: Arc divisions for round joins and endcaps. (Optional)
-        // Param minDistance: Points closer to this distance will be merged. (Optional)
-        // Returns BufferGeometry with stroke triangles (In plane z = 0). UV coordinates are generated ('u' along path. 'v' across it, from left to right)
-        const vertices = [];
-        const normals = [];
-        const uvs = [];
-        if (SVGLoader.pointsToStrokeWithBuffers(points, style, arcDivisions, minDistance, vertices, normals, uvs) === 0) {
-            return null;
-        }
-        const geometry = new BufferGeometry();
-        geometry.setAttribute('position', new Float32BufferAttribute(vertices, 3));
-        geometry.setAttribute('normal', new Float32BufferAttribute(normals, 3));
-        geometry.setAttribute('uv', new Float32BufferAttribute(uvs, 2));
-        return geometry;
-    }
-
-    static pointsToStrokeWithBuffers(points, style, arcDivisions, minDistance, vertices, normals, uvs, vertexOffset) {
-        // This function can be called to update existing arrays or buffers.
-        // Accepts same parameters as pointsToStroke, plus the buffers and optional offset.
-        // Param vertexOffset: Offset vertices to start writing in the buffers (3 elements/vertex for vertices and normals, and 2 elements/vertex for uvs)
-        // Returns number of written vertices / normals / uvs pairs
-        // if 'vertices' parameter is undefined no triangles will be generated, but the returned vertices count will still be valid (useful to preallocate the buffers)
-        // 'normals' and 'uvs' buffers are optional
-        const tempV2_1 = new Vector2();
-        const tempV2_2 = new Vector2();
-        const tempV2_3 = new Vector2();
-        const tempV2_4 = new Vector2();
-        const tempV2_5 = new Vector2();
-        const tempV2_6 = new Vector2();
-        const tempV2_7 = new Vector2();
-        const lastPointL = new Vector2();
-        const lastPointR = new Vector2();
-        const point0L = new Vector2();
-        const point0R = new Vector2();
-        const currentPointL = new Vector2();
-        const currentPointR = new Vector2();
-        const nextPointL = new Vector2();
-        const nextPointR = new Vector2();
-        const innerPoint = new Vector2();
-        const outerPoint = new Vector2();
-        arcDivisions = arcDivisions !== undefined ? arcDivisions : 12;
-        minDistance = minDistance !== undefined ? minDistance : 0.001;
-        vertexOffset = vertexOffset !== undefined ? vertexOffset : 0;
-        // First ensure there are no duplicated points
-        points = removeDuplicatedPoints(points);
-        const numPoints = points.length;
-        if (numPoints < 2) return 0;
-        const isClosed = points[0].equals(points[numPoints - 1]);
-        let currentPoint;
-        let previousPoint = points[0];
-        let nextPoint;
-        const strokeWidth2 = style.strokeWidth / 2;
-        const deltaU = 1 / (numPoints - 1);
-        let u0 = 0, u1;
-        let innerSideModified;
-        let joinIsOnLeftSide;
-        let isMiter;
-        let initialJoinIsOnLeftSide = false;
-        let numVertices = 0;
-        let currentCoordinate = vertexOffset * 3;
-        let currentCoordinateUV = vertexOffset * 2;
-        // Get initial left and right stroke points
-        getNormal(points[0], points[1], tempV2_1).multiplyScalar(strokeWidth2);
-        lastPointL.copy(points[0]).sub(tempV2_1);
-        lastPointR.copy(points[0]).add(tempV2_1);
-        point0L.copy(lastPointL);
-        point0R.copy(lastPointR);
-        for (let iPoint = 1; iPoint < numPoints; iPoint++) {
-            currentPoint = points[iPoint];
-            // Get next point
-            if (iPoint === numPoints - 1) {
-                if (isClosed) {
-                    // Skip duplicated initial point
-                    nextPoint = points[1];
-                } else nextPoint = undefined;
-            } else {
-                nextPoint = points[iPoint + 1];
-            }
-            // Normal of previous segment in tempV2_1
-            const normal1 = tempV2_1;
-            getNormal(previousPoint, currentPoint, normal1);
-            tempV2_3.copy(normal1).multiplyScalar(strokeWidth2);
-            currentPointL.copy(currentPoint).sub(tempV2_3);
-            currentPointR.copy(currentPoint).add(tempV2_3);
-            u1 = u0 + deltaU;
-            innerSideModified = false;
-            if (nextPoint !== undefined) {
-                // Normal of next segment in tempV2_2
-                getNormal(currentPoint, nextPoint, tempV2_2);
-                tempV2_3.copy(tempV2_2).multiplyScalar(strokeWidth2);
-                nextPointL.copy(currentPoint).sub(tempV2_3);
-                nextPointR.copy(currentPoint).add(tempV2_3);
-                joinIsOnLeftSide = true;
-                tempV2_3.subVectors(nextPoint, previousPoint);
-                if (normal1.dot(tempV2_3) < 0) {
-                    joinIsOnLeftSide = false;
-                }
-                if (iPoint === 1) initialJoinIsOnLeftSide = joinIsOnLeftSide;
-                tempV2_3.subVectors(nextPoint, currentPoint);
-                tempV2_3.normalize();
-                const dot = Math.abs(normal1.dot(tempV2_3));
-                // If path is straight, don't create join
-                if (dot > Number.EPSILON) {
-                    // Compute inner and outer segment intersections
-                    const miterSide = strokeWidth2 / dot;
-                    tempV2_3.multiplyScalar(-miterSide);
-                    tempV2_4.subVectors(currentPoint, previousPoint);
-                    tempV2_5.copy(tempV2_4).setLength(miterSide).add(tempV2_3);
-                    innerPoint.copy(tempV2_5).negate();
-                    const miterLength2 = tempV2_5.length();
-                    const segmentLengthPrev = tempV2_4.length();
-                    tempV2_4.divideScalar(segmentLengthPrev);
-                    tempV2_6.subVectors(nextPoint, currentPoint);
-                    const segmentLengthNext = tempV2_6.length();
-                    tempV2_6.divideScalar(segmentLengthNext);
-                    // Check that previous and next segments doesn't overlap with the innerPoint of intersection
-                    if (tempV2_4.dot(innerPoint) < segmentLengthPrev && tempV2_6.dot(innerPoint) < segmentLengthNext) {
-                        innerSideModified = true;
-                    }
-                    outerPoint.copy(tempV2_5).add(currentPoint);
-                    innerPoint.add(currentPoint);
-                    isMiter = false;
-                    if (innerSideModified) {
-                        if (joinIsOnLeftSide) {
-                            nextPointR.copy(innerPoint);
-                            currentPointR.copy(innerPoint);
-                        } else {
-                            nextPointL.copy(innerPoint);
-                            currentPointL.copy(innerPoint);
-                        }
-                    } else {
-                        // The segment triangles are generated here if there was overlapping
-                        makeSegmentTriangles();
-                    }
-                    switch (style.strokeLineJoin) {
-                        case 'bevel':
-                            makeSegmentWithBevelJoin(joinIsOnLeftSide, innerSideModified, u1);
-                            break;
-                        case 'round':
-                            // Segment triangles
-                            createSegmentTrianglesWithMiddleSection(joinIsOnLeftSide, innerSideModified);
-                            // Join triangles
-                            if (joinIsOnLeftSide) {
-                                makeCircularSector(currentPoint, currentPointL, nextPointL, u1, 0);
-                            } else {
-                                makeCircularSector(currentPoint, nextPointR, currentPointR, u1, 1);
-                            }
-                            break;
-                        case 'miter':
-                        case 'miter-clip':
-                        default:
-                            const miterFraction = (strokeWidth2 * style.strokeMiterLimit) / miterLength2;
-                            if (miterFraction < 1) {
-                                // The join miter length exceeds the miter limit
-                                if (style.strokeLineJoin !== 'miter-clip') {
-                                    makeSegmentWithBevelJoin(joinIsOnLeftSide, innerSideModified, u1);
-                                    break;
-                                } else {
-                                    // Segment triangles
-                                    createSegmentTrianglesWithMiddleSection(joinIsOnLeftSide, innerSideModified);
-                                    // Miter-clip join triangles
-                                    if (joinIsOnLeftSide) {
-                                        tempV2_6.subVectors(outerPoint, currentPointL).multiplyScalar(miterFraction).add(currentPointL);
-                                        tempV2_7.subVectors(outerPoint, nextPointL).multiplyScalar(miterFraction).add(nextPointL);
-                                        addVertex(currentPointL, u1, 0);
-                                        addVertex(tempV2_6, u1, 0);
-                                        addVertex(currentPoint, u1, 0.5);
-                                        addVertex(currentPoint, u1, 0.5);
-                                        addVertex(tempV2_6, u1, 0);
-                                        addVertex(tempV2_7, u1, 0);
-                                        addVertex(currentPoint, u1, 0.5);
-                                        addVertex(tempV2_7, u1, 0);
-                                        addVertex(nextPointL, u1, 0);
-                                    } else {
-                                        tempV2_6.subVectors(outerPoint, currentPointR).multiplyScalar(miterFraction).add(currentPointR);
-                                        tempV2_7.subVectors(outerPoint, nextPointR).multiplyScalar(miterFraction).add(nextPointR);
-                                        addVertex(currentPointR, u1, 1);
-                                        addVertex(tempV2_6, u1, 1);
-                                        addVertex(currentPoint, u1, 0.5);
-                                        addVertex(currentPoint, u1, 0.5);
-                                        addVertex(tempV2_6, u1, 1);
-                                        addVertex(tempV2_7, u1, 1);
-                                        addVertex(currentPoint, u1, 0.5);
-                                        addVertex(tempV2_7, u1, 1);
-                                        addVertex(nextPointR, u1, 1);
-                                    }
-                                }
-                            } else {
-                                // Miter join segment triangles
-                                if (innerSideModified) {
-                                    // Optimized segment + join triangles
-                                    if (joinIsOnLeftSide) {
-                                        addVertex(lastPointR, u0, 1);
-                                        addVertex(lastPointL, u0, 0);
-                                        addVertex(outerPoint, u1, 0);
-                                        addVertex(lastPointR, u0, 1);
-                                        addVertex(outerPoint, u1, 0);
-                                        addVertex(innerPoint, u1, 1);
-                                    } else {
-                                        addVertex(lastPointR, u0, 1);
-                                        addVertex(lastPointL, u0, 0);
-                                        addVertex(outerPoint, u1, 1);
-                                        addVertex(lastPointL, u0, 0);
-                                        addVertex(innerPoint, u1, 0);
-                                        addVertex(outerPoint, u1, 1);
-                                    }
-
-                                    if (joinIsOnLeftSide) {
-                                        nextPointL.copy(outerPoint);
-                                    } else {
-                                        nextPointR.copy(outerPoint);
-                                    }
-
-                                } else {
-                                    // Add extra miter join triangles
-                                    if (joinIsOnLeftSide) {
-                                        addVertex(currentPointL, u1, 0);
-                                        addVertex(outerPoint, u1, 0);
-                                        addVertex(currentPoint, u1, 0.5);
-                                        addVertex(currentPoint, u1, 0.5);
-                                        addVertex(outerPoint, u1, 0);
-                                        addVertex(nextPointL, u1, 0);
-                                    } else {
-                                        addVertex(currentPointR, u1, 1);
-                                        addVertex(outerPoint, u1, 1);
-                                        addVertex(currentPoint, u1, 0.5);
-                                        addVertex(currentPoint, u1, 0.5);
-                                        addVertex(outerPoint, u1, 1);
-                                        addVertex(nextPointR, u1, 1);
-                                    }
-                                }
-                                isMiter = true;
-                            }
-                            break;
-                    }
-                } else {
-                    // The segment triangles are generated here when two consecutive points are collinear
-                    makeSegmentTriangles();
-                }
-            } else {
-                // The segment triangles are generated here if it is the ending segment
-                makeSegmentTriangles();
-            }
-            if (!isClosed && iPoint === numPoints - 1) {
-                // Start line endcap
-                addCapGeometry(points[0], point0L, point0R, joinIsOnLeftSide, true, u0);
-            }
-            // Increment loop variables
-            u0 = u1;
-            previousPoint = currentPoint;
-            lastPointL.copy(nextPointL);
-            lastPointR.copy(nextPointR);
-        }
-        if (!isClosed) {
-            // Ending line endcap
-            addCapGeometry(currentPoint, currentPointL, currentPointR, joinIsOnLeftSide, false, u1);
-        } else if (innerSideModified && vertices) {
-            // Modify path first segment vertices to adjust to the segments inner and outer intersections
-            let lastOuter = outerPoint;
-            let lastInner = innerPoint;
-            if (initialJoinIsOnLeftSide !== joinIsOnLeftSide) {
-                lastOuter = innerPoint;
-                lastInner = outerPoint;
-            }
-            if (joinIsOnLeftSide) {
-                if (isMiter || initialJoinIsOnLeftSide) {
-                    lastInner.toArray(vertices, 0 * 3);
-                    lastInner.toArray(vertices, 3 * 3);
-                    if (isMiter) {
-                        lastOuter.toArray(vertices, 1 * 3);
-                    }
-                }
-            } else {
-                if (isMiter || !initialJoinIsOnLeftSide) {
-                    lastInner.toArray(vertices, 1 * 3);
-                    lastInner.toArray(vertices, 3 * 3);
-                    if (isMiter) {
-                        lastOuter.toArray(vertices, 0 * 3);
-                    }
-                }
-            }
-        }
-        return numVertices;
-        // -- End of algorithm
-        // -- Functions
-        function getNormal(p1, p2, result) {
-            result.subVectors(p2, p1);
-            return result.set(-result.y, result.x).normalize();
-        }
-
-        function addVertex(position, u, v) {
-            if (vertices) {
-                vertices[currentCoordinate] = position.x;
-                vertices[currentCoordinate + 1] = position.y;
-                vertices[currentCoordinate + 2] = 0;
-                if (normals) {
-                    normals[currentCoordinate] = 0;
-                    normals[currentCoordinate + 1] = 0;
-                    normals[currentCoordinate + 2] = 1;
-                }
-                currentCoordinate += 3;
-                if (uvs) {
-                    uvs[currentCoordinateUV] = u;
-                    uvs[currentCoordinateUV + 1] = v;
-                    currentCoordinateUV += 2;
-                }
-            }
-            numVertices += 3;
-        }
-
-        function makeCircularSector(center, p1, p2, u, v) {
-            // param p1, p2: Points in the circle arc.
-            // p1 and p2 are in clockwise direction.
-            tempV2_1.copy(p1).sub(center).normalize();
-            tempV2_2.copy(p2).sub(center).normalize();
-            let angle = Math.PI;
-            const dot = tempV2_1.dot(tempV2_2);
-            if (Math.abs(dot) < 1) angle = Math.abs(Math.acos(dot));
-            angle /= arcDivisions;
-            tempV2_3.copy(p1);
-            for (let i = 0, il = arcDivisions - 1; i < il; i++) {
-                tempV2_4.copy(tempV2_3).rotateAround(center, angle);
-                addVertex(tempV2_3, u, v);
-                addVertex(tempV2_4, u, v);
-                addVertex(center, u, 0.5);
-                tempV2_3.copy(tempV2_4);
-            }
-            addVertex(tempV2_4, u, v);
-            addVertex(p2, u, v);
-            addVertex(center, u, 0.5);
-        }
-
-        function makeSegmentTriangles() {
-            addVertex(lastPointR, u0, 1);
-            addVertex(lastPointL, u0, 0);
-            addVertex(currentPointL, u1, 0);
-            addVertex(lastPointR, u0, 1);
-            addVertex(currentPointL, u1, 0);
-            addVertex(currentPointR, u1, 1);
-        }
-
-        function makeSegmentWithBevelJoin(joinIsOnLeftSide, innerSideModified, u) {
-            if (innerSideModified) {
-                // Optimized segment + bevel triangles
-                if (joinIsOnLeftSide) {
-                    // Path segments triangles
-                    addVertex(lastPointR, u0, 1);
-                    addVertex(lastPointL, u0, 0);
-                    addVertex(currentPointL, u1, 0);
-                    addVertex(lastPointR, u0, 1);
-                    addVertex(currentPointL, u1, 0);
-                    addVertex(innerPoint, u1, 1);
-                    // Bevel join triangle
-                    addVertex(currentPointL, u, 0);
-                    addVertex(nextPointL, u, 0);
-                    addVertex(innerPoint, u, 0.5);
-                } else {
-                    // Path segments triangles
-                    addVertex(lastPointR, u0, 1);
-                    addVertex(lastPointL, u0, 0);
-                    addVertex(currentPointR, u1, 1);
-                    addVertex(lastPointL, u0, 0);
-                    addVertex(innerPoint, u1, 0);
-                    addVertex(currentPointR, u1, 1);
-                    // Bevel join triangle
-                    addVertex(currentPointR, u, 1);
-                    addVertex(innerPoint, u, 0);
-                    addVertex(nextPointR, u, 1);
-                }
-            } else {
-                // Bevel join triangle. The segment triangles are done in the main loop
-                if (joinIsOnLeftSide) {
-                    addVertex(currentPointL, u, 0);
-                    addVertex(nextPointL, u, 0);
-                    addVertex(currentPoint, u, 0.5);
-                } else {
-                    addVertex(currentPointR, u, 1);
-                    addVertex(nextPointR, u, 0);
-                    addVertex(currentPoint, u, 0.5);
-                }
-            }
-        }
-
-        function createSegmentTrianglesWithMiddleSection(joinIsOnLeftSide, innerSideModified) {
-            if (innerSideModified) {
-                if (joinIsOnLeftSide) {
-                    addVertex(lastPointR, u0, 1);
-                    addVertex(lastPointL, u0, 0);
-                    addVertex(currentPointL, u1, 0);
-                    addVertex(lastPointR, u0, 1);
-                    addVertex(currentPointL, u1, 0);
-                    addVertex(innerPoint, u1, 1);
-                    addVertex(currentPointL, u0, 0);
-                    addVertex(currentPoint, u1, 0.5);
-                    addVertex(innerPoint, u1, 1);
-                    addVertex(currentPoint, u1, 0.5);
-                    addVertex(nextPointL, u0, 0);
-                    addVertex(innerPoint, u1, 1);
-                } else {
-                    addVertex(lastPointR, u0, 1);
-                    addVertex(lastPointL, u0, 0);
-                    addVertex(currentPointR, u1, 1);
-                    addVertex(lastPointL, u0, 0);
-                    addVertex(innerPoint, u1, 0);
-                    addVertex(currentPointR, u1, 1);
-                    addVertex(currentPointR, u0, 1);
-                    addVertex(innerPoint, u1, 0);
-                    addVertex(currentPoint, u1, 0.5);
-                    addVertex(currentPoint, u1, 0.5);
-                    addVertex(innerPoint, u1, 0);
-                    addVertex(nextPointR, u0, 1);
-                }
-            }
-        }
-
-        function addCapGeometry(center, p1, p2, joinIsOnLeftSide, start, u) {
-            // param center: End point of the path
-            // param p1, p2: Left and right cap points
-            switch (style.strokeLineCap) {
-                case 'round':
-                    if (start) {
-                        makeCircularSector(center, p2, p1, u, 0.5);
-                    } else {
-                        makeCircularSector(center, p1, p2, u, 0.5);
-                    }
-                    break;
-                case 'square':
-                    if (start) {
-                        tempV2_1.subVectors(p1, center);
-                        tempV2_2.set(tempV2_1.y, -tempV2_1.x);
-                        tempV2_3.addVectors(tempV2_1, tempV2_2).add(center);
-                        tempV2_4.subVectors(tempV2_2, tempV2_1).add(center);
-                        // Modify already existing vertices
-                        if (joinIsOnLeftSide) {
-                            tempV2_3.toArray(vertices, 1 * 3);
-                            tempV2_4.toArray(vertices, 0 * 3);
-                            tempV2_4.toArray(vertices, 3 * 3);
-                        } else {
-                            tempV2_3.toArray(vertices, 1 * 3);
-                            // using tempV2_4 to update 3rd vertex if the uv.y of 3rd vertex is 1
-                            uvs[3 * 2 + 1] === 1 ? tempV2_4.toArray(vertices, 3 * 3) : tempV2_3.toArray(vertices, 3 * 3);
-                            tempV2_4.toArray(vertices, 0 * 3);
-                        }
-                    } else {
-                        tempV2_1.subVectors(p2, center);
-                        tempV2_2.set(tempV2_1.y, -tempV2_1.x);
-                        tempV2_3.addVectors(tempV2_1, tempV2_2).add(center);
-                        tempV2_4.subVectors(tempV2_2, tempV2_1).add(center);
-                        const vl = vertices.length;
-                        // Modify already existing vertices
-                        if (joinIsOnLeftSide) {
-                            tempV2_3.toArray(vertices, vl - 1 * 3);
-                            tempV2_4.toArray(vertices, vl - 2 * 3);
-                            tempV2_4.toArray(vertices, vl - 4 * 3);
-                        } else {
-                            tempV2_4.toArray(vertices, vl - 2 * 3);
-                            tempV2_3.toArray(vertices, vl - 1 * 3);
-                            tempV2_4.toArray(vertices, vl - 4 * 3);
-                        }
-                    }
-                    break;
-                case 'butt':
-                default:
-                    // Nothing to do here
-                    break;
-            }
-        }
-
-        function removeDuplicatedPoints(points) {
-            // Creates a new array if necessary with duplicated points removed.
-            // This does not remove duplicated initial and ending points of a closed path.
-            let dupPoints = false;
-            for (let i = 1, n = points.length - 1; i < n; i++) {
-                if (points[i].distanceTo(points[i + 1]) < minDistance) {
-                    dupPoints = true;
-                    break;
-                }
-            }
-            if (!dupPoints) return points;
-            const newPoints = [];
-            newPoints.push(points[0]);
-            for (let i = 1, n = points.length - 1; i < n; i++) {
-                if (points[i].distanceTo(points[i + 1]) >= minDistance) {
-                    newPoints.push(points[i]);
-                }
-            }
-            newPoints.push(points[points.length - 1]);
-            return newPoints;
-        }
     }
 
 

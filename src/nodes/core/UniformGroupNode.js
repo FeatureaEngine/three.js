@@ -17,10 +17,6 @@ import Node from './Node.js';
  */
 class UniformGroupNode extends Node {
 
-    static get type() {
-        return 'UniformGroupNode';
-    }
-
     /**
      * Constructs a new uniform group node.
      *
@@ -59,6 +55,10 @@ class UniformGroupNode extends Node {
          * @default true
          */
         this.isUniformGroup = true;
+    }
+
+    static get type() {
+        return 'UniformGroupNode';
     }
 
     serialize(data) {

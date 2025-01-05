@@ -10,6 +10,42 @@ class Quaternion {
         this._w = w;
     }
 
+    get x() {
+        return this._x;
+    }
+
+    set x(value) {
+        this._x = value;
+        this._onChangeCallback();
+    }
+
+    get y() {
+        return this._y;
+    }
+
+    set y(value) {
+        this._y = value;
+        this._onChangeCallback();
+    }
+
+    get z() {
+        return this._z;
+    }
+
+    set z(value) {
+        this._z = value;
+        this._onChangeCallback();
+    }
+
+    get w() {
+        return this._w;
+    }
+
+    set w(value) {
+        this._w = value;
+        this._onChangeCallback();
+    }
+
     static slerpFlat(dst, dstOffset, src0, srcOffset0, src1, srcOffset1, t) {
         // fuzz-free, array-based Quaternion SLERP operation
         let x0 = src0[srcOffset0 + 0],
@@ -80,42 +116,6 @@ class Quaternion {
         dst[dstOffset + 2] = z0 * w1 + w0 * z1 + x0 * y1 - y0 * x1;
         dst[dstOffset + 3] = w0 * w1 - x0 * x1 - y0 * y1 - z0 * z1;
         return dst;
-    }
-
-    get x() {
-        return this._x;
-    }
-
-    set x(value) {
-        this._x = value;
-        this._onChangeCallback();
-    }
-
-    get y() {
-        return this._y;
-    }
-
-    set y(value) {
-        this._y = value;
-        this._onChangeCallback();
-    }
-
-    get z() {
-        return this._z;
-    }
-
-    set z(value) {
-        this._z = value;
-        this._onChangeCallback();
-    }
-
-    get w() {
-        return this._w;
-    }
-
-    set w(value) {
-        this._w = value;
-        this._onChangeCallback();
     }
 
     set(x, y, z, w) {

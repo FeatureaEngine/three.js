@@ -29,10 +29,6 @@ import {nodeObject} from '../tsl/TSLBase.js';
  */
 class FunctionNode extends CodeNode {
 
-    static get type() {
-        return 'FunctionNode';
-    }
-
     /**
      * Constructs a new function node.
      *
@@ -42,6 +38,10 @@ class FunctionNode extends CodeNode {
      */
     constructor(code = '', includes = [], language = '') {
         super(code, includes, language);
+    }
+
+    static get type() {
+        return 'FunctionNode';
     }
 
     getNodeType(builder) {

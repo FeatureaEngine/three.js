@@ -8,10 +8,6 @@ import {arrayBufferToBase64, getValueFromType, getValueType} from './NodeUtils.j
  */
 class InputNode extends Node {
 
-    static get type() {
-        return 'InputNode';
-    }
-
     /**
      * Constructs a new input node.
      *
@@ -41,6 +37,10 @@ class InputNode extends Node {
          * @default null
          */
         this.precision = null;
+    }
+
+    static get type() {
+        return 'InputNode';
     }
 
     getNodeType( /*builder*/) {

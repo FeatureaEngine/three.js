@@ -16,10 +16,6 @@ import {nodeProxy} from '../tsl/TSLBase.js';
  */
 class MaxMipLevelNode extends UniformNode {
 
-    static get type() {
-        return 'MaxMipLevelNode';
-    }
-
     /**
      * Constructs a new max mip level node.
      *
@@ -42,6 +38,10 @@ class MaxMipLevelNode extends UniformNode {
          * @default 'frame'
          */
         this.updateType = NodeUpdateType.FRAME;
+    }
+
+    static get type() {
+        return 'MaxMipLevelNode';
     }
 
     /**

@@ -1,9 +1,4 @@
-import {
-    BufferGeometry,
-    Float32BufferAttribute,
-    OrthographicCamera,
-    Mesh
-} from '../../libs/three/Three.js';
+import {BufferGeometry, Float32BufferAttribute, Mesh, OrthographicCamera} from '../../libs/three/Three.js';
 
 class Pass {
 
@@ -55,20 +50,20 @@ class FullScreenQuad {
         this._mesh = new Mesh(_geometry, material);
     }
 
-    dispose() {
-        this._mesh.geometry.dispose();
-    }
-
-    render(renderer) {
-        renderer.render(this._mesh, _camera);
-    }
-
     get material() {
         return this._mesh.material;
     }
 
     set material(value) {
         this._mesh.material = value;
+    }
+
+    dispose() {
+        this._mesh.geometry.dispose();
+    }
+
+    render(renderer) {
+        renderer.render(this._mesh, _camera);
     }
 
 }

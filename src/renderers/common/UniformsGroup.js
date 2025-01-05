@@ -44,31 +44,6 @@ class UniformsGroup extends UniformBuffer {
     }
 
     /**
-     * Adds a uniform to this group.
-     *
-     * @param {Uniform} uniform - The uniform to add.
-     * @return {UniformsGroup} A reference to this group.
-     */
-    addUniform(uniform) {
-        this.uniforms.push(uniform);
-        return this;
-    }
-
-    /**
-     * Removes a uniform from this group.
-     *
-     * @param {Uniform} uniform - The uniform to remove.
-     * @return {UniformsGroup} A reference to this group.
-     */
-    removeUniform(uniform) {
-        const index = this.uniforms.indexOf(uniform);
-        if (index !== -1) {
-            this.uniforms.splice(index, 1);
-        }
-        return this;
-    }
-
-    /**
      * An array with the raw uniform values.
      *
      * @type {Array<Number>}
@@ -120,6 +95,31 @@ class UniformsGroup extends UniformBuffer {
             offset += (itemSize * this.bytesPerElement);
         }
         return Math.ceil(offset / GPU_CHUNK_BYTES) * GPU_CHUNK_BYTES;
+    }
+
+    /**
+     * Adds a uniform to this group.
+     *
+     * @param {Uniform} uniform - The uniform to add.
+     * @return {UniformsGroup} A reference to this group.
+     */
+    addUniform(uniform) {
+        this.uniforms.push(uniform);
+        return this;
+    }
+
+    /**
+     * Removes a uniform from this group.
+     *
+     * @param {Uniform} uniform - The uniform to remove.
+     * @return {UniformsGroup} A reference to this group.
+     */
+    removeUniform(uniform) {
+        const index = this.uniforms.indexOf(uniform);
+        if (index !== -1) {
+            this.uniforms.splice(index, 1);
+        }
+        return this;
     }
 
     /**

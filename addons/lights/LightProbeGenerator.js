@@ -1,15 +1,4 @@
-import {
-    Color,
-    DataUtils,
-    HalfFloatType,
-    LightProbe,
-    LinearSRGBColorSpace,
-    NoColorSpace,
-    SphericalHarmonics3,
-    SRGBColorSpace,
-    Vector3,
-    WebGLCoordinateSystem
-} from '../../libs/three/Three.js';
+import {Color, DataUtils, HalfFloatType, LightProbe, LinearSRGBColorSpace, NoColorSpace, SphericalHarmonics3, SRGBColorSpace, Vector3, WebGLCoordinateSystem} from '../../libs/three/Three.js';
 
 class LightProbeGenerator {
     // https://www.ppsloan.org/publications/StupidSH36.pdf

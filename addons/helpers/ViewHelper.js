@@ -1,21 +1,4 @@
-import {
-    CanvasTexture,
-    Color,
-    CylinderGeometry,
-    Euler,
-    Mesh,
-    MeshBasicMaterial,
-    Object3D,
-    OrthographicCamera,
-    Quaternion,
-    Raycaster,
-    Sprite,
-    SpriteMaterial,
-    SRGBColorSpace,
-    Vector2,
-    Vector3,
-    Vector4
-} from '../../libs/three/Three.js';
+import {CanvasTexture, Color, CylinderGeometry, Euler, Mesh, MeshBasicMaterial, Object3D, OrthographicCamera, Quaternion, Raycaster, Sprite, SpriteMaterial, SRGBColorSpace, Vector2, Vector3, Vector4} from '../../libs/three/Three.js';
 
 class ViewHelper extends Object3D {
 

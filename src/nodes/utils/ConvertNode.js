@@ -9,10 +9,6 @@ import Node from '../core/Node.js';
  */
 class ConvertNode extends Node {
 
-    static get type() {
-        return 'ConvertNode';
-    }
-
     /**
      * Constructs a new convert node.
      *
@@ -33,6 +29,10 @@ class ConvertNode extends Node {
          * @type {String}
          */
         this.convertTo = convertTo;
+    }
+
+    static get type() {
+        return 'ConvertNode';
     }
 
     /**

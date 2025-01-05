@@ -1,18 +1,4 @@
-import {
-    AdditiveBlending,
-    BufferGeometry,
-    Color,
-    DoubleSide,
-    FileLoader,
-    Float32BufferAttribute,
-    Group,
-    Loader,
-    LoaderUtils,
-    Matrix4,
-    Mesh,
-    MeshPhongMaterial,
-    TextureLoader
-} from '../../libs/three/Three.js';
+import {AdditiveBlending, BufferGeometry, Color, DoubleSide, FileLoader, Float32BufferAttribute, Group, Loader, LoaderUtils, Matrix4, Mesh, MeshPhongMaterial, TextureLoader} from '../../libs/three/Three.js';
 
 /**
  * Autodesk 3DS three.js file loader, based on lib3ds.
@@ -499,6 +485,20 @@ class Chunk {
     }
 
     /**
+     * return the ID of this chunk as Hex
+     *
+     * @method idToString
+     * @return {String} hex-string of id
+     */
+    get hexId() {
+        return this.id.toString(16);
+    }
+
+    get endOfChunk() {
+        return this.position >= this.end;
+    }
+
+    /**
      * read a sub cchunk.
      *
      * @method readChunk
@@ -516,20 +516,6 @@ class Chunk {
             this.debugMessage('Unable to read chunk at ' + this.position);
             return null;
         }
-    }
-
-    /**
-     * return the ID of this chunk as Hex
-     *
-     * @method idToString
-     * @return {String} hex-string of id
-     */
-    get hexId() {
-        return this.id.toString(16);
-    }
-
-    get endOfChunk() {
-        return this.position >= this.end;
     }
 
     /**

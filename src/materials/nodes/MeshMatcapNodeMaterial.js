@@ -16,10 +16,6 @@ const _defaultValues = new MeshMatcapMaterial();
  */
 class MeshMatcapNodeMaterial extends NodeMaterial {
 
-    static get type() {
-        return 'MeshMatcapNodeMaterial';
-    }
-
     /**
      * Constructs a new mesh normal node material.
      *
@@ -37,6 +33,10 @@ class MeshMatcapNodeMaterial extends NodeMaterial {
         this.isMeshMatcapNodeMaterial = true;
         this.setDefaultValues(_defaultValues);
         this.setValues(parameters);
+    }
+
+    static get type() {
+        return 'MeshMatcapNodeMaterial';
     }
 
     /**

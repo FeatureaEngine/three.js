@@ -1,5 +1,5 @@
 import {Fn, vec4} from '../tsl/TSLBase.js';
-import {mix, min, step} from '../math/MathNode.js';
+import {min, mix, step} from '../math/MathNode.js';
 
 export const blendBurn = Fn(([base, blend]) => {
     return min(1.0, base.oneMinus().div(blend)).oneMinus();

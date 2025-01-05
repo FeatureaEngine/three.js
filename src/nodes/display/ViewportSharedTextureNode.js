@@ -17,10 +17,6 @@ let _sharedFramebuffer = null;
  */
 class ViewportSharedTextureNode extends ViewportTextureNode {
 
-    static get type() {
-        return 'ViewportSharedTextureNode';
-    }
-
     /**
      * Constructs a new viewport shared texture node.
      *
@@ -32,6 +28,10 @@ class ViewportSharedTextureNode extends ViewportTextureNode {
             _sharedFramebuffer = new FramebufferTexture();
         }
         super(uvNode, levelNode, _sharedFramebuffer);
+    }
+
+    static get type() {
+        return 'ViewportSharedTextureNode';
     }
 
     updateReference() {

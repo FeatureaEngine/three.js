@@ -7,24 +7,24 @@ import {Matrix4} from '../math/Matrix4.js';
 import {FileLoader} from './FileLoader.js';
 import {Loader} from './Loader.js';
 import {
-    ShadowMaterial,
-    SpriteMaterial,
-    RawShaderMaterial,
-    ShaderMaterial,
-    PointsMaterial,
-    MeshPhysicalMaterial,
-    MeshStandardMaterial,
-    MeshPhongMaterial,
-    MeshToonMaterial,
-    MeshNormalMaterial,
-    MeshLambertMaterial,
+    LineBasicMaterial,
+    LineDashedMaterial,
+    Material,
+    MeshBasicMaterial,
     MeshDepthMaterial,
     MeshDistanceMaterial,
-    MeshBasicMaterial,
+    MeshLambertMaterial,
     MeshMatcapMaterial,
-    LineDashedMaterial,
-    LineBasicMaterial,
-    Material,
+    MeshNormalMaterial,
+    MeshPhongMaterial,
+    MeshPhysicalMaterial,
+    MeshStandardMaterial,
+    MeshToonMaterial,
+    PointsMaterial,
+    RawShaderMaterial,
+    ShaderMaterial,
+    ShadowMaterial,
+    SpriteMaterial,
 } from '../materials/Materials.js';
 
 class MaterialLoader extends Loader {
@@ -32,6 +32,30 @@ class MaterialLoader extends Loader {
     constructor(manager) {
         super(manager);
         this.textures = {};
+    }
+
+    static createMaterialFromType(type) {
+        const materialLib = {
+            ShadowMaterial,
+            SpriteMaterial,
+            RawShaderMaterial,
+            ShaderMaterial,
+            PointsMaterial,
+            MeshPhysicalMaterial,
+            MeshStandardMaterial,
+            MeshPhongMaterial,
+            MeshToonMaterial,
+            MeshNormalMaterial,
+            MeshLambertMaterial,
+            MeshDepthMaterial,
+            MeshDistanceMaterial,
+            MeshBasicMaterial,
+            MeshMatcapMaterial,
+            LineDashedMaterial,
+            LineBasicMaterial,
+            Material
+        };
+        return new materialLib[type]();
     }
 
     load(url, onLoad, onProgress, onError) {
@@ -249,30 +273,6 @@ class MaterialLoader extends Loader {
 
     createMaterialFromType(type) {
         return MaterialLoader.createMaterialFromType(type);
-    }
-
-    static createMaterialFromType(type) {
-        const materialLib = {
-            ShadowMaterial,
-            SpriteMaterial,
-            RawShaderMaterial,
-            ShaderMaterial,
-            PointsMaterial,
-            MeshPhysicalMaterial,
-            MeshStandardMaterial,
-            MeshPhongMaterial,
-            MeshToonMaterial,
-            MeshNormalMaterial,
-            MeshLambertMaterial,
-            MeshDepthMaterial,
-            MeshDistanceMaterial,
-            MeshBasicMaterial,
-            MeshMatcapMaterial,
-            LineDashedMaterial,
-            LineBasicMaterial,
-            Material
-        };
-        return new materialLib[type]();
     }
 
 }

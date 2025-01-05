@@ -1,19 +1,19 @@
 import {
-    UVMapping,
+    ClampToEdgeWrapping,
     CubeReflectionMapping,
     CubeRefractionMapping,
+    CubeUVReflectionMapping,
     EquirectangularReflectionMapping,
     EquirectangularRefractionMapping,
-    CubeUVReflectionMapping,
-    RepeatWrapping,
-    ClampToEdgeWrapping,
+    LinearFilter,
+    LinearMipmapLinearFilter,
+    LinearMipmapNearestFilter,
     MirroredRepeatWrapping,
     NearestFilter,
-    NearestMipmapNearestFilter,
     NearestMipmapLinearFilter,
-    LinearFilter,
-    LinearMipmapNearestFilter,
-    LinearMipmapLinearFilter
+    NearestMipmapNearestFilter,
+    RepeatWrapping,
+    UVMapping
 } from '../constants.js';
 import {InstancedBufferAttribute} from '../core/InstancedBufferAttribute.js';
 import {Color} from '../math/Color.js';

@@ -1,19 +1,5 @@
-import {
-    Box2,
-    Camera,
-    Color,
-    Matrix3,
-    Matrix4,
-    Object3D,
-    SRGBColorSpace,
-    Vector3
-} from '../../libs/three/Three.js';
-import {
-    Projector,
-    RenderableFace,
-    RenderableLine,
-    RenderableSprite
-} from '../renderers/Projector.js';
+import {Box2, Camera, Color, Matrix3, Matrix4, Object3D, SRGBColorSpace, Vector3} from '../../libs/three/Three.js';
+import {Projector, RenderableFace, RenderableLine, RenderableSprite} from './Projector';
 
 class SVGObject extends Object3D {
 

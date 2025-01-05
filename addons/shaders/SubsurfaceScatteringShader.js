@@ -1,9 +1,4 @@
-import {
-    Color,
-    ShaderChunk,
-    ShaderLib,
-    UniformsUtils
-} from '../../libs/three/Three.js';
+import {Color, ShaderChunk, ShaderLib, UniformsUtils} from '../../libs/three/Three.js';
 
 /**
  * ------------------------------------------------------------------------------------------

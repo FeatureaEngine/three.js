@@ -1,16 +1,4 @@
-import {
-    Clock,
-    Color,
-    Matrix4,
-    Mesh,
-    RepeatWrapping,
-    ShaderMaterial,
-    TextureLoader,
-    UniformsLib,
-    UniformsUtils,
-    Vector2,
-    Vector4
-} from '../../libs/three/Three.js';
+import {Clock, Color, Matrix4, Mesh, RepeatWrapping, ShaderMaterial, TextureLoader, UniformsLib, UniformsUtils, Vector2, Vector4} from '../../libs/three/Three.js';
 import {Reflector} from '../objects/Reflector.js';
 import {Refractor} from '../objects/Refractor.js';
 

@@ -26,10 +26,6 @@ import PassNode from './PassNode.js';
  */
 class ToonOutlinePassNode extends PassNode {
 
-    static get type() {
-        return 'ToonOutlinePassNode';
-    }
-
     /**
      * Constructs a new outline pass node.
      *
@@ -66,6 +62,10 @@ class ToonOutlinePassNode extends PassNode {
          * @type {WeakMap<Material, NodeMaterial>}
          */
         this._materialCache = new WeakMap();
+    }
+
+    static get type() {
+        return 'ToonOutlinePassNode';
     }
 
     updateBefore(frame) {

@@ -11,10 +11,6 @@ import {nodeProxy} from '../tsl/TSLBase.js';
  */
 class PosterizeNode extends TempNode {
 
-    static get type() {
-        return 'PosterizeNode';
-    }
-
     /**
      * Constructs a new posterize node.
      *
@@ -35,6 +31,10 @@ class PosterizeNode extends TempNode {
          * @type {Node}
          */
         this.stepsNode = stepsNode;
+    }
+
+    static get type() {
+        return 'PosterizeNode';
     }
 
     setup() {

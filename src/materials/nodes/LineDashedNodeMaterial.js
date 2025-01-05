@@ -2,7 +2,7 @@ import NodeMaterial from './NodeMaterial.js';
 import {attribute} from '../../nodes/core/AttributeNode.js';
 import {materialLineDashOffset, materialLineDashSize, materialLineGapSize, materialLineScale} from '../../nodes/accessors/MaterialNode.js';
 import {dashSize, gapSize} from '../../nodes/core/PropertyNode.js';
-import {varying, float} from '../../nodes/tsl/TSLBase.js';
+import {float, varying} from '../../nodes/tsl/TSLBase.js';
 
 import {LineDashedMaterial} from '../LineDashedMaterial.js';
 
@@ -14,10 +14,6 @@ const _defaultValues = new LineDashedMaterial();
  * @augments NodeMaterial
  */
 class LineDashedNodeMaterial extends NodeMaterial {
-
-    static get type() {
-        return 'LineDashedNodeMaterial';
-    }
 
     /**
      * Constructs a new line dashed node material.
@@ -91,6 +87,10 @@ class LineDashedNodeMaterial extends NodeMaterial {
          */
         this.gapSizeNode = null;
         this.setValues(parameters);
+    }
+
+    static get type() {
+        return 'LineDashedNodeMaterial';
     }
 
     /**

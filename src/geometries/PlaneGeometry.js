@@ -51,14 +51,14 @@ class PlaneGeometry extends BufferGeometry {
         this.setAttribute('uv', new Float32BufferAttribute(uvs, 2));
     }
 
+    static fromJSON(data) {
+        return new PlaneGeometry(data.width, data.height, data.widthSegments, data.heightSegments);
+    }
+
     copy(source) {
         super.copy(source);
         this.parameters = Object.assign({}, source.parameters);
         return this;
-    }
-
-    static fromJSON(data) {
-        return new PlaneGeometry(data.width, data.height, data.widthSegments, data.heightSegments);
     }
 
 }

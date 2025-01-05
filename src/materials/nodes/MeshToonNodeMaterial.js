@@ -12,10 +12,6 @@ const _defaultValues = new MeshToonMaterial();
  */
 class MeshToonNodeMaterial extends NodeMaterial {
 
-    static get type() {
-        return 'MeshToonNodeMaterial';
-    }
-
     /**
      * Constructs a new mesh toon node material.
      *
@@ -40,6 +36,10 @@ class MeshToonNodeMaterial extends NodeMaterial {
         this.lights = true;
         this.setDefaultValues(_defaultValues);
         this.setValues(parameters);
+    }
+
+    static get type() {
+        return 'MeshToonNodeMaterial';
     }
 
     /**

@@ -1,7 +1,4 @@
-import {
-    Matrix4,
-    Vector2
-} from '../../libs/three/Three.js';
+import {Matrix4, Vector2} from '../../libs/three/Three.js';
 
 /**
  * References:

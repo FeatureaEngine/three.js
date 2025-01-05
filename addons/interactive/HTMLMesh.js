@@ -1,12 +1,4 @@
-import {
-    CanvasTexture,
-    LinearFilter,
-    Mesh,
-    MeshBasicMaterial,
-    PlaneGeometry,
-    SRGBColorSpace,
-    Color
-} from '../../libs/three/Three.js';
+import {CanvasTexture, Color, LinearFilter, Mesh, MeshBasicMaterial, PlaneGeometry, SRGBColorSpace} from '../../libs/three/Three.js';
 
 class HTMLMesh extends Mesh {
 

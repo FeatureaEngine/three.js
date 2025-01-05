@@ -18,10 +18,6 @@ const _cache = new WeakMap();
  */
 class CubeMapNode extends TempNode {
 
-    static get type() {
-        return 'CubeMapNode';
-    }
-
     /**
      * Constructs a new cube map node.
      *
@@ -69,6 +65,10 @@ class CubeMapNode extends TempNode {
          * @default 'render'
          */
         this.updateBeforeType = NodeUpdateType.RENDER;
+    }
+
+    static get type() {
+        return 'CubeMapNode';
     }
 
     updateBefore(frame) {

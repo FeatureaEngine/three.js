@@ -79,6 +79,15 @@ class ShapeGeometry extends BufferGeometry {
         }
     }
 
+    static fromJSON(data, shapes) {
+        const geometryShapes = [];
+        for (let j = 0, jl = data.shapes.length; j < jl; j++) {
+            const shape = shapes[data.shapes[j]];
+            geometryShapes.push(shape);
+        }
+        return new ShapeGeometry(geometryShapes, data.curveSegments);
+    }
+
     copy(source) {
         super.copy(source);
         this.parameters = Object.assign({}, source.parameters);
@@ -89,15 +98,6 @@ class ShapeGeometry extends BufferGeometry {
         const data = super.toJSON();
         const shapes = this.parameters.shapes;
         return toJSON(shapes, data);
-    }
-
-    static fromJSON(data, shapes) {
-        const geometryShapes = [];
-        for (let j = 0, jl = data.shapes.length; j < jl; j++) {
-            const shape = shapes[data.shapes[j]];
-            geometryShapes.push(shape);
-        }
-        return new ShapeGeometry(geometryShapes, data.curveSegments);
     }
 
 }

@@ -13,10 +13,6 @@ const _defaultValues = new MeshLambertMaterial();
  */
 class MeshLambertNodeMaterial extends NodeMaterial {
 
-    static get type() {
-        return 'MeshLambertNodeMaterial';
-    }
-
     /**
      * Constructs a new mesh lambert node material.
      *
@@ -41,6 +37,10 @@ class MeshLambertNodeMaterial extends NodeMaterial {
         this.lights = true;
         this.setDefaultValues(_defaultValues);
         this.setValues(parameters);
+    }
+
+    static get type() {
+        return 'MeshLambertNodeMaterial';
     }
 
     /**

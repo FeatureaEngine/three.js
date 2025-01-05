@@ -1,19 +1,4 @@
-import {
-    BufferAttribute,
-    BufferGeometry,
-    Color,
-    FileLoader,
-    Group,
-    LineBasicMaterial,
-    LineSegments,
-    Loader,
-    Matrix4,
-    Mesh,
-    MeshStandardMaterial,
-    SRGBColorSpace,
-    Vector3,
-    Ray
-} from '../../libs/three/Three.js';
+import {BufferAttribute, BufferGeometry, Color, FileLoader, Group, LineBasicMaterial, LineSegments, Loader, Matrix4, Mesh, MeshStandardMaterial, Ray, SRGBColorSpace, Vector3} from '../../libs/three/Three.js';
 
 // Special surface finish tag types.
 // Note: "MATERIAL" tag (e.g. GLITTER, SPECKLE) is not implemented

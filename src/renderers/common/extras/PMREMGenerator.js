@@ -1,5 +1,5 @@
 import NodeMaterial from '../../../materials/nodes/NodeMaterial.js';
-import {getDirection, blur} from '../../../nodes/pmrem/PMREMUtils.js';
+import {blur, getDirection} from '../../../nodes/pmrem/PMREMUtils.js';
 import {equirectUV} from '../../../nodes/utils/EquirectUVNode.js';
 import {uniform} from '../../../nodes/core/UniformNode.js';
 import {uniformArray} from '../../../nodes/accessors/UniformArrayNode.js';
@@ -19,17 +19,7 @@ import {Mesh} from '../../../objects/Mesh.js';
 import {PerspectiveCamera} from '../../../cameras/PerspectiveCamera.js';
 import {MeshBasicMaterial} from '../../../materials/MeshBasicMaterial.js';
 import {BoxGeometry} from '../../../geometries/BoxGeometry.js';
-import {
-    CubeReflectionMapping,
-    CubeRefractionMapping,
-    CubeUVReflectionMapping,
-    LinearFilter,
-    NoBlending,
-    RGBAFormat,
-    HalfFloatType,
-    BackSide,
-    LinearSRGBColorSpace
-} from '../../../constants.js';
+import {BackSide, CubeReflectionMapping, CubeRefractionMapping, CubeUVReflectionMapping, HalfFloatType, LinearFilter, LinearSRGBColorSpace, NoBlending, RGBAFormat} from '../../../constants.js';
 
 const LOD_MIN = 4;
 

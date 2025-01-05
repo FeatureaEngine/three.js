@@ -5,12 +5,7 @@
  *    https://www.openexr.com/documentation/openexrfilelayout.pdf
  */
 
-import {
-    FloatType,
-    HalfFloatType,
-    RGBAFormat,
-    DataUtils,
-} from '../../libs/three/Three.js';
+import {DataUtils, FloatType, HalfFloatType, RGBAFormat,} from '../../libs/three/Three.js';
 import * as fflate from '../../libs/fflate.module.js';
 
 const textEncoder = new TextEncoder();

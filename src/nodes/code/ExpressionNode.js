@@ -11,10 +11,6 @@ import {nodeProxy} from '../tsl/TSLCore.js';
  */
 class ExpressionNode extends Node {
 
-    static get type() {
-        return 'ExpressionNode';
-    }
-
     /**
      * Constructs a new expression node.
      *
@@ -30,6 +26,10 @@ class ExpressionNode extends Node {
          * @default ''
          */
         this.snippet = snippet;
+    }
+
+    static get type() {
+        return 'ExpressionNode';
     }
 
     generate(builder, output) {

@@ -1,6 +1,6 @@
 import {dot, max, mix} from '../math/MathNode.js';
 import {add} from '../math/OperatorNode.js';
-import {Fn, If, float, vec3, vec4} from '../tsl/TSLBase.js';
+import {float, Fn, If, vec3, vec4} from '../tsl/TSLBase.js';
 import {ColorManagement} from '../../math/ColorManagement.js';
 import {Vector3} from '../../math/Vector3.js';
 import {LinearSRGBColorSpace} from '../../constants.js';
@@ -100,14 +100,14 @@ export const luminance = (
  * - {@link https://docs.acescentral.com/specifications/acescc/}
  */
 export const cdl = Fn(([
-                                         color,
-                                         slope = vec3(1),
-                                         offset = vec3(0),
-                                         power = vec3(1),
-                                         saturation = float(1),
-                                         // ASC CDL v1.2 explicitly requires Rec. 709 luminance coefficients.
-                                         luminanceCoefficients = vec3(ColorManagement.getLuminanceCoefficients(new Vector3(), LinearSRGBColorSpace))
-                                     ]) => {
+                           color,
+                           slope = vec3(1),
+                           offset = vec3(0),
+                           power = vec3(1),
+                           saturation = float(1),
+                           // ASC CDL v1.2 explicitly requires Rec. 709 luminance coefficients.
+                           luminanceCoefficients = vec3(ColorManagement.getLuminanceCoefficients(new Vector3(), LinearSRGBColorSpace))
+                       ]) => {
     // NOTE: The ASC CDL v1.2 defines a [0, 1] clamp on the slope+offset term, and another on the
     // saturation term. Per the ACEScc specification and Filament, limits may be omitted to support
     // values outside [0, 1], requiring a workaround for negative values in the power expression.

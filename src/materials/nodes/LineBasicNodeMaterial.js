@@ -11,10 +11,6 @@ const _defaultValues = new LineBasicMaterial();
  */
 class LineBasicNodeMaterial extends NodeMaterial {
 
-    static get type() {
-        return 'LineBasicNodeMaterial';
-    }
-
     /**
      * Constructs a new line basic node material.
      *
@@ -32,6 +28,10 @@ class LineBasicNodeMaterial extends NodeMaterial {
         this.isLineBasicNodeMaterial = true;
         this.setDefaultValues(_defaultValues);
         this.setValues(parameters);
+    }
+
+    static get type() {
+        return 'LineBasicNodeMaterial';
     }
 
 }

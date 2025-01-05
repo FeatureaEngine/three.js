@@ -247,15 +247,6 @@ export default class RenderObject {
     }
 
     /**
-     * Updates the clipping context.
-     *
-     * @param {ClippingContext} context - The clipping context to set.
-     */
-    updateClipping(context) {
-        this.clippingContext = context;
-    }
-
-    /**
      * Whether the clipping requires an update or not.
      *
      * @type {Boolean}
@@ -275,6 +266,46 @@ export default class RenderObject {
      */
     get hardwareClippingPlanes() {
         return this.material.hardwareClipping === true ? this.clippingContext.unionClippingCount : 0;
+    }
+
+    /**
+     * Whether the geometry requires an update or not.
+     *
+     * @type {Boolean}
+     * @readonly
+     */
+    get needsGeometryUpdate() {
+        return this.geometry.id !== this.object.geometry.id;
+    }
+
+    /**
+     * Whether the render object requires an update or not.
+     *
+     * Note: There are two distinct places where render objects are checked for an update.
+     *
+     * 1. In `RenderObjects.get()` which is executed when the render object is request. This
+     * method checks the `needsUpdate` flag and recreates the render object if necessary.
+     * 2. In `Renderer._renderObjectDirect()` right after getting the render object via
+     * `RenderObjects.get()`. The render object's NodeMaterialObserver is then used to detect
+     * a need for a refresh due to material, geometry or object related value changes.
+     *
+     * TODO: Investigate if it's possible to merge boths steps so there is only a single place
+     * that performs the 'needsUpdate' check.
+     *
+     * @type {Boolean}
+     * @readonly
+     */
+    get needsUpdate() {
+        return /*this.object.static !== true &&*/ (this.initialNodesCacheKey !== this.getDynamicCacheKey() || this.clippingNeedsUpdate);
+    }
+
+    /**
+     * Updates the clipping context.
+     *
+     * @param {ClippingContext} context - The clipping context to set.
+     */
+    updateClipping(context) {
+        this.clippingContext = context;
     }
 
     /**
@@ -500,37 +531,6 @@ export default class RenderObject {
         }
         cacheKey += object.receiveShadow + ',';
         return hashString(cacheKey);
-    }
-
-    /**
-     * Whether the geometry requires an update or not.
-     *
-     * @type {Boolean}
-     * @readonly
-     */
-    get needsGeometryUpdate() {
-        return this.geometry.id !== this.object.geometry.id;
-    }
-
-    /**
-     * Whether the render object requires an update or not.
-     *
-     * Note: There are two distinct places where render objects are checked for an update.
-     *
-     * 1. In `RenderObjects.get()` which is executed when the render object is request. This
-     * method checks the `needsUpdate` flag and recreates the render object if necessary.
-     * 2. In `Renderer._renderObjectDirect()` right after getting the render object via
-     * `RenderObjects.get()`. The render object's NodeMaterialObserver is then used to detect
-     * a need for a refresh due to material, geometry or object related value changes.
-     *
-     * TODO: Investigate if it's possible to merge boths steps so there is only a single place
-     * that performs the 'needsUpdate' check.
-     *
-     * @type {Boolean}
-     * @readonly
-     */
-    get needsUpdate() {
-        return /*this.object.static !== true &&*/ (this.initialNodesCacheKey !== this.getDynamicCacheKey() || this.clippingNeedsUpdate);
     }
 
     /**

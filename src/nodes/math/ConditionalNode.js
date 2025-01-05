@@ -19,10 +19,6 @@ import {addMethodChaining, nodeProxy} from '../tsl/TSLCore.js';
  */
 class ConditionalNode extends Node {
 
-    static get type() {
-        return 'ConditionalNode';
-    }
-
     /**
      * Constructs a new conditional node.
      *
@@ -51,6 +47,10 @@ class ConditionalNode extends Node {
          * @default null
          */
         this.elseNode = elseNode;
+    }
+
+    static get type() {
+        return 'ConditionalNode';
     }
 
     /**

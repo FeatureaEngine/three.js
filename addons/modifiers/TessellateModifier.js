@@ -1,10 +1,4 @@
-import {
-    BufferGeometry,
-    Color,
-    Float32BufferAttribute,
-    Vector2,
-    Vector3
-} from '../../libs/three/Three.js';
+import {BufferGeometry, Color, Float32BufferAttribute, Vector2, Vector3} from '../../libs/three/Three.js';
 
 /**
  * Break faces with edges longer than maxEdgeLength

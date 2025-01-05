@@ -1,6 +1,4 @@
-import {
-    Vector2
-} from '../../libs/three/Three.js';
+import {Vector2} from '../../libs/three/Three.js';
 
 /**
  * Normal map shader

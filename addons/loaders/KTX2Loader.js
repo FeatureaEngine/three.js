@@ -13,19 +13,19 @@
  */
 
 import {
-    CompressedTexture,
     CompressedArrayTexture,
     CompressedCubeTexture,
+    CompressedTexture,
     Data3DTexture,
     DataTexture,
     FileLoader,
     FloatType,
     HalfFloatType,
-    NoColorSpace,
     LinearFilter,
     LinearMipmapLinearFilter,
     LinearSRGBColorSpace,
     Loader,
+    NoColorSpace,
     RedFormat,
     RGB_BPTC_UNSIGNED_Format,
     RGB_ETC1_Format,
@@ -36,8 +36,8 @@ import {
     RGBA_BPTC_Format,
     RGBA_ETC2_EAC_Format,
     RGBA_PVRTC_4BPPV1_Format,
-    RGBA_S3TC_DXT5_Format,
     RGBA_S3TC_DXT1_Format,
+    RGBA_S3TC_DXT5_Format,
     RGBAFormat,
     RGFormat,
     SRGBColorSpace,
@@ -45,12 +45,17 @@ import {
 } from '../../libs/three/Three.js';
 import {WorkerPool} from '../utils/WorkerPool.js';
 import {
-    read,
     KHR_DF_FLAG_ALPHA_PREMULTIPLIED,
+    KHR_DF_PRIMARIES_BT709,
+    KHR_DF_PRIMARIES_DISPLAYP3,
+    KHR_DF_PRIMARIES_UNSPECIFIED,
     KHR_DF_TRANSFER_SRGB,
     KHR_SUPERCOMPRESSION_NONE,
     KHR_SUPERCOMPRESSION_ZSTD,
-    VK_FORMAT_UNDEFINED,
+    read,
+    VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT,
+    VK_FORMAT_ASTC_6x6_SRGB_BLOCK,
+    VK_FORMAT_ASTC_6x6_UNORM_BLOCK,
     VK_FORMAT_R16_SFLOAT,
     VK_FORMAT_R16G16_SFLOAT,
     VK_FORMAT_R16G16B16A16_SFLOAT,
@@ -63,12 +68,7 @@ import {
     VK_FORMAT_R8G8_UNORM,
     VK_FORMAT_R8G8B8A8_SRGB,
     VK_FORMAT_R8G8B8A8_UNORM,
-    VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT,
-    VK_FORMAT_ASTC_6x6_SRGB_BLOCK,
-    VK_FORMAT_ASTC_6x6_UNORM_BLOCK,
-    KHR_DF_PRIMARIES_UNSPECIFIED,
-    KHR_DF_PRIMARIES_BT709,
-    KHR_DF_PRIMARIES_DISPLAYP3
+    VK_FORMAT_UNDEFINED
 } from '../../libs/ktx-parse.module.js';
 import {ZSTDDecoder} from '../../libs/zstddec.module.js';
 import {DisplayP3ColorSpace, LinearDisplayP3ColorSpace} from '../math/ColorSpaces.js';

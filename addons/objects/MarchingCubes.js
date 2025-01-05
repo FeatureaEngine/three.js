@@ -1,12 +1,4 @@
-import {
-    BufferAttribute,
-    BufferGeometry,
-    Color,
-    DynamicDrawUsage,
-    Mesh,
-    Sphere,
-    Vector3
-} from '../../libs/three/Three.js';
+import {BufferAttribute, BufferGeometry, Color, DynamicDrawUsage, Mesh, Sphere, Vector3} from '../../libs/three/Three.js';
 
 /**
  * Port of http://webglsamples.org/blob/blob.html

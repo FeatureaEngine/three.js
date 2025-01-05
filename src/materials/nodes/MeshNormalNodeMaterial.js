@@ -16,10 +16,6 @@ const _defaultValues = new MeshNormalMaterial();
  */
 class MeshNormalNodeMaterial extends NodeMaterial {
 
-    static get type() {
-        return 'MeshNormalNodeMaterial';
-    }
-
     /**
      * Constructs a new mesh normal node material.
      *
@@ -37,6 +33,10 @@ class MeshNormalNodeMaterial extends NodeMaterial {
         this.isMeshNormalNodeMaterial = true;
         this.setDefaultValues(_defaultValues);
         this.setValues(parameters);
+    }
+
+    static get type() {
+        return 'MeshNormalNodeMaterial';
     }
 
     /**

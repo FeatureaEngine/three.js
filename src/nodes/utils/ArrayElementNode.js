@@ -7,10 +7,6 @@ import Node from '../core/Node.js';
  * @augments Node
  */
 class ArrayElementNode extends Node { // @TODO: If extending from TempNode it breaks webgpu_compute
-    static get type() {
-        return 'ArrayElementNode';
-    }
-
     /**
      * Constructs an array element node.
      *
@@ -39,6 +35,10 @@ class ArrayElementNode extends Node { // @TODO: If extending from TempNode it br
          * @default true
          */
         this.isArrayElementNode = true;
+    }
+
+    static get type() {
+        return 'ArrayElementNode';
     }
 
     /**

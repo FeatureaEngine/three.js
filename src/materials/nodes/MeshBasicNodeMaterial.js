@@ -17,10 +17,6 @@ const _defaultValues = new MeshBasicMaterial();
  */
 class MeshBasicNodeMaterial extends NodeMaterial {
 
-    static get type() {
-        return 'MeshBasicNodeMaterial';
-    }
-
     /**
      * Constructs a new mesh basic node material.
      *
@@ -47,6 +43,10 @@ class MeshBasicNodeMaterial extends NodeMaterial {
         this.lights = true;
         this.setDefaultValues(_defaultValues);
         this.setValues(parameters);
+    }
+
+    static get type() {
+        return 'MeshBasicNodeMaterial';
     }
 
     /**

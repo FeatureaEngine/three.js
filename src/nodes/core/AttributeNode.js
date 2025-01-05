@@ -10,10 +10,6 @@ import {nodeObject, varying} from '../tsl/TSLBase.js';
  */
 class AttributeNode extends Node {
 
-    static get type() {
-        return 'AttributeNode';
-    }
-
     /**
      * Constructs a new attribute node.
      *
@@ -30,6 +26,10 @@ class AttributeNode extends Node {
          */
         this.global = true;
         this._attributeName = attributeName;
+    }
+
+    static get type() {
+        return 'AttributeNode';
     }
 
     getHash(builder) {

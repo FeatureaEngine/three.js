@@ -1,13 +1,4 @@
-import {
-    Controls,
-    Matrix4,
-    Plane,
-    Raycaster,
-    Vector2,
-    Vector3,
-    MOUSE,
-    TOUCH
-} from '../../libs/three/Three.js';
+import {Controls, Matrix4, MOUSE, Plane, Raycaster, TOUCH, Vector2, Vector3} from '../../libs/three/Three.js';
 
 const _plane = new Plane();
 
@@ -52,6 +43,14 @@ class DragControls extends Controls {
         if (domElement !== null) {
             this.connect();
         }
+    }
+
+    get mode() {
+        console.warn('THREE.DragControls: The .mode property has been removed. Define the type of transformation via the .mouseButtons or .touches properties.'); // @deprecated r169
+    }
+
+    set mode(value) {
+        console.warn('THREE.DragControls: The .mode property has been removed. Define the type of transformation via the .mouseButtons or .touches properties.'); // @deprecated r169
     }
 
     connect() {
@@ -141,14 +140,6 @@ class DragControls extends Controls {
     deactivate() {
         console.warn('THREE.DragControls: deactivate() has been renamed to disconnect().'); // @deprecated r169
         this.disconnect();
-    }
-
-    set mode(value) {
-        console.warn('THREE.DragControls: The .mode property has been removed. Define the type of transformation via the .mouseButtons or .touches properties.'); // @deprecated r169
-    }
-
-    get mode() {
-        console.warn('THREE.DragControls: The .mode property has been removed. Define the type of transformation via the .mouseButtons or .touches properties.'); // @deprecated r169
     }
 
 }

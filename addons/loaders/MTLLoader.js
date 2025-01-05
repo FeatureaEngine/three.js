@@ -1,17 +1,4 @@
-import {
-    Color,
-    ColorManagement,
-    DefaultLoadingManager,
-    FileLoader,
-    FrontSide,
-    Loader,
-    LoaderUtils,
-    MeshPhongMaterial,
-    RepeatWrapping,
-    SRGBColorSpace,
-    TextureLoader,
-    Vector2
-} from '../../libs/three/Three.js';
+import {Color, ColorManagement, DefaultLoadingManager, FileLoader, FrontSide, Loader, LoaderUtils, MeshPhongMaterial, RepeatWrapping, SRGBColorSpace, TextureLoader, Vector2} from '../../libs/three/Three.js';
 
 /**
  * Loads a Wavefront .mtl file specifying materials

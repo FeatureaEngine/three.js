@@ -1,6 +1,6 @@
 import DataMap from './DataMap.js';
 import Color4 from './Color4.js';
-import {vec4, context, normalWorld, backgroundBlurriness, backgroundIntensity, backgroundRotation, modelViewProjection} from '../../nodes/TSL.js';
+import {backgroundBlurriness, backgroundIntensity, backgroundRotation, context, modelViewProjection, normalWorld, vec4} from '../../nodes/TSL.js';
 import NodeMaterial from '../../materials/nodes/NodeMaterial.js';
 
 import {Mesh} from '../../objects/Mesh.js';

@@ -8,10 +8,6 @@ import Node from './Node.js';
  */
 class StructTypeNode extends Node {
 
-    static get type() {
-        return 'StructTypeNode';
-    }
-
     /**
      * Constructs a new struct type node.
      *
@@ -41,6 +37,10 @@ class StructTypeNode extends Node {
          * @default true
          */
         this.isStructTypeNode = true;
+    }
+
+    static get type() {
+        return 'StructTypeNode';
     }
 
     /**

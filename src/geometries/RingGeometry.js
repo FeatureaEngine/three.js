@@ -68,14 +68,14 @@ class RingGeometry extends BufferGeometry {
         this.setAttribute('uv', new Float32BufferAttribute(uvs, 2));
     }
 
+    static fromJSON(data) {
+        return new RingGeometry(data.innerRadius, data.outerRadius, data.thetaSegments, data.phiSegments, data.thetaStart, data.thetaLength);
+    }
+
     copy(source) {
         super.copy(source);
         this.parameters = Object.assign({}, source.parameters);
         return this;
-    }
-
-    static fromJSON(data) {
-        return new RingGeometry(data.innerRadius, data.outerRadius, data.thetaSegments, data.phiSegments, data.thetaStart, data.thetaLength);
     }
 
 }

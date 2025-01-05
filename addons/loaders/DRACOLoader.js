@@ -1,13 +1,4 @@
-import {
-    BufferAttribute,
-    BufferGeometry,
-    Color,
-    ColorManagement,
-    FileLoader,
-    Loader,
-    LinearSRGBColorSpace,
-    SRGBColorSpace
-} from '../../libs/three/Three.js';
+import {BufferAttribute, BufferGeometry, Color, ColorManagement, FileLoader, LinearSRGBColorSpace, Loader, SRGBColorSpace} from '../../libs/three/Three.js';
 
 const _taskCache = new WeakMap();
 

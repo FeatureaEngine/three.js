@@ -1,8 +1,5 @@
-import {
-    ShaderMaterial,
-    UniformsUtils
-} from '../../libs/three/Three.js';
-import {Pass, FullScreenQuad} from './Pass.js';
+import {ShaderMaterial, UniformsUtils} from '../../libs/three/Three.js';
+import {FullScreenQuad, Pass} from './Pass.js';
 import {HalftoneShader} from '../shaders/HalftoneShader.js';
 
 /**

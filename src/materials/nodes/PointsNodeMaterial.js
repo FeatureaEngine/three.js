@@ -16,10 +16,6 @@ const _defaultValues = new PointsMaterial();
  */
 class PointsNodeMaterial extends NodeMaterial {
 
-    static get type() {
-        return 'PointsNodeMaterial';
-    }
-
     /**
      * Constructs a new points node material.
      *
@@ -37,6 +33,10 @@ class PointsNodeMaterial extends NodeMaterial {
         this.isPointsNodeMaterial = true;
         this.setDefaultValues(_defaultValues);
         this.setValues(parameters);
+    }
+
+    static get type() {
+        return 'PointsNodeMaterial';
     }
 
 }

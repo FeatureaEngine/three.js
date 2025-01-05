@@ -11,15 +11,7 @@ import NodeMaterial from '../../materials/nodes/NodeMaterial.js';
 import {getTypeFromLength} from './NodeUtils.js';
 import {defaultBuildStages, NodeUpdateType, shaderStages} from './constants.js';
 
-import {
-	ColorNodeUniform,
-	Matrix3NodeUniform,
-	Matrix4NodeUniform,
-	NumberNodeUniform,
-	Vector2NodeUniform,
-	Vector3NodeUniform,
-	Vector4NodeUniform
-} from '../../renderers/common/nodes/NodeUniform.js';
+import {ColorNodeUniform, Matrix3NodeUniform, Matrix4NodeUniform, NumberNodeUniform, Vector2NodeUniform, Vector3NodeUniform, Vector4NodeUniform} from '../../renderers/common/nodes/NodeUniform.js';
 
 import {stack} from './StackNode.js';
 import {getCurrentStack, setCurrentStack} from '../tsl/TSLBase.js';
@@ -375,6 +367,16 @@ class NodeBuilder {
     }
 
     /**
+     * A reference the current node which is the
+     * last node in the chain of nodes.
+     *
+     * @type {Node}
+     */
+    get currentNode() {
+        return this.chaining[this.chaining.length - 1];
+    }
+
+    /**
      * Returns the bind groups of the current renderer.
      *
      * @return {ChainMap} The cache.
@@ -590,16 +592,6 @@ class NodeBuilder {
                 this.updateAfterNodes.push(node.getSelf());
             }
         }
-    }
-
-    /**
-     * A reference the current node which is the
-     * last node in the chain of nodes.
-     *
-     * @type {Node}
-     */
-    get currentNode() {
-        return this.chaining[this.chaining.length - 1];
     }
 
     /**

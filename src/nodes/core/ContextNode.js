@@ -15,10 +15,6 @@ import {addMethodChaining, nodeProxy} from '../tsl/TSLCore.js';
  */
 class ContextNode extends Node {
 
-    static get type() {
-        return 'ContextNode';
-    }
-
     /**
      * Constructs a new context node.
      *
@@ -48,6 +44,10 @@ class ContextNode extends Node {
          * @default {}
          */
         this.value = value;
+    }
+
+    static get type() {
+        return 'ContextNode';
     }
 
     /**

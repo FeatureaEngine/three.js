@@ -18,10 +18,6 @@ const _defaultValues = new SpriteMaterial();
  */
 class SpriteNodeMaterial extends NodeMaterial {
 
-    static get type() {
-        return 'SpriteNodeMaterial';
-    }
-
     /**
      * Constructs a new sprite node material.
      *
@@ -81,6 +77,27 @@ class SpriteNodeMaterial extends NodeMaterial {
         this.setValues(parameters);
     }
 
+    static get type() {
+        return 'SpriteNodeMaterial';
+    }
+
+    /**
+     * Whether to use size attenuation or not.
+     *
+     * @type {Boolean}
+     * @default true
+     */
+    get sizeAttenuation() {
+        return this._useSizeAttenuation;
+    }
+
+    set sizeAttenuation(value) {
+        if (this._useSizeAttenuation !== value) {
+            this._useSizeAttenuation = value;
+            this.needsUpdate = true;
+        }
+    }
+
     /**
      * Setups the position node in view space. This method implements
      * the sprite specific vertex shader.
@@ -121,23 +138,6 @@ class SpriteNodeMaterial extends NodeMaterial {
         this.rotationNode = source.rotationNode;
         this.scaleNode = source.scaleNode;
         return super.copy(source);
-    }
-
-    /**
-     * Whether to use size attenuation or not.
-     *
-     * @type {Boolean}
-     * @default true
-     */
-    get sizeAttenuation() {
-        return this._useSizeAttenuation;
-    }
-
-    set sizeAttenuation(value) {
-        if (this._useSizeAttenuation !== value) {
-            this._useSizeAttenuation = value;
-            this.needsUpdate = true;
-        }
     }
 
 }

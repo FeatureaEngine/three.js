@@ -1,23 +1,23 @@
 import {
-    Program,
-    FunctionDeclaration,
-    For,
-    AccessorElements,
-    Ternary,
-    Varying,
-    DynamicElement,
-    StaticElement,
-    FunctionParameter,
-    Unary,
-    Conditional,
-    VariableDeclaration,
-    Operator,
-    Number,
-    String,
-    FunctionCall,
-    Return,
     Accessor,
-    Uniform
+    AccessorElements,
+    Conditional,
+    DynamicElement,
+    For,
+    FunctionCall,
+    FunctionDeclaration,
+    FunctionParameter,
+    Number,
+    Operator,
+    Program,
+    Return,
+    StaticElement,
+    String,
+    Ternary,
+    Unary,
+    Uniform,
+    VariableDeclaration,
+    Varying
 } from './AST.js';
 
 const unaryOperators = [
@@ -198,13 +198,13 @@ class GLSLDecoder {
         this.addPolyfill('gl_FragCoord', 'vec3 gl_FragCoord = vec3( screenCoordinate.x, screenCoordinate.y.oneMinus(), screenCoordinate.z );');
     }
 
+    get tokens() {
+        return this.tokenizer.tokens;
+    }
+
     addPolyfill(name, polyfill) {
         this.keywords.push({name, polyfill});
         return this;
-    }
-
-    get tokens() {
-        return this.tokenizer.tokens;
     }
 
     readToken() {

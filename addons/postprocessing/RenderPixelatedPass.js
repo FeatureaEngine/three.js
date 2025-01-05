@@ -1,14 +1,5 @@
-import {
-    WebGLRenderTarget,
-    MeshNormalMaterial,
-    ShaderMaterial,
-    Vector2,
-    Vector4,
-    DepthTexture,
-    NearestFilter,
-    HalfFloatType
-} from '../../libs/three/Three.js';
-import {Pass, FullScreenQuad} from './Pass.js';
+import {DepthTexture, HalfFloatType, MeshNormalMaterial, NearestFilter, ShaderMaterial, Vector2, Vector4, WebGLRenderTarget} from '../../libs/three/Three.js';
+import {FullScreenQuad, Pass} from './Pass.js';
 
 class RenderPixelatedPass extends Pass {
 

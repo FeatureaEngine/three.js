@@ -1,17 +1,4 @@
-import {
-    BufferAttribute,
-    BufferGeometry,
-    Color,
-    Line,
-    LineBasicMaterial,
-    Matrix4,
-    Mesh,
-    MeshBasicMaterial,
-    Object3D,
-    Quaternion,
-    SphereGeometry,
-    Vector3
-} from '../../libs/three/Three.js';
+import {BufferAttribute, BufferGeometry, Color, Line, LineBasicMaterial, Matrix4, Mesh, MeshBasicMaterial, Object3D, Quaternion, SphereGeometry, Vector3} from '../../libs/three/Three.js';
 
 const _q = new Quaternion();
 const _targetPos = new Vector3();

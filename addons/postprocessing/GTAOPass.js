@@ -3,8 +3,8 @@ import {
     Color,
     CustomBlending,
     DataTexture,
-    DepthTexture,
     DepthStencilFormat,
+    DepthTexture,
     DstAlphaFactor,
     DstColorFactor,
     HalfFloatType,
@@ -20,8 +20,8 @@ import {
     WebGLRenderTarget,
     ZeroFactor
 } from '../../libs/three/Three.js';
-import {Pass, FullScreenQuad} from './Pass.js';
-import {generateMagicSquareNoise, GTAOShader, GTAODepthShader, GTAOBlendShader} from '../shaders/GTAOShader.js';
+import {FullScreenQuad, Pass} from './Pass.js';
+import {generateMagicSquareNoise, GTAOBlendShader, GTAODepthShader, GTAOShader} from '../shaders/GTAOShader.js';
 import {generatePdSamplePointInitializer, PoissonDenoiseShader} from '../shaders/PoissonDenoiseShader.js';
 import {CopyShader} from '../shaders/CopyShader.js';
 import {SimplexNoise} from '../math/SimplexNoise.js';
@@ -126,6 +126,10 @@ class GTAOPass extends Pass {
         }
     }
 
+    get gtaoMap() {
+        return this.pdRenderTarget.texture;
+    }
+
     dispose() {
         this.gtaoNoiseTexture.dispose();
         this.pdNoiseTexture.dispose();
@@ -137,10 +141,6 @@ class GTAOPass extends Pass {
         this.copyMaterial.dispose();
         this.depthRenderMaterial.dispose();
         this.fsQuad.dispose();
-    }
-
-    get gtaoMap() {
-        return this.pdRenderTarget.texture;
     }
 
     setGBuffer(depthTexture, normalTexture) {

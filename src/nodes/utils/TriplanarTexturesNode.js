@@ -3,7 +3,7 @@ import {add} from '../math/OperatorNode.js';
 import {normalLocal} from '../accessors/Normal.js';
 import {positionLocal} from '../accessors/Position.js';
 import {texture} from '../accessors/TextureNode.js';
-import {nodeProxy, float, vec3} from '../tsl/TSLBase.js';
+import {float, nodeProxy, vec3} from '../tsl/TSLBase.js';
 
 /** @module TriplanarTexturesNode **/
 
@@ -17,10 +17,6 @@ import {nodeProxy, float, vec3} from '../tsl/TSLBase.js';
  * @augments Node
  */
 class TriplanarTexturesNode extends Node {
-
-    static get type() {
-        return 'TriplanarTexturesNode';
-    }
 
     /**
      * Constructs a new triplanar textures node.
@@ -75,6 +71,10 @@ class TriplanarTexturesNode extends Node {
          * @default normalLocal
          */
         this.normalNode = normalNode;
+    }
+
+    static get type() {
+        return 'TriplanarTexturesNode';
     }
 
     setup() {

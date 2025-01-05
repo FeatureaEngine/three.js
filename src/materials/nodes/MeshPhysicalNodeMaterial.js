@@ -1,52 +1,52 @@
 import {
+    alphaT,
+    anisotropy,
+    anisotropyB,
+    anisotropyT,
+    attenuationColor,
+    attenuationDistance,
     clearcoat,
     clearcoatRoughness,
-    sheen,
-    sheenRoughness,
+    diffuseColor,
+    dispersion,
+    ior,
     iridescence,
     iridescenceIOR,
     iridescenceThickness,
-    specularColor,
-    specularF90,
-    diffuseColor,
     metalness,
     roughness,
-    anisotropy,
-    alphaT,
-    anisotropyT,
-    anisotropyB,
-    ior,
-    transmission,
+    sheen,
+    sheenRoughness,
+    specularColor,
+    specularF90,
     thickness,
-    attenuationDistance,
-    attenuationColor,
-    dispersion
+    transmission
 } from '../../nodes/core/PropertyNode.js';
 import {
+    materialAnisotropy,
+    materialAttenuationColor,
+    materialAttenuationDistance,
     materialClearcoat,
-    materialClearcoatRoughness,
     materialClearcoatNormal,
-    materialSheen,
-    materialSheenRoughness,
+    materialClearcoatRoughness,
+    materialDispersion,
+    materialIOR,
     materialIridescence,
     materialIridescenceIOR,
     materialIridescenceThickness,
-    materialSpecularIntensity,
+    materialSheen,
+    materialSheenRoughness,
     materialSpecularColor,
-    materialAnisotropy,
-    materialIOR,
-    materialTransmission,
+    materialSpecularIntensity,
     materialThickness,
-    materialAttenuationDistance,
-    materialAttenuationColor,
-    materialDispersion
+    materialTransmission
 } from '../../nodes/accessors/MaterialNode.js';
-import {float, vec2, vec3, If} from '../../nodes/tsl/TSLBase.js';
+import {float, If, vec2, vec3} from '../../nodes/tsl/TSLBase.js';
 import getRoughness from '../../nodes/functions/material/getRoughness.js';
 import {TBNViewMatrix} from '../../nodes/accessors/AccessorsUtils.js';
 import PhysicalLightingModel from '../../nodes/functions/PhysicalLightingModel.js';
 import MeshStandardNodeMaterial from './MeshStandardNodeMaterial.js';
-import {mix, pow2, min} from '../../nodes/math/MathNode.js';
+import {min, mix, pow2} from '../../nodes/math/MathNode.js';
 
 import {MeshPhysicalMaterial} from '../MeshPhysicalMaterial.js';
 
@@ -58,10 +58,6 @@ const _defaultValues = new MeshPhysicalMaterial();
  * @augments MeshStandardNodeMaterial
  */
 class MeshPhysicalNodeMaterial extends MeshStandardNodeMaterial {
-
-    static get type() {
-        return 'MeshPhysicalNodeMaterial';
-    }
 
     /**
      * Constructs a new mesh physical node material.
@@ -284,6 +280,10 @@ class MeshPhysicalNodeMaterial extends MeshStandardNodeMaterial {
         this.anisotropyNode = null;
         this.setDefaultValues(_defaultValues);
         this.setValues(parameters);
+    }
+
+    static get type() {
+        return 'MeshPhysicalNodeMaterial';
     }
 
     /**

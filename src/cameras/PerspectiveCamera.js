@@ -1,5 +1,5 @@
 import {Camera} from './Camera.js';
-import {RAD2DEG, DEG2RAD} from '../math/MathUtils.js';
+import {DEG2RAD, RAD2DEG} from '../math/MathUtils.js';
 import {Vector2} from '../math/Vector2.js';
 import {Vector3} from '../math/Vector3.js';
 

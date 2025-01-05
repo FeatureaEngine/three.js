@@ -17,10 +17,6 @@ import {nodeProxy, vec2} from '../tsl/TSLBase.js';
  */
 class EquirectUVNode extends TempNode {
 
-    static get type() {
-        return 'EquirectUVNode';
-    }
-
     /**
      * Constructs a new equirect uv node.
      *
@@ -34,6 +30,10 @@ class EquirectUVNode extends TempNode {
          * @type {Node<vec3>}
          */
         this.dirNode = dirNode;
+    }
+
+    static get type() {
+        return 'EquirectUVNode';
     }
 
     setup() {

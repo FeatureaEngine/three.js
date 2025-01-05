@@ -1,11 +1,4 @@
-import {
-    BufferGeometry,
-    Color,
-    Float32BufferAttribute,
-    Vector2,
-    Vector3,
-    Vector4
-} from '../../libs/three/Three.js';
+import {BufferGeometry, Color, Float32BufferAttribute, Vector2, Vector3, Vector4} from '../../libs/three/Three.js';
 import * as BufferGeometryUtils from '../utils/BufferGeometryUtils.js';
 
 /**

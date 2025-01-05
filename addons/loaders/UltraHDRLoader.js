@@ -1,16 +1,4 @@
-import {
-    ClampToEdgeWrapping,
-    DataTexture,
-    DataUtils,
-    FileLoader,
-    HalfFloatType,
-    LinearFilter,
-    LinearMipMapLinearFilter,
-    LinearSRGBColorSpace,
-    Loader,
-    RGBAFormat,
-    UVMapping,
-} from '../../libs/three/Three.js';
+import {ClampToEdgeWrapping, DataTexture, DataUtils, FileLoader, HalfFloatType, LinearFilter, LinearMipMapLinearFilter, LinearSRGBColorSpace, Loader, RGBAFormat, UVMapping,} from '../../libs/three/Three.js';
 
 // UltraHDR Image Format - https://developer.android.com/media/platform/hdr-image-format
 // HDR/EXR to UltraHDR Converter - https://gainmap-creator.monogrid.com/

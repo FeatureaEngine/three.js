@@ -38,6 +38,16 @@ const LUTShader = {
 };
 
 class LUTPass extends ShaderPass {
+    constructor(options = {}) {
+        super(LUTShader);
+        this.lut = options.lut || null;
+        this.intensity = 'intensity' in options ? options.intensity : 1;
+    }
+
+    get lut() {
+        return this.material.uniforms.lut.value;
+    }
+
     set lut(v) {
         const material = this.material;
         if (v !== this.lut) {
@@ -49,22 +59,12 @@ class LUTPass extends ShaderPass {
         }
     }
 
-    get lut() {
-        return this.material.uniforms.lut.value;
-    }
-
-    set intensity(v) {
-        this.material.uniforms.intensity.value = v;
-    }
-
     get intensity() {
         return this.material.uniforms.intensity.value;
     }
 
-    constructor(options = {}) {
-        super(LUTShader);
-        this.lut = options.lut || null;
-        this.intensity = 'intensity' in options ? options.intensity : 1;
+    set intensity(v) {
+        this.material.uniforms.intensity.value = v;
     }
 
 }

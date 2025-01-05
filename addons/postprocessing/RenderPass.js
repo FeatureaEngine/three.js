@@ -1,6 +1,4 @@
-import {
-    Color
-} from '../../libs/three/Three.js';
+import {Color} from '../../libs/three/Three.js';
 import {Pass} from './Pass.js';
 
 class RenderPass extends Pass {

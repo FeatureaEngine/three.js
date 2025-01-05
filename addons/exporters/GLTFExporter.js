@@ -2,10 +2,10 @@ import {
     BufferAttribute,
     ClampToEdgeWrapping,
     Color,
+    CompressedTexture,
     DoubleSide,
     InterpolateDiscrete,
     InterpolateLinear,
-    NoColorSpace,
     LinearFilter,
     LinearMipmapLinearFilter,
     LinearMipmapNearestFilter,
@@ -15,16 +15,16 @@ import {
     NearestFilter,
     NearestMipmapLinearFilter,
     NearestMipmapNearestFilter,
+    NoColorSpace,
     PropertyBinding,
-    RGBAFormat,
+    Quaternion,
     RepeatWrapping,
+    REVISION,
+    RGBAFormat,
     Scene,
     Source,
     SRGBColorSpace,
-    CompressedTexture,
-    Vector3,
-    Quaternion,
-    REVISION
+    Vector3
 } from '../../libs/three/Three.js';
 
 /**

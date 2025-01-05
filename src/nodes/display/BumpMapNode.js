@@ -3,7 +3,7 @@ import {uv} from '../accessors/UV.js';
 import {normalView} from '../accessors/Normal.js';
 import {positionView} from '../accessors/Position.js';
 import {faceDirection} from './FrontFacingNode.js';
-import {Fn, nodeProxy, float, vec2} from '../tsl/TSLBase.js';
+import {float, Fn, nodeProxy, vec2} from '../tsl/TSLBase.js';
 
 /** @module BumpMapNode **/
 
@@ -48,10 +48,6 @@ const perturbNormalArb = Fn((inputs) => {
  */
 class BumpMapNode extends TempNode {
 
-    static get type() {
-        return 'BumpMapNode';
-    }
-
     /**
      * Constructs a new bump map node.
      *
@@ -73,6 +69,10 @@ class BumpMapNode extends TempNode {
          * @default null
          */
         this.scaleNode = scaleNode;
+    }
+
+    static get type() {
+        return 'BumpMapNode';
     }
 
     setup() {

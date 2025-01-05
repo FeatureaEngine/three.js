@@ -14,10 +14,6 @@ import {hash} from '../core/NodeUtils.js';
  */
 class ToneMappingNode extends TempNode {
 
-    static get type() {
-        return 'ToneMappingNode';
-    }
-
     /**
      * Constructs a new tone mapping node.
      *
@@ -47,6 +43,10 @@ class ToneMappingNode extends TempNode {
          * @default null
          */
         this.colorNode = colorNode;
+    }
+
+    static get type() {
+        return 'ToneMappingNode';
     }
 
     /**

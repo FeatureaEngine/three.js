@@ -1,15 +1,5 @@
 import {EventDispatcher} from '../core/EventDispatcher.js';
-import {
-    MirroredRepeatWrapping,
-    ClampToEdgeWrapping,
-    RepeatWrapping,
-    UnsignedByteType,
-    RGBAFormat,
-    LinearMipmapLinearFilter,
-    LinearFilter,
-    UVMapping,
-    NoColorSpace,
-} from '../constants.js';
+import {ClampToEdgeWrapping, LinearFilter, LinearMipmapLinearFilter, MirroredRepeatWrapping, NoColorSpace, RepeatWrapping, RGBAFormat, UnsignedByteType, UVMapping,} from '../constants.js';
 import {generateUUID} from '../math/MathUtils.js';
 import {Vector2} from '../math/Vector2.js';
 import {Matrix3} from '../math/Matrix3.js';
@@ -62,6 +52,19 @@ class Texture extends EventDispatcher {
 
     set image(value = null) {
         this.source.data = value;
+    }
+
+    set needsUpdate(value) {
+        if (value === true) {
+            this.version++;
+            this.source.needsUpdate = true;
+        }
+    }
+
+    set needsPMREMUpdate(value) {
+        if (value === true) {
+            this.pmremVersion++;
+        }
     }
 
     updateMatrix() {
@@ -189,19 +192,6 @@ class Texture extends EventDispatcher {
             uv.y = 1 - uv.y;
         }
         return uv;
-    }
-
-    set needsUpdate(value) {
-        if (value === true) {
-            this.version++;
-            this.source.needsUpdate = true;
-        }
-    }
-
-    set needsPMREMUpdate(value) {
-        if (value === true) {
-            this.pmremVersion++;
-        }
     }
 
 }

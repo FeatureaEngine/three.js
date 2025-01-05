@@ -10,10 +10,6 @@ import {addMethodChaining, nodeArray, nodeObject, nodeObjects} from '../tsl/TSLC
  */
 class FunctionCallNode extends TempNode {
 
-    static get type() {
-        return 'FunctionCallNode';
-    }
-
     /**
      * Constructs a new function call node.
      *
@@ -36,6 +32,10 @@ class FunctionCallNode extends TempNode {
          * @default {}
          */
         this.parameters = parameters;
+    }
+
+    static get type() {
+        return 'FunctionCallNode';
     }
 
     /**

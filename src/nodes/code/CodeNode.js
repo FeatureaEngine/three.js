@@ -12,10 +12,6 @@ import {nodeProxy} from '../tsl/TSLBase.js';
  */
 class CodeNode extends Node {
 
-    static get type() {
-        return 'CodeNode';
-    }
-
     /**
      * Constructs a new code node.
      *
@@ -54,6 +50,10 @@ class CodeNode extends Node {
          * @default ''
          */
         this.language = language;
+    }
+
+    static get type() {
+        return 'CodeNode';
     }
 
     /**

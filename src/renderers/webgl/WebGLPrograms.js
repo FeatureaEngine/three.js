@@ -1,14 +1,4 @@
-import {
-    BackSide,
-    DoubleSide,
-    CubeUVReflectionMapping,
-    ObjectSpaceNormalMap,
-    TangentSpaceNormalMap,
-    NoToneMapping,
-    NormalBlending,
-    LinearSRGBColorSpace,
-    SRGBTransfer
-} from '../../constants.js';
+import {BackSide, CubeUVReflectionMapping, DoubleSide, LinearSRGBColorSpace, NormalBlending, NoToneMapping, ObjectSpaceNormalMap, SRGBTransfer, TangentSpaceNormalMap} from '../../constants.js';
 import {Layers} from '../../core/Layers.js';
 import {WebGLProgram} from './WebGLProgram.js';
 import {WebGLShaderCache} from './WebGLShaderCache.js';

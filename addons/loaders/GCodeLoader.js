@@ -1,12 +1,4 @@
-import {
-    BufferGeometry,
-    FileLoader,
-    Float32BufferAttribute,
-    Group,
-    LineBasicMaterial,
-    LineSegments,
-    Loader
-} from '../../libs/three/Three.js';
+import {BufferGeometry, FileLoader, Float32BufferAttribute, Group, LineBasicMaterial, LineSegments, Loader} from '../../libs/three/Three.js';
 
 /**
  * GCodeLoader is used to load gcode files usually used for 3D printing or CNC applications.

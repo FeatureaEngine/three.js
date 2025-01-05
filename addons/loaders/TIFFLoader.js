@@ -1,8 +1,4 @@
-import {
-    DataTextureLoader,
-    LinearFilter,
-    LinearMipmapLinearFilter
-} from '../../libs/three/Three.js';
+import {DataTextureLoader, LinearFilter, LinearMipmapLinearFilter} from '../../libs/three/Three.js';
 
 import UTIF from '../../libs/utif.module.js';
 

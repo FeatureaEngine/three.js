@@ -1,8 +1,4 @@
-import {
-    UniformsLib,
-    UniformsUtils,
-    Matrix4
-} from '../../libs/three/Three.js';
+import {Matrix4, UniformsLib, UniformsUtils} from '../../libs/three/Three.js';
 
 /**
  * Mesh Velocity Shader @bhouston

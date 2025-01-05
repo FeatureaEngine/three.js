@@ -3,6 +3,7 @@ import {
     Color,
     CustomBlending,
     DataTexture,
+    DepthStencilFormat,
     DepthTexture,
     DstAlphaFactor,
     DstColorFactor,
@@ -13,16 +14,15 @@ import {
     NearestFilter,
     NoBlending,
     RedFormat,
-    DepthStencilFormat,
-    UnsignedInt248Type,
     RepeatWrapping,
     ShaderMaterial,
     UniformsUtils,
+    UnsignedInt248Type,
     Vector3,
     WebGLRenderTarget,
     ZeroFactor
 } from '../../libs/three/Three.js';
-import {Pass, FullScreenQuad} from './Pass.js';
+import {FullScreenQuad, Pass} from './Pass.js';
 import {SimplexNoise} from '../math/SimplexNoise.js';
 import {SSAOBlurShader, SSAODepthShader, SSAOShader} from '../shaders/SSAOShader.js';
 import {CopyShader} from '../shaders/CopyShader.js';

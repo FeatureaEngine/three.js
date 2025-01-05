@@ -3,7 +3,7 @@ import {getValueType} from '../core/NodeUtils.js';
 import {buffer} from '../accessors/BufferNode.js';
 import {instancedBufferAttribute} from '../accessors/BufferAttributeNode.js';
 import {instanceIndex} from '../core/IndexNode.js';
-import {nodeProxy, float} from '../tsl/TSLBase.js';
+import {float, nodeProxy} from '../tsl/TSLBase.js';
 
 import {Vector4} from '../../math/Vector4.js';
 import {MathUtils} from '../../math/MathUtils.js';
@@ -27,10 +27,6 @@ let max = null;
  */
 class RangeNode extends Node {
 
-    static get type() {
-        return 'RangeNode';
-    }
-
     /**
      * Constructs a new range node.
      *
@@ -53,6 +49,10 @@ class RangeNode extends Node {
          * @default float()
          */
         this.maxNode = maxNode;
+    }
+
+    static get type() {
+        return 'RangeNode';
     }
 
     /**

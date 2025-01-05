@@ -16,10 +16,6 @@ import {addMethodChaining, nodeProxy} from '../tsl/TSLCore.js';
  */
 class BypassNode extends Node {
 
-    static get type() {
-        return 'BypassNode';
-    }
-
     /**
      * Constructs a new bypass node.
      *
@@ -48,6 +44,10 @@ class BypassNode extends Node {
          * @type {Node}
          */
         this.callNode = callNode;
+    }
+
+    static get type() {
+        return 'BypassNode';
     }
 
     getNodeType(builder) {

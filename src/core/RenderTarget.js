@@ -61,14 +61,14 @@ class RenderTarget extends EventDispatcher {
         this.textures[0] = value;
     }
 
+    get depthTexture() {
+        return this._depthTexture;
+    }
+
     set depthTexture(current) {
         if (this._depthTexture !== null) this._depthTexture.renderTarget = null;
         if (current !== null) current.renderTarget = this;
         this._depthTexture = current;
-    }
-
-    get depthTexture() {
-        return this._depthTexture;
     }
 
     setSize(width, height, depth = 1) {

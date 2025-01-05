@@ -1,7 +1,4 @@
-import {
-    RGBAFormat,
-    FloatType
-} from '../constants.js';
+import {FloatType, RGBAFormat} from '../constants.js';
 import {Bone} from './Bone.js';
 import {Matrix4} from '../math/Matrix4.js';
 import {DataTexture} from '../textures/DataTexture.js';

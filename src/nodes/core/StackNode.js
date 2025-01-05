@@ -12,10 +12,6 @@ import {getCurrentStack, nodeProxy, setCurrentStack, ShaderNode} from '../tsl/TS
  */
 class StackNode extends Node {
 
-    static get type() {
-        return 'StackNode';
-    }
-
     /**
      * Constructs a new stack node.
      *
@@ -59,6 +55,10 @@ class StackNode extends Node {
          * @default true
          */
         this.isStackNode = true;
+    }
+
+    static get type() {
+        return 'StackNode';
     }
 
     getNodeType(builder) {

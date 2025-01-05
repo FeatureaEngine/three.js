@@ -1,10 +1,4 @@
-import {
-    Clock,
-    HalfFloatType,
-    NoBlending,
-    Vector2,
-    WebGLRenderTarget
-} from '../../libs/three/Three.js';
+import {Clock, HalfFloatType, NoBlending, Vector2, WebGLRenderTarget} from '../../libs/three/Three.js';
 import {CopyShader} from '../shaders/CopyShader.js';
 import {ShaderPass} from './ShaderPass.js';
 import {ClearMaskPass, MaskPass} from './MaskPass.js';

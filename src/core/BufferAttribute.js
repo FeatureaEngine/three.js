@@ -25,11 +25,11 @@ class BufferAttribute {
         this.version = 0;
     }
 
-    onUploadCallback() {
-    }
-
     set needsUpdate(value) {
         if (value === true) this.version++;
+    }
+
+    onUploadCallback() {
     }
 
     setUsage(value) {

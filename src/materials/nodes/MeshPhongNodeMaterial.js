@@ -16,10 +16,6 @@ const _defaultValues = new MeshPhongMaterial();
  */
 class MeshPhongNodeMaterial extends NodeMaterial {
 
-    static get type() {
-        return 'MeshPhongNodeMaterial';
-    }
-
     /**
      * Constructs a new mesh lambert node material.
      *
@@ -68,6 +64,10 @@ class MeshPhongNodeMaterial extends NodeMaterial {
         this.specularNode = null;
         this.setDefaultValues(_defaultValues);
         this.setValues(parameters);
+    }
+
+    static get type() {
+        return 'MeshPhongNodeMaterial';
     }
 
     /**

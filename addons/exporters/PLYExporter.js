@@ -1,10 +1,4 @@
-import {
-    Matrix3,
-    Vector3,
-    Color,
-    ColorManagement,
-    SRGBColorSpace
-} from '../../libs/three/Three.js';
+import {Color, ColorManagement, Matrix3, SRGBColorSpace, Vector3} from '../../libs/three/Three.js';
 
 /**
  * https://github.com/gkjohnson/ply-exporter-js

@@ -11,10 +11,6 @@ import {getConstNodeType, nodeObject} from '../tsl/TSLCore.js';
  */
 class UniformNode extends InputNode {
 
-    static get type() {
-        return 'UniformNode';
-    }
-
     /**
      * Constructs a new uniform node.
      *
@@ -46,6 +42,10 @@ class UniformNode extends InputNode {
          * @type {UniformGroupNode}
          */
         this.groupNode = objectGroup;
+    }
+
+    static get type() {
+        return 'UniformNode';
     }
 
     /**

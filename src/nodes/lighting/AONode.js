@@ -9,10 +9,6 @@ import LightingNode from './LightingNode.js';
  */
 class AONode extends LightingNode {
 
-    static get type() {
-        return 'AONode';
-    }
-
     /**
      * Constructs a new AO node.
      *
@@ -27,6 +23,10 @@ class AONode extends LightingNode {
          * @default null
          */
         this.aoNode = aoNode;
+    }
+
+    static get type() {
+        return 'AONode';
     }
 
     setup(builder) {

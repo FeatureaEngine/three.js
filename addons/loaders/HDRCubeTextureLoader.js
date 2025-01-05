@@ -1,13 +1,4 @@
-import {
-    CubeTexture,
-    DataTexture,
-    FileLoader,
-    FloatType,
-    HalfFloatType,
-    LinearFilter,
-    LinearSRGBColorSpace,
-    Loader
-} from '../../libs/three/Three.js';
+import {CubeTexture, DataTexture, FileLoader, FloatType, HalfFloatType, LinearFilter, LinearSRGBColorSpace, Loader} from '../../libs/three/Three.js';
 import {RGBELoader} from '../loaders/RGBELoader.js';
 
 class HDRCubeTextureLoader extends Loader {

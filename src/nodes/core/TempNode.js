@@ -10,10 +10,6 @@ import Node from './Node.js';
  */
 class TempNode extends Node {
 
-    static get type() {
-        return 'TempNode';
-    }
-
     /**
      * Constructs a temp node.
      *
@@ -29,6 +25,10 @@ class TempNode extends Node {
          * @default true
          */
         this.isTempNode = true;
+    }
+
+    static get type() {
+        return 'TempNode';
     }
 
     /**

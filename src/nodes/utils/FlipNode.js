@@ -18,10 +18,6 @@ import {vectorComponents} from '../core/constants.js';
  */
 class FlipNode extends TempNode {
 
-    static get type() {
-        return 'FlipNode';
-    }
-
     /**
      * Constructs a new flip node.
      *
@@ -42,6 +38,10 @@ class FlipNode extends TempNode {
          * @type {String}
          */
         this.components = components;
+    }
+
+    static get type() {
+        return 'FlipNode';
     }
 
     /**

@@ -11,10 +11,6 @@ import {addMethodChaining, nodeProxy} from '../tsl/TSLCore.js';
  */
 class OperatorNode extends TempNode {
 
-    static get type() {
-        return 'OperatorNode';
-    }
-
     /**
      * Constructs a new operator node.
      *
@@ -51,6 +47,10 @@ class OperatorNode extends TempNode {
          * @type {Node}
          */
         this.bNode = bNode;
+    }
+
+    static get type() {
+        return 'OperatorNode';
     }
 
     /**

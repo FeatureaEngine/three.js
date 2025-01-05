@@ -17,10 +17,6 @@ import {WebGLCoordinateSystem, WebGPUCoordinateSystem} from '../../constants.js'
  */
 class MathNode extends TempNode {
 
-    static get type() {
-        return 'MathNode';
-    }
-
     /**
      * Constructs a new math node.
      *
@@ -57,6 +53,10 @@ class MathNode extends TempNode {
          * @default null
          */
         this.cNode = cNode;
+    }
+
+    static get type() {
+        return 'MathNode';
     }
 
     /**

@@ -13,10 +13,6 @@ let _nodeId = 0;
  */
 class Node extends EventDispatcher {
 
-    static get type() {
-        return 'Node';
-    }
-
     /**
      * Constructs a new node.
      *
@@ -102,6 +98,10 @@ class Node extends EventDispatcher {
          */
         this._cacheKeyVersion = 0;
         Object.defineProperty(this, 'id', {value: _nodeId++});
+    }
+
+    static get type() {
+        return 'Node';
     }
 
     /**

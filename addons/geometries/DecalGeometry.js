@@ -1,12 +1,4 @@
-import {
-    BufferGeometry,
-    Euler,
-    Float32BufferAttribute,
-    Matrix3,
-    Matrix4,
-    Mesh,
-    Vector3
-} from '../../libs/three/Three.js';
+import {BufferGeometry, Euler, Float32BufferAttribute, Matrix3, Matrix4, Mesh, Vector3} from '../../libs/three/Three.js';
 
 /**
  * You can use this geometry to create a decal mesh, that serves different kinds of purposes.

@@ -1,13 +1,5 @@
-import {
-    HalfFloatType,
-    LinearFilter,
-    NearestFilter,
-    ShaderMaterial,
-    Texture,
-    UniformsUtils,
-    WebGLRenderTarget
-} from '../../libs/three/Three.js';
-import {Pass, FullScreenQuad} from './Pass.js';
+import {HalfFloatType, LinearFilter, NearestFilter, ShaderMaterial, Texture, UniformsUtils, WebGLRenderTarget} from '../../libs/three/Three.js';
+import {FullScreenQuad, Pass} from './Pass.js';
 import {SMAABlendShader, SMAAEdgesShader, SMAAWeightsShader} from '../shaders/SMAAShader.js';
 
 class SMAAPass extends Pass {

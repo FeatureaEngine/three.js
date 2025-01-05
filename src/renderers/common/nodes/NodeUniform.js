@@ -1,7 +1,4 @@
-import {
-    NumberUniform, Vector2Uniform, Vector3Uniform, Vector4Uniform,
-    ColorUniform, Matrix3Uniform, Matrix4Uniform
-} from '../Uniform.js';
+import {ColorUniform, Matrix3Uniform, Matrix4Uniform, NumberUniform, Vector2Uniform, Vector3Uniform, Vector4Uniform} from '../Uniform.js';
 
 /**
  * A special form of Number uniform binding type.

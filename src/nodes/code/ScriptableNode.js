@@ -93,10 +93,6 @@ export const ScriptableNodeResources = new Resources();
  */
 class ScriptableNode extends Node {
 
-    static get type() {
-        return 'ScriptableNode';
-    }
-
     /**
      * Constructs a new scriptable node.
      *
@@ -138,6 +134,10 @@ class ScriptableNode extends Node {
         this.isScriptableNode = true;
     }
 
+    static get type() {
+        return 'ScriptableNode';
+    }
+
     /**
      * The source code of the scriptable node.
      *
@@ -145,6 +145,14 @@ class ScriptableNode extends Node {
      */
     get source() {
         return this.codeNode ? this.codeNode.code : '';
+    }
+
+    get needsUpdate() {
+        return this.source !== this._source;
+    }
+
+    set needsUpdate(value) {
+        if (value === true) this.dispose();
     }
 
     /**
@@ -485,14 +493,6 @@ class ScriptableNode extends Node {
             values.push(this.parameters[param].getCacheKey(force));
         }
         return hashArray(values);
-    }
-
-    set needsUpdate(value) {
-        if (value === true) this.dispose();
-    }
-
-    get needsUpdate() {
-        return this.source !== this._source;
     }
 
     /**

@@ -1,7 +1,4 @@
-import {
-    Curve,
-    Vector3
-} from '../../libs/three/Three.js';
+import {Curve, Vector3} from '../../libs/three/Three.js';
 
 import {ParametricGeometry} from './ParametricGeometry.js';
 

@@ -8,7 +8,7 @@ import {uv} from '../accessors/UV.js';
 import {faceDirection} from './FrontFacingNode.js';
 import {Fn, nodeProxy, vec3} from '../tsl/TSLBase.js';
 
-import {TangentSpaceNormalMap, ObjectSpaceNormalMap} from '../../constants.js';
+import {ObjectSpaceNormalMap, TangentSpaceNormalMap} from '../../constants.js';
 
 /** @module NormalMapNode **/
 
@@ -43,10 +43,6 @@ const perturbNormal2Arb = Fn((inputs) => {
  */
 class NormalMapNode extends TempNode {
 
-    static get type() {
-        return 'NormalMapNode';
-    }
-
     /**
      * Constructs a new normal map node.
      *
@@ -75,6 +71,10 @@ class NormalMapNode extends TempNode {
          * @default TangentSpaceNormalMap
          */
         this.normalMapType = TangentSpaceNormalMap;
+    }
+
+    static get type() {
+        return 'NormalMapNode';
     }
 
     setup(builder) {

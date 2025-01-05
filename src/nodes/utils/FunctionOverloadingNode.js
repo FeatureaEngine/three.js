@@ -12,10 +12,6 @@ import {nodeProxy} from '../tsl/TSLCore.js';
  */
 class FunctionOverloadingNode extends Node {
 
-    static get type() {
-        return 'FunctionOverloadingNode';
-    }
-
     /**
      * Constructs a new function overloading node.
      *
@@ -50,6 +46,10 @@ class FunctionOverloadingNode extends Node {
          * @default true
          */
         this.global = true;
+    }
+
+    static get type() {
+        return 'FunctionOverloadingNode';
     }
 
     /**

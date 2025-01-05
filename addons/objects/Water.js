@@ -1,17 +1,4 @@
-import {
-    Color,
-    FrontSide,
-    Matrix4,
-    Mesh,
-    PerspectiveCamera,
-    Plane,
-    ShaderMaterial,
-    UniformsLib,
-    UniformsUtils,
-    Vector3,
-    Vector4,
-    WebGLRenderTarget
-} from '../../libs/three/Three.js';
+import {Color, FrontSide, Matrix4, Mesh, PerspectiveCamera, Plane, ShaderMaterial, UniformsLib, UniformsUtils, Vector3, Vector4, WebGLRenderTarget} from '../../libs/three/Three.js';
 
 /**
  * Work based on :

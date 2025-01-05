@@ -16,10 +16,6 @@ import {addMethodChaining, nodeProxy} from '../tsl/TSLCore.js';
  */
 class VaryingNode extends Node {
 
-    static get type() {
-        return 'VaryingNode';
-    }
-
     /**
      * Constructs a new varying node.
      *
@@ -50,6 +46,10 @@ class VaryingNode extends Node {
          * @default true
          */
         this.isVaryingNode = true;
+    }
+
+    static get type() {
+        return 'VaryingNode';
     }
 
     /**

@@ -16,10 +16,6 @@ const _stringVectorComponents = vectorComponents.join('');
  */
 class SplitNode extends Node {
 
-    static get type() {
-        return 'SplitNode';
-    }
-
     /**
      * Constructs a new split node.
      *
@@ -48,6 +44,10 @@ class SplitNode extends Node {
          * @default true
          */
         this.isSplitNode = true;
+    }
+
+    static get type() {
+        return 'SplitNode';
     }
 
     /**

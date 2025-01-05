@@ -1,6 +1,4 @@
-import {
-    Vector2
-} from '../../libs/three/Three.js';
+import {Vector2} from '../../libs/three/Three.js';
 
 /**
  * Sobel Edge Detection (see https://youtu.be/uihBwtPIBxM)

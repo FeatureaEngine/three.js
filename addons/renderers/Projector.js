@@ -1,14 +1,4 @@
-import {
-    Box3,
-    Color,
-    DoubleSide,
-    Frustum,
-    Matrix3,
-    Matrix4,
-    Vector2,
-    Vector3,
-    Vector4
-} from '../../libs/three/Three.js';
+import {Box3, Color, DoubleSide, Frustum, Matrix3, Matrix4, Vector2, Vector3, Vector4} from '../../libs/three/Three.js';
 
 class RenderableObject {
 

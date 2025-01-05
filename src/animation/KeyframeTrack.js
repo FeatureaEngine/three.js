@@ -1,8 +1,4 @@
-import {
-    InterpolateLinear,
-    InterpolateSmooth,
-    InterpolateDiscrete
-} from '../constants.js';
+import {InterpolateDiscrete, InterpolateLinear, InterpolateSmooth} from '../constants.js';
 import {CubicInterpolant} from '../math/interpolants/CubicInterpolant.js';
 import {LinearInterpolant} from '../math/interpolants/LinearInterpolant.js';
 import {DiscreteInterpolant} from '../math/interpolants/DiscreteInterpolant.js';

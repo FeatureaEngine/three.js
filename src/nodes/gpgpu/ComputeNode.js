@@ -11,10 +11,6 @@ import {addMethodChaining, nodeObject} from '../tsl/TSLCore.js';
  */
 class ComputeNode extends Node {
 
-    static get type() {
-        return 'ComputeNode';
-    }
-
     /**
      * Constructs a new compute node.
      *
@@ -85,6 +81,10 @@ class ComputeNode extends Node {
          */
         this.onInitFunction = null;
         this.updateDispatchCount();
+    }
+
+    static get type() {
+        return 'ComputeNode';
     }
 
     /**

@@ -1,7 +1,4 @@
-import {
-    Color,
-    Vector3
-} from '../../libs/three/Three.js';
+import {Color, Vector3} from '../../libs/three/Three.js';
 
 /**
  * Currently contains:

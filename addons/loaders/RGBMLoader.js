@@ -1,11 +1,4 @@
-import {
-    DataTextureLoader,
-    RGBAFormat,
-    LinearFilter,
-    CubeTexture,
-    HalfFloatType,
-    DataUtils
-} from '../../libs/three/Three.js';
+import {CubeTexture, DataTextureLoader, DataUtils, HalfFloatType, LinearFilter, RGBAFormat} from '../../libs/three/Three.js';
 
 class RGBMLoader extends DataTextureLoader {
 

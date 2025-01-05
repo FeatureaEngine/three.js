@@ -19,10 +19,6 @@ let screenSizeVec, viewportVec;
  */
 class ScreenNode extends Node {
 
-    static get type() {
-        return 'ScreenNode';
-    }
-
     /**
      * Constructs a new screen node.
      *
@@ -49,6 +45,10 @@ class ScreenNode extends Node {
          * @default true
          */
         this.isViewportNode = true;
+    }
+
+    static get type() {
+        return 'ScreenNode';
     }
 
     /**

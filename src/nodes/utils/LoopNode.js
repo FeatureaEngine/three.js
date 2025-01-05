@@ -1,6 +1,6 @@
 import Node from '../core/Node.js';
 import {expression} from '../code/ExpressionNode.js';
-import {nodeObject, nodeArray} from '../tsl/TSLBase.js';
+import {nodeArray, nodeObject} from '../tsl/TSLBase.js';
 
 /** @module LoopNode **/
 
@@ -32,10 +32,6 @@ import {nodeObject, nodeArray} from '../tsl/TSLBase.js';
  */
 class LoopNode extends Node {
 
-    static get type() {
-        return 'LoopNode';
-    }
-
     /**
      * Constructs a new loop node.
      *
@@ -44,6 +40,10 @@ class LoopNode extends Node {
     constructor(params = []) {
         super();
         this.params = params;
+    }
+
+    static get type() {
+        return 'LoopNode';
     }
 
     /**

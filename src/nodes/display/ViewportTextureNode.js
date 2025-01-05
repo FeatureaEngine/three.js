@@ -22,10 +22,6 @@ const _size = new Vector2();
  */
 class ViewportTextureNode extends TextureNode {
 
-    static get type() {
-        return 'ViewportTextureNode';
-    }
-
     /**
      * Constructs a new viewport texture node.
      *
@@ -62,6 +58,10 @@ class ViewportTextureNode extends TextureNode {
          * @default 'frame'
          */
         this.updateBeforeType = NodeUpdateType.FRAME;
+    }
+
+    static get type() {
+        return 'ViewportTextureNode';
     }
 
     updateBefore(frame) {

@@ -4,15 +4,15 @@ import {
     ClampToEdgeWrapping,
     FileLoader,
     Group,
-    NoColorSpace,
     Loader,
     Mesh,
     MeshPhysicalMaterial,
     MirroredRepeatWrapping,
+    NoColorSpace,
+    Object3D,
     RepeatWrapping,
     SRGBColorSpace,
     TextureLoader,
-    Object3D,
     Vector2
 } from '../../libs/three/Three.js';
 
