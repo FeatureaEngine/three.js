@@ -1,5 +1,18 @@
 {
+  "compilerOptions": {
+    "allowJS": true,
+    "target": "ES6",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "skipLibCheck": true,
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "sourceMap": true
+  },
   "typeRoots": [
-    "./"
+    "./types"
   ]
 }
