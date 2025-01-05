@@ -16,13 +16,9 @@ let _sharedFramebuffer = null;
  * @augments module:ViewportTextureNode~ViewportTextureNode
  */
 class ViewportSharedTextureNode extends ViewportTextureNode {
-
 	static get type() {
-
 		return 'ViewportSharedTextureNode';
-
 	}
-
 	/**
 	 * Constructs a new viewport shared texture node.
 	 *
@@ -30,21 +26,13 @@ class ViewportSharedTextureNode extends ViewportTextureNode {
 	 * @param {Node?} [levelNode=null] - The level node.
 	 */
 	constructor( uvNode = screenUV, levelNode = null ) {
-
 		if ( _sharedFramebuffer === null ) {
-
 			_sharedFramebuffer = new FramebufferTexture();
-
 		}
-
 		super( uvNode, levelNode, _sharedFramebuffer );
-
 	}
-
 	updateReference() {
-
 		return this;
-
 	}
 
 }

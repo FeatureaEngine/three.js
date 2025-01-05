@@ -14,22 +14,16 @@ const _defaultValues = /*@__PURE__*/ new LineDashedMaterial();
  * @augments NodeMaterial
  */
 class LineDashedNodeMaterial extends NodeMaterial {
-
 	static get type() {
-
 		return 'LineDashedNodeMaterial';
-
 	}
-
 	/**
 	 * Constructs a new line dashed node material.
 	 *
 	 * @param {Object?} parameters - The configuration parameter.
 	 */
 	constructor( parameters ) {
-
 		super();
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -38,9 +32,7 @@ class LineDashedNodeMaterial extends NodeMaterial {
 		 * @default true
 		 */
 		this.isLineDashedNodeMaterial = true;
-
 		this.setDefaultValues( _defaultValues );
-
 		/**
 		 * The dash offset.
 		 *
@@ -48,7 +40,6 @@ class LineDashedNodeMaterial extends NodeMaterial {
 		 * @default 0
 		 */
 		this.dashOffset = 0;
-
 		/**
 		 * The offset of dash materials is by default inferred from the `dashOffset`
 		 * property. This node property allows to overwrite the default
@@ -61,7 +52,6 @@ class LineDashedNodeMaterial extends NodeMaterial {
 		 * @default null
 		 */
 		this.offsetNode = null;
-
 		/**
 		 * The scale of dash materials is by default inferred from the `scale`
 		 * property. This node property allows to overwrite the default
@@ -74,7 +64,6 @@ class LineDashedNodeMaterial extends NodeMaterial {
 		 * @default null
 		 */
 		this.dashScaleNode = null;
-
 		/**
 		 * The dash size of dash materials is by default inferred from the `dashSize`
 		 * property. This node property allows to overwrite the default
@@ -87,7 +76,6 @@ class LineDashedNodeMaterial extends NodeMaterial {
 		 * @default null
 		 */
 		this.dashSizeNode = null;
-
 		/**
 		 * The gap size of dash materials is by default inferred from the `gapSize`
 		 * property. This node property allows to overwrite the default
@@ -100,31 +88,23 @@ class LineDashedNodeMaterial extends NodeMaterial {
 		 * @default null
 		 */
 		this.gapSizeNode = null;
-
 		this.setValues( parameters );
-
 	}
-
 	/**
 	 * Setups the dash specific node variables.
 	 *
 	 * @param {NodeBuilder} builder - The current node builder.
 	 */
 	setupVariants( /* builder */ ) {
-
 		const offsetNode = this.offsetNode ? float( this.offsetNode ) : materialLineDashOffset;
 		const dashScaleNode = this.dashScaleNode ? float( this.dashScaleNode ) : materialLineScale;
 		const dashSizeNode = this.dashSizeNode ? float( this.dashSizeNode ) : materialLineDashSize;
 		const gapSizeNode = this.gapSizeNode ? float( this.gapSizeNode ) : materialLineGapSize;
-
 		dashSize.assign( dashSizeNode );
 		gapSize.assign( gapSizeNode );
-
 		const vLineDistance = varying( attribute( 'lineDistance' ).mul( dashScaleNode ) );
 		const vLineDistanceOffset = offsetNode ? vLineDistance.add( offsetNode ) : vLineDistance;
-
 		vLineDistanceOffset.mod( dashSize.add( gapSize ) ).greaterThan( dashSize ).discard();
-
 	}
 
 }

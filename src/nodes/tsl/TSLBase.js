@@ -24,7 +24,6 @@ export * from '../utils/Discard.js'; // Discard(), Return()
 export * from '../display/RenderOutputNode.js'; // .renderOutput()
 
 export function addNodeElement( name/*, nodeElement*/ ) {
-
 	console.warn( 'THREE.TSLBase: AddNodeElement has been removed in favor of tree-shaking. Trying add', name );
 
 }

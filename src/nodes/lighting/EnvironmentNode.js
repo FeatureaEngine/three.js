@@ -19,22 +19,16 @@ const _envNodeCache = new WeakMap();
  * @augments LightingNode
  */
 class EnvironmentNode extends LightingNode {
-
 	static get type() {
-
 		return 'EnvironmentNode';
-
 	}
-
 	/**
 	 * Constructs a new environment node.
 	 *
 	 * @param {Node} [envNode=null] - A node representing the environment.
 	 */
 	constructor( envNode = null ) {
-
 		super();
-
 		/**
 		 * A node representing the environment.
 		 *
@@ -42,66 +36,38 @@ class EnvironmentNode extends LightingNode {
 		 * @default null
 		 */
 		this.envNode = envNode;
-
 	}
-
 	setup( builder ) {
-
 		const { material } = builder;
-
 		let envNode = this.envNode;
-
 		if ( envNode.isTextureNode || envNode.isMaterialReferenceNode ) {
-
 			const value = ( envNode.isTextureNode ) ? envNode.value : material[ envNode.property ];
-
 			let cacheEnvNode = _envNodeCache.get( value );
-
 			if ( cacheEnvNode === undefined ) {
-
 				cacheEnvNode = pmremTexture( value );
-
 				_envNodeCache.set( value, cacheEnvNode );
-
 			}
-
 			envNode	= cacheEnvNode;
-
 		}
-
 		//
-
 		const envMap = material.envMap;
 		const intensity = envMap ? reference( 'envMapIntensity', 'float', builder.material ) : reference( 'environmentIntensity', 'float', builder.scene ); // @TODO: Add materialEnvIntensity in MaterialNode
-
 		const useAnisotropy = material.useAnisotropy === true || material.anisotropy > 0;
 		const radianceNormalView = useAnisotropy ? transformedBentNormalView : transformedNormalView;
-
 		const radiance = envNode.context( createRadianceContext( roughness, radianceNormalView ) ).mul( intensity );
 		const irradiance = envNode.context( createIrradianceContext( transformedNormalWorld ) ).mul( Math.PI ).mul( intensity );
-
 		const isolateRadiance = cache( radiance );
 		const isolateIrradiance = cache( irradiance );
-
 		//
-
 		builder.context.radiance.addAssign( isolateRadiance );
-
 		builder.context.iblIrradiance.addAssign( isolateIrradiance );
-
 		//
-
 		const clearcoatRadiance = builder.context.lightingModel.clearcoatRadiance;
-
 		if ( clearcoatRadiance ) {
-
 			const clearcoatRadianceContext = envNode.context( createRadianceContext( clearcoatRoughness, transformedClearcoatNormalView ) ).mul( intensity );
 			const isolateClearcoatRadiance = cache( clearcoatRadianceContext );
-
 			clearcoatRadiance.addAssign( isolateClearcoatRadiance );
-
 		}
-
 	}
 
 }
@@ -109,47 +75,31 @@ class EnvironmentNode extends LightingNode {
 export default EnvironmentNode;
 
 const createRadianceContext = ( roughnessNode, normalViewNode ) => {
-
 	let reflectVec = null;
-
 	return {
 		getUV: () => {
-
 			if ( reflectVec === null ) {
-
 				reflectVec = positionViewDirection.negate().reflect( normalViewNode );
-
 				// Mixing the reflection with the normal is more accurate and keeps rough objects from gathering light from behind their tangent plane.
 				reflectVec = roughnessNode.mul( roughnessNode ).mix( reflectVec, normalViewNode ).normalize();
-
 				reflectVec = reflectVec.transformDirection( cameraViewMatrix );
-
 			}
-
 			return reflectVec;
-
 		},
 		getTextureLevel: () => {
-
 			return roughnessNode;
-
 		}
 	};
 
 };
 
 const createIrradianceContext = ( normalWorldNode ) => {
-
 	return {
 		getUV: () => {
-
 			return normalWorldNode;
-
 		},
 		getTextureLevel: () => {
-
 			return float( 1.0 );
-
 		}
 	};
 

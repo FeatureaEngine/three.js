@@ -15,13 +15,9 @@ import { nodeProxy } from '../tsl/TSLCore.js';
  * @augments TempNode
  */
 class AtomicFunctionNode extends TempNode {
-
 	static get type() {
-
 		return 'AtomicFunctionNode';
-
 	}
-
 	/**
 	 * Constructs a new atomic function node.
 	 *
@@ -31,30 +27,25 @@ class AtomicFunctionNode extends TempNode {
 	 * @param {Node?} [storeNode=null] - A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
 	 */
 	constructor( method, pointerNode, valueNode, storeNode = null ) {
-
 		super( 'uint' );
-
 		/**
 		 * The signature of the atomic function to construct.
 		 *
 		 * @type {String}
 		 */
 		this.method = method;
-
 		/**
 		 * An atomic variable or element of an atomic buffer.
 		 *
 		 * @type {Node}
 		 */
 		this.pointerNode = pointerNode;
-
 		/**
 		 * A value that modifies the atomic variable.
 		 *
 		 * @type {Node}
 		 */
 		this.valueNode = valueNode;
-
 		/**
 		 * A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
 		 *
@@ -62,9 +53,7 @@ class AtomicFunctionNode extends TempNode {
 		 * @default null
 		 */
 		this.storeNode = storeNode;
-
 	}
-
 	/**
 	 * Overwrites the default implementation to return the type of
 	 * the pointer node.
@@ -73,11 +62,8 @@ class AtomicFunctionNode extends TempNode {
 	 * @return {String} The input type.
 	 */
 	getInputType( builder ) {
-
 		return this.pointerNode.getNodeType( builder );
-
 	}
-
 	/**
 	 * Overwritten since the node type is inferred from the input type.
 	 *
@@ -85,40 +71,24 @@ class AtomicFunctionNode extends TempNode {
 	 * @return {String} The node type.
 	 */
 	getNodeType( builder ) {
-
 		return this.getInputType( builder );
-
 	}
-
 	generate( builder ) {
-
 		const method = this.method;
-
 		const type = this.getNodeType( builder );
 		const inputType = this.getInputType( builder );
-
 		const a = this.pointerNode;
 		const b = this.valueNode;
-
 		const params = [];
-
 		params.push( `&${ a.build( builder, inputType ) }` );
 		params.push( b.build( builder, inputType ) );
-
 		const methodSnippet = `${ builder.getMethod( method, type ) }( ${params.join( ', ' )} )`;
-
 		if ( this.storeNode !== null ) {
-
 			const varSnippet = this.storeNode.build( builder, inputType );
-
 			builder.addLineFlowCode( `${varSnippet} = ${methodSnippet}`, this );
-
 		} else {
-
 			builder.addLineFlowCode( methodSnippet, this );
-
 		}
-
 	}
 
 }
@@ -158,10 +128,8 @@ const atomicNode = nodeProxy( AtomicFunctionNode );
  * @returns {AtomicFunctionNode}
  */
 export const atomicFunc = ( method, pointerNode, valueNode, storeNode = null ) => {
-
 	const node = atomicNode( method, pointerNode, valueNode, storeNode );
 	node.append();
-
 	return node;
 
 };

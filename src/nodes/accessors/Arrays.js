@@ -14,13 +14,10 @@ import { getLengthFromType, getTypedArrayFromType } from '../core/NodeUtils.js';
  * @returns {StorageBufferNode}
  */
 export const attributeArray = ( count, type = 'float' ) => {
-
 	const itemSize = getLengthFromType( type );
 	const typedArray = getTypedArrayFromType( type );
-
 	const buffer = new StorageBufferAttribute( count, itemSize, typedArray );
 	const node = storage( buffer, type, count );
-
 	return node;
 
 };
@@ -34,13 +31,10 @@ export const attributeArray = ( count, type = 'float' ) => {
  * @returns {StorageBufferNode}
  */
 export const instancedArray = ( count, type = 'float' ) => {
-
 	const itemSize = getLengthFromType( type );
 	const typedArray = getTypedArrayFromType( type );
-
 	const buffer = new StorageInstancedBufferAttribute( count, itemSize, typedArray );
 	const node = storage( buffer, type, count );
-
 	return node;
 
 };

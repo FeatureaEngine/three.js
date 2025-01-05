@@ -18,13 +18,9 @@ import { nodeObject } from '../tsl/TSLBase.js';
  * @augments module:ReferenceNode~ReferenceNode
  */
 class UserDataNode extends ReferenceNode {
-
 	static get type() {
-
 		return 'UserDataNode';
-
 	}
-
 	/**
 	 * Constructs a new user data node.
 	 *
@@ -33,9 +29,7 @@ class UserDataNode extends ReferenceNode {
 	 * @param {Object?} [userData=null] - A reference to the `userData` object. If not provided, the `userData` property of the 3D object that uses the node material is evaluated.
 	 */
 	constructor( property, inputType, userData = null ) {
-
 		super( property, inputType, userData );
-
 		/**
 		 * A reference to the `userData` object. If not provided, the `userData`
 		 * property of the 3D object that uses the node material is evaluated.
@@ -44,9 +38,7 @@ class UserDataNode extends ReferenceNode {
 		 * @default null
 		 */
 		this.userData = userData;
-
 	}
-
 	/**
 	 * Overwritten to make sure {@link module:ReferenceNode~ReferenceNode#reference} points to the correct
 	 * `userData` field.
@@ -55,11 +47,8 @@ class UserDataNode extends ReferenceNode {
 	 * @return {Object} A reference to the `userData` field.
 	 */
 	updateReference( state ) {
-
 		this.reference = this.userData !== null ? this.userData : state.object.userData;
-
 		return this.reference;
-
 	}
 
 }

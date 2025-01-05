@@ -16,22 +16,16 @@ const _defaultValues = /*@__PURE__*/ new MeshBasicMaterial();
  * @augments NodeMaterial
  */
 class MeshBasicNodeMaterial extends NodeMaterial {
-
 	static get type() {
-
 		return 'MeshBasicNodeMaterial';
-
 	}
-
 	/**
 	 * Constructs a new mesh basic node material.
 	 *
 	 * @param {Object?} parameters - The configuration parameter.
 	 */
 	constructor( parameters ) {
-
 		super();
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -40,7 +34,6 @@ class MeshBasicNodeMaterial extends NodeMaterial {
 		 * @default true
 		 */
 		this.isMeshBasicNodeMaterial = true;
-
 		/**
 		 * Although the basic material is by definition unlit, we set
 		 * this property to `true` since we use a lighting model to compute
@@ -50,13 +43,9 @@ class MeshBasicNodeMaterial extends NodeMaterial {
 		 * @default true
 		 */
 		this.lights = true;
-
 		this.setDefaultValues( _defaultValues );
-
 		this.setValues( parameters );
-
 	}
-
 	/**
 	 * Basic materials are not affected by normal and bump maps so we
 	 * return by default {@link module:Normal.normalView}.
@@ -64,11 +53,8 @@ class MeshBasicNodeMaterial extends NodeMaterial {
 	 * @return {Node<vec3>} The normal node.
 	 */
 	setupNormal() {
-
 		return normalView; // see #28839
-
 	}
-
 	/**
 	 * Overwritten since this type of material uses {@link BasicEnvironmentNode}
 	 * to implement the default environment mapping.
@@ -77,13 +63,9 @@ class MeshBasicNodeMaterial extends NodeMaterial {
 	 * @return {BasicEnvironmentNode<vec3>?} The environment node.
 	 */
 	setupEnvironment( builder ) {
-
 		const envNode = super.setupEnvironment( builder );
-
 		return envNode ? new BasicEnvironmentNode( envNode ) : null;
-
 	}
-
 	/**
 	 * This method must be overwriten since light maps are evaluated
 	 * with a special scaling factor for basic materials.
@@ -92,19 +74,12 @@ class MeshBasicNodeMaterial extends NodeMaterial {
 	 * @return {BasicLightMapNode<vec3>?} The light map node.
 	 */
 	setupLightMap( builder ) {
-
 		let node = null;
-
 		if ( builder.material.lightMap ) {
-
 			node = new BasicLightMapNode( materialLightMap );
-
 		}
-
 		return node;
-
 	}
-
 	/**
 	 * The material overwrites this method because `lights` is set to `true` but
 	 * we still want to return the diffuse color as the outgoing light.
@@ -112,20 +87,15 @@ class MeshBasicNodeMaterial extends NodeMaterial {
 	 * @return {Node<vec3>} The outgoing light node.
 	 */
 	setupOutgoingLight() {
-
 		return diffuseColor.rgb;
-
 	}
-
 	/**
 	 * Setups the lighting model.
 	 *
 	 * @return {BasicLightingModel} The lighting model.
 	 */
 	setupLightingModel() {
-
 		return new BasicLightingModel();
-
 	}
 
 }

@@ -15,7 +15,6 @@ import { LinearSRGBColorSpace } from '../../constants.js';
  * @return {Node<vec3>} The grayscale color.
  */
 export const grayscale = /*@__PURE__*/ Fn( ( [ color ] ) => {
-
 	return luminance( color.rgb );
 
 } );
@@ -29,7 +28,6 @@ export const grayscale = /*@__PURE__*/ Fn( ( [ color ] ) => {
  * @return {Node<vec3>} The saturated color.
  */
 export const saturation = /*@__PURE__*/ Fn( ( [ color, adjustment = float( 1 ) ] ) => {
-
 	return adjustment.mix( luminance( color.rgb ), color.rgb );
 
 } );
@@ -45,12 +43,9 @@ export const saturation = /*@__PURE__*/ Fn( ( [ color, adjustment = float( 1 ) ]
  * @return {Node<vec3>} The updated color.
  */
 export const vibrance = /*@__PURE__*/ Fn( ( [ color, adjustment = float( 1 ) ] ) => {
-
 	const average = add( color.r, color.g, color.b ).div( 3.0 );
-
 	const mx = color.r.max( color.g.max( color.b ) );
 	const amt = mx.sub( average ).mul( adjustment ).mul( - 3.0 );
-
 	return mix( color.rgb, mx, amt );
 
 } );
@@ -64,11 +59,8 @@ export const vibrance = /*@__PURE__*/ Fn( ( [ color, adjustment = float( 1 ) ] )
  * @return {Node<vec3>} The updated color.
  */
 export const hue = /*@__PURE__*/ Fn( ( [ color, adjustment = float( 1 ) ] ) => {
-
 	const k = vec3( 0.57735, 0.57735, 0.57735 );
-
 	const cosAngle = adjustment.cos();
-
 	return vec3( color.rgb.mul( cosAngle ).add( k.cross( color.rgb ).mul( adjustment.sin() ).add( k.mul( dot( k, color.rgb ).mul( cosAngle.oneMinus() ) ) ) ) );
 
 } );
@@ -116,22 +108,16 @@ export const cdl = /*@__PURE__*/ Fn( ( [
 	// ASC CDL v1.2 explicitly requires Rec. 709 luminance coefficients.
 	luminanceCoefficients = vec3( ColorManagement.getLuminanceCoefficients( new Vector3(), LinearSRGBColorSpace ) )
 ] ) => {
-
 	// NOTE: The ASC CDL v1.2 defines a [0, 1] clamp on the slope+offset term, and another on the
 	// saturation term. Per the ACEScc specification and Filament, limits may be omitted to support
 	// values outside [0, 1], requiring a workaround for negative values in the power expression.
-
 	const luma = color.rgb.dot( vec3( luminanceCoefficients ) );
-
 	const v = max( color.rgb.mul( slope ).add( offset ), 0.0 ).toVar();
 	const pv = v.pow( power ).toVar();
-
 	If( v.r.greaterThan( 0.0 ), () => { v.r.assign( pv.r ); } ); // eslint-disable-line
 	If( v.g.greaterThan( 0.0 ), () => { v.g.assign( pv.g ); } ); // eslint-disable-line
 	If( v.b.greaterThan( 0.0 ), () => { v.b.assign( pv.b ); } ); // eslint-disable-line
-
 	v.assign( luma.add( v.sub( luma ).mul( saturation ) ) );
-
 	return vec4( v.rgb, color.a );
 
 } );

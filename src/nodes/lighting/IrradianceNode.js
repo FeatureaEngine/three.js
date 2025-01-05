@@ -8,35 +8,25 @@ import LightingNode from './LightingNode.js';
  * @augments LightingNode
  */
 class IrradianceNode extends LightingNode {
-
 	static get type() {
-
 		return 'IrradianceNode';
-
 	}
-
 	/**
 	 * Constructs a new irradiance node.
 	 *
 	 * @param {Node<vec3>} node - A node contributing irradiance.
 	 */
 	constructor( node ) {
-
 		super();
-
 		/**
 		 * A node contributing irradiance.
 		 *
 		 * @type {Node<vec3>}
 		 */
 		this.node = node;
-
 	}
-
 	setup( builder ) {
-
 		builder.context.irradiance.addAssign( this.node );
-
 	}
 
 }

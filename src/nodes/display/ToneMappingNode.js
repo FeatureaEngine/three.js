@@ -13,13 +13,9 @@ import { hash } from '../core/NodeUtils.js';
  * @augments TempNode
  */
 class ToneMappingNode extends TempNode {
-
 	static get type() {
-
 		return 'ToneMappingNode';
-
 	}
-
 	/**
 	 * Constructs a new tone mapping node.
 	 *
@@ -28,16 +24,13 @@ class ToneMappingNode extends TempNode {
 	 * @param {Node} [colorNode=null] - The color node to process.
 	 */
 	constructor( toneMapping, exposureNode = toneMappingExposure, colorNode = null ) {
-
 		super( 'vec3' );
-
 		/**
 		 * The tone mapping type.
 		 *
 		 * @type {Number}
 		 */
 		this.toneMapping = toneMapping;
-
 		/**
 		 * The tone mapping exposure.
 		 *
@@ -45,7 +38,6 @@ class ToneMappingNode extends TempNode {
 		 * @default null
 		 */
 		this.exposureNode = exposureNode;
-
 		/**
 		 * Represents the color to process.
 		 *
@@ -53,9 +45,7 @@ class ToneMappingNode extends TempNode {
 		 * @default null
 		 */
 		this.colorNode = colorNode;
-
 	}
-
 	/**
 	 * Overwrites the default `customCacheKey()` implementation by including the tone
 	 * mapping type into the cache key.
@@ -63,36 +53,21 @@ class ToneMappingNode extends TempNode {
 	 * @return {Number} The hash.
 	 */
 	customCacheKey() {
-
 		return hash( this.toneMapping );
-
 	}
-
 	setup( builder ) {
-
 		const colorNode = this.colorNode || builder.context.color;
 		const toneMapping = this.toneMapping;
-
 		if ( toneMapping === NoToneMapping ) return colorNode;
-
 		let outputNode = null;
-
 		const toneMappingFn = builder.renderer.library.getToneMappingFunction( toneMapping );
-
 		if ( toneMappingFn !== null ) {
-
 			outputNode = vec4( toneMappingFn( colorNode.rgb, this.exposureNode ), colorNode.a );
-
 		} else {
-
 			console.error( 'ToneMappingNode: Unsupported Tone Mapping configuration.', toneMapping );
-
 			outputNode = colorNode;
-
 		}
-
 		return outputNode;
-
 	}
 
 }

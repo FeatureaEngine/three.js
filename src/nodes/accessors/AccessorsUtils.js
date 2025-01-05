@@ -39,13 +39,10 @@ export const parallaxUV = ( uv, scale ) => uv.sub( parallaxDirection.mul( scale 
  * @returns {Node<vec3>} Bent normals.
  */
 export const transformedBentNormalView = /*@__PURE__*/ ( () => {
-
 	// https://google.github.io/filament/Filament.md.html#lighting/imagebasedlights/anisotropy
-
 	let bentNormal = anisotropyB.cross( positionViewDirection );
 	bentNormal = bentNormal.cross( anisotropyB ).normalize();
 	bentNormal = mix( bentNormal, transformedNormalView, anisotropy.mul( roughness.oneMinus() ).oneMinus().pow2().pow2() ).normalize();
-
 	return bentNormal;
 
 

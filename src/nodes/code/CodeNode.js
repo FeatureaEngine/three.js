@@ -11,13 +11,9 @@ import { nodeProxy } from '../tsl/TSLBase.js';
  * @augments Node
  */
 class CodeNode extends Node {
-
 	static get type() {
-
 		return 'CodeNode';
-
 	}
-
 	/**
 	 * Constructs a new code node.
 	 *
@@ -26,9 +22,7 @@ class CodeNode extends Node {
 	 * @param {('js'|'wgsl'|'glsl')} [language=''] - The used language.
 	 */
 	constructor( code = '', includes = [], language = '' ) {
-
 		super( 'code' );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -37,7 +31,6 @@ class CodeNode extends Node {
 		 * @default true
 		 */
 		this.isCodeNode = true;
-
 		/**
 		 * The native code.
 		 *
@@ -45,7 +38,6 @@ class CodeNode extends Node {
 		 * @default ''
 		 */
 		this.code = code;
-
 		/**
 		 * An array of includes
 		 *
@@ -53,7 +45,6 @@ class CodeNode extends Node {
 		 * @default []
 		 */
 		this.includes = includes;
-
 		/**
 		 * The used language.
 		 *
@@ -61,20 +52,15 @@ class CodeNode extends Node {
 		 * @default ''
 		 */
 		this.language = language;
-
 	}
-
 	/**
 	 * The method is overwritten so it always returns `true`.
 	 *
 	 * @return {Boolean} Whether this node is global or not.
 	 */
 	isGlobal() {
-
 		return true;
-
 	}
-
 	/**
 	 * Sets the includes of this code node.
 	 *
@@ -82,13 +68,9 @@ class CodeNode extends Node {
 	 * @return {CodeNode} A reference to this node.
 	 */
 	setIncludes( includes ) {
-
 		this.includes = includes;
-
 		return this;
-
 	}
-
 	/**
 	 * Returns the includes of this code node.
 	 *
@@ -96,44 +78,26 @@ class CodeNode extends Node {
 	 * @return {Array<Node>} The includes.
 	 */
 	getIncludes( /*builder*/ ) {
-
 		return this.includes;
-
 	}
-
 	generate( builder ) {
-
 		const includes = this.getIncludes( builder );
-
 		for ( const include of includes ) {
-
 			include.build( builder );
-
 		}
-
 		const nodeCode = builder.getCodeFromNode( this, this.getNodeType( builder ) );
 		nodeCode.code = this.code;
-
 		return nodeCode.code;
-
 	}
-
 	serialize( data ) {
-
 		super.serialize( data );
-
 		data.code = this.code;
 		data.language = this.language;
-
 	}
-
 	deserialize( data ) {
-
 		super.deserialize( data );
-
 		this.code = data.code;
 		this.language = data.language;
-
 	}
 
 }

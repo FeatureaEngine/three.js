@@ -9,13 +9,9 @@ import { nodeProxy, float, vec3 } from '../tsl/TSLBase.js';
  * @augments ContextNode
  */
 class LightingContextNode extends ContextNode {
-
 	static get type() {
-
 		return 'LightingContextNode';
-
 	}
-
 	/**
 	 * Constructs a new lighting context node.
 	 *
@@ -25,9 +21,7 @@ class LightingContextNode extends ContextNode {
 	 * @param {Node<float>?} [backdropAlphaNode=null] - A backdrop alpha node.
 	 */
 	constructor( node, lightingModel = null, backdropNode = null, backdropAlphaNode = null ) {
-
 		super( node );
-
 		/**
 		 * The current lighting model.
 		 *
@@ -35,7 +29,6 @@ class LightingContextNode extends ContextNode {
 		 * @default null
 		 */
 		this.lightingModel = lightingModel;
-
 		/**
 		 * A backdrop node.
 		 *
@@ -43,7 +36,6 @@ class LightingContextNode extends ContextNode {
 		 * @default null
 		 */
 		this.backdropNode = backdropNode;
-
 		/**
 		 * A backdrop alpha node.
 		 *
@@ -51,11 +43,8 @@ class LightingContextNode extends ContextNode {
 		 * @default null
 		 */
 		this.backdropAlphaNode = backdropAlphaNode;
-
 		this._value = null;
-
 	}
-
 	/**
 	 * Returns a lighting context object.
 	 *
@@ -70,21 +59,17 @@ class LightingContextNode extends ContextNode {
 	 * }} The lighting context object.
 	 */
 	getContext() {
-
 		const { backdropNode, backdropAlphaNode } = this;
-
 		const directDiffuse = vec3().toVar( 'directDiffuse' ),
 			directSpecular = vec3().toVar( 'directSpecular' ),
 			indirectDiffuse = vec3().toVar( 'indirectDiffuse' ),
 			indirectSpecular = vec3().toVar( 'indirectSpecular' );
-
 		const reflectedLight = {
 			directDiffuse,
 			directSpecular,
 			indirectDiffuse,
 			indirectSpecular
 		};
-
 		const context = {
 			radiance: vec3().toVar( 'radiance' ),
 			irradiance: vec3().toVar( 'irradiance' ),
@@ -94,18 +79,12 @@ class LightingContextNode extends ContextNode {
 			backdrop: backdropNode,
 			backdropAlpha: backdropAlphaNode
 		};
-
 		return context;
-
 	}
-
 	setup( builder ) {
-
 		this.value = this._value || ( this._value = this.getContext() );
 		this.value.lightingModel = this.lightingModel || builder.context.lightingModel;
-
 		return super.setup( builder );
-
 	}
 
 }

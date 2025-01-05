@@ -5,21 +5,18 @@
  * @abstract
  */
 class Pipeline {
-
 	/**
 	 * Constructs a new pipeline.
 	 *
 	 * @param {String} cacheKey - The pipeline's cache key.
 	 */
 	constructor( cacheKey ) {
-
 		/**
 		 * The pipeline's cache key.
 		 *
 		 * @type {String}
 		 */
 		this.cacheKey = cacheKey;
-
 		/**
 		 * How often the pipeline is currently in use.
 		 *
@@ -27,7 +24,6 @@ class Pipeline {
 		 * @default 0
 		 */
 		this.usedTimes = 0;
-
 	}
 
 }

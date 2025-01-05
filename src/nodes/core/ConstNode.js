@@ -6,13 +6,9 @@ import InputNode from './InputNode.js';
  * @augments InputNode
  */
 class ConstNode extends InputNode {
-
 	static get type() {
-
 		return 'ConstNode';
-
 	}
-
 	/**
 	 * Constructs a new input node.
 	 *
@@ -20,9 +16,7 @@ class ConstNode extends InputNode {
 	 * @param {String?} nodeType - The node type. If no explicit type is defined, the node tries to derive the type from its value.
 	 */
 	constructor( value, nodeType = null ) {
-
 		super( value, nodeType );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -31,9 +25,7 @@ class ConstNode extends InputNode {
 		 * @default true
 		 */
 		this.isConstNode = true;
-
 	}
-
 	/**
 	 * Generates the shader string of the value with the current node builder.
 	 *
@@ -41,17 +33,11 @@ class ConstNode extends InputNode {
 	 * @return {String} The generated value as a shader string.
 	 */
 	generateConst( builder ) {
-
 		return builder.generateConst( this.getNodeType( builder ), this.value );
-
 	}
-
 	generate( builder, output ) {
-
 		const type = this.getNodeType( builder );
-
 		return builder.format( this.generateConst( builder ), type, output );
-
 	}
 
 }

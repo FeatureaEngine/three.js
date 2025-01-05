@@ -15,13 +15,9 @@ import { nodeObject } from '../tsl/TSLBase.js';
  * @augments module:ReferenceNode~ReferenceNode
  */
 class MaterialReferenceNode extends ReferenceNode {
-
 	static get type() {
-
 		return 'MaterialReferenceNode';
-
 	}
-
 	/**
 	 * Constructs a new material reference node.
 	 *
@@ -31,9 +27,7 @@ class MaterialReferenceNode extends ReferenceNode {
 	 * the node refers to the material of the current rendered object.
 	 */
 	constructor( property, inputType, material = null ) {
-
 		super( property, inputType, material );
-
 		/**
 		 * The material the property belongs to. When no material is set,
 		 * the node refers to the material of the current rendered object.
@@ -42,7 +36,6 @@ class MaterialReferenceNode extends ReferenceNode {
 		 * @default null
 		 */
 		this.material = material;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -51,9 +44,7 @@ class MaterialReferenceNode extends ReferenceNode {
 		 * @default true
 		 */
 		this.isMaterialReferenceNode = true;
-
 	}
-
 	/**
 	 * Updates the reference based on the given state. The state is only evaluated
 	 * {@link module:MaterialReferenceNode~MaterialReferenceNode#material} is not set.
@@ -62,11 +53,8 @@ class MaterialReferenceNode extends ReferenceNode {
 	 * @return {Object} The updated reference.
 	 */
 	updateReference( state ) {
-
 		this.reference = this.material !== null ? this.material : state.material;
-
 		return this.reference;
-
 	}
 
 }

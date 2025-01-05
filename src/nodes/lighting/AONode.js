@@ -8,22 +8,16 @@ import LightingNode from './LightingNode.js';
  * @augments LightingNode
  */
 class AONode extends LightingNode {
-
 	static get type() {
-
 		return 'AONode';
-
 	}
-
 	/**
 	 * Constructs a new AO node.
 	 *
 	 * @param {Node<float>?} [aoNode=null] - The ambient occlusion node.
 	 */
 	constructor( aoNode = null ) {
-
 		super();
-
 		/**
 		 * The ambient occlusion node.
 		 *
@@ -31,13 +25,9 @@ class AONode extends LightingNode {
 		 * @default null
 		 */
 		this.aoNode = aoNode;
-
 	}
-
 	setup( builder ) {
-
 		builder.context.ambientOcclusion.mulAssign( this.aoNode );
-
 	}
 
 }

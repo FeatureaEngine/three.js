@@ -20,13 +20,9 @@ import { Vector3 } from '../../math/Vector3.js';
  * @augments Node
  */
 class Object3DNode extends Node {
-
 	static get type() {
-
 		return 'Object3DNode';
-
 	}
-
 	/**
 	 * Constructs a new object 3D node.
 	 *
@@ -34,16 +30,13 @@ class Object3DNode extends Node {
 	 * @param {Object3D?} [object3d=null] - The 3D object.
 	 */
 	constructor( scope, object3d = null ) {
-
 		super();
-
 		/**
 		 * The node reports a different type of transformation depending on the scope.
 		 *
 		 * @type {('position'|'viewPosition'|'direction'|'scale'|'worldMatrix')}
 		 */
 		this.scope = scope;
-
 		/**
 		 * The 3D object.
 		 *
@@ -51,7 +44,6 @@ class Object3DNode extends Node {
 		 * @default null
 		 */
 		this.object3d = object3d;
-
 		/**
 		 * Overwritten since this type of node is updated per object.
 		 *
@@ -59,7 +51,6 @@ class Object3DNode extends Node {
 		 * @default 'object'
 		 */
 		this.updateType = NodeUpdateType.OBJECT;
-
 		/**
 		 * Holds the value of the node as a uniform.
 		 *
@@ -67,9 +58,7 @@ class Object3DNode extends Node {
 		 * @type {UniformNode}
 		 */
 		this._uniformNode = new UniformNode( null );
-
 	}
-
 	/**
 	 * Overwritten since the node type is inferred from the scope.
 	 *
@@ -77,67 +66,40 @@ class Object3DNode extends Node {
 	 * @return {String} The node type.
 	 */
 	getNodeType() {
-
 		const scope = this.scope;
-
 		if ( scope === Object3DNode.WORLD_MATRIX ) {
-
 			return 'mat4';
-
 		} else if ( scope === Object3DNode.POSITION || scope === Object3DNode.VIEW_POSITION || scope === Object3DNode.DIRECTION || scope === Object3DNode.SCALE ) {
-
 			return 'vec3';
-
 		}
-
 	}
-
 	/**
 	 * Updates the uniform value depending on the scope.
 	 *
 	 * @param {NodeFrame} frame - The current node frame.
 	 */
 	update( frame ) {
-
 		const object = this.object3d;
 		const uniformNode = this._uniformNode;
 		const scope = this.scope;
-
 		if ( scope === Object3DNode.WORLD_MATRIX ) {
-
 			uniformNode.value = object.matrixWorld;
-
 		} else if ( scope === Object3DNode.POSITION ) {
-
 			uniformNode.value = uniformNode.value || new Vector3();
-
 			uniformNode.value.setFromMatrixPosition( object.matrixWorld );
-
 		} else if ( scope === Object3DNode.SCALE ) {
-
 			uniformNode.value = uniformNode.value || new Vector3();
-
 			uniformNode.value.setFromMatrixScale( object.matrixWorld );
-
 		} else if ( scope === Object3DNode.DIRECTION ) {
-
 			uniformNode.value = uniformNode.value || new Vector3();
-
 			object.getWorldDirection( uniformNode.value );
-
 		} else if ( scope === Object3DNode.VIEW_POSITION ) {
-
 			const camera = frame.camera;
-
 			uniformNode.value = uniformNode.value || new Vector3();
 			uniformNode.value.setFromMatrixPosition( object.matrixWorld );
-
 			uniformNode.value.applyMatrix4( camera.matrixWorldInverse );
-
 		}
-
 	}
-
 	/**
 	 * Generates the code snippet of the uniform node. The node type of the uniform
 	 * node also depends on the selected scope.
@@ -146,37 +108,21 @@ class Object3DNode extends Node {
 	 * @return {String} The generated code snippet.
 	 */
 	generate( builder ) {
-
 		const scope = this.scope;
-
 		if ( scope === Object3DNode.WORLD_MATRIX ) {
-
 			this._uniformNode.nodeType = 'mat4';
-
 		} else if ( scope === Object3DNode.POSITION || scope === Object3DNode.VIEW_POSITION || scope === Object3DNode.DIRECTION || scope === Object3DNode.SCALE ) {
-
 			this._uniformNode.nodeType = 'vec3';
-
 		}
-
 		return this._uniformNode.build( builder );
-
 	}
-
 	serialize( data ) {
-
 		super.serialize( data );
-
 		data.scope = this.scope;
-
 	}
-
 	deserialize( data ) {
-
 		super.deserialize( data );
-
 		this.scope = data.scope;
-
 	}
 
 }

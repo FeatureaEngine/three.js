@@ -18,20 +18,17 @@ varying vec3 vViewPosition;
 #include <clipping_planes_pars_vertex>
 
 void main() {
-
 	#include <uv_vertex>
 	#include <color_vertex>
 	#include <morphinstance_vertex>
 	#include <morphcolor_vertex>
 	#include <batching_vertex>
-
 	#include <beginnormal_vertex>
 	#include <morphnormal_vertex>
 	#include <skinbase_vertex>
 	#include <skinnormal_vertex>
 	#include <defaultnormal_vertex>
 	#include <normal_vertex>
-
 	#include <begin_vertex>
 	#include <morphtarget_vertex>
 	#include <skinning_vertex>
@@ -39,9 +36,7 @@ void main() {
 	#include <project_vertex>
 	#include <logdepthbuf_vertex>
 	#include <clipping_planes_vertex>
-
 	vViewPosition = - mvPosition.xyz;
-
 	#include <worldpos_vertex>
 	#include <envmap_vertex>
 	#include <shadowmap_vertex>
@@ -84,13 +79,10 @@ uniform float opacity;
 #include <clipping_planes_pars_fragment>
 
 void main() {
-
 	vec4 diffuseColor = vec4( diffuse, opacity );
 	#include <clipping_planes_fragment>
-
 	ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ) );
 	vec3 totalEmissiveRadiance = emissive;
-
 	#include <logdepthbuf_fragment>
 	#include <map_fragment>
 	#include <color_fragment>
@@ -101,18 +93,14 @@ void main() {
 	#include <normal_fragment_begin>
 	#include <normal_fragment_maps>
 	#include <emissivemap_fragment>
-
 	// accumulation
 	#include <lights_lambert_fragment>
 	#include <lights_fragment_begin>
 	#include <lights_fragment_maps>
 	#include <lights_fragment_end>
-
 	// modulation
 	#include <aomap_fragment>
-
 	vec3 outgoingLight = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse + totalEmissiveRadiance;
-
 	#include <envmap_fragment>
 	#include <opaque_fragment>
 	#include <tonemapping_fragment>

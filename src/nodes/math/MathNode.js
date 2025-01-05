@@ -16,13 +16,9 @@ import { WebGLCoordinateSystem, WebGPUCoordinateSystem } from '../../constants.j
  * @augments TempNode
  */
 class MathNode extends TempNode {
-
 	static get type() {
-
 		return 'MathNode';
-
 	}
-
 	/**
 	 * Constructs a new math node.
 	 *
@@ -32,23 +28,19 @@ class MathNode extends TempNode {
 	 * @param {Node?} [cNode=null] - The third input.
 	 */
 	constructor( method, aNode, bNode = null, cNode = null ) {
-
 		super();
-
 		/**
 		 * The method name.
 		 *
 		 * @type {String}
 		 */
 		this.method = method;
-
 		/**
 		 * The first input.
 		 *
 		 * @type {Node}
 		 */
 		this.aNode = aNode;
-
 		/**
 		 * The second input.
 		 *
@@ -56,7 +48,6 @@ class MathNode extends TempNode {
 		 * @default null
 		 */
 		this.bNode = bNode;
-
 		/**
 		 * The third input.
 		 *
@@ -64,9 +55,7 @@ class MathNode extends TempNode {
 		 * @default null
 		 */
 		this.cNode = cNode;
-
 	}
-
 	/**
 	 * The input type is inferred from the node types of the input nodes.
 	 *
@@ -74,33 +63,21 @@ class MathNode extends TempNode {
 	 * @return {String} The input type.
 	 */
 	getInputType( builder ) {
-
 		const aType = this.aNode.getNodeType( builder );
 		const bType = this.bNode ? this.bNode.getNodeType( builder ) : null;
 		const cType = this.cNode ? this.cNode.getNodeType( builder ) : null;
-
 		const aLen = builder.isMatrix( aType ) ? 0 : builder.getTypeLength( aType );
 		const bLen = builder.isMatrix( bType ) ? 0 : builder.getTypeLength( bType );
 		const cLen = builder.isMatrix( cType ) ? 0 : builder.getTypeLength( cType );
-
 		if ( aLen > bLen && aLen > cLen ) {
-
 			return aType;
-
 		} else if ( bLen > cLen ) {
-
 			return bType;
-
 		} else if ( cLen > aLen ) {
-
 			return cType;
-
 		}
-
 		return aType;
-
 	}
-
 	/**
 	 * The selected method as well as the input type determine the node type of this node.
 	 *
@@ -108,163 +85,96 @@ class MathNode extends TempNode {
 	 * @return {String} The node type.
 	 */
 	getNodeType( builder ) {
-
 		const method = this.method;
-
 		if ( method === MathNode.LENGTH || method === MathNode.DISTANCE || method === MathNode.DOT ) {
-
 			return 'float';
-
 		} else if ( method === MathNode.CROSS ) {
-
 			return 'vec3';
-
 		} else if ( method === MathNode.ALL ) {
-
 			return 'bool';
-
 		} else if ( method === MathNode.EQUALS ) {
-
 			return builder.changeComponentType( this.aNode.getNodeType( builder ), 'bool' );
-
 		} else if ( method === MathNode.MOD ) {
-
 			return this.aNode.getNodeType( builder );
-
 		} else {
-
 			return this.getInputType( builder );
-
 		}
-
 	}
-
 	generate( builder, output ) {
-
 		let method = this.method;
-
 		const type = this.getNodeType( builder );
 		const inputType = this.getInputType( builder );
-
 		const a = this.aNode;
 		const b = this.bNode;
 		const c = this.cNode;
-
 		const coordinateSystem = builder.renderer.coordinateSystem;
-
 		if ( method === MathNode.TRANSFORM_DIRECTION ) {
-
 			// dir can be either a direction vector or a normal vector
 			// upper-left 3x3 of matrix is assumed to be orthogonal
-
 			let tA = a;
 			let tB = b;
-
 			if ( builder.isMatrix( tA.getNodeType( builder ) ) ) {
-
 				tB = vec4( vec3( tB ), 0.0 );
-
 			} else {
-
 				tA = vec4( vec3( tA ), 0.0 );
-
 			}
-
 			const mulNode = mul( tA, tB ).xyz;
-
 			return normalize( mulNode ).build( builder, output );
-
 		} else if ( method === MathNode.NEGATE ) {
-
 			return builder.format( '( - ' + a.build( builder, inputType ) + ' )', type, output );
-
 		} else if ( method === MathNode.ONE_MINUS ) {
-
 			return sub( 1.0, a ).build( builder, output );
-
 		} else if ( method === MathNode.RECIPROCAL ) {
-
 			return div( 1.0, a ).build( builder, output );
-
 		} else if ( method === MathNode.DIFFERENCE ) {
-
 			return abs( sub( a, b ) ).build( builder, output );
-
 		} else {
-
 			const params = [];
-
 			if ( method === MathNode.CROSS || method === MathNode.MOD ) {
-
 				params.push(
 					a.build( builder, type ),
 					b.build( builder, type )
 				);
-
 			} else if ( coordinateSystem === WebGLCoordinateSystem && method === MathNode.STEP ) {
-
 				params.push(
 					a.build( builder, builder.getTypeLength( a.getNodeType( builder ) ) === 1 ? 'float' : inputType ),
 					b.build( builder, inputType )
 				);
-
 			} else if ( ( coordinateSystem === WebGLCoordinateSystem && ( method === MathNode.MIN || method === MathNode.MAX ) ) || method === MathNode.MOD ) {
-
 				params.push(
 					a.build( builder, inputType ),
 					b.build( builder, builder.getTypeLength( b.getNodeType( builder ) ) === 1 ? 'float' : inputType )
 				);
-
 			} else if ( method === MathNode.REFRACT ) {
-
 				params.push(
 					a.build( builder, inputType ),
 					b.build( builder, inputType ),
 					c.build( builder, 'float' )
 				);
-
 			} else if ( method === MathNode.MIX ) {
-
 				params.push(
 					a.build( builder, inputType ),
 					b.build( builder, inputType ),
 					c.build( builder, builder.getTypeLength( c.getNodeType( builder ) ) === 1 ? 'float' : inputType )
 				);
-
 			} else {
-
 				if ( coordinateSystem === WebGPUCoordinateSystem && method === MathNode.ATAN && b !== null ) {
-
 					method = 'atan2';
-
 				}
-
 				params.push( a.build( builder, inputType ) );
 				if ( b !== null ) params.push( b.build( builder, inputType ) );
 				if ( c !== null ) params.push( c.build( builder, inputType ) );
-
 			}
-
 			return builder.format( `${ builder.getMethod( method, type ) }( ${params.join( ', ' )} )`, type, output );
-
 		}
-
 	}
-
 	serialize( data ) {
-
 		super.serialize( data );
-
 		data.method = this.method;
-
 	}
-
 	deserialize( data ) {
-
 		super.deserialize( data );
-
 		this.method = data.method;
-
 	}
 
 }
@@ -898,10 +808,8 @@ export const faceForward = /*@__PURE__*/ nodeProxy( MathNode, MathNode.FACEFORWA
  * @returns {Node<float>}
  */
 export const rand = /*@__PURE__*/ Fn( ( [ uv ] ) => {
-
 	const a = 12.9898, b = 78.233, c = 43758.5453;
 	const dt = dot( uv.xy, vec2( a, b ) ), sn = mod( dt, PI );
-
 	return fract( sin( sn ).mul( c ) );
 
 } );
@@ -937,7 +845,6 @@ export const smoothstepElement = ( x, low, high ) => smoothstep( low, high, x );
  * @returns {Node}
  */
 export const atan2 = ( y, x ) => { // @deprecated, r172
-
 	console.warn( 'THREE.TSL: "atan2" is overloaded. Use "atan" instead.' );
 	return atan( y, x );
 

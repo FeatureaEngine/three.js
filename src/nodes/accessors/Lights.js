@@ -9,13 +9,9 @@ import { positionWorld } from './Position.js';
 let uniformsLib;
 
 function getLightData( light ) {
-
 	uniformsLib = uniformsLib || new WeakMap();
-
 	let uniforms = uniformsLib.get( light );
-
 	if ( uniforms === undefined ) uniformsLib.set( light, uniforms = {} );
-
 	return uniforms;
 
 }
@@ -28,19 +24,12 @@ function getLightData( light ) {
  * @returns {UniformNode<mat4>} The shadow matrix uniform node.
  */
 export function lightShadowMatrix( light ) {
-
 	const data = getLightData( light );
-
 	return data.shadowMatrix || ( data.shadowMatrix = uniform( 'mat4' ).setGroup( renderGroup ).onRenderUpdate( () => {
-
 		if ( light.castShadow !== true ) {
-
 			light.shadow.updateMatrices( light );
-
 		}
-
 		return light.shadow.matrix;
-
 	} ) );
 
 }
@@ -54,18 +43,12 @@ export function lightShadowMatrix( light ) {
  * @returns {Node<vec3>} The projected uvs.
  */
 export function lightProjectionUV( light ) {
-
 	const data = getLightData( light );
-
 	if ( data.projectionUV === undefined ) {
-
 		const spotLightCoord = lightShadowMatrix( light ).mul( positionWorld );
-
 		data.projectionUV = spotLightCoord.xyz.div( spotLightCoord.w );
 
-
 	}
-
 	return data.projectionUV;
 
 }
@@ -78,9 +61,7 @@ export function lightProjectionUV( light ) {
  * @returns {UniformNode<vec3>} The light's position in world space.
  */
 export function lightPosition( light ) {
-
 	const data = getLightData( light );
-
 	return data.position || ( data.position = uniform( new Vector3() ).setGroup( renderGroup ).onRenderUpdate( ( _, self ) => self.value.setFromMatrixPosition( light.matrixWorld ) ) );
 
 }
@@ -93,9 +74,7 @@ export function lightPosition( light ) {
  * @returns {UniformNode<vec3>} The light target position in world space.
  */
 export function lightTargetPosition( light ) {
-
 	const data = getLightData( light );
-
 	return data.targetPosition || ( data.targetPosition = uniform( new Vector3() ).setGroup( renderGroup ).onRenderUpdate( ( _, self ) => self.value.setFromMatrixPosition( light.target.matrixWorld ) ) );
 
 }
@@ -108,16 +87,11 @@ export function lightTargetPosition( light ) {
  * @returns {UniformNode<vec3>} The light's position in view space.
  */
 export function lightViewPosition( light ) {
-
 	const data = getLightData( light );
-
 	return data.viewPosition || ( data.viewPosition = uniform( new Vector3() ).setGroup( renderGroup ).onRenderUpdate( ( { camera }, self ) => {
-
 		self.value = self.value || new Vector3();
 		self.value.setFromMatrixPosition( light.matrixWorld );
-
 		self.value.applyMatrix4( camera.matrixWorldInverse );
-
 	} ) );
 
 }

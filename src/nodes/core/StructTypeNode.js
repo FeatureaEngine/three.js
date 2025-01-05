@@ -7,13 +7,9 @@ import Node from './Node.js';
  * for this purpose.
  */
 class StructTypeNode extends Node {
-
 	static get type() {
-
 		return 'StructTypeNode';
-
 	}
-
 	/**
 	 * Constructs a new struct type node.
 	 *
@@ -21,9 +17,7 @@ class StructTypeNode extends Node {
 	 * @param {Array<String>} types - An array of types.
 	 */
 	constructor( name, types ) {
-
 		super();
-
 		/**
 		 * The name of the struct.
 		 *
@@ -31,14 +25,12 @@ class StructTypeNode extends Node {
 		 */
 		this.name = name;
 
-
 		/**
 		 * An array of types.
 		 *
 		 * @type {Array<String>}
 		 */
 		this.types = types;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -47,18 +39,14 @@ class StructTypeNode extends Node {
 		 * @default true
 		 */
 		this.isStructTypeNode = true;
-
 	}
-
 	/**
 	 * Returns the member types.
 	 *
 	 * @return {Array<String>} The types.
 	 */
 	getMemberTypes() {
-
 		return this.types;
-
 	}
 
 }

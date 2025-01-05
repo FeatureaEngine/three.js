@@ -19,7 +19,6 @@ const _quadMesh = /*@__PURE__*/ new QuadMesh( _material );
  * ```
  */
 class PostProcessing {
-
 	/**
 	 * Constructs a new post processing management module.
 	 *
@@ -27,14 +26,12 @@ class PostProcessing {
 	 * @param {Node<vec4>} outputNode - An optional output node.
 	 */
 	constructor( renderer, outputNode = vec4( 0, 0, 1, 1 ) ) {
-
 		/**
 		 * A reference to the renderer.
 		 *
 		 * @type {Renderer}
 		 */
 		this.renderer = renderer;
-
 		/**
 		 * A node which defines the final output of the post
 		 * processing. This is usually the last node in a chain
@@ -43,7 +40,6 @@ class PostProcessing {
 		 * @type {Node<vec4>}
 		 */
 		this.outputNode = outputNode;
-
 		/**
 		 * Whether the default output tone mapping and color
 		 * space transformation should be enabled or not.
@@ -63,69 +59,47 @@ class PostProcessing {
 		 * @type {Boolean}
 		 */
 		this.outputColorTransform = true;
-
 		/**
 		 * Must be set to `true` when the output node changes.
 		 *
 		 * @type {Node<vec4>}
 		 */
 		this.needsUpdate = true;
-
 		_material.name = 'PostProcessing';
-
 	}
-
 	/**
 	 * When `PostProcessing` is used to apply post processing effects,
 	 * the application must use this version of `render()` inside
 	 * its animation loop (not the one from the renderer).
 	 */
 	render() {
-
 		this._update();
-
 		const renderer = this.renderer;
-
 		const toneMapping = renderer.toneMapping;
 		const outputColorSpace = renderer.outputColorSpace;
-
 		renderer.toneMapping = NoToneMapping;
 		renderer.outputColorSpace = LinearSRGBColorSpace;
-
 		//
-
 		_quadMesh.render( renderer );
-
 		//
-
 		renderer.toneMapping = toneMapping;
 		renderer.outputColorSpace = outputColorSpace;
-
 	}
-
 	/**
 	 * Updates the state of the module.
 	 *
 	 * @private
 	 */
 	_update() {
-
 		if ( this.needsUpdate === true ) {
-
 			const renderer = this.renderer;
-
 			const toneMapping = renderer.toneMapping;
 			const outputColorSpace = renderer.outputColorSpace;
-
 			_quadMesh.material.fragmentNode = this.outputColorTransform === true ? renderOutput( this.outputNode, toneMapping, outputColorSpace ) : this.outputNode.context( { toneMapping, outputColorSpace } );
 			_quadMesh.material.needsUpdate = true;
-
 			this.needsUpdate = false;
-
 		}
-
 	}
-
 	/**
 	 * When `PostProcessing` is used to apply post processing effects,
 	 * the application must use this version of `renderAsync()` inside
@@ -135,26 +109,17 @@ class PostProcessing {
 	 * @return {Promise} A Promise that resolves when the render has been finished.
 	 */
 	async renderAsync() {
-
 		this._update();
-
 		const renderer = this.renderer;
-
 		const toneMapping = renderer.toneMapping;
 		const outputColorSpace = renderer.outputColorSpace;
-
 		renderer.toneMapping = NoToneMapping;
 		renderer.outputColorSpace = LinearSRGBColorSpace;
-
 		//
-
 		await _quadMesh.renderAsync( renderer );
-
 		//
-
 		renderer.toneMapping = toneMapping;
 		renderer.outputColorSpace = outputColorSpace;
-
 	}
 
 }

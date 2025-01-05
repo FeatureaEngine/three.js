@@ -4,12 +4,10 @@
  * and monitoring.
  */
 class Info {
-
 	/**
 	 * Constructs a new info component.
 	 */
 	constructor() {
-
 		/**
 		 * Whether frame related metrics should automatically
 		 * be resetted or not. This property should be set to `false`
@@ -20,7 +18,6 @@ class Info {
 		 * @default true
 		 */
 		this.autoReset = true;
-
 		/**
 		 * The current frame ID. This ID is managed
 		 * by `NodeFrame`.
@@ -30,7 +27,6 @@ class Info {
 		 * @default 0
 		 */
 		this.frame = 0;
-
 		/**
 		 * The number of render calls since the
 		 * app has been started.
@@ -40,7 +36,6 @@ class Info {
 		 * @default 0
 		 */
 		this.calls = 0;
-
 		/**
 		 * Render related metrics.
 		 *
@@ -67,7 +62,6 @@ class Info {
 			previousFrameCalls: 0,
 			timestampCalls: 0
 		};
-
 		/**
 		 * Compute related metrics.
 		 *
@@ -86,7 +80,6 @@ class Info {
 			previousFrameCalls: 0,
 			timestampCalls: 0
 		};
-
 		/**
 		 * Memory related metrics.
 		 *
@@ -99,9 +92,7 @@ class Info {
 			geometries: 0,
 			textures: 0
 		};
-
 	}
-
 	/**
 	 * This method should be executed per draw call and updates the corresponding metrics.
 	 *
@@ -110,33 +101,19 @@ class Info {
 	 * @param {Number} instanceCount - The instance count.
 	 */
 	update( object, count, instanceCount ) {
-
 		this.render.drawCalls ++;
-
 		if ( object.isMesh || object.isSprite ) {
-
 			this.render.triangles += instanceCount * ( count / 3 );
-
 		} else if ( object.isPoints ) {
-
 			this.render.points += instanceCount * count;
-
 		} else if ( object.isLineSegments ) {
-
 			this.render.lines += instanceCount * ( count / 2 );
-
 		} else if ( object.isLine ) {
-
 			this.render.lines += instanceCount * ( count - 1 );
-
 		} else {
-
 			console.error( 'THREE.WebGPUInfo: Unknown object type.' );
-
 		}
-
 	}
-
 	/**
 	 * Used by async render methods to updated timestamp metrics.
 	 *
@@ -144,68 +121,47 @@ class Info {
 	 * @param {Number} time - The duration of the compute/render call in milliseconds.
 	 */
 	updateTimestamp( type, time ) {
-
 		if ( this[ type ].timestampCalls === 0 ) {
-
 			this[ type ].timestamp = 0;
-
 		}
-
 
 		this[ type ].timestamp += time;
-
 		this[ type ].timestampCalls ++;
 
-
 		if ( this[ type ].timestampCalls >= this[ type ].previousFrameCalls ) {
-
 			this[ type ].timestampCalls = 0;
-
 		}
 
-
 	}
-
 	/**
 	 * Resets frame related metrics.
 	 */
 	reset() {
-
 		const previousRenderFrameCalls = this.render.frameCalls;
 		this.render.previousFrameCalls = previousRenderFrameCalls;
-
 		const previousComputeFrameCalls = this.compute.frameCalls;
 		this.compute.previousFrameCalls = previousComputeFrameCalls;
-
 
 		this.render.drawCalls = 0;
 		this.render.frameCalls = 0;
 		this.compute.frameCalls = 0;
-
 		this.render.triangles = 0;
 		this.render.points = 0;
 		this.render.lines = 0;
 
-
 	}
-
 	/**
 	 * Performs a complete reset of the object.
 	 */
 	dispose() {
-
 		this.reset();
-
 		this.calls = 0;
-
 		this.render.calls = 0;
 		this.compute.calls = 0;
-
 		this.render.timestamp = 0;
 		this.compute.timestamp = 0;
 		this.memory.geometries = 0;
 		this.memory.textures = 0;
-
 	}
 
 }

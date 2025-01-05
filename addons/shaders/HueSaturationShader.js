@@ -6,41 +6,25 @@
  */
 
 const HueSaturationShader = {
-
 	name: 'HueSaturationShader',
-
 	uniforms: {
-
 		'tDiffuse': { value: null },
 		'hue': { value: 0 },
 		'saturation': { value: 0 }
-
 	},
-
 	vertexShader: /* glsl */`
-
 		varying vec2 vUv;
-
 		void main() {
-
 			vUv = uv;
-
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-
 		}`,
-
 	fragmentShader: /* glsl */`
-
 		uniform sampler2D tDiffuse;
 		uniform float hue;
 		uniform float saturation;
-
 		varying vec2 vUv;
-
 		void main() {
-
 			gl_FragColor = texture2D( tDiffuse, vUv );
-
 			// hue
 			float angle = hue * 3.14159265;
 			float s = sin(angle), c = cos(angle);
@@ -51,7 +35,6 @@ const HueSaturationShader = {
 				dot(gl_FragColor.rgb, weights.zxy),
 				dot(gl_FragColor.rgb, weights.yzx)
 			);
-
 			// saturation
 			float average = (gl_FragColor.r + gl_FragColor.g + gl_FragColor.b) / 3.0;
 			if (saturation > 0.0) {
@@ -59,7 +42,6 @@ const HueSaturationShader = {
 			} else {
 				gl_FragColor.rgb += (average - gl_FragColor.rgb) * (-saturation);
 			}
-
 		}`
 
 };

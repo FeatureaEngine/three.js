@@ -20,15 +20,10 @@ export const normalGeometry = /*@__PURE__*/ attribute( 'normal', 'vec3' );
  * @type {Node<vec3>}
  */
 export const normalLocal = /*@__PURE__*/ ( Fn( ( builder ) => {
-
 	if ( builder.geometry.hasAttribute( 'normal' ) === false ) {
-
 		console.warn( 'TSL.NormalNode: Vertex attribute "normal" not found on geometry.' );
-
 		return vec3( 0, 1, 0 );
-
 	}
-
 	return normalGeometry;
 
 }, 'vec3' ).once() )().toVar( 'normalLocal' );
@@ -46,19 +41,12 @@ export const normalFlat = /*@__PURE__*/ positionView.dFdx().cross( positionView.
  * @type {Node<vec3>}
  */
 export const normalView = /*@__PURE__*/ ( Fn( ( builder ) => {
-
 	let node;
-
 	if ( builder.material.flatShading === true ) {
-
 		node = normalFlat;
-
 	} else {
-
 		node = varying( transformNormalToView( normalLocal ), 'v_normalView' ).normalize();
-
 	}
-
 	return node;
 
 }, 'vec3' ).once() )().toVar( 'normalView' );
@@ -76,7 +64,6 @@ export const normalWorld = /*@__PURE__*/ varying( normalView.transformDirection(
  * @type {Node<vec3>}
  */
 export const transformedNormalView = /*@__PURE__*/ ( Fn( ( builder ) => {
-
 	return builder.context.setupNormal();
 
 }, 'vec3' ).once() )().mul( faceDirection ).toVar( 'transformedNormalView' );
@@ -94,7 +81,6 @@ export const transformedNormalWorld = /*@__PURE__*/ transformedNormalView.transf
  * @type {Node<vec3>}
  */
 export const transformedClearcoatNormalView = /*@__PURE__*/ ( Fn( ( builder ) => {
-
 	return builder.context.setupClearcoatNormal();
 
 }, 'vec3' ).once() )().mul( faceDirection ).toVar( 'transformedClearcoatNormalView' );
@@ -108,11 +94,8 @@ export const transformedClearcoatNormalView = /*@__PURE__*/ ( Fn( ( builder ) =>
  * @return {Node<vec3>} The transformed normal.
  */
 export const transformNormal = /*@__PURE__*/ Fn( ( [ normal, matrix = modelWorldMatrix ] ) => {
-
 	const m = mat3( matrix );
-
 	const transformedNormal = normal.div( vec3( m[ 0 ].dot( m[ 0 ] ), m[ 1 ].dot( m[ 1 ] ), m[ 2 ].dot( m[ 2 ] ) ) );
-
 	return m.mul( transformedNormal ).xyz;
 
 } );
@@ -126,19 +109,12 @@ export const transformNormal = /*@__PURE__*/ Fn( ( [ normal, matrix = modelWorld
  * @return {Node<vec3>} The transformed normal.
  */
 export const transformNormalToView = /*@__PURE__*/ Fn( ( [ normal ], builder ) => {
-
 	const modelNormalViewMatrix = builder.renderer.nodes.modelNormalViewMatrix;
-
 	if ( modelNormalViewMatrix !== null ) {
-
 		return modelNormalViewMatrix.transformDirection( normal );
-
 	}
-
 	//
-
 	const transformedNormal = modelNormalMatrix.mul( normal );
-
 	return cameraViewMatrix.transformDirection( transformedNormal );
 
 } );

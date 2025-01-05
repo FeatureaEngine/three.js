@@ -28,13 +28,9 @@ import { nodeObject } from '../tsl/TSLBase.js';
  * @augments CodeNode
  */
 class FunctionNode extends CodeNode {
-
 	static get type() {
-
 		return 'FunctionNode';
-
 	}
-
 	/**
 	 * Constructs a new function node.
 	 *
@@ -43,17 +39,11 @@ class FunctionNode extends CodeNode {
 	 * @param {('js'|'wgsl'|'glsl')} [language=''] - The used language.
 	 */
 	constructor( code = '', includes = [], language = '' ) {
-
 		super( code, includes, language );
-
 	}
-
 	getNodeType( builder ) {
-
 		return this.getNodeFunction( builder ).type;
-
 	}
-
 	/**
 	 * Returns the inputs of this function node.
 	 *
@@ -61,11 +51,8 @@ class FunctionNode extends CodeNode {
 	 * @return {Array<NodeFunctionInput>} The inputs.
 	 */
 	getInputs( builder ) {
-
 		return this.getNodeFunction( builder ).inputs;
-
 	}
-
 	/**
 	 * Returns the node function for this function node.
 	 *
@@ -73,58 +60,32 @@ class FunctionNode extends CodeNode {
 	 * @return {NodeFunction} The node function.
 	 */
 	getNodeFunction( builder ) {
-
 		const nodeData = builder.getDataFromNode( this );
-
 		let nodeFunction = nodeData.nodeFunction;
-
 		if ( nodeFunction === undefined ) {
-
 			nodeFunction = builder.parser.parseFunction( this.code );
-
 			nodeData.nodeFunction = nodeFunction;
-
 		}
-
 		return nodeFunction;
-
 	}
-
 	generate( builder, output ) {
-
 		super.generate( builder );
-
 		const nodeFunction = this.getNodeFunction( builder );
-
 		const name = nodeFunction.name;
 		const type = nodeFunction.type;
-
 		const nodeCode = builder.getCodeFromNode( this, type );
-
 		if ( name !== '' ) {
-
 			// use a custom property name
-
 			nodeCode.name = name;
-
 		}
-
 		const propertyName = builder.getPropertyName( nodeCode );
-
 		const code = this.getNodeFunction( builder ).getCode( propertyName );
-
 		nodeCode.code = code + '\n';
-
 		if ( output === 'property' ) {
-
 			return propertyName;
-
 		} else {
-
 			return builder.format( `${ propertyName }()`, type, output );
-
 		}
-
 	}
 
 }
@@ -132,26 +93,16 @@ class FunctionNode extends CodeNode {
 export default FunctionNode;
 
 const nativeFn = ( code, includes = [], language = '' ) => {
-
 	for ( let i = 0; i < includes.length; i ++ ) {
-
 		const include = includes[ i ];
-
 		// TSL Function: glslFn, wgslFn
-
 		if ( typeof include === 'function' ) {
-
 			includes[ i ] = include.functionNode;
-
 		}
-
 	}
-
 	const functionNode = nodeObject( new FunctionNode( code, includes, language ) );
-
 	const fn = ( ...params ) => functionNode.call( ...params );
 	fn.functionNode = functionNode;
-
 	return fn;
 
 };

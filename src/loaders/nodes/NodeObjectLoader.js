@@ -10,30 +10,25 @@ import { ObjectLoader } from '../../loaders/ObjectLoader.js';
  * @augments ObjectLoader
  */
 class NodeObjectLoader extends ObjectLoader {
-
 	/**
 	 * Constructs a new node object loader.
 	 *
 	 * @param {LoadingManager?} manager - A reference to a loading manager.
 	 */
 	constructor( manager ) {
-
 		super( manager );
-
 		/**
 		 * Represents a dictionary of node types.
 		 *
 		 * @type {Object<String,Node.constructor>}
 		 */
 		this.nodes = {};
-
 		/**
 		 * Represents a dictionary of node material types.
 		 *
 		 * @type {Object<String,NodeMaterial.constructor>}
 		 */
 		this.nodeMaterials = {};
-
 		/**
 		 * A reference for holdng the `nodes` JSON property.
 		 *
@@ -41,9 +36,7 @@ class NodeObjectLoader extends ObjectLoader {
 		 * @type {Object?}
 		 */
 		this._nodesJSON = null;
-
 	}
-
 	/**
 	 * Defines the dictionary of node types.
 	 *
@@ -51,12 +44,9 @@ class NodeObjectLoader extends ObjectLoader {
 	 * @return {NodeLoader} A reference to this loader.
 	 */
 	setNodes( value ) {
-
 		this.nodes = value;
 		return this;
-
 	}
-
 	/**
 	 * Defines the dictionary of node material types.
 	 *
@@ -64,12 +54,9 @@ class NodeObjectLoader extends ObjectLoader {
 	 * @return {NodeLoader} A reference to this loader.
 	 */
 	setNodeMaterials( value ) {
-
 		this.nodeMaterials = value;
 		return this;
-
 	}
-
 	/**
 	 * Parses the node objects from the given JSON.
 	 *
@@ -78,17 +65,11 @@ class NodeObjectLoader extends ObjectLoader {
 	 * @return {Object3D}. The parsed 3D object.
 	 */
 	parse( json, onLoad ) {
-
 		this._nodesJSON = json.nodes;
-
 		const data = super.parse( json, onLoad );
-
 		this._nodesJSON = null; // dispose
-
 		return data;
-
 	}
-
 	/**
 	 * Parses the node objects from the given JSON and textures.
 	 *
@@ -97,21 +78,14 @@ class NodeObjectLoader extends ObjectLoader {
 	 * @return {Object<String,Node>}. The parsed nodes.
 	 */
 	parseNodes( json, textures ) {
-
 		if ( json !== undefined ) {
-
 			const loader = new NodeLoader();
 			loader.setNodes( this.nodes );
 			loader.setTextures( textures );
-
 			return loader.parseNodes( json );
-
 		}
-
 		return {};
-
 	}
-
 	/**
 	 * Parses the node objects from the given JSON and textures.
 	 *
@@ -120,30 +94,19 @@ class NodeObjectLoader extends ObjectLoader {
 	 * @return {Object<String,NodeMaterial>}. The parsed materials.
 	 */
 	parseMaterials( json, textures ) {
-
 		const materials = {};
-
 		if ( json !== undefined ) {
-
 			const nodes = this.parseNodes( this._nodesJSON, textures );
-
 			const loader = new NodeMaterialLoader();
 			loader.setTextures( textures );
 			loader.setNodes( nodes );
 			loader.setNodeMaterials( this.nodeMaterials );
-
 			for ( let i = 0, l = json.length; i < l; i ++ ) {
-
 				const data = json[ i ];
-
 				materials[ data.uuid ] = loader.parse( data );
-
 			}
-
 		}
-
 		return materials;
-
 	}
 
 }

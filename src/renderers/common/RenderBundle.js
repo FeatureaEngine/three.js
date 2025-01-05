@@ -5,7 +5,6 @@
  * @private
  */
 class RenderBundle {
-
 	/**
 	 * Constructs a new bundle group.
 	 *
@@ -13,10 +12,8 @@ class RenderBundle {
 	 * @param {Camera} camera - The camera the bundle group is rendered with.
 	 */
 	constructor( bundleGroup, camera ) {
-
 		this.bundleGroup = bundleGroup;
 		this.camera = camera;
-
 	}
 
 }

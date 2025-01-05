@@ -12,25 +12,21 @@ const _p = [ 151, 160, 137, 91, 90, 15, 131, 13, 201, 95, 96, 53, 194, 233, 7, 2
 	 93, 222, 114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180 ];
 
 for ( let i = 0; i < 256; i ++ ) {
-
 	_p[ 256 + i ] = _p[ i ];
 
 }
 
 function fade( t ) {
-
 	return t * t * t * ( t * ( t * 6 - 15 ) + 10 );
 
 }
 
 function lerp( t, a, b ) {
-
 	return a + t * ( b - a );
 
 }
 
 function grad( hash, x, y, z ) {
-
 	const h = hash & 15;
 	const u = h < 8 ? x : y, v = h < 4 ? y : h == 12 || h == 14 ? x : z;
 	return ( ( h & 1 ) == 0 ? u : - u ) + ( ( h & 2 ) == 0 ? v : - v );
@@ -38,23 +34,15 @@ function grad( hash, x, y, z ) {
 }
 
 class ImprovedNoise {
-
 	noise( x, y, z ) {
-
 		const floorX = Math.floor( x ), floorY = Math.floor( y ), floorZ = Math.floor( z );
-
 		const X = floorX & 255, Y = floorY & 255, Z = floorZ & 255;
-
 		x -= floorX;
 		y -= floorY;
 		z -= floorZ;
-
 		const xMinus1 = x - 1, yMinus1 = y - 1, zMinus1 = z - 1;
-
 		const u = fade( x ), v = fade( y ), w = fade( z );
-
 		const A = _p[ X ] + Y, AA = _p[ A ] + Z, AB = _p[ A + 1 ] + Z, B = _p[ X + 1 ] + Y, BA = _p[ B ] + Z, BB = _p[ B + 1 ] + Z;
-
 		return lerp( w, lerp( v, lerp( u, grad( _p[ AA ], x, y, z ),
 			grad( _p[ BA ], xMinus1, y, z ) ),
 		lerp( u, grad( _p[ AB ], x, yMinus1, z ),
@@ -63,7 +51,6 @@ class ImprovedNoise {
 			grad( _p[ BA + 1 ], xMinus1, y, zMinus1 ) ),
 		lerp( u, grad( _p[ AB + 1 ], x, yMinus1, zMinus1 ),
 			grad( _p[ BB + 1 ], xMinus1, yMinus1, zMinus1 ) ) ) );
-
 	}
 
 }

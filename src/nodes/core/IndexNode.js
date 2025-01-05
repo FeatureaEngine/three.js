@@ -17,29 +17,22 @@ import { nodeImmutable, varying } from '../tsl/TSLBase.js';
  * @augments Node
  */
 class IndexNode extends Node {
-
 	static get type() {
-
 		return 'IndexNode';
-
 	}
-
 	/**
 	 * Constructs a new index node.
 	 *
 	 * @param {('vertex'|'instance'|'subgroup'|'invocationLocal'|'invocationSubgroup'|'draw')} scope - The scope of the index node.
 	 */
 	constructor( scope ) {
-
 		super( 'uint' );
-
 		/**
 		 * The scope of the index node.
 		 *
 		 * @type {String}
 		 */
 		this.scope = scope;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -48,62 +41,34 @@ class IndexNode extends Node {
 		 * @default true
 		 */
 		this.isIndexNode = true;
-
 	}
-
 	generate( builder ) {
-
 		const nodeType = this.getNodeType( builder );
 		const scope = this.scope;
-
 		let propertyName;
-
 		if ( scope === IndexNode.VERTEX ) {
-
 			propertyName = builder.getVertexIndex();
-
 		} else if ( scope === IndexNode.INSTANCE ) {
-
 			propertyName = builder.getInstanceIndex();
-
 		} else if ( scope === IndexNode.DRAW ) {
-
 			propertyName = builder.getDrawIndex();
-
 		} else if ( scope === IndexNode.INVOCATION_LOCAL ) {
-
 			propertyName = builder.getInvocationLocalIndex();
-
 		} else if ( scope === IndexNode.INVOCATION_SUBGROUP ) {
-
 			propertyName = builder.getInvocationSubgroupIndex();
-
 		} else if ( scope === IndexNode.SUBGROUP ) {
-
 			propertyName = builder.getSubgroupIndex();
-
 		} else {
-
 			throw new Error( 'THREE.IndexNode: Unknown scope: ' + scope );
-
 		}
-
 		let output;
-
 		if ( builder.shaderStage === 'vertex' || builder.shaderStage === 'compute' ) {
-
 			output = propertyName;
-
 		} else {
-
 			const nodeVarying = varying( this );
-
 			output = nodeVarying.build( builder, nodeType );
-
 		}
-
 		return output;
-
 	}
 
 }

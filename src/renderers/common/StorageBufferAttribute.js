@@ -15,7 +15,6 @@ import { BufferAttribute } from '../../core/BufferAttribute.js';
  * @augments BufferAttribute
  */
 class StorageBufferAttribute extends BufferAttribute {
-
 	/**
 	 * Constructs a new storage buffer attribute.
 	 *
@@ -25,11 +24,8 @@ class StorageBufferAttribute extends BufferAttribute {
 	 * @param {TypedArray.contructor} [typeClass=Float32Array] - A typed array constructor.
 	 */
 	constructor( count, itemSize, typeClass = Float32Array ) {
-
 		const array = ArrayBuffer.isView( count ) ? count : new typeClass( count * itemSize );
-
 		super( array, itemSize );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -38,7 +34,6 @@ class StorageBufferAttribute extends BufferAttribute {
 		 * @default true
 		 */
 		this.isStorageBufferAttribute = true;
-
 	}
 
 }

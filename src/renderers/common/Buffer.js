@@ -9,7 +9,6 @@ import { getFloatLength } from './BufferUtils.js';
  * @augments Binding
  */
 class Buffer extends Binding {
-
 	/**
 	 * Constructs a new buffer.
 	 *
@@ -17,9 +16,7 @@ class Buffer extends Binding {
 	 * @param {TypedArray} [buffer=null] - The buffer.
 	 */
 	constructor( name, buffer = null ) {
-
 		super( name );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -28,14 +25,12 @@ class Buffer extends Binding {
 		 * @default true
 		 */
 		this.isBuffer = true;
-
 		/**
 		 * The bytes per element.
 		 *
 		 * @type {Number}
 		 */
 		this.bytesPerElement = Float32Array.BYTES_PER_ELEMENT;
-
 		/**
 		 * A reference to the internal buffer.
 		 *
@@ -43,9 +38,7 @@ class Buffer extends Binding {
 		 * @type {TypedArray}
 		 */
 		this._buffer = buffer;
-
 	}
-
 	/**
 	 * The buffer's byte length.
 	 *
@@ -53,11 +46,8 @@ class Buffer extends Binding {
 	 * @readonly
 	 */
 	get byteLength() {
-
 		return getFloatLength( this._buffer.byteLength );
-
 	}
-
 	/**
 	 * A reference to the internal buffer.
 	 *
@@ -65,11 +55,8 @@ class Buffer extends Binding {
 	 * @readonly
 	 */
 	get buffer() {
-
 		return this._buffer;
-
 	}
-
 	/**
 	 * Updates the binding.
 	 *
@@ -77,9 +64,7 @@ class Buffer extends Binding {
 	 * uploaded to the GPU.
 	 */
 	update() {
-
 		return true;
-
 	}
 
 }

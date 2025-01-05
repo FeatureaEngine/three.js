@@ -33,58 +33,36 @@ const _clearColor = /*@__PURE__*/ new Color();
 // https://gist.github.com/tschw/da10c43c467ce8afd0c4
 
 export const cubeToUV = /*@__PURE__*/ Fn( ( [ pos, texelSizeY ] ) => {
-
 	const v = pos.toVar();
-
 	// Number of texels to avoid at the edge of each square
-
 	const absV = abs( v );
-
 	// Intersect unit cube
-
 	const scaleToCube = div( 1.0, max( absV.x, max( absV.y, absV.z ) ) );
 	absV.mulAssign( scaleToCube );
-
 	// Apply scale to avoid seams
-
 	// two texels less per square (one texel will do for NEAREST)
 	v.mulAssign( scaleToCube.mul( texelSizeY.mul( 2 ).oneMinus() ) );
-
 	// Unwrap
-
 	// space: -1 ... 1 range for each square
 	//
 	// #X##		dim    := ( 4 , 2 )
 	//  # #		center := ( 1 , 1 )
-
 	const planar = vec2( v.xy ).toVar();
-
 	const almostATexel = texelSizeY.mul( 1.5 );
 	const almostOne = almostATexel.oneMinus();
-
 	If( absV.z.greaterThanEqual( almostOne ), () => {
-
 		If( v.z.greaterThan( 0.0 ), () => {
-
 			planar.x.assign( sub( 4.0, v.x ) );
-
 		} );
-
 	} ).ElseIf( absV.x.greaterThanEqual( almostOne ), () => {
-
 		const signX = sign( v.x );
 		planar.x.assign( v.z.mul( signX ).add( signX.mul( 2.0 ) ) );
-
 	} ).ElseIf( absV.y.greaterThanEqual( almostOne ), () => {
-
 		const signY = sign( v.y );
 		planar.x.assign( v.x.add( signY.mul( 2.0 ) ).add( 2.0 ) );
 		planar.y.assign( v.z.mul( signY ).sub( 2.0 ) );
-
 	} );
-
 	// Transform to UV space
-
 	// scale := 0.5 / dim
 	// translate := ( center + 0.5 ) / dim
 	return vec2( 0.125, 0.25 ).mul( planar ).add( vec2( 0.375, 0.75 ) ).flipY();
@@ -99,16 +77,13 @@ export const cubeToUV = /*@__PURE__*/ Fn( ( [ pos, texelSizeY ] ) => {
 } );
 
 export const BasicPointShadowFilter = /*@__PURE__*/ Fn( ( { depthTexture, bd3D, dp, texelSize } ) => {
-
 	return texture( depthTexture, cubeToUV( bd3D, texelSize.y ) ).compare( dp );
 
 } );
 
 export const PointShadowFilter = /*@__PURE__*/ Fn( ( { depthTexture, bd3D, dp, texelSize, shadow } ) => {
-
 	const radius = reference( 'radius', 'float', shadow ).setGroup( renderGroup );
 	const offset = vec2( - 1.0, 1.0 ).mul( radius ).mul( texelSize.y );
-
 	return texture( depthTexture, cubeToUV( bd3D.add( offset.xyy ), texelSize.y ) ).compare( dp )
 		.add( texture( depthTexture, cubeToUV( bd3D.add( offset.yyy ), texelSize.y ) ).compare( dp ) )
 		.add( texture( depthTexture, cubeToUV( bd3D.add( offset.xyx ), texelSize.y ) ).compare( dp ) )
@@ -123,34 +98,25 @@ export const PointShadowFilter = /*@__PURE__*/ Fn( ( { depthTexture, bd3D, dp, t
 } );
 
 const pointShadowFilter = /*@__PURE__*/ Fn( ( { filterFn, depthTexture, shadowCoord, shadow } ) => {
-
 	// for point lights, the uniform @vShadowCoord is re-purposed to hold
 	// the vector from the light to the world-space position of the fragment.
 	const lightToPosition = shadowCoord.xyz.toVar();
 	const lightToPositionLength = lightToPosition.length();
-
 	const cameraNearLocal = uniform( 'float' ).setGroup( renderGroup ).onRenderUpdate( () => shadow.camera.near );
 	const cameraFarLocal = uniform( 'float' ).setGroup( renderGroup ).onRenderUpdate( () => shadow.camera.far );
 	const bias = reference( 'bias', 'float', shadow ).setGroup( renderGroup );
 	const mapSize = uniform( shadow.mapSize ).setGroup( renderGroup );
-
 	const result = float( 1.0 ).toVar();
-
 	If( lightToPositionLength.sub( cameraFarLocal ).lessThanEqual( 0.0 ).and( lightToPositionLength.sub( cameraNearLocal ).greaterThanEqual( 0.0 ) ), () => {
-
 		// dp = normalized distance from light to fragment position
 		const dp = lightToPositionLength.sub( cameraNearLocal ).div( cameraFarLocal.sub( cameraNearLocal ) ).toVar(); // need to clamp?
 		dp.addAssign( bias );
-
 		// bd3D = base direction 3D
 		const bd3D = lightToPosition.normalize();
 		const texelSize = vec2( 1.0 ).div( mapSize.mul( vec2( 4.0, 2.0 ) ) );
-
 		// percentage-closer filtering
 		result.assign( filterFn( { depthTexture, bd3D, dp, texelSize, shadow } ) );
-
 	} );
-
 	return result;
 
 } );
@@ -166,13 +132,9 @@ const _shadowMapSize = /*@__PURE__*/ new Vector2();
  * @augments module:ShadowNode~ShadowNode
  */
 class PointShadowNode extends ShadowNode {
-
 	static get type() {
-
 		return 'PointShadowNode';
-
 	}
-
 	/**
 	 * Constructs a new point shadow node.
 	 *
@@ -180,11 +142,8 @@ class PointShadowNode extends ShadowNode {
 	 * @param {PointLightShadow?} [shadow=null] - An optional point light shadow.
 	 */
 	constructor( light, shadow = null ) {
-
 		super( light, shadow );
-
 	}
-
 	/**
 	 * Overwrites the default implementation to return point light shadow specific
 	 * filtering functions.
@@ -193,11 +152,8 @@ class PointShadowNode extends ShadowNode {
 	 * @return {Function} The filtering function.
 	 */
 	getShadowFilterFn( type ) {
-
 		return type === BasicShadowMap ? BasicPointShadowFilter : PointShadowFilter;
-
 	}
-
 	/**
 	 * Overwrites the default implementation so the unaltered shadow position is used.
 	 *
@@ -206,11 +162,8 @@ class PointShadowNode extends ShadowNode {
 	 * @return {Node<vec3>} The shadow coordinates.
 	 */
 	setupShadowCoord( builder, shadowPosition ) {
-
 		return shadowPosition;
-
 	}
-
 	/**
 	 * Overwrites the default implementation to only use point light specific
 	 * shadow filter functions.
@@ -225,11 +178,8 @@ class PointShadowNode extends ShadowNode {
 	 * @return {Node<float>} The result node of the shadow filtering.
 	 */
 	setupShadowFilter( builder, { filterFn, shadowTexture, depthTexture, shadowCoord, shadow } ) {
-
 		return pointShadowFilter( { filterFn, shadowTexture, depthTexture, shadowCoord, shadow } );
-
 	}
-
 	/**
 	 * Overwrites the default implementation with point light specific
 	 * rendering code.
@@ -237,59 +187,38 @@ class PointShadowNode extends ShadowNode {
 	 * @param {NodeFrame} frame - A reference to the current node frame.
 	 */
 	renderShadow( frame ) {
-
 		const { shadow, shadowMap, light } = this;
 		const { renderer, scene } = frame;
-
 		const shadowFrameExtents = shadow.getFrameExtents();
-
 		_shadowMapSize.copy( shadow.mapSize );
 		_shadowMapSize.multiply( shadowFrameExtents );
-
 		shadowMap.setSize( _shadowMapSize.width, _shadowMapSize.height );
-
 		_viewportSize.copy( shadow.mapSize );
-
 		//
-
 		const previousAutoClear = renderer.autoClear;
-
 		const previousClearColor = renderer.getClearColor( _clearColor );
 		const previousClearAlpha = renderer.getClearAlpha();
-
 		renderer.autoClear = false;
 		renderer.setClearColor( shadow.clearColor, shadow.clearAlpha );
 		renderer.clear();
-
 		const viewportCount = shadow.getViewportCount();
-
 		for ( let vp = 0; vp < viewportCount; vp ++ ) {
-
 			const viewport = shadow.getViewport( vp );
-
 			const x = _viewportSize.x * viewport.x;
 			const y = _shadowMapSize.y - _viewportSize.y - ( _viewportSize.y * viewport.y );
-
 			_viewport.set(
 				x,
 				y,
 				_viewportSize.x * viewport.z,
 				_viewportSize.y * viewport.w
 			);
-
 			shadowMap.viewport.copy( _viewport );
-
 			shadow.updateMatrices( light, vp );
-
 			renderer.render( scene, shadow.camera );
-
 		}
-
 		//
-
 		renderer.autoClear = previousAutoClear;
 		renderer.setClearColor( previousClearColor, previousClearAlpha );
-
 	}
 
 }

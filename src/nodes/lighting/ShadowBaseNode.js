@@ -15,29 +15,22 @@ import { positionWorld } from '../accessors/Position.js';
  * @augments Node
  */
 class ShadowBaseNode extends Node {
-
 	static get type() {
-
 		return 'ShadowBaseNode';
-
 	}
-
 	/**
 	 * Constructs a new shadow base node.
 	 *
 	 * @param {Light} light - The shadow casting light.
 	 */
 	constructor( light ) {
-
 		super();
-
 		/**
 		 * The shadow casting light.
 		 *
 		 * @type {Light}
 		 */
 		this.light = light;
-
 		/**
 		 * Overwritten since shadows are updated by default per render.
 		 *
@@ -45,7 +38,6 @@ class ShadowBaseNode extends Node {
 		 * @default 'render'
 		 */
 		this.updateBeforeType = NodeUpdateType.RENDER;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -54,31 +46,23 @@ class ShadowBaseNode extends Node {
 		 * @default true
 		 */
 		this.isShadowBaseNode = true;
-
 	}
-
 	/**
 	 * Setups the shadow position node which is by default the predefined TSL node object `shadowPositionWorld`.
 	 *
 	 * @param {(NodeBuilder|{Material})} object - A configuration object that must at least hold a material reference.
 	 */
 	setupShadowPosition( { material } ) {
-
 		// Use assign inside an Fn()
-
 		shadowPositionWorld.assign( material.shadowPositionNode || positionWorld );
-
 	}
-
 	/**
 	 * Can be called when the shadow isn't required anymore. That can happen when
 	 * a lighting node stops casting shadows by setting {@link Object3D#castShadow}
 	 * to `false`.
 	 */
 	dispose() {
-
 		this.updateBeforeType = NodeUpdateType.NONE;
-
 	}
 
 }

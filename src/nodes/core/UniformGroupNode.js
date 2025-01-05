@@ -16,13 +16,9 @@ import Node from './Node.js';
  * @augments Node
  */
 class UniformGroupNode extends Node {
-
 	static get type() {
-
 		return 'UniformGroupNode';
-
 	}
-
 	/**
 	 * Constructs a new uniform group node.
 	 *
@@ -31,16 +27,13 @@ class UniformGroupNode extends Node {
 	 * @param {Number} [order=1] - Influences the internal sorting.
 	 */
 	constructor( name, shared = false, order = 1 ) {
-
 		super( 'string' );
-
 		/**
 		 * The name of the uniform group node.
 		 *
 		 * @type {String}
 		 */
 		this.name = name;
-
 		/**
 		 * Whether this uniform group node is shared or not.
 		 *
@@ -48,7 +41,6 @@ class UniformGroupNode extends Node {
 		 * @default false
 		 */
 		this.shared = shared;
-
 		/**
 		 * Influences the internal sorting.
 		 * TODO: Add details when this property should be changed.
@@ -57,7 +49,6 @@ class UniformGroupNode extends Node {
 		 * @default 1
 		 */
 		this.order = order;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -66,27 +57,18 @@ class UniformGroupNode extends Node {
 		 * @default true
 		 */
 		this.isUniformGroup = true;
-
 	}
-
 	serialize( data ) {
-
 		super.serialize( data );
-
 		data.name = this.name;
 		data.version = this.version;
 		data.shared = this.shared;
-
 	}
-
 	deserialize( data ) {
-
 		super.deserialize( data );
-
 		this.name = data.name;
 		this.version = data.version;
 		this.shared = data.shared;
-
 	}
 
 }

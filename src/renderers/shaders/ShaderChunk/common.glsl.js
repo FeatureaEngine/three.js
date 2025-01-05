@@ -22,10 +22,8 @@ float average( const in vec3 v ) { return dot( v, vec3( 0.3333333 ) ); }
 // expects values in the range of [0,1]x[0,1], returns values in the [0,1] range.
 // do not collapse into a single function per: http://byteblacksmith.com/improvements-to-the-canonical-one-liner-glsl-rand-for-opengl-es-2-0/
 highp float rand( const in vec2 uv ) {
-
 	const highp float a = 12.9898, b = 78.233, c = 43758.5453;
 	highp float dt = dot( uv.xy, vec2( a,b ) ), sn = mod( dt, PI );
-
 	return fract( sin( sn ) * c );
 
 }
@@ -53,84 +51,65 @@ struct ReflectedLight {
 };
 
 #ifdef USE_ALPHAHASH
-
 	varying vec3 vPosition;
 
 #endif
 
 vec3 transformDirection( in vec3 dir, in mat4 matrix ) {
-
 	return normalize( ( matrix * vec4( dir, 0.0 ) ).xyz );
 
 }
 
 vec3 inverseTransformDirection( in vec3 dir, in mat4 matrix ) {
-
 	// dir can be either a direction vector or a normal vector
 	// upper-left 3x3 of matrix is assumed to be orthogonal
-
 	return normalize( ( vec4( dir, 0.0 ) * matrix ).xyz );
 
 }
 
 mat3 transposeMat3( const in mat3 m ) {
-
 	mat3 tmp;
-
 	tmp[ 0 ] = vec3( m[ 0 ].x, m[ 1 ].x, m[ 2 ].x );
 	tmp[ 1 ] = vec3( m[ 0 ].y, m[ 1 ].y, m[ 2 ].y );
 	tmp[ 2 ] = vec3( m[ 0 ].z, m[ 1 ].z, m[ 2 ].z );
-
 	return tmp;
 
 }
 
 bool isPerspectiveMatrix( mat4 m ) {
-
 	return m[ 2 ][ 3 ] == - 1.0;
 
 }
 
 vec2 equirectUv( in vec3 dir ) {
-
 	// dir is assumed to be unit length
-
 	float u = atan( dir.z, dir.x ) * RECIPROCAL_PI2 + 0.5;
-
 	float v = asin( clamp( dir.y, - 1.0, 1.0 ) ) * RECIPROCAL_PI + 0.5;
-
 	return vec2( u, v );
 
 }
 
 vec3 BRDF_Lambert( const in vec3 diffuseColor ) {
-
 	return RECIPROCAL_PI * diffuseColor;
 
 } // validated
 
 vec3 F_Schlick( const in vec3 f0, const in float f90, const in float dotVH ) {
-
 	// Original approximation by Christophe Schlick '94
 	// float fresnel = pow( 1.0 - dotVH, 5.0 );
-
 	// Optimized variant (presented by Epic at SIGGRAPH '13)
 	// https://cdn2.unrealengine.com/Resources/files/2013SiggraphPresentationsNotes-26915738.pdf
 	float fresnel = exp2( ( - 5.55473 * dotVH - 6.98316 ) * dotVH );
-
 	return f0 * ( 1.0 - fresnel ) + ( f90 * fresnel );
 
 } // validated
 
 float F_Schlick( const in float f0, const in float f90, const in float dotVH ) {
-
 	// Original approximation by Christophe Schlick '94
 	// float fresnel = pow( 1.0 - dotVH, 5.0 );
-
 	// Optimized variant (presented by Epic at SIGGRAPH '13)
 	// https://cdn2.unrealengine.com/Resources/files/2013SiggraphPresentationsNotes-26915738.pdf
 	float fresnel = exp2( ( - 5.55473 * dotVH - 6.98316 ) * dotVH );
-
 	return f0 * ( 1.0 - fresnel ) + ( f90 * fresnel );
 
 } // validated

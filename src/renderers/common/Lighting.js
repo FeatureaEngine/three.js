@@ -15,16 +15,12 @@ const _chainKeys = [];
  * @augments ChainMap
  */
 class Lighting extends ChainMap {
-
 	/**
 	 * Constructs a lighting management component.
 	 */
 	constructor() {
-
 		super();
-
 	}
-
 	/**
 	 * Creates a new lights node for the given array of lights.
 	 *
@@ -32,11 +28,8 @@ class Lighting extends ChainMap {
 	 * @return {Boolean} Whether if the given render object has an initialized geometry or not.
 	 */
 	createNode( lights = [] ) {
-
 		return new LightsNode().setLights( lights );
-
 	}
-
 	/**
 	 * Returns a lights node for the given scene and camera.
 	 *
@@ -45,27 +38,17 @@ class Lighting extends ChainMap {
 	 * @return {LightsNode} The lights node.
 	 */
 	getNode( scene, camera ) {
-
 		// ignore post-processing
-
 		if ( scene.isQuadMesh ) return _defaultLights;
-
 		_chainKeys[ 0 ] = scene;
 		_chainKeys[ 1 ] = camera;
-
 		let node = this.get( _chainKeys );
-
 		if ( node === undefined ) {
-
 			node = this.createNode();
 			this.set( _chainKeys, node );
-
 		}
-
 		_chainKeys.length = 0;
-
 		return node;
-
 	}
 
 }

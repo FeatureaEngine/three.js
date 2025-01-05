@@ -24,22 +24,16 @@ const _objectData = new WeakMap();
  * @augments TempNode
  */
 class VelocityNode extends TempNode {
-
 	static get type() {
-
 		return 'VelocityNode';
-
 	}
-
 	/**
 	 * Constructs a new vertex color node.
 	 *
 	 * @param {Number} [index=0] - The attribute index.
 	 */
 	constructor() {
-
 		super( 'vec2' );
-
 		/**
 		 * The current projection matrix.
 		 *
@@ -47,7 +41,6 @@ class VelocityNode extends TempNode {
 		 * @default null
 		 */
 		this.projectionMatrix = null;
-
 		/**
 		 * Overwritten since velocity nodes are updated per object.
 		 *
@@ -55,7 +48,6 @@ class VelocityNode extends TempNode {
 		 * @default 'object'
 		 */
 		this.updateType = NodeUpdateType.OBJECT;
-
 		/**
 		 * Overwritten since velocity nodes save data after the update.
 		 *
@@ -63,7 +55,6 @@ class VelocityNode extends TempNode {
 		 * @default 'object'
 		 */
 		this.updateAfterType = NodeUpdateType.OBJECT;
-
 		/**
 		 * Uniform node representing the previous model matrix in world space.
 		 *
@@ -71,7 +62,6 @@ class VelocityNode extends TempNode {
 		 * @default null
 		 */
 		this.previousModelWorldMatrix = uniform( new Matrix4() );
-
 		/**
 		 * Uniform node representing the previous projection matrix.
 		 *
@@ -79,7 +69,6 @@ class VelocityNode extends TempNode {
 		 * @default null
 		 */
 		this.previousProjectionMatrix = uniform( new Matrix4() ).setGroup( renderGroup );
-
 		/**
 		 * Uniform node representing the previous view matrix.
 		 *
@@ -87,78 +76,52 @@ class VelocityNode extends TempNode {
 		 * @default null
 		 */
 		this.previousCameraViewMatrix = uniform( new Matrix4() );
-
 	}
-
 	/**
 	 * Sets the given projection matrix.
 	 *
 	 * @param {Matrix4} projectionMatrix - The projection matrix to set.
 	 */
 	setProjectionMatrix( projectionMatrix ) {
-
 		this.projectionMatrix = projectionMatrix;
-
 	}
-
 	/**
 	 * Updates velocity specific uniforms.
 	 *
 	 * @param {NodeFrame} frame - A reference to the current node frame.
 	 */
 	update( { frameId, camera, object } ) {
-
 		const previousModelMatrix = getPreviousMatrix( object );
-
 		this.previousModelWorldMatrix.value.copy( previousModelMatrix );
-
 		//
-
 		const cameraData = getData( camera );
-
 		if ( cameraData.frameId !== frameId ) {
-
 			cameraData.frameId = frameId;
-
 			if ( cameraData.previousProjectionMatrix === undefined ) {
-
 				cameraData.previousProjectionMatrix = new Matrix4();
 				cameraData.previousCameraViewMatrix = new Matrix4();
-
 				cameraData.currentProjectionMatrix = new Matrix4();
 				cameraData.currentCameraViewMatrix = new Matrix4();
-
 				cameraData.previousProjectionMatrix.copy( this.projectionMatrix || camera.projectionMatrix );
 				cameraData.previousCameraViewMatrix.copy( camera.matrixWorldInverse );
-
 			} else {
-
 				cameraData.previousProjectionMatrix.copy( cameraData.currentProjectionMatrix );
 				cameraData.previousCameraViewMatrix.copy( cameraData.currentCameraViewMatrix );
-
 			}
-
 			cameraData.currentProjectionMatrix.copy( this.projectionMatrix || camera.projectionMatrix );
 			cameraData.currentCameraViewMatrix.copy( camera.matrixWorldInverse );
-
 			this.previousProjectionMatrix.value.copy( cameraData.previousProjectionMatrix );
 			this.previousCameraViewMatrix.value.copy( cameraData.previousCameraViewMatrix );
-
 		}
-
 	}
-
 	/**
 	 * Overwritten to updated velocity specific uniforms.
 	 *
 	 * @param {NodeFrame} frame - A reference to the current node frame.
 	 */
 	updateAfter( { object } ) {
-
 		getPreviousMatrix( object ).copy( object.matrixWorld );
-
 	}
-
 	/**
 	 * Implements the velocity computation based on the previous and current vertex data.
 	 *
@@ -166,52 +129,34 @@ class VelocityNode extends TempNode {
 	 * @return {Node<vec2>} The motion vector.
 	 */
 	setup( /*builder*/ ) {
-
 		const projectionMatrix = ( this.projectionMatrix === null ) ? cameraProjectionMatrix : uniform( this.projectionMatrix );
-
 		const previousModelViewMatrix = this.previousCameraViewMatrix.mul( this.previousModelWorldMatrix );
-
 		const clipPositionCurrent = projectionMatrix.mul( modelViewMatrix ).mul( positionLocal );
 		const clipPositionPrevious = this.previousProjectionMatrix.mul( previousModelViewMatrix ).mul( positionPrevious );
-
 		const ndcPositionCurrent = clipPositionCurrent.xy.div( clipPositionCurrent.w );
 		const ndcPositionPrevious = clipPositionPrevious.xy.div( clipPositionPrevious.w );
-
 		const velocity = sub( ndcPositionCurrent, ndcPositionPrevious );
-
 		return velocity;
-
 	}
 
 }
 
 function getData( object ) {
-
 	let objectData = _objectData.get( object );
-
 	if ( objectData === undefined ) {
-
 		objectData = {};
 		_objectData.set( object, objectData );
-
 	}
-
 	return objectData;
 
 }
 
 function getPreviousMatrix( object, index = 0 ) {
-
 	const objectData = getData( object );
-
 	let matrix = objectData[ index ];
-
 	if ( matrix === undefined ) {
-
 		objectData[ index ] = matrix = new Matrix4();
-
 	}
-
 	return matrix;
 
 }

@@ -11,13 +11,9 @@ import { addMethodChaining, nodeObject } from '../tsl/TSLCore.js';
  * @augments Node
  */
 class CacheNode extends Node {
-
 	static get type() {
-
 		return 'CacheNode';
-
 	}
-
 	/**
 	 * Constructs a new cache node.
 	 *
@@ -25,16 +21,13 @@ class CacheNode extends Node {
 	 * @param {Boolean} [parent=true] - Whether this node refers to a shared parent cache or not.
 	 */
 	constructor( node, parent = true ) {
-
 		super();
-
 		/**
 		 * The node that should be cached.
 		 *
 		 * @type {Node}
 		 */
 		this.node = node;
-
 		/**
 		 * Whether this node refers to a shared parent cache or not.
 		 *
@@ -42,7 +35,6 @@ class CacheNode extends Node {
 		 * @default true
 		 */
 		this.parent = parent;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -51,37 +43,22 @@ class CacheNode extends Node {
 		 * @default true
 		 */
 		this.isCacheNode = true;
-
 	}
-
 	getNodeType( builder ) {
-
 		const previousCache = builder.getCache();
 		const cache = builder.getCacheFromNode( this, this.parent );
-
 		builder.setCache( cache );
-
 		const nodeType = this.node.getNodeType( builder );
-
 		builder.setCache( previousCache );
-
 		return nodeType;
-
 	}
-
 	build( builder, ...params ) {
-
 		const previousCache = builder.getCache();
 		const cache = builder.getCacheFromNode( this, this.parent );
-
 		builder.setCache( cache );
-
 		const data = this.node.build( builder, ...params );
-
 		builder.setCache( previousCache );
-
 		return data;
-
 	}
 
 }

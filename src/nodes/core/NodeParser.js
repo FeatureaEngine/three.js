@@ -3,7 +3,6 @@
  * for each supported native shader language.
  */
 class NodeParser {
-
 	/**
 	 * The method parses the given native code an returns a node function.
 	 *
@@ -12,9 +11,7 @@ class NodeParser {
 	 * @return {NodeFunction} A node function.
 	 */
 	parseFunction( /*source*/ ) {
-
 		console.warn( 'Abstract function.' );
-
 	}
 
 }

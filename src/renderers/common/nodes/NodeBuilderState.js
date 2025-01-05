@@ -10,7 +10,6 @@ import BindGroup from '../BindGroup.js';
  * @private
  */
 class NodeBuilderState {
-
 	/**
 	 * Constructs a new node builder state.
 	 *
@@ -26,28 +25,24 @@ class NodeBuilderState {
 	 * @param {Array<Object>} transforms - An array with transform attribute objects. Only relevant when using compute shaders with WebGL 2.
 	 */
 	constructor( vertexShader, fragmentShader, computeShader, nodeAttributes, bindings, updateNodes, updateBeforeNodes, updateAfterNodes, monitor, transforms = [] ) {
-
 		/**
 		 * The native vertex shader code.
 		 *
 		 * @type {String}
 		 */
 		this.vertexShader = vertexShader;
-
 		/**
 		 * The native fragment shader code.
 		 *
 		 * @type {String}
 		 */
 		this.fragmentShader = fragmentShader;
-
 		/**
 		 * The native compute shader code.
 		 *
 		 * @type {String}
 		 */
 		this.computeShader = computeShader;
-
 		/**
 		 * An array with transform attribute objects.
 		 * Only relevant when using compute shaders with WebGL 2.
@@ -55,7 +50,6 @@ class NodeBuilderState {
 		 * @type {Array<Object>}
 		 */
 		this.transforms = transforms;
-
 		/**
 		 * An array of node attributes representing
 		 * the attributes of the shaders.
@@ -63,7 +57,6 @@ class NodeBuilderState {
 		 * @type {Array<NodeAttribute>}
 		 */
 		this.nodeAttributes = nodeAttributes;
-
 		/**
 		 * An array of bind groups representing the uniform or storage
 		 * buffers, texture or samplers of the shader.
@@ -71,44 +64,37 @@ class NodeBuilderState {
 		 * @type {Array<BindGroup>}
 		 */
 		this.bindings = bindings;
-
 		/**
 		 * An array of nodes that implement their `update()` method.
 		 *
 		 * @type {Array<Node>}
 		 */
 		this.updateNodes = updateNodes;
-
 		/**
 		 * An array of nodes that implement their `updateBefore()` method.
 		 *
 		 * @type {Array<Node>}
 		 */
 		this.updateBeforeNodes = updateBeforeNodes;
-
 		/**
 		 * An array of nodes that implement their `updateAfter()` method.
 		 *
 		 * @type {Array<Node>}
 		 */
 		this.updateAfterNodes = updateAfterNodes;
-
 		/**
 		 * A node material observer.
 		 *
 		 * @type {NodeMaterialObserver}
 		 */
 		this.monitor = monitor;
-
 		/**
 		 * How often this state is used by render objects.
 		 *
 		 * @type {Number}
 		 */
 		this.usedTimes = 0;
-
 	}
-
 	/**
 	 * This method is used to create a array of bind groups based
 	 * on the existing bind groups of this state. Shared groups are
@@ -117,34 +103,20 @@ class NodeBuilderState {
 	 * @return {Array<BindGroup>} A array of bind groups.
 	 */
 	createBindings() {
-
 		const bindings = [];
-
 		for ( const instanceGroup of this.bindings ) {
-
 			const shared = instanceGroup.bindings[ 0 ].groupNode.shared; // TODO: Is it safe to always check the first binding in the group?
-
 			if ( shared !== true ) {
-
 				const bindingsGroup = new BindGroup( instanceGroup.name, [], instanceGroup.index, instanceGroup );
 				bindings.push( bindingsGroup );
-
 				for ( const instanceBinding of instanceGroup.bindings ) {
-
 					bindingsGroup.bindings.push( instanceBinding.clone() );
-
 				}
-
 			} else {
-
 				bindings.push( instanceGroup );
-
 			}
-
 		}
-
 		return bindings;
-
 	}
 
 }

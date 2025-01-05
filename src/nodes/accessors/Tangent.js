@@ -11,13 +11,9 @@ import { Fn, vec4 } from '../tsl/TSLBase.js';
  * @type {Node<vec4>}
  */
 export const tangentGeometry = /*@__PURE__*/ Fn( ( builder ) => {
-
 	if ( builder.geometry.hasAttribute( 'tangent' ) === false ) {
-
 		builder.geometry.computeTangents();
-
 	}
-
 	return attribute( 'tangent', 'vec4' );
 
 } )();

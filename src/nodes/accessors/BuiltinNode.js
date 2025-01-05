@@ -10,23 +10,19 @@ import { nodeProxy } from '../tsl/TSLBase.js';
  * @augments Node
  */
 class BuiltinNode extends Node {
-
 	/**
 	 * Constructs a new builtin node.
 	 *
 	 * @param {String} name - The name of the built-in shader variable.
 	 */
 	constructor( name ) {
-
 		super( 'float' );
-
 		/**
 		 * The name of the built-in shader variable.
 		 *
 		 * @type {String}
 		 */
 		this.name = name;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -35,9 +31,7 @@ class BuiltinNode extends Node {
 		 * @default true
 		 */
 		this.isBuiltinNode = true;
-
 	}
-
 	/**
 	 * Generates the code snippet of the builtin node.
 	 *
@@ -45,9 +39,7 @@ class BuiltinNode extends Node {
 	 * @return {String} The generated code snippet.
 	 */
 	generate( /* builder */ ) {
-
 		return this.name;
-
 	}
 
 }

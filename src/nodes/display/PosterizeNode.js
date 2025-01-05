@@ -10,13 +10,9 @@ import { nodeProxy } from '../tsl/TSLBase.js';
  * @augments TempNode
  */
 class PosterizeNode extends TempNode {
-
 	static get type() {
-
 		return 'PosterizeNode';
-
 	}
-
 	/**
 	 * Constructs a new posterize node.
 	 *
@@ -24,31 +20,23 @@ class PosterizeNode extends TempNode {
 	 * @param {Node} stepsNode - Controls the intensity of the posterization effect. A lower number results in a more blocky appearance.
 	 */
 	constructor( sourceNode, stepsNode ) {
-
 		super();
-
 		/**
 		 * The input color.
 		 *
 		 * @type {Node}
 		 */
 		this.sourceNode = sourceNode;
-
 		/**
 		 * Controls the intensity of the posterization effect. A lower number results in a more blocky appearance.
 		 *
 		 * @type {Node}
 		 */
 		this.stepsNode = stepsNode;
-
 	}
-
 	setup() {
-
 		const { sourceNode, stepsNode } = this;
-
 		return sourceNode.mul( stepsNode ).floor().div( stepsNode );
-
 	}
 
 }

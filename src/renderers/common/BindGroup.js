@@ -8,7 +8,6 @@ let _id = 0;
  * @private
  */
 class BindGroup {
-
 	/**
 	 * Constructs a new bind group.
 	 *
@@ -18,42 +17,36 @@ class BindGroup {
 	 * @param {Array<Binding>} bindingsReference - An array of reference bindings.
 	 */
 	constructor( name = '', bindings = [], index = 0, bindingsReference = [] ) {
-
 		/**
 		 * The bind group's name.
 		 *
 		 * @type {String}
 		 */
 		this.name = name;
-
 		/**
 		 * An array of bindings.
 		 *
 		 * @type {Array<Binding>}
 		 */
 		this.bindings = bindings;
-
 		/**
 		 * The group index.
 		 *
 		 * @type {Number}
 		 */
 		this.index = index;
-
 		/**
 		 * An array of reference bindings.
 		 *
 		 * @type {Array<Binding>}
 		 */
 		this.bindingsReference = bindingsReference;
-
 		/**
 		 * The group's ID.
 		 *
 		 * @type {Number}
 		 */
 		this.id = _id ++;
-
 	}
 
 }

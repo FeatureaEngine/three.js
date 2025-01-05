@@ -9,13 +9,9 @@ import PropertyNode from './PropertyNode.js';
  * @augments PropertyNode
  */
 class ParameterNode extends PropertyNode {
-
 	static get type() {
-
 		return 'ParameterNode';
-
 	}
-
 	/**
 	 * Constructs a new parameter node.
 	 *
@@ -23,9 +19,7 @@ class ParameterNode extends PropertyNode {
 	 * @param {String?} [name=null] - The name of the parameter in the shader.
 	 */
 	constructor( nodeType, name = null ) {
-
 		super( nodeType, name );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -34,19 +28,12 @@ class ParameterNode extends PropertyNode {
 		 * @default true
 		 */
 		this.isParameterNode = true;
-
 	}
-
 	getHash() {
-
 		return this.uuid;
-
 	}
-
 	generate() {
-
 		return this.name;
-
 	}
 
 }

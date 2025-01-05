@@ -14,21 +14,16 @@ const _camera = /*@__PURE__*/ new OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
  * @augments BufferGeometry
  */
 class QuadGeometry extends BufferGeometry {
-
 	/**
 	 * Constructs a new quad geometry.
 	 *
 	 * @param {Boolean} [flipY=false] - Whether the uv coordinates should be flipped along the vertical axis or not.
 	 */
 	constructor( flipY = false ) {
-
 		super();
-
 		const uv = flipY === false ? [ 0, - 1, 0, 1, 2, 1 ] : [ 0, 2, 0, 0, 2, 0 ];
-
 		this.setAttribute( 'position', new Float32BufferAttribute( [ - 1, 3, 0, - 1, - 1, 0, 3, - 1, 0 ], 3 ) );
 		this.setAttribute( 'uv', new Float32BufferAttribute( uv, 2 ) );
-
 	}
 
 }
@@ -46,16 +41,13 @@ const _geometry = /*@__PURE__*/ new QuadGeometry();
  * @augments BufferGeometry
  */
 class QuadMesh extends Mesh {
-
 	/**
 	 * Constructs a new quad mesh.
 	 *
 	 * @param {Material?} [material=null] - The material to render the quad mesh with.
 	 */
 	constructor( material = null ) {
-
 		super( _geometry, material );
-
 		/**
 		 * The camera to render the quad mesh with.
 		 *
@@ -63,7 +55,6 @@ class QuadMesh extends Mesh {
 		 * @readonly
 		 */
 		this.camera = _camera;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -72,9 +63,7 @@ class QuadMesh extends Mesh {
 		 * @default true
 		 */
 		this.isQuadMesh = true;
-
 	}
-
 	/**
 	 * Async version of `render()`.
 	 *
@@ -83,20 +72,15 @@ class QuadMesh extends Mesh {
 	 * @return {Promise} A Promise that resolves when the render has been finished.
 	 */
 	async renderAsync( renderer ) {
-
 		return renderer.renderAsync( this, _camera );
-
 	}
-
 	/**
 	 * Renders the quad mesh
 	 *
 	 * @param {Renderer} renderer - The renderer.
 	 */
 	render( renderer ) {
-
 		renderer.render( this, _camera );
-
 	}
 
 }

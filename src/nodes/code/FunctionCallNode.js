@@ -9,13 +9,9 @@ import { addMethodChaining, nodeArray, nodeObject, nodeObjects } from '../tsl/TS
  * @augments TempNode
  */
 class FunctionCallNode extends TempNode {
-
 	static get type() {
-
 		return 'FunctionCallNode';
-
 	}
-
 	/**
 	 * Constructs a new function call node.
 	 *
@@ -23,9 +19,7 @@ class FunctionCallNode extends TempNode {
 	 * @param {Object<String, Node>} [parameters={}] - The parameters for the function call.
 	 */
 	constructor( functionNode = null, parameters = {} ) {
-
 		super();
-
 		/**
 		 * The function node.
 		 *
@@ -33,7 +27,6 @@ class FunctionCallNode extends TempNode {
 		 * @default null
 		 */
 		this.functionNode = functionNode;
-
 		/**
 		 * The parameters of the function call.
 		 *
@@ -41,9 +34,7 @@ class FunctionCallNode extends TempNode {
 		 * @default {}
 		 */
 		this.parameters = parameters;
-
 	}
-
 	/**
 	 * Sets the parameters of the function call node.
 	 *
@@ -51,85 +42,49 @@ class FunctionCallNode extends TempNode {
 	 * @return {FunctionCallNode} A reference to this node.
 	 */
 	setParameters( parameters ) {
-
 		this.parameters = parameters;
-
 		return this;
-
 	}
-
 	/**
 	 * Returns the parameters of the function call node.
 	 *
 	 * @return {Object<String, Node>} The parameters of this node.
 	 */
 	getParameters() {
-
 		return this.parameters;
-
 	}
-
 	getNodeType( builder ) {
-
 		return this.functionNode.getNodeType( builder );
-
 	}
-
 	generate( builder ) {
-
 		const params = [];
-
 		const functionNode = this.functionNode;
-
 		const inputs = functionNode.getInputs( builder );
 		const parameters = this.parameters;
-
 		const generateInput = ( node, inputNode ) => {
-
 			const type = inputNode.type;
 			const pointer = type === 'pointer';
-
 			let output;
-
 			if ( pointer ) output = '&' + node.build( builder );
 			else output = node.build( builder, type );
-
 			return output;
-
 		};
-
 		if ( Array.isArray( parameters ) ) {
-
 			for ( let i = 0; i < parameters.length; i ++ ) {
-
 				params.push( generateInput( parameters[ i ], inputs[ i ] ) );
-
 			}
-
 		} else {
-
 			for ( const inputNode of inputs ) {
-
 				const node = parameters[ inputNode.name ];
-
 				if ( node !== undefined ) {
-
 					params.push( generateInput( node, inputNode ) );
-
 				} else {
-
 					throw new Error( `FunctionCallNode: Input '${inputNode.name}' not found in FunctionNode.` );
-
 				}
-
 			}
-
 		}
-
 		const functionName = functionNode.build( builder, 'property' );
-
 		return `${functionName}( ${params.join( ', ' )} )`;
-
 	}
 
 }
@@ -137,9 +92,7 @@ class FunctionCallNode extends TempNode {
 export default FunctionCallNode;
 
 export const call = ( func, ...params ) => {
-
 	params = params.length > 1 || ( params[ 0 ] && params[ 0 ].isNode === true ) ? nodeArray( params ) : nodeObjects( params[ 0 ] );
-
 	return nodeObject( new FunctionCallNode( nodeObject( func ), params ) );
 
 };

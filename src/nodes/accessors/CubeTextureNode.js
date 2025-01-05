@@ -12,13 +12,9 @@ import { CubeReflectionMapping, CubeRefractionMapping, WebGPUCoordinateSystem } 
  * @augments module:TextureNode~TextureNode
  */
 class CubeTextureNode extends TextureNode {
-
 	static get type() {
-
 		return 'CubeTextureNode';
-
 	}
-
 	/**
 	 * Constructs a new cube texture node.
 	 *
@@ -28,9 +24,7 @@ class CubeTextureNode extends TextureNode {
 	 * @param {Node<float>?} [biasNode=null] - The bias node.
 	 */
 	constructor( value, uvNode = null, levelNode = null, biasNode = null ) {
-
 		super( value, uvNode, levelNode, biasNode );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -39,9 +33,7 @@ class CubeTextureNode extends TextureNode {
 		 * @default true
 		 */
 		this.isCubeTextureNode = true;
-
 	}
-
 	/**
 	 * Overwrites the default implementation to return a fixed value `'cubeTexture'`.
 	 *
@@ -49,38 +41,24 @@ class CubeTextureNode extends TextureNode {
 	 * @return {String} The input type.
 	 */
 	getInputType( /*builder*/ ) {
-
 		return 'cubeTexture';
-
 	}
-
 	/**
 	 * Returns a default uvs based on the mapping type of the cube texture.
 	 *
 	 * @return {Node<vec3>} The default uv attribute.
 	 */
 	getDefaultUV() {
-
 		const texture = this.value;
-
 		if ( texture.mapping === CubeReflectionMapping ) {
-
 			return reflectVector;
-
 		} else if ( texture.mapping === CubeRefractionMapping ) {
-
 			return refractVector;
-
 		} else {
-
 			console.error( 'THREE.CubeTextureNode: Mapping "%s" not supported.', texture.mapping );
-
 			return vec3( 0, 0, 0 );
-
 		}
-
 	}
-
 	/**
 	 * Overwritten with an empty implementation since the `updateMatrix` flag is ignored
 	 * for cube textures. The uv transformation matrix is not applied to cube textures.
@@ -88,7 +66,6 @@ class CubeTextureNode extends TextureNode {
 	 * @param {Boolean} value - The update toggle.
 	 */
 	setUpdateMatrix( /*updateMatrix*/ ) { } // Ignore .updateMatrix for CubeTextureNode
-
 	/**
 	 * Setups the uv node. Depending on the backend as well as the texture type, it might be necessary
 	 * to modify the uv node for correct sampling.
@@ -98,21 +75,13 @@ class CubeTextureNode extends TextureNode {
 	 * @return {Node} The updated uv node.
 	 */
 	setupUV( builder, uvNode ) {
-
 		const texture = this.value;
-
 		if ( builder.renderer.coordinateSystem === WebGPUCoordinateSystem || ! texture.isRenderTargetTexture ) {
-
 			return vec3( uvNode.x.negate(), uvNode.yz );
-
 		} else {
-
 			return uvNode;
-
 		}
-
 	}
-
 	/**
 	 * Generates the uv code snippet.
 	 *
@@ -121,9 +90,7 @@ class CubeTextureNode extends TextureNode {
 	 * @return {String} The generated code snippet.
 	 */
 	generateUV( builder, cubeUV ) {
-
 		return cubeUV.build( builder, 'vec3' );
-
 	}
 
 }

@@ -14,13 +14,9 @@ import { addMethodChaining, nodeProxy } from '../tsl/TSLCore.js';
  * @augments Node
  */
 class VarNode extends Node {
-
 	static get type() {
-
 		return 'VarNode';
-
 	}
-
 	/**
 	 * Constructs a new variable node.
 	 *
@@ -28,16 +24,13 @@ class VarNode extends Node {
 	 * @param {String?} name - The name of the variable in the shader.
 	 */
 	constructor( node, name = null ) {
-
 		super();
-
 		/**
 		 * The node for which a variable should be created.
 		 *
 		 * @type {Node}
 		 */
 		this.node = node;
-
 		/**
 		 * The name of the variable in the shader. If no name is defined,
 		 * the node system auto-generates one.
@@ -46,7 +39,6 @@ class VarNode extends Node {
 		 * @default null
 		 */
 		this.name = name;
-
 		/**
 		 * `VarNode` sets this property to `true` by default.
 		 *
@@ -54,7 +46,6 @@ class VarNode extends Node {
 		 * @default true
 		 */
 		this.global = true;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -63,35 +54,20 @@ class VarNode extends Node {
 		 * @default true
 		 */
 		this.isVarNode = true;
-
 	}
-
 	getHash( builder ) {
-
 		return this.name || super.getHash( builder );
-
 	}
-
 	getNodeType( builder ) {
-
 		return this.node.getNodeType( builder );
-
 	}
-
 	generate( builder ) {
-
 		const { node, name } = this;
-
 		const nodeVar = builder.getVarFromNode( this, name, builder.getVectorType( this.getNodeType( builder ) ) );
-
 		const propertyName = builder.getPropertyName( nodeVar );
-
 		const snippet = node.build( builder, nodeVar.type );
-
 		builder.addLineFlowCode( `${propertyName} = ${snippet}`, this );
-
 		return propertyName;
-
 	}
 
 }
@@ -113,9 +89,7 @@ addMethodChaining( 'toVar', ( ...params ) => createVar( ...params ).append() );
 // Deprecated
 
 export const temp = ( node ) => { // @deprecated, r170
-
 	console.warn( 'TSL: "temp" is deprecated. Use ".toVar()" instead.' );
-
 	return createVar( node );
 
 };

@@ -11,7 +11,6 @@ import { LinearFilter } from '../../constants.js';
  * @augments Texture
  */
 class StorageTexture extends Texture {
-
 	/**
 	 * Constructs a new storage texture.
 	 *
@@ -19,30 +18,25 @@ class StorageTexture extends Texture {
 	 * @param {Number} [height=1] - The storage texture's height.
 	 */
 	constructor( width = 1, height = 1 ) {
-
 		super();
-
 		/**
 		 * The image object which just represents the texture's dimension.
 		 *
 		 * @type {{width: Number, height:Number}}
 		 */
 		this.image = { width, height };
-
 		/**
 		 * The default `magFilter` for storage textures is `THREE.LinearFilter`.
 		 *
 		 * @type {Number}
 		 */
 		this.magFilter = LinearFilter;
-
 		/**
 		 * The default `minFilter` for storage textures is `THREE.LinearFilter`.
 		 *
 		 * @type {Number}
 		 */
 		this.minFilter = LinearFilter;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -51,7 +45,6 @@ class StorageTexture extends Texture {
 		 * @default true
 		 */
 		this.isStorageTexture = true;
-
 	}
 
 }

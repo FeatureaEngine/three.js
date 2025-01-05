@@ -1,5 +1,4 @@
 export const GLFeatureName = {
-
 	'WEBGL_multi_draw': 'WEBGL_multi_draw',
 	'WEBGL_compressed_texture_astc': 'texture-compression-astc',
 	'WEBGL_compressed_texture_etc': 'texture-compression-etc2',

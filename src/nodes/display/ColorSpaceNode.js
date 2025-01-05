@@ -18,13 +18,9 @@ const OUTPUT_COLOR_SPACE = 'OutputColorSpace';
  * @augments TempNode
  */
 class ColorSpaceNode extends TempNode {
-
 	static get type() {
-
 		return 'ColorSpaceNode';
-
 	}
-
 	/**
 	 * Constructs a new color space node.
 	 *
@@ -33,32 +29,26 @@ class ColorSpaceNode extends TempNode {
 	 * @param {String} target - The target color space.
 	 */
 	constructor( colorNode, source, target ) {
-
 		super( 'vec4' );
-
 		/**
 		 * Represents the color to convert.
 		 *
 		 * @type {Node}
 		 */
 		this.colorNode = colorNode;
-
 		/**
 		 * The source color space.
 		 *
 		 * @type {String}
 		 */
 		this.source = source;
-
 		/**
 		 * The target color space.
 		 *
 		 * @type {String}
 		 */
 		this.target = target;
-
 	}
-
 	/**
 	 * This method resolves the constants `WORKING_COLOR_SPACE` and
 	 * `OUTPUT_COLOR_SPACE` based on the current configuration of the
@@ -69,59 +59,34 @@ class ColorSpaceNode extends TempNode {
 	 * @return {String} The resolved color space.
 	 */
 	resolveColorSpace( builder, colorSpace ) {
-
 		if ( colorSpace === WORKING_COLOR_SPACE ) {
-
 			return ColorManagement.workingColorSpace;
-
 		} else if ( colorSpace === OUTPUT_COLOR_SPACE ) {
-
 			return builder.context.outputColorSpace || builder.renderer.outputColorSpace;
-
 		}
-
 		return colorSpace;
-
 	}
-
 	setup( builder ) {
-
 		const { colorNode } = this;
-
 		const source = this.resolveColorSpace( builder, this.source );
 		const target = this.resolveColorSpace( builder, this.target );
-
 		let outputNode = colorNode;
-
 		if ( ColorManagement.enabled === false || source === target || ! source || ! target ) {
-
 			return outputNode;
-
 		}
-
 		if ( ColorManagement.getTransfer( source ) === SRGBTransfer ) {
-
 			outputNode = vec4( sRGBTransferEOTF( outputNode.rgb ), outputNode.a );
-
 		}
-
 		if ( ColorManagement.getPrimaries( source ) !== ColorManagement.getPrimaries( target ) ) {
-
 			outputNode = vec4(
 				mat3( ColorManagement._getMatrix( new Matrix3(), source, target ) ).mul( outputNode.rgb ),
 				outputNode.a
 			);
-
 		}
-
 		if ( ColorManagement.getTransfer( target ) === SRGBTransfer ) {
-
 			outputNode = vec4( sRGBTransferOETF( outputNode.rgb ), outputNode.a );
-
 		}
-
 		return outputNode;
-
 	}
 
 }

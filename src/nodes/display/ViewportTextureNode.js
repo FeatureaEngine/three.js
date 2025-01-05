@@ -21,13 +21,9 @@ const _size = /*@__PURE__*/ new Vector2();
  * @augments module:TextureNode~TextureNode
  */
 class ViewportTextureNode extends TextureNode {
-
 	static get type() {
-
 		return 'ViewportTextureNode';
-
 	}
-
 	/**
 	 * Constructs a new viewport texture node.
 	 *
@@ -36,16 +32,11 @@ class ViewportTextureNode extends TextureNode {
 	 * @param {Texture?} [framebufferTexture=null] - A framebuffer texture holding the viewport data. If not provided, a framebuffer texture is created automatically.
 	 */
 	constructor( uvNode = screenUV, levelNode = null, framebufferTexture = null ) {
-
 		if ( framebufferTexture === null ) {
-
 			framebufferTexture = new FramebufferTexture();
 			framebufferTexture.minFilter = LinearMipmapLinearFilter;
-
 		}
-
 		super( framebufferTexture, uvNode, levelNode );
-
 		/**
 		 * Whether to generate mipmaps or not.
 		 *
@@ -53,7 +44,6 @@ class ViewportTextureNode extends TextureNode {
 		 * @default false
 		 */
 		this.generateMipmaps = false;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -62,7 +52,6 @@ class ViewportTextureNode extends TextureNode {
 		 * @default true
 		 */
 		this.isOutputTextureNode = true;
-
 		/**
 		 * The `updateBeforeType` is set to `NodeUpdateType.FRAME` since the node renders the
 		 * scene once per frame in its {@link ViewportTextureNode#updateBefore} method.
@@ -71,44 +60,27 @@ class ViewportTextureNode extends TextureNode {
 		 * @default 'frame'
 		 */
 		this.updateBeforeType = NodeUpdateType.FRAME;
-
 	}
-
 	updateBefore( frame ) {
-
 		const renderer = frame.renderer;
 		renderer.getDrawingBufferSize( _size );
-
 		//
-
 		const framebufferTexture = this.value;
-
 		if ( framebufferTexture.image.width !== _size.width || framebufferTexture.image.height !== _size.height ) {
-
 			framebufferTexture.image.width = _size.width;
 			framebufferTexture.image.height = _size.height;
 			framebufferTexture.needsUpdate = true;
-
 		}
-
 		//
-
 		const currentGenerateMipmaps = framebufferTexture.generateMipmaps;
 		framebufferTexture.generateMipmaps = this.generateMipmaps;
-
 		renderer.copyFramebufferToTexture( framebufferTexture );
-
 		framebufferTexture.generateMipmaps = currentGenerateMipmaps;
-
 	}
-
 	clone() {
-
 		const viewportTextureNode = new this.constructor( this.uvNode, this.levelNode, this.value );
 		viewportTextureNode.generateMipmaps = this.generateMipmaps;
-
 		return viewportTextureNode;
-
 	}
 
 }

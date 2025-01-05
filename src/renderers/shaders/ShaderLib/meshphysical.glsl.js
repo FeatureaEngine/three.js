@@ -4,7 +4,6 @@ export const vertex = /* glsl */`
 varying vec3 vViewPosition;
 
 #ifdef USE_TRANSMISSION
-
 	varying vec3 vWorldPosition;
 
 #endif
@@ -23,20 +22,17 @@ varying vec3 vViewPosition;
 #include <clipping_planes_pars_vertex>
 
 void main() {
-
 	#include <uv_vertex>
 	#include <color_vertex>
 	#include <morphinstance_vertex>
 	#include <morphcolor_vertex>
 	#include <batching_vertex>
-
 	#include <beginnormal_vertex>
 	#include <morphnormal_vertex>
 	#include <skinbase_vertex>
 	#include <skinnormal_vertex>
 	#include <defaultnormal_vertex>
 	#include <normal_vertex>
-
 	#include <begin_vertex>
 	#include <morphtarget_vertex>
 	#include <skinning_vertex>
@@ -44,15 +40,12 @@ void main() {
 	#include <project_vertex>
 	#include <logdepthbuf_vertex>
 	#include <clipping_planes_vertex>
-
 	vViewPosition = - mvPosition.xyz;
-
 	#include <worldpos_vertex>
 	#include <shadowmap_vertex>
 	#include <fog_vertex>
 
 #ifdef USE_TRANSMISSION
-
 	vWorldPosition = worldPosition.xyz;
 
 #endif
@@ -80,11 +73,9 @@ uniform float opacity;
 #ifdef USE_SPECULAR
 	uniform float specularIntensity;
 	uniform vec3 specularColor;
-
 	#ifdef USE_SPECULAR_COLORMAP
 		uniform sampler2D specularColorMap;
 	#endif
-
 	#ifdef USE_SPECULAR_INTENSITYMAP
 		uniform sampler2D specularIntensityMap;
 	#endif
@@ -109,11 +100,9 @@ uniform float opacity;
 #ifdef USE_SHEEN
 	uniform vec3 sheenColor;
 	uniform float sheenRoughness;
-
 	#ifdef USE_SHEEN_COLORMAP
 		uniform sampler2D sheenColorMap;
 	#endif
-
 	#ifdef USE_SHEEN_ROUGHNESSMAP
 		uniform sampler2D sheenRoughnessMap;
 	#endif
@@ -121,7 +110,6 @@ uniform float opacity;
 
 #ifdef USE_ANISOTROPY
 	uniform vec2 anisotropyVector;
-
 	#ifdef USE_ANISOTROPYMAP
 		uniform sampler2D anisotropyMap;
 	#endif
@@ -161,13 +149,10 @@ varying vec3 vViewPosition;
 #include <clipping_planes_pars_fragment>
 
 void main() {
-
 	vec4 diffuseColor = vec4( diffuse, opacity );
 	#include <clipping_planes_fragment>
-
 	ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ) );
 	vec3 totalEmissiveRadiance = emissive;
-
 	#include <logdepthbuf_fragment>
 	#include <map_fragment>
 	#include <color_fragment>
@@ -181,43 +166,28 @@ void main() {
 	#include <clearcoat_normal_fragment_begin>
 	#include <clearcoat_normal_fragment_maps>
 	#include <emissivemap_fragment>
-
 	// accumulation
 	#include <lights_physical_fragment>
 	#include <lights_fragment_begin>
 	#include <lights_fragment_maps>
 	#include <lights_fragment_end>
-
 	// modulation
 	#include <aomap_fragment>
-
 	vec3 totalDiffuse = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse;
 	vec3 totalSpecular = reflectedLight.directSpecular + reflectedLight.indirectSpecular;
-
 	#include <transmission_fragment>
-
 	vec3 outgoingLight = totalDiffuse + totalSpecular + totalEmissiveRadiance;
-
 	#ifdef USE_SHEEN
-
 		// Sheen energy compensation approximation calculation can be found at the end of
 		// https://drive.google.com/file/d/1T0D1VSyR4AllqIJTQAraEIzjlb5h4FKH/view?usp=sharing
 		float sheenEnergyComp = 1.0 - 0.157 * max3( material.sheenColor );
-
 		outgoingLight = outgoingLight * sheenEnergyComp + sheenSpecularDirect + sheenSpecularIndirect;
-
 	#endif
-
 	#ifdef USE_CLEARCOAT
-
 		float dotNVcc = saturate( dot( geometryClearcoatNormal, geometryViewDir ) );
-
 		vec3 Fcc = F_Schlick( material.clearcoatF0, material.clearcoatF90, dotNVcc );
-
 		outgoingLight = outgoingLight * ( 1.0 - material.clearcoat * Fcc ) + ( clearcoatSpecularDirect + clearcoatSpecularIndirect ) * material.clearcoat;
-
 	#endif
-
 	#include <opaque_fragment>
 	#include <tonemapping_fragment>
 	#include <colorspace_fragment>

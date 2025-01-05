@@ -10,7 +10,6 @@ import StorageBufferAttribute from './StorageBufferAttribute.js';
  * @augments StorageBufferAttribute
  */
 class IndirectStorageBufferAttribute extends StorageBufferAttribute {
-
 	/**
 	 * Constructs a new storage buffer attribute.
 	 *
@@ -19,9 +18,7 @@ class IndirectStorageBufferAttribute extends StorageBufferAttribute {
 	 * @param {Number} itemSize - The item size.
 	 */
 	constructor( count, itemSize ) {
-
 		super( count, itemSize, Uint32Array );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -30,7 +27,6 @@ class IndirectStorageBufferAttribute extends StorageBufferAttribute {
 		 * @default true
 		 */
 		this.isIndirectStorageBufferAttribute = true;
-
 	}
 
 }

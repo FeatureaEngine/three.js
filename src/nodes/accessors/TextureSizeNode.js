@@ -11,13 +11,9 @@ import { nodeProxy } from '../tsl/TSLBase.js';
  * @augments Node
  */
 class TextureSizeNode extends Node {
-
 	static get type() {
-
 		return 'TextureSizeNode';
-
 	}
-
 	/**
 	 * Constructs a new texture size node.
 	 *
@@ -25,9 +21,7 @@ class TextureSizeNode extends Node {
 	 * @param {Node<int>?} [levelNode=null] - A level node which defines the requested mip.
 	 */
 	constructor( textureNode, levelNode = null ) {
-
 		super( 'uvec2' );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -36,14 +30,12 @@ class TextureSizeNode extends Node {
 		 * @default true
 		 */
 		this.isTextureSizeNode = true;
-
 		/**
 		 * A texture node which size should be retrieved.
 		 *
 		 * @type {TextureNode}
 		 */
 		this.textureNode = textureNode;
-
 		/**
 		 * A level node which defines the requested mip.
 		 *
@@ -51,16 +43,11 @@ class TextureSizeNode extends Node {
 		 * @default null
 		 */
 		this.levelNode = levelNode;
-
 	}
-
 	generate( builder, output ) {
-
 		const textureProperty = this.textureNode.build( builder, 'property' );
 		const level = this.levelNode === null ? '0' : this.levelNode.build( builder, 'int' );
-
 		return builder.format( `${ builder.getMethod( 'textureDimensions' ) }( ${ textureProperty }, ${ level } )`, this.getNodeType( builder ), output );
-
 	}
 
 }

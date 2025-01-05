@@ -5,7 +5,6 @@
  * process.
  */
 class LightingModel {
-
 	/**
 	 * This method is intended for setting up lighting model and context data
 	 * which are later used in the evaluation process.
@@ -16,7 +15,6 @@ class LightingModel {
 	 * @param {NodeBuilder} builder - The current node builder.
 	 */
 	start( /*input, stack, builder*/ ) { }
-
 	/**
 	 * This method is intended for executing final tasks like final updates
 	 * to the outgoing light.
@@ -27,7 +25,6 @@ class LightingModel {
 	 * @param {NodeBuilder} builder - The current node builder.
 	 */
 	finish( /*input, stack, builder*/ ) { }
-
 	/**
 	 * This method is intended for implementing the direct light term and
 	 * executed during the build process of directional, point and spot light nodes.
@@ -38,7 +35,6 @@ class LightingModel {
 	 * @param {NodeBuilder} builder - The current node builder.
 	 */
 	direct( /*input, stack, builder*/ ) { }
-
 	/**
 	 * This method is intended for implementing the direct light term for
 	 * rect area light nodes.
@@ -49,7 +45,6 @@ class LightingModel {
 	 * @param {NodeBuilder} builder - The current node builder.
 	 */
 	directRectArea( /*input, stack, builder*/ ) {}
-
 	/**
 	 * This method is intended for implementing the indirect light term.
 	 *
@@ -59,7 +54,6 @@ class LightingModel {
 	 * @param {NodeBuilder} builder - The current node builder.
 	 */
 	indirect( /*input, stack, builder*/ ) { }
-
 	/**
 	 * This method is intended for implementing the ambient occlusion term.
 	 * Unlike other methods, this method must be called manually by the lighting

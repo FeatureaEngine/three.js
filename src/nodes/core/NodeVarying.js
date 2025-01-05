@@ -9,7 +9,6 @@ import NodeVar from './NodeVar.js';
  * @augments NodeVar
  */
 class NodeVarying extends NodeVar {
-
 	/**
 	 * Constructs a new node varying.
 	 *
@@ -17,9 +16,7 @@ class NodeVarying extends NodeVar {
 	 * @param {String} type - The type of the varying.
 	 */
 	constructor( name, type ) {
-
 		super( name, type );
-
 		/**
 		 * Whether this varying requires interpolation or not. This property can be used
 		 * to check if the varying can be optimized for a variable.
@@ -28,7 +25,6 @@ class NodeVarying extends NodeVar {
 		 * @default false
 		 */
 		this.needsInterpolation = false;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -37,7 +33,6 @@ class NodeVarying extends NodeVar {
 		 * @default true
 		 */
 		this.isNodeVarying = true;
-
 	}
 
 }

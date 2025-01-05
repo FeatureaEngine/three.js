@@ -10,13 +10,9 @@ import { addMethodChaining, nodeObject } from '../tsl/TSLCore.js';
  * @augments Node
  */
 class ComputeNode extends Node {
-
 	static get type() {
-
 		return 'ComputeNode';
-
 	}
-
 	/**
 	 * Constructs a new compute node.
 	 *
@@ -25,9 +21,7 @@ class ComputeNode extends Node {
 	 * @param {Array<Number>} [workgroupSize=[64]] - TODO.
 	 */
 	constructor( computeNode, count, workgroupSize = [ 64 ] ) {
-
 		super( 'void' );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -36,21 +30,18 @@ class ComputeNode extends Node {
 		 * @default true
 		 */
 		this.isComputeNode = true;
-
 		/**
 		 * TODO
 		 *
 		 * @type {Node}
 		 */
 		this.computeNode = computeNode;
-
 		/**
 		 * TODO
 		 *
 		 * @type {Number}
 		 */
 		this.count = count;
-
 		/**
 		 * TODO
 		 *
@@ -58,21 +49,18 @@ class ComputeNode extends Node {
 		 * @default [64]
 		 */
 		this.workgroupSize = workgroupSize;
-
 		/**
 		 * TODO
 		 *
 		 * @type {Number}
 		 */
 		this.dispatchCount = 0;
-
 		/**
 		 * TODO
 		 *
 		 * @type {Number}
 		 */
 		this.version = 1;
-
 		/**
 		 * The name or label of the uniform.
 		 *
@@ -80,7 +68,6 @@ class ComputeNode extends Node {
 		 * @default ''
 		 */
 		this.name = '';
-
 		/**
 		 * The `updateBeforeType` is set to `NodeUpdateType.OBJECT` since {@link ComputeNode#updateBefore}
 		 * is executed once per object by default.
@@ -89,27 +76,20 @@ class ComputeNode extends Node {
 		 * @default 'object'
 		 */
 		this.updateBeforeType = NodeUpdateType.OBJECT;
-
 		/**
 		 * TODO
 		 *
 		 * @type {Function}
 		 */
 		this.onInitFunction = null;
-
 		this.updateDispatchCount();
-
 	}
-
 	/**
 	 * Executes the `dispose` event for this node.
 	 */
 	dispose() {
-
 		this.dispatchEvent( { type: 'dispose' } );
-
 	}
-
 	/**
 	 * Sets the {@link ComputeNode#name} property.
 	 *
@@ -117,29 +97,19 @@ class ComputeNode extends Node {
 	 * @return {ComputeNode} A reference to this node.
 	 */
 	label( name ) {
-
 		this.name = name;
-
 		return this;
-
 	}
-
 	/**
 	 * TODO
 	 */
 	updateDispatchCount() {
-
 		const { count, workgroupSize } = this;
-
 		let size = workgroupSize[ 0 ];
-
 		for ( let i = 1; i < workgroupSize.length; i ++ )
 			size *= workgroupSize[ i ];
-
 		this.dispatchCount = Math.ceil( count / size );
-
 	}
-
 	/**
 	 * TODO
 	 *
@@ -147,40 +117,25 @@ class ComputeNode extends Node {
 	 * @return {ComputeNode} A reference to this node.
 	 */
 	onInit( callback ) {
-
 		this.onInitFunction = callback;
-
 		return this;
-
 	}
-
 	/**
 	 * The method execute the compute for this node.
 	 *
 	 * @param {NodeFrame} frame - A reference to the current node frame.
 	 */
 	updateBefore( { renderer } ) {
-
 		renderer.compute( this );
-
 	}
-
 	generate( builder ) {
-
 		const { shaderStage } = builder;
-
 		if ( shaderStage === 'compute' ) {
-
 			const snippet = this.computeNode.build( builder, 'void' );
-
 			if ( snippet !== '' ) {
-
 				builder.addLineFlowCode( snippet, this );
-
 			}
-
 		}
-
 	}
 
 }

@@ -13,14 +13,11 @@ import { Group } from './Group.js';
  * @augments Group
  */
 class ClippingGroup extends Group {
-
 	/**
 	 * Constructs a new clipping group.
 	 */
 	constructor() {
-
 		super();
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -29,14 +26,12 @@ class ClippingGroup extends Group {
 		 * @default true
 		 */
 		this.isClippingGroup = true;
-
 		/**
 		 * An array with clipping planes.
 		 *
 		 * @type {Array<Plane>}
 		 */
 		this.clippingPlanes = [];
-
 		/**
 		 * Whether clipping should be enabled or not.
 		 *
@@ -44,7 +39,6 @@ class ClippingGroup extends Group {
 		 * @default true
 		 */
 		this.enabled = true;
-
 		/**
 		 * Whether the intersection of the clipping planes is used to clip objects, rather than their union.
 		 *
@@ -52,7 +46,6 @@ class ClippingGroup extends Group {
 		 * @default false
 		 */
 		this.clipIntersection = false;
-
 		/**
 		 * Whether shadows should be clipped or not.
 		 *
@@ -60,7 +53,6 @@ class ClippingGroup extends Group {
 		 * @default false
 		 */
 		this.clipShadows = false;
-
 	}
 
 }

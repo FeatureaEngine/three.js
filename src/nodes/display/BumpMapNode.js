@@ -11,12 +11,9 @@ import { Fn, nodeProxy, float, vec2 } from '../tsl/TSLBase.js';
 // https://mmikk.github.io/papers3d/mm_sfgrad_bump.pdf
 
 const dHdxy_fwd = Fn( ( { textureNode, bumpScale } ) => {
-
 	// It's used to preserve the same TextureNode instance
 	const sampleTexture = ( callback ) => textureNode.cache().context( { getUV: ( texNode ) => callback( texNode.uvNode || uv() ), forceUVContext: true } );
-
 	const Hll = float( sampleTexture( ( uvNode ) => uvNode ) );
-
 	return vec2(
 		float( sampleTexture( ( uvNode ) => uvNode.add( uvNode.dFdx() ) ) ).sub( Hll ),
 		float( sampleTexture( ( uvNode ) => uvNode.add( uvNode.dFdy() ) ) ).sub( Hll )
@@ -27,21 +24,15 @@ const dHdxy_fwd = Fn( ( { textureNode, bumpScale } ) => {
 // Evaluate the derivative of the height w.r.t. screen-space using forward differencing (listing 2)
 
 const perturbNormalArb = Fn( ( inputs ) => {
-
 	const { surf_pos, surf_norm, dHdxy } = inputs;
-
 	// normalize is done to ensure that the bump map looks the same regardless of the texture's scale
 	const vSigmaX = surf_pos.dFdx().normalize();
 	const vSigmaY = surf_pos.dFdy().normalize();
 	const vN = surf_norm; // normalized
-
 	const R1 = vSigmaY.cross( vN );
 	const R2 = vN.cross( vSigmaX );
-
 	const fDet = vSigmaX.dot( R1 ).mul( faceDirection );
-
 	const vGrad = fDet.sign().mul( dHdxy.x.mul( R1 ).add( dHdxy.y.mul( R2 ) ) );
-
 	return fDet.abs().mul( surf_norm ).sub( vGrad ).normalize();
 
 } );
@@ -56,13 +47,9 @@ const perturbNormalArb = Fn( ( inputs ) => {
  * @augments TempNode
  */
 class BumpMapNode extends TempNode {
-
 	static get type() {
-
 		return 'BumpMapNode';
-
 	}
-
 	/**
 	 * Constructs a new bump map node.
 	 *
@@ -70,16 +57,13 @@ class BumpMapNode extends TempNode {
 	 * @param {Node?} [scaleNode=null] - Controls the intensity of the bump effect.
 	 */
 	constructor( textureNode, scaleNode = null ) {
-
 		super( 'vec3' );
-
 		/**
 		 * Represents the bump map data.
 		 *
 		 * @type {Node}
 		 */
 		this.textureNode = textureNode;
-
 		/**
 		 * Controls the intensity of the bump effect.
 		 *
@@ -87,20 +71,15 @@ class BumpMapNode extends TempNode {
 		 * @default null
 		 */
 		this.scaleNode = scaleNode;
-
 	}
-
 	setup() {
-
 		const bumpScale = this.scaleNode !== null ? this.scaleNode : 1;
 		const dHdxy = dHdxy_fwd( { textureNode: this.textureNode, bumpScale } );
-
 		return perturbNormalArb( {
 			surf_pos: positionView,
 			surf_norm: normalView,
 			dHdxy
 		} );
-
 	}
 
 }

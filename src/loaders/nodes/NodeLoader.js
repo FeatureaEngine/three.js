@@ -9,32 +9,26 @@ import { FileLoader } from '../../loaders/FileLoader.js';
  * @augments Loader
  */
 class NodeLoader extends Loader {
-
 	/**
 	 * Constructs a new node loader.
 	 *
 	 * @param {LoadingManager?} manager - A reference to a loading manager.
 	 */
 	constructor( manager ) {
-
 		super( manager );
-
 		/**
 		 * Represents a dictionary of textures.
 		 *
 		 * @type {Object<String,Texture>}
 		 */
 		this.textures = {};
-
 		/**
 		 * Represents a dictionary of node types.
 		 *
 		 * @type {Object<String,Node.constructor>}
 		 */
 		this.nodes = {};
-
 	}
-
 	/**
 	 * Loads the node definitions from the given URL.
 	 *
@@ -44,37 +38,23 @@ class NodeLoader extends Loader {
 	 * @param {Function} onError - Will be called when errors are thrown during the loading process.
 	 */
 	load( url, onLoad, onProgress, onError ) {
-
 		const loader = new FileLoader( this.manager );
 		loader.setPath( this.path );
 		loader.setRequestHeader( this.requestHeader );
 		loader.setWithCredentials( this.withCredentials );
 		loader.load( url, ( text ) => {
-
 			try {
-
 				onLoad( this.parse( JSON.parse( text ) ) );
-
 			} catch ( e ) {
-
 				if ( onError ) {
-
 					onError( e );
-
 				} else {
-
 					console.error( e );
-
 				}
-
 				this.manager.itemError( url );
-
 			}
-
 		}, onProgress, onError );
-
 	}
-
 	/**
 	 * Parse the node dependencies for the loaded node.
 	 *
@@ -82,39 +62,23 @@ class NodeLoader extends Loader {
 	 * @return {Object<String,Node>} A dictionary with node dependencies.
 	 */
 	parseNodes( json ) {
-
 		const nodes = {};
-
 		if ( json !== undefined ) {
-
 			for ( const nodeJSON of json ) {
-
 				const { uuid, type } = nodeJSON;
-
 				nodes[ uuid ] = this.createNodeFromType( type );
 				nodes[ uuid ].uuid = uuid;
-
 			}
-
 			const meta = { nodes, textures: this.textures };
-
 			for ( const nodeJSON of json ) {
-
 				nodeJSON.meta = meta;
-
 				const node = nodes[ nodeJSON.uuid ];
 				node.deserialize( nodeJSON );
-
 				delete nodeJSON.meta;
-
 			}
-
 		}
-
 		return nodes;
-
 	}
-
 	/**
 	 * Parses the node from the given JSON.
 	 *
@@ -122,23 +86,15 @@ class NodeLoader extends Loader {
 	 * @return {Node} The parsed node.
 	 */
 	parse( json ) {
-
 		const node = this.createNodeFromType( json.type );
 		node.uuid = json.uuid;
-
 		const nodes = this.parseNodes( json.nodes );
 		const meta = { nodes, textures: this.textures };
-
 		json.meta = meta;
-
 		node.deserialize( json );
-
 		delete json.meta;
-
 		return node;
-
 	}
-
 	/**
 	 * Defines the dictionary of textures.
 	 *
@@ -146,12 +102,9 @@ class NodeLoader extends Loader {
 	 * @return {NodeLoader} A reference to this loader.
 	 */
 	setTextures( value ) {
-
 		this.textures = value;
 		return this;
-
 	}
-
 	/**
 	 * Defines the dictionary of node types.
 	 *
@@ -159,12 +112,9 @@ class NodeLoader extends Loader {
 	 * @return {NodeLoader} A reference to this loader.
 	 */
 	setNodes( value ) {
-
 		this.nodes = value;
 		return this;
-
 	}
-
 	/**
 	 * Creates a node object from the given type.
 	 *
@@ -172,16 +122,11 @@ class NodeLoader extends Loader {
 	 * @return {Node} The created node instance.
 	 */
 	createNodeFromType( type ) {
-
 		if ( this.nodes[ type ] === undefined ) {
-
 			console.error( 'THREE.NodeLoader: Node type not found:', type );
 			return float();
-
 		}
-
 		return nodeObject( new this.nodes[ type ]() );
-
 	}
 
 }

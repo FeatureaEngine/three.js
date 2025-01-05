@@ -14,13 +14,9 @@ import { addMethodChaining, nodeProxy } from '../tsl/TSLCore.js';
  * @augments Node
  */
 class ContextNode extends Node {
-
 	static get type() {
-
 		return 'ContextNode';
-
 	}
-
 	/**
 	 * Constructs a new context node.
 	 *
@@ -28,9 +24,7 @@ class ContextNode extends Node {
 	 * @param {Object} [value={}] - The modified context data.
 	 */
 	constructor( node, value = {} ) {
-
 		super();
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -39,14 +33,12 @@ class ContextNode extends Node {
 		 * @default true
 		 */
 		this.isContextNode = true;
-
 		/**
 		 * The node whose context should be modified.
 		 *
 		 * @type {Node}
 		 */
 		this.node = node;
-
 		/**
 		 * The modified context data.
 		 *
@@ -54,20 +46,15 @@ class ContextNode extends Node {
 		 * @default {}
 		 */
 		this.value = value;
-
 	}
-
 	/**
 	 * This method is overwritten to ensure it returns the reference to {@link module:ContextNode~ContextNode#node}.
 	 *
 	 * @return {Node} A reference to {@link module:ContextNode~ContextNode#node}.
 	 */
 	getScope() {
-
 		return this.node.getScope();
-
 	}
-
 	/**
 	 * This method is overwritten to ensure it returns the type of {@link module:ContextNode~ContextNode#node}.
 	 *
@@ -75,43 +62,24 @@ class ContextNode extends Node {
 	 * @return {String} The node type.
 	 */
 	getNodeType( builder ) {
-
 		return this.node.getNodeType( builder );
-
 	}
-
 	analyze( builder ) {
-
 		this.node.build( builder );
-
 	}
-
 	setup( builder ) {
-
 		const previousContext = builder.getContext();
-
 		builder.setContext( { ...builder.context, ...this.value } );
-
 		const node = this.node.build( builder );
-
 		builder.setContext( previousContext );
-
 		return node;
-
 	}
-
 	generate( builder, output ) {
-
 		const previousContext = builder.getContext();
-
 		builder.setContext( { ...builder.context, ...this.value } );
-
 		const snippet = this.node.build( builder, output );
-
 		builder.setContext( previousContext );
-
 		return snippet;
-
 	}
 
 }

@@ -21,9 +21,7 @@
 		</div>
 
 
-
 		<script type="module">
-
 			import * as THREE from "../src/Three.js";
 			import Stats from '../libs/stats.module.js';
 			import { GUI } from '../libs/lil-gui.module.min.js';
@@ -35,82 +33,58 @@
 			import { RenderPass } from '../addons/postprocessing/RenderPass.js';
 			import { GTAOPass } from '../addons/postprocessing/GTAOPass.js';
 			import { OutputPass } from '../addons/postprocessing/OutputPass.js';
-
 			let camera, scene, renderer, composer, controls, clock, stats, mixer;
-
 			init();
-
 			function init() {
-
 				const dracoLoader = new DRACOLoader();
 				dracoLoader.setDecoderPath( '../libs/draco/' );
 				dracoLoader.setDecoderConfig( { type: 'js' } );
 				const loader = new GLTFLoader();
 				loader.setDRACOLoader( dracoLoader );
 				loader.setPath( '../res/models/gltf/' );
-
 				clock = new THREE.Clock();
 				const container = document.createElement( 'div' );
 				document.body.appendChild( container );
-
 				stats = new Stats();
 				container.appendChild( stats.dom );
-
 				renderer = new THREE.WebGLRenderer();
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.setAnimationLoop( animate );
 				document.body.appendChild( renderer.domElement );
-
 				const pmremGenerator = new THREE.PMREMGenerator( renderer );
-
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0xbfe3dd );
 				scene.environment = pmremGenerator.fromScene( new RoomEnvironment(), 0.04 ).texture;
-
 				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 100 );
 				camera.position.set( 5, 2, 8 );
-
 				controls = new OrbitControls( camera, renderer.domElement );
 				controls.target.set( 0, 0.5, 0 );
 				controls.update();
 				controls.enablePan = false;
 				controls.enableDamping = true;
-
 				const width = window.innerWidth;
 				const height = window.innerHeight;
-
 				composer = new EffectComposer( renderer );
-
 				const renderPass = new RenderPass( scene, camera );
 				composer.addPass( renderPass );
-
 				const gtaoPass = new GTAOPass( scene, camera, width, height );
 				gtaoPass.output = GTAOPass.OUTPUT.Denoise;
 				composer.addPass( gtaoPass );
-
 				const outputPass = new OutputPass();
 				composer.addPass( outputPass );
-
 				//
-
 				loader.load( 'LittlestTokyo.glb', ( gltf ) => {
-
 					const model = gltf.scene;
 					model.position.set( 1, 1, 0 );
 					model.scale.set( 0.01, 0.01, 0.01 );
 					scene.add( model );
-
 					mixer = new THREE.AnimationMixer( model );
 					mixer.clipAction( gltf.animations[ 0 ] ).play();
-
 					const box = new THREE.Box3().setFromObject( scene );
 					gtaoPass.setSceneClipBox( box );
-
 				}, undefined, ( e ) => console.error( e ) );
-
 				// Init gui
 				const gui = new GUI();
-
 				gui.add( gtaoPass, 'output', {
 					'Default': GTAOPass.OUTPUT.Default,
 					'Diffuse': GTAOPass.OUTPUT.Diffuse,
@@ -119,11 +93,8 @@
 					'Depth': GTAOPass.OUTPUT.Depth,
 					'Normal': GTAOPass.OUTPUT.Normal
 				} ).onChange( function ( value ) {
-
 					gtaoPass.output = value;
-
 				} );
-
 				const aoParameters = {
 					radius: 0.25,
 					distanceExponent: 1.,
@@ -161,40 +132,25 @@
 				gui.add( pdParameters, 'samples' ).min( 2 ).max( 32 ).step( 1 ).onChange( () => gtaoPass.updatePdMaterial( pdParameters ) );
 			
 				window.addEventListener( 'resize', onWindowResize );
-
 			}
-
 			function onWindowResize() {
-
 				const width = window.innerWidth;
 				const height = window.innerHeight;
-
 				camera.aspect = width / height;
 				camera.updateProjectionMatrix();
-
 				renderer.setSize( width, height );
 				composer.setSize( width, height );
-
 			}
-
 			function animate() {
-
 				const delta = clock.getDelta();
-
 				if ( mixer ) {
-
 					mixer.update( delta );
-
 				}
-
 				controls.update();
-
 				stats.begin();
 				composer.render();
 				stats.end();
-
 			}
-
 		</script>
 	</body>
 </html>

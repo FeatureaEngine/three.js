@@ -13,14 +13,11 @@ import { Group } from '../../objects/Group.js';
  * @augments Group
  */
 class BundleGroup extends Group {
-
 	/**
 	 * Constructs a new bundle group.
 	 */
 	constructor() {
-
 		super();
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -29,7 +26,6 @@ class BundleGroup extends Group {
 		 * @default true
 		 */
 		this.isBundleGroup = true;
-
 		/**
 		 * This property is only relevant for detecting types
 		 * during serialization/deserialization. It should always
@@ -40,7 +36,6 @@ class BundleGroup extends Group {
 		 * @default 'BundleGroup'
 		 */
 		this.type = 'BundleGroup';
-
 		/**
 		 * Whether the bundle is static or not. When set to `true`, the structure
 		 * is assumed to be static and does not change. E.g. no new objects are
@@ -53,7 +48,6 @@ class BundleGroup extends Group {
 		 * @default true
 		 */
 		this.static = true;
-
 		/**
 		 * The bundle group's version.
 		 *
@@ -62,9 +56,7 @@ class BundleGroup extends Group {
 		 * @default 0
 		 */
 		this.version = 0;
-
 	}
-
 	/**
 	 * Set this property to `true` when the bundle group has changed.
 	 *
@@ -73,9 +65,7 @@ class BundleGroup extends Group {
 	 * @param {Boolean} value
 	 */
 	set needsUpdate( value ) {
-
 		if ( value === true ) this.version ++;
-
 	}
 
 }

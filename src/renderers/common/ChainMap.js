@@ -7,21 +7,17 @@
  * @private
  */
 export default class ChainMap {
-
 	/**
 	 * Constructs a new chained map.
 	 */
 	constructor() {
-
 		/**
 		 * The root Weak Map.
 		 *
 		 * @type {WeakMap}
 		 */
 		this.weakMap = new WeakMap();
-
 	}
-
 	/**
 	 * Returns the value for the given array of keys.
 	 *
@@ -29,21 +25,13 @@ export default class ChainMap {
 	 * @return {Any} The value. Returns `undefined` if no value was found.
 	 */
 	get( keys ) {
-
 		let map = this.weakMap;
-
 		for ( let i = 0; i < keys.length - 1; i ++ ) {
-
 			map = map.get( keys[ i ] );
-
 			if ( map === undefined ) return undefined;
-
 		}
-
 		return map.get( keys[ keys.length - 1 ] );
-
 	}
-
 	/**
 	 * Sets the value for the given keys.
 	 *
@@ -52,25 +40,15 @@ export default class ChainMap {
 	 * @return {ChainMap} A reference to this chain map.
 	 */
 	set( keys, value ) {
-
 		let map = this.weakMap;
-
 		for ( let i = 0; i < keys.length - 1; i ++ ) {
-
 			const key = keys[ i ];
-
 			if ( map.has( key ) === false ) map.set( key, new WeakMap() );
-
 			map = map.get( key );
-
 		}
-
 		map.set( keys[ keys.length - 1 ], value );
-
 		return this;
-
 	}
-
 	/**
 	 * Deletes a value for the given keys.
 	 *
@@ -78,19 +56,12 @@ export default class ChainMap {
 	 * @return {Boolean} Returns `true` if the value has been removed successfully and `false` if the value has not be found.
 	 */
 	delete( keys ) {
-
 		let map = this.weakMap;
-
 		for ( let i = 0; i < keys.length - 1; i ++ ) {
-
 			map = map.get( keys[ i ] );
-
 			if ( map === undefined ) return false;
-
 		}
-
 		return map.delete( keys[ keys.length - 1 ] );
-
 	}
 
 }

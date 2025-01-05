@@ -17,30 +17,25 @@ varying vec3 vViewPosition;
 #include <clipping_planes_pars_vertex>
 
 void main() {
-
 	#include <uv_vertex>
 	#include <color_vertex>
 	#include <morphinstance_vertex>
 	#include <morphcolor_vertex>
 	#include <batching_vertex>
-
 	#include <beginnormal_vertex>
 	#include <morphnormal_vertex>
 	#include <skinbase_vertex>
 	#include <skinnormal_vertex>
 	#include <defaultnormal_vertex>
 	#include <normal_vertex>
-
 	#include <begin_vertex>
 	#include <morphtarget_vertex>
 	#include <skinning_vertex>
 	#include <displacementmap_vertex>
 	#include <project_vertex>
-
 	#include <logdepthbuf_vertex>
 	#include <clipping_planes_vertex>
 	#include <fog_vertex>
-
 	vViewPosition = - mvPosition.xyz;
 
 }
@@ -71,10 +66,8 @@ varying vec3 vViewPosition;
 #include <clipping_planes_pars_fragment>
 
 void main() {
-
 	vec4 diffuseColor = vec4( diffuse, opacity );
 	#include <clipping_planes_fragment>
-
 	#include <logdepthbuf_fragment>
 	#include <map_fragment>
 	#include <color_fragment>
@@ -83,24 +76,16 @@ void main() {
 	#include <alphahash_fragment>
 	#include <normal_fragment_begin>
 	#include <normal_fragment_maps>
-
 	vec3 viewDir = normalize( vViewPosition );
 	vec3 x = normalize( vec3( viewDir.z, 0.0, - viewDir.x ) );
 	vec3 y = cross( viewDir, x );
 	vec2 uv = vec2( dot( x, normal ), dot( y, normal ) ) * 0.495 + 0.5; // 0.495 to remove artifacts caused by undersized matcap disks
-
 	#ifdef USE_MATCAP
-
 		vec4 matcapColor = texture2D( matcap, uv );
-
 	#else
-
 		vec4 matcapColor = vec4( vec3( mix( 0.2, 0.8, uv.y ) ), 1.0 ); // default if matcap is missing
-
 	#endif
-
 	vec3 outgoingLight = diffuseColor.rgb * matcapColor.rgb;
-
 	#include <opaque_fragment>
 	#include <tonemapping_fragment>
 	#include <colorspace_fragment>

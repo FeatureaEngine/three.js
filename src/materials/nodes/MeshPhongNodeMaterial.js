@@ -15,22 +15,16 @@ const _defaultValues = /*@__PURE__*/ new MeshPhongMaterial();
  * @augments NodeMaterial
  */
 class MeshPhongNodeMaterial extends NodeMaterial {
-
 	static get type() {
-
 		return 'MeshPhongNodeMaterial';
-
 	}
-
 	/**
 	 * Constructs a new mesh lambert node material.
 	 *
 	 * @param {Object?} parameters - The configuration parameter.
 	 */
 	constructor( parameters ) {
-
 		super();
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -39,7 +33,6 @@ class MeshPhongNodeMaterial extends NodeMaterial {
 		 * @default true
 		 */
 		this.isMeshPhongNodeMaterial = true;
-
 		/**
 		 * Set to `true` because phong materials react on lights.
 		 *
@@ -47,7 +40,6 @@ class MeshPhongNodeMaterial extends NodeMaterial {
 		 * @default true
 		 */
 		this.lights = true;
-
 		/**
 		 * The shininess of phong materials is by default inferred from the `shininess`
 		 * property. This node property allows to overwrite the default
@@ -60,7 +52,6 @@ class MeshPhongNodeMaterial extends NodeMaterial {
 		 * @default null
 		 */
 		this.shininessNode = null;
-
 		/**
 		 * The specular color of phong materials is by default inferred from the
 		 * `specular` property. This node property allows to overwrite the default
@@ -73,13 +64,9 @@ class MeshPhongNodeMaterial extends NodeMaterial {
 		 * @default null
 		 */
 		this.specularNode = null;
-
 		this.setDefaultValues( _defaultValues );
-
 		this.setValues( parameters );
-
 	}
-
 	/**
 	 * Overwritten since this type of material uses {@link BasicEnvironmentNode}
 	 * to implement the default environment mapping.
@@ -88,52 +75,34 @@ class MeshPhongNodeMaterial extends NodeMaterial {
 	 * @return {BasicEnvironmentNode<vec3>?} The environment node.
 	 */
 	setupEnvironment( builder ) {
-
 		const envNode = super.setupEnvironment( builder );
-
 		return envNode ? new BasicEnvironmentNode( envNode ) : null;
-
 	}
-
 	/**
 	 * Setups the lighting model.
 	 *
 	 * @return {PhongLightingModel} The lighting model.
 	 */
 	setupLightingModel( /*builder*/ ) {
-
 		return new PhongLightingModel();
-
 	}
-
 	/**
 	 * Setups the phong specific node variables.
 	 *
 	 * @param {NodeBuilder} builder - The current node builder.
 	 */
 	setupVariants( /*builder*/ ) {
-
 		// SHININESS
-
 		const shininessNode = ( this.shininessNode ? float( this.shininessNode ) : materialShininess ).max( 1e-4 ); // to prevent pow( 0.0, 0.0 )
-
 		shininess.assign( shininessNode );
-
 		// SPECULAR COLOR
-
 		const specularNode = this.specularNode || materialSpecular;
-
 		specularColor.assign( specularNode );
-
 	}
-
 	copy( source ) {
-
 		this.shininessNode = source.shininessNode;
 		this.specularNode = source.specularNode;
-
 		return super.copy( source );
-
 	}
 
 }

@@ -11,20 +11,14 @@ import { BackSide, WebGLCoordinateSystem } from '../../constants.js';
  * @augments Node
  */
 class FrontFacingNode extends Node {
-
 	static get type() {
-
 		return 'FrontFacingNode';
-
 	}
-
 	/**
 	 * Constructs a new front facing node.
 	 */
 	constructor() {
-
 		super( 'bool' );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -33,25 +27,15 @@ class FrontFacingNode extends Node {
 		 * @default true
 		 */
 		this.isFrontFacingNode = true;
-
 	}
-
 	generate( builder ) {
-
 		const { renderer, material } = builder;
-
 		if ( renderer.coordinateSystem === WebGLCoordinateSystem ) {
-
 			if ( material.side === BackSide ) {
-
 				return 'false';
-
 			}
-
 		}
-
 		return builder.getFrontFacing();
-
 	}
 
 }

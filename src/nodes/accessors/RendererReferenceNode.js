@@ -16,13 +16,9 @@ import { renderGroup } from '../core/UniformGroupNode.js';
  * @augments ReferenceBaseNode
  */
 class RendererReferenceNode extends ReferenceBaseNode {
-
 	static get type() {
-
 		return 'RendererReferenceNode';
-
 	}
-
 	/**
 	 * Constructs a new renderer reference node.
 	 *
@@ -32,9 +28,7 @@ class RendererReferenceNode extends ReferenceBaseNode {
 	 * the node refers to the renderer of the current state.
 	 */
 	constructor( property, inputType, renderer = null ) {
-
 		super( property, inputType, renderer );
-
 		/**
 		 * The renderer the property belongs to. When no renderer is set,
 		 * the node refers to the renderer of the current state.
@@ -43,11 +37,8 @@ class RendererReferenceNode extends ReferenceBaseNode {
 		 * @default null
 		 */
 		this.renderer = renderer;
-
 		this.setGroup( renderGroup );
-
 	}
-
 	/**
 	 * Updates the reference based on the given state. The state is only evaluated
 	 * {@link module:RendererReferenceNode~RendererReferenceNode#renderer} is not set.
@@ -56,11 +47,8 @@ class RendererReferenceNode extends ReferenceBaseNode {
 	 * @return {Object} The updated reference.
 	 */
 	updateReference( state ) {
-
 		this.reference = this.renderer !== null ? this.renderer : state.renderer;
-
 		return this.reference;
-
 	}
 
 }

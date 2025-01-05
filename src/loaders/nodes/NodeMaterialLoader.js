@@ -6,32 +6,26 @@ import { MaterialLoader } from '../../loaders/MaterialLoader.js';
  * @augments MaterialLoader
  */
 class NodeMaterialLoader extends MaterialLoader {
-
 	/**
 	 * Constructs a new node material loader.
 	 *
 	 * @param {LoadingManager?} manager - A reference to a loading manager.
 	 */
 	constructor( manager ) {
-
 		super( manager );
-
 		/**
 		 * Represents a dictionary of node types.
 		 *
 		 * @type {Object<String,Node.constructor>}
 		 */
 		this.nodes = {};
-
 		/**
 		 * Represents a dictionary of node material types.
 		 *
 		 * @type {Object<String,NodeMaterial.constructor>}
 		 */
 		this.nodeMaterials = {};
-
 	}
-
 	/**
 	 * Parses the node material from the given JSON.
 	 *
@@ -39,24 +33,15 @@ class NodeMaterialLoader extends MaterialLoader {
 	 * @return {NodeMaterial}. The parsed material.
 	 */
 	parse( json ) {
-
 		const material = super.parse( json );
-
 		const nodes = this.nodes;
 		const inputNodes = json.inputNodes;
-
 		for ( const property in inputNodes ) {
-
 			const uuid = inputNodes[ property ];
-
 			material[ property ] = nodes[ uuid ];
-
 		}
-
 		return material;
-
 	}
-
 	/**
 	 * Defines the dictionary of node types.
 	 *
@@ -64,12 +49,9 @@ class NodeMaterialLoader extends MaterialLoader {
 	 * @return {NodeLoader} A reference to this loader.
 	 */
 	setNodes( value ) {
-
 		this.nodes = value;
 		return this;
-
 	}
-
 	/**
 	 * Defines the dictionary of node material types.
 	 *
@@ -77,12 +59,9 @@ class NodeMaterialLoader extends MaterialLoader {
 	 * @return {NodeLoader} A reference to this loader.
 	 */
 	setNodeMaterials( value ) {
-
 		this.nodeMaterials = value;
 		return this;
-
 	}
-
 	/**
 	 * Creates a node material from the given type.
 	 *
@@ -90,17 +69,11 @@ class NodeMaterialLoader extends MaterialLoader {
 	 * @return {Node} The created node material instance.
 	 */
 	createMaterialFromType( type ) {
-
 		const materialClass = this.nodeMaterials[ type ];
-
 		if ( materialClass !== undefined ) {
-
 			return new materialClass();
-
 		}
-
 		return super.createMaterialFromType( type );
-
 	}
 
 }

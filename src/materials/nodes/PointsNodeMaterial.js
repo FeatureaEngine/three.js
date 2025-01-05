@@ -15,22 +15,16 @@ const _defaultValues = /*@__PURE__*/ new PointsMaterial();
  * @augments NodeMaterial
  */
 class PointsNodeMaterial extends NodeMaterial {
-
 	static get type() {
-
 		return 'PointsNodeMaterial';
-
 	}
-
 	/**
 	 * Constructs a new points node material.
 	 *
 	 * @param {Object?} parameters - The configuration parameter.
 	 */
 	constructor( parameters ) {
-
 		super();
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -39,11 +33,8 @@ class PointsNodeMaterial extends NodeMaterial {
 		 * @default true
 		 */
 		this.isPointsNodeMaterial = true;
-
 		this.setDefaultValues( _defaultValues );
-
 		this.setValues( parameters );
-
 	}
 
 }

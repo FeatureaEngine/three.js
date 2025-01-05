@@ -11,13 +11,9 @@ import { float, addMethodChaining, nodeProxy } from '../tsl/TSLCore.js';
  * @augments Node
  */
 class RemapNode extends Node {
-
 	static get type() {
-
 		return 'RemapNode';
-
 	}
-
 	/**
 	 * Constructs a new remap node.
 	 *
@@ -28,30 +24,25 @@ class RemapNode extends Node {
 	 * @param {Node} [outHighNode=float(1)] - The target upper bound of the range.
 	 */
 	constructor( node, inLowNode, inHighNode, outLowNode = float( 0 ), outHighNode = float( 1 ) ) {
-
 		super();
-
 		/**
 		 * The node that should be remapped.
 		 *
 		 * @type {Node}
 		 */
 		this.node = node;
-
 		/**
 		 * The source or current lower bound of the range.
 		 *
 		 * @type {Node}
 		 */
 		this.inLowNode = inLowNode;
-
 		/**
 		 * The source or current upper bound of the range.
 		 *
 		 * @type {Node}
 		 */
 		this.inHighNode = inHighNode;
-
 		/**
 		 * The target lower bound of the range.
 		 *
@@ -59,7 +50,6 @@ class RemapNode extends Node {
 		 * @default float(0)
 		 */
 		this.outLowNode = outLowNode;
-
 		/**
 		 * The target upper bound of the range.
 		 *
@@ -67,7 +57,6 @@ class RemapNode extends Node {
 		 * @default float(1)
 		 */
 		this.outHighNode = outHighNode;
-
 		/**
 		 * Whether the node value should be clamped before
 		 * remapping it to the target range.
@@ -76,19 +65,12 @@ class RemapNode extends Node {
 		 * @default true
 		 */
 		this.doClamp = true;
-
 	}
-
 	setup() {
-
 		const { node, inLowNode, inHighNode, outLowNode, outHighNode, doClamp } = this;
-
 		let t = node.sub( inLowNode ).div( inHighNode.sub( inLowNode ) );
-
 		if ( doClamp === true ) t = t.clamp();
-
 		return t.mul( outHighNode.sub( outLowNode ) ).add( outLowNode );
-
 	}
 
 }

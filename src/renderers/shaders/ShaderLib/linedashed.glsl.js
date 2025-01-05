@@ -13,9 +13,7 @@ varying float vLineDistance;
 #include <clipping_planes_pars_vertex>
 
 void main() {
-
 	vLineDistance = scale * lineDistance;
-
 	#include <uv_vertex>
 	#include <color_vertex>
 	#include <morphinstance_vertex>
@@ -48,24 +46,16 @@ varying float vLineDistance;
 #include <clipping_planes_pars_fragment>
 
 void main() {
-
 	vec4 diffuseColor = vec4( diffuse, opacity );
 	#include <clipping_planes_fragment>
-
 	if ( mod( vLineDistance, totalSize ) > dashSize ) {
-
 		discard;
-
 	}
-
 	vec3 outgoingLight = vec3( 0.0 );
-
 	#include <logdepthbuf_fragment>
 	#include <map_fragment>
 	#include <color_fragment>
-
 	outgoingLight = diffuseColor.rgb; // simple shader
-
 	#include <opaque_fragment>
 	#include <tonemapping_fragment>
 	#include <colorspace_fragment>

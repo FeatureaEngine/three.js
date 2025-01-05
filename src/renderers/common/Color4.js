@@ -9,7 +9,6 @@ import { Color } from '../../math/Color.js';
  * @augments Color
  */
 class Color4 extends Color {
-
 	/**
 	 * Constructs a new four-component color.
 	 *
@@ -19,13 +18,9 @@ class Color4 extends Color {
 	 * @param {Number} [a=1] - The alpha value.
 	 */
 	constructor( r, g, b, a = 1 ) {
-
 		super( r, g, b );
-
 		this.a = a;
-
 	}
-
 	/**
 	 * Overwrites the default to honor alpha.
 	 *
@@ -36,13 +31,9 @@ class Color4 extends Color {
 	 * @return {Color4} A reference to this object.
 	 */
 	set( r, g, b, a = 1 ) {
-
 		this.a = a;
-
 		return super.set( r, g, b );
-
 	}
-
 	/**
 	 * Overwrites the default to honor alpha.
 	 *
@@ -50,22 +41,16 @@ class Color4 extends Color {
 	 * @return {Color4} A reference to this object.
 	 */
 	copy( color ) {
-
 		if ( color.a !== undefined ) this.a = color.a;
-
 		return super.copy( color );
-
 	}
-
 	/**
 	 * Overwrites the default to honor alpha.
 	 *
 	 * @return {Color4} The cloned color.
 	 */
 	clone() {
-
 		return new this.constructor( this.r, this.g, this.b, this.a );
-
 	}
 
 }

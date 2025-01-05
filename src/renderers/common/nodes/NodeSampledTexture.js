@@ -8,7 +8,6 @@ import { SampledTexture } from '../SampledTexture.js';
  * @augments SampledTexture
  */
 class NodeSampledTexture extends SampledTexture {
-
 	/**
 	 * Constructs a new node-based sampled texture.
 	 *
@@ -18,23 +17,19 @@ class NodeSampledTexture extends SampledTexture {
 	 * @param {String?} [access=null] - The access type.
 	 */
 	constructor( name, textureNode, groupNode, access = null ) {
-
 		super( name, textureNode ? textureNode.value : null );
-
 		/**
 		 * The texture node.
 		 *
 		 * @type {TextureNode}
 		 */
 		this.textureNode = textureNode;
-
 		/**
 		 * The uniform group node.
 		 *
 		 * @type {UniformGroupNode}
 		 */
 		this.groupNode = groupNode;
-
 		/**
 		 * The access type.
 		 *
@@ -42,9 +37,7 @@ class NodeSampledTexture extends SampledTexture {
 		 * @default null
 		 */
 		this.access = access;
-
 	}
-
 	/**
 	 * Overwrites the default to additionally check if the node value has changed.
 	 *
@@ -52,11 +45,8 @@ class NodeSampledTexture extends SampledTexture {
 	 * @return {Boolean} Whether an update is required or not.
 	 */
 	needsBindingsUpdate( generation ) {
-
 		return this.textureNode.value !== this.texture || super.needsBindingsUpdate( generation );
-
 	}
-
 	/**
 	 * Updates the binding.
 	 *
@@ -65,19 +55,12 @@ class NodeSampledTexture extends SampledTexture {
 	 * uploaded to the GPU.
 	 */
 	update() {
-
 		const { textureNode } = this;
-
 		if ( this.texture !== textureNode.value ) {
-
 			this.texture = textureNode.value;
-
 			return true;
-
 		}
-
 		return super.update();
-
 	}
 
 }
@@ -90,7 +73,6 @@ class NodeSampledTexture extends SampledTexture {
  * @augments NodeSampledTexture
  */
 class NodeSampledCubeTexture extends NodeSampledTexture {
-
 	/**
 	 * Constructs a new node-based sampled cube texture.
 	 *
@@ -100,9 +82,7 @@ class NodeSampledCubeTexture extends NodeSampledTexture {
 	 * @param {String?} [access=null] - The access type.
 	 */
 	constructor( name, textureNode, groupNode, access = null ) {
-
 		super( name, textureNode, groupNode, access );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -111,7 +91,6 @@ class NodeSampledCubeTexture extends NodeSampledTexture {
 		 * @default true
 		 */
 		this.isSampledCubeTexture = true;
-
 	}
 
 }
@@ -124,7 +103,6 @@ class NodeSampledCubeTexture extends NodeSampledTexture {
  * @augments NodeSampledTexture
  */
 class NodeSampledTexture3D extends NodeSampledTexture {
-
 	/**
 	 * Constructs a new node-based sampled 3D texture.
 	 *
@@ -134,9 +112,7 @@ class NodeSampledTexture3D extends NodeSampledTexture {
 	 * @param {String?} [access=null] - The access type.
 	 */
 	constructor( name, textureNode, groupNode, access = null ) {
-
 		super( name, textureNode, groupNode, access );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -145,7 +121,6 @@ class NodeSampledTexture3D extends NodeSampledTexture {
 		 * @default true
 		 */
 		this.isSampledTexture3D = true;
-
 	}
 
 }

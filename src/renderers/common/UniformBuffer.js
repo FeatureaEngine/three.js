@@ -7,7 +7,6 @@ import Buffer from './Buffer.js';
  * @augments Buffer
  */
 class UniformBuffer extends Buffer {
-
 	/**
 	 * Constructs a new uniform buffer.
 	 *
@@ -15,9 +14,7 @@ class UniformBuffer extends Buffer {
 	 * @param {TypedArray} [buffer=null] - The buffer.
 	 */
 	constructor( name, buffer = null ) {
-
 		super( name, buffer );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -26,7 +23,6 @@ class UniformBuffer extends Buffer {
 		 * @default true
 		 */
 		this.isUniformBuffer = true;
-
 	}
 
 }

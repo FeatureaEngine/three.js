@@ -7,7 +7,6 @@
 		<link type="text/css" rel="stylesheet" href="../public/example.css">
 	</head>
 	<body>
-
 		<div id="info">
 			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - webgl - KTX2 texture loader<br />
 			<a href="http://github.khronos.org/KTX-Specification/" target="_blank" rel="noopener">KTX2</a> with
@@ -15,17 +14,12 @@
 		</div>
 
 
-
 		<script type="module">
-
 			import * as THREE from "../src/Three.js";
-
 			import { KTX2Loader } from '../addons/loaders/KTX2Loader.js';
 			import { OrbitControls } from '../addons/controls/OrbitControls.js';
 			import { GUI } from '../libs/lil-gui.module.min.js';
-
 			let camera, scene, renderer, controls, loader, material;
-
 			const SAMPLES = {
 				'BasisU ETC1S': '2d_etc1s.ktx2',
 				'BasisU UASTC': '2d_uastc.ktx2',
@@ -37,7 +31,6 @@
 				'RGBA32 Linear': '2d_rgba32_linear.ktx2',
 				'ASTC 6x6 (mobile)': '2d_astc_6x6.ktx2',
 			};
-
 			const FORMAT_LABELS = {
 				[ THREE.RGBAFormat ]: 'RGBA',
 				[ THREE.RGBA_BPTC_Format ]: 'RGBA_BPTC',
@@ -52,7 +45,6 @@
 				[ THREE.RGB_ETC2_Format ]: 'RGB_ETC2',
 				[ THREE.RGBA_ETC2_EAC_Format ]: 'RGB_ETC2_EAC',
 			};
-
 			const TYPE_LABELS = {
 				[ THREE.UnsignedByteType ]: 'UnsignedByteType',
 				[ THREE.ByteType ]: 'ByteType',
@@ -63,35 +55,25 @@
 				[ THREE.FloatType ]: 'FloatType',
 				[ THREE.HalfFloatType ]: 'HalfFloatType',
 			};
-
 			const params = {
 				sample: Object.values( SAMPLES )[ 0 ],
 			};
-
 			init();
-
 			async function init() {
-
 				const width = window.innerWidth;
 				const height = window.innerHeight;
-
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( width, height );
 				document.body.appendChild( renderer.domElement );
-
 				window.addEventListener( 'resize', onWindowResize );
-
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0x202020 );
-
 				camera = new THREE.PerspectiveCamera( 60, width / height, 0.1, 100 );
 				camera.position.set( 0, 0, 2.5 );
 				camera.lookAt( scene.position );
 				scene.add( camera );
-
 				controls = new OrbitControls( camera, renderer.domElement );
-
 				// PlaneGeometry UVs assume flipY=true, which compressed textures don't support.
 				const geometry = flipY( new THREE.PlaneGeometry() );
 				material = new THREE.MeshBasicMaterial( {
@@ -101,81 +83,48 @@
 				} );
 				const mesh = new THREE.Mesh( geometry, material );
 				scene.add( mesh );
-
 				loader = new KTX2Loader()
 					.setTranscoderPath( '../libs/basis/' )
 					.detectSupport( renderer );
-
 				const gui = new GUI();
-
 				gui.add( params, 'sample', SAMPLES ).onChange( loadTexture );
-
 				await loadTexture( params.sample );
-
 				renderer.setAnimationLoop( animate );
-
 			}
-
 			function animate() {
-
 				controls.update();
-
 				renderer.render( scene, camera );
-
 			}
-
 			function onWindowResize() {
-
 				const width = window.innerWidth;
 				const height = window.innerHeight;
-
 				camera.aspect = width / height;
 				camera.updateProjectionMatrix();
 				renderer.setSize( width, height );
-
 			}
-
 			async function loadTexture( path ) {
-
 				try {
-
 					const texture = await loader.loadAsync( `../res/textures/compressed/${path}` );
 					texture.minFilter = THREE.NearestMipmapNearestFilter;
-
 					material.map = texture;
 					material.needsUpdate = true;
-
 					console.info( `format: ${ FORMAT_LABELS[ texture.format ] }` );
 					console.info( `type: ${ TYPE_LABELS[ texture.type ] }` );
 					console.info( `colorSpace: ${ texture.colorSpace }` );
-
 				} catch ( e ) {
-
 					console.error( e );
-
 				}
-
 				// NOTE: Call `loader.dispose()` when finished loading textures.
 
-
 			}
-
 			/** Correct UVs to be compatible with `flipY=false` textures. */
 			function flipY( geometry ) {
-
 				const uv = geometry.attributes.uv;
-
 				for ( let i = 0; i < uv.count; i ++ ) {
-
 					uv.setY( i, 1 - uv.getY( i ) );
-
 				}
-
 				return geometry;
-
 			}
-
 		</script>
-
 	</body>
 </html>

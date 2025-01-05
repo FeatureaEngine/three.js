@@ -11,29 +11,22 @@ import { ShaderNode, nodeProxy, getCurrentStack, setCurrentStack } from '../tsl/
  * @augments Node
  */
 class StackNode extends Node {
-
 	static get type() {
-
 		return 'StackNode';
-
 	}
-
 	/**
 	 * Constructs a new stack node.
 	 *
 	 * @param {StackNode?} [parent=null] - The parent stack node.
 	 */
 	constructor( parent = null ) {
-
 		super();
-
 		/**
 		 * List of nodes.
 		 *
 		 * @type {Array<Node>}
 		 */
 		this.nodes = [];
-
 		/**
 		 * The output node.
 		 *
@@ -41,7 +34,6 @@ class StackNode extends Node {
 		 * @default null
 		 */
 		this.outputNode = null;
-
 		/**
 		 * The parent stack node.
 		 *
@@ -49,7 +41,6 @@ class StackNode extends Node {
 		 * @default null
 		 */
 		this.parent = parent;
-
 		/**
 		 * The current conditional node.
 		 *
@@ -58,7 +49,6 @@ class StackNode extends Node {
 		 * @default null
 		 */
 		this._currentCond = null;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -67,15 +57,10 @@ class StackNode extends Node {
 		 * @default true
 		 */
 		this.isStackNode = true;
-
 	}
-
 	getNodeType( builder ) {
-
 		return this.outputNode ? this.outputNode.getNodeType( builder ) : 'void';
-
 	}
-
 	/**
 	 * Adds a node to this stack.
 	 *
@@ -83,13 +68,9 @@ class StackNode extends Node {
 	 * @return {StackNode} A reference to this stack node.
 	 */
 	add( node ) {
-
 		this.nodes.push( node );
-
 		return this;
-
 	}
-
 	/**
 	 * Represent an `if` statement in TSL.
 	 *
@@ -98,14 +79,10 @@ class StackNode extends Node {
 	 * @return {StackNode} A reference to this stack node.
 	 */
 	If( boolNode, method ) {
-
 		const methodNode = new ShaderNode( method );
 		this._currentCond = select( boolNode, methodNode );
-
 		return this.add( this._currentCond );
-
 	}
-
 	/**
 	 * Represent an `elseif` statement in TSL.
 	 *
@@ -114,17 +91,12 @@ class StackNode extends Node {
 	 * @return {StackNode} A reference to this stack node.
 	 */
 	ElseIf( boolNode, method ) {
-
 		const methodNode = new ShaderNode( method );
 		const ifNode = select( boolNode, methodNode );
-
 		this._currentCond.elseNode = ifNode;
 		this._currentCond = ifNode;
-
 		return this;
-
 	}
-
 	/**
 	 * Represent an `else` statement in TSL.
 	 *
@@ -132,45 +104,26 @@ class StackNode extends Node {
 	 * @return {StackNode} A reference to this stack node.
 	 */
 	Else( method ) {
-
 		this._currentCond.elseNode = new ShaderNode( method );
-
 		return this;
-
 	}
-
 	build( builder, ...params ) {
-
 		const previousStack = getCurrentStack();
-
 		setCurrentStack( this );
-
 		for ( const node of this.nodes ) {
-
 			node.build( builder, 'void' );
-
 		}
-
 		setCurrentStack( previousStack );
-
 		return this.outputNode ? this.outputNode.build( builder, ...params ) : super.build( builder, ...params );
-
 	}
-
 	//
-
 	else( ...params ) { // @deprecated, r168
-
 		console.warn( 'TSL.StackNode: .else() has been renamed to .Else().' );
 		return this.Else( ...params );
-
 	}
-
 	elseif( ...params ) { // @deprecated, r168
-
 		console.warn( 'TSL.StackNode: .elseif() has been renamed to .ElseIf().' );
 		return this.ElseIf( ...params );
-
 	}
 
 }

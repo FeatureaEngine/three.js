@@ -7,7 +7,6 @@ import Binding from './Binding.js';
  * @augments Binding
  */
 class Sampler extends Binding {
-
 	/**
 	 * Constructs a new sampler.
 	 *
@@ -15,23 +14,19 @@ class Sampler extends Binding {
 	 * @param {Texture?} texture - The texture this binding is referring to.
 	 */
 	constructor( name, texture ) {
-
 		super( name );
-
 		/**
 		 * The texture the sampler is referring to.
 		 *
 		 * @type {Texture?}
 		 */
 		this.texture = texture;
-
 		/**
 		 * The binding's version.
 		 *
 		 * @type {Number}
 		 */
 		this.version = texture ? texture.version : 0;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -40,7 +35,6 @@ class Sampler extends Binding {
 		 * @default true
 		 */
 		this.isSampler = true;
-
 	}
 
 }

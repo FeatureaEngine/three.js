@@ -11,35 +11,23 @@ import { nodeProxy } from '../tsl/TSLCore.js';
  * @augments Node
  */
 class BarrierNode extends Node {
-
 	/**
 	 * Constructs a new barrier node.
 	 *
 	 * @param {String} scope - The scope defines the behavior of the node.
 	 */
 	constructor( scope ) {
-
 		super();
-
 		this.scope = scope;
-
 	}
-
 	generate( builder ) {
-
 		const { scope } = this;
 		const { renderer } = builder;
-
 		if ( renderer.backend.isWebGLBackend === true ) {
-
 			builder.addFlowCode( `\t// ${scope}Barrier \n` );
-
 		} else {
-
 			builder.addLineFlowCode( `${scope}Barrier()`, this );
-
 		}
-
 	}
 
 }

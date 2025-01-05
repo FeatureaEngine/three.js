@@ -11,12 +11,9 @@ import { uv } from '../accessors/UV.js';
 import { float, vec2, vec4, int } from '../tsl/TSLBase.js';
 
 export const mx_aastep = ( threshold, value ) => {
-
 	threshold = float( threshold );
 	value = float( value );
-
 	const afwidth = vec2( value.dFdx(), value.dFdy() ).length().mul( 0.70710678118654757 );
-
 	return smoothstep( threshold.sub( afwidth ), threshold.add( afwidth ), value );
 
 };
@@ -32,9 +29,7 @@ export const mx_splittb = ( valuet, valueb, center, texcoord = uv() ) => _split(
 export const mx_transform_uv = ( uv_scale = 1, uv_offset = 0, uv_geo = uv() ) => uv_geo.mul( uv_scale ).add( uv_offset );
 
 export const mx_safepower = ( in1, in2 = 1 ) => {
-
 	in1 = float( in1 );
-
 	return in1.abs().pow( in2 ).mul( in1.sign() );
 
 };
@@ -45,11 +40,8 @@ export const mx_noise_float = ( texcoord = uv(), amplitude = 1, pivot = 0 ) => m
 //export const mx_noise_vec2 = ( texcoord = uv(), amplitude = 1, pivot = 0 ) => mx_perlin_noise_vec3( texcoord.convert( 'vec2|vec3' ) ).mul( amplitude ).add( pivot );
 export const mx_noise_vec3 = ( texcoord = uv(), amplitude = 1, pivot = 0 ) => mx_perlin_noise_vec3( texcoord.convert( 'vec2|vec3' ) ).mul( amplitude ).add( pivot );
 export const mx_noise_vec4 = ( texcoord = uv(), amplitude = 1, pivot = 0 ) => {
-
 	texcoord = texcoord.convert( 'vec2|vec3' ); // overloading type
-
 	const noise_vec4 = vec4( mx_perlin_noise_vec3( texcoord ), mx_perlin_noise_float( texcoord.add( vec2( 19, 73 ) ) ) );
-
 	return noise_vec4.mul( amplitude ).add( pivot );
 
 };

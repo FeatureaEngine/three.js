@@ -16,13 +16,9 @@ import { nodeImmutable, nodeObject } from '../tsl/TSLCore.js';
  * @augments Node
  */
 class PropertyNode extends Node {
-
 	static get type() {
-
 		return 'PropertyNode';
-
 	}
-
 	/**
 	 * Constructs a new property node.
 	 *
@@ -31,9 +27,7 @@ class PropertyNode extends Node {
 	 * @param {Boolean} [varying=false] - Whether this property is a varying or not.
 	 */
 	constructor( nodeType, name = null, varying = false ) {
-
 		super( nodeType );
-
 		/**
 		 * The name of the property in the shader. If no name is defined,
 		 * the node system auto-generates one.
@@ -42,7 +36,6 @@ class PropertyNode extends Node {
 		 * @default null
 		 */
 		this.name = name;
-
 		/**
 		 * Whether this property is a varying or not.
 		 *
@@ -50,7 +43,6 @@ class PropertyNode extends Node {
 		 * @default false
 		 */
 		this.varying = varying;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -59,15 +51,10 @@ class PropertyNode extends Node {
 		 * @default true
 		 */
 		this.isPropertyNode = true;
-
 	}
-
 	getHash( builder ) {
-
 		return this.name || super.getHash( builder );
-
 	}
-
 	/**
 	 * The method is overwritten so it always returns `true`.
 	 *
@@ -75,28 +62,17 @@ class PropertyNode extends Node {
 	 * @return {Boolean} Whether this node is global or not.
 	 */
 	isGlobal( /*builder*/ ) {
-
 		return true;
-
 	}
-
 	generate( builder ) {
-
 		let nodeVar;
-
 		if ( this.varying === true ) {
-
 			nodeVar = builder.getVaryingFromNode( this, this.name );
 			nodeVar.needsInterpolation = true;
-
 		} else {
-
 			nodeVar = builder.getVarFromNode( this, this.name );
-
 		}
-
 		return builder.getPropertyName( nodeVar );
-
 	}
 
 }

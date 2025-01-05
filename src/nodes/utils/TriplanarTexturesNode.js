@@ -17,13 +17,9 @@ import { nodeProxy, float, vec3 } from '../tsl/TSLBase.js';
  * @augments Node
  */
 class TriplanarTexturesNode extends Node {
-
 	static get type() {
-
 		return 'TriplanarTexturesNode';
-
 	}
-
 	/**
 	 * Constructs a new triplanar textures node.
 	 *
@@ -35,16 +31,13 @@ class TriplanarTexturesNode extends Node {
 	 * @param {Node<vec3>?} [normalNode=normalLocal] - Normals in local space.
 	 */
 	constructor( textureXNode, textureYNode = null, textureZNode = null, scaleNode = float( 1 ), positionNode = positionLocal, normalNode = normalLocal ) {
-
 		super( 'vec4' );
-
 		/**
 		 * First texture node.
 		 *
 		 * @type {Node}
 		 */
 		this.textureXNode = textureXNode;
-
 		/**
 		 * Second texture node. When not set, the shader will sample from `textureXNode` instead.
 		 *
@@ -52,7 +45,6 @@ class TriplanarTexturesNode extends Node {
 		 * @default null
 		 */
 		this.textureYNode = textureYNode;
-
 		/**
 		 * Third texture node. When not set, the shader will sample from `textureXNode` instead.
 		 *
@@ -60,7 +52,6 @@ class TriplanarTexturesNode extends Node {
 		 * @default null
 		 */
 		this.textureZNode = textureZNode;
-
 		/**
 		 * The scale node.
 		 *
@@ -68,7 +59,6 @@ class TriplanarTexturesNode extends Node {
 		 * @default float(1)
 		 */
 		this.scaleNode = scaleNode;
-
 		/**
 		 * Vertex positions in local space.
 		 *
@@ -76,7 +66,6 @@ class TriplanarTexturesNode extends Node {
 		 * @default positionLocal
 		 */
 		this.positionNode = positionNode;
-
 		/**
 		 * Normals in local space.
 		 *
@@ -84,35 +73,25 @@ class TriplanarTexturesNode extends Node {
 		 * @default normalLocal
 		 */
 		this.normalNode = normalNode;
-
 	}
-
 	setup() {
-
 		const { textureXNode, textureYNode, textureZNode, scaleNode, positionNode, normalNode } = this;
-
 		// Ref: https://github.com/keijiro/StandardTriplanar
-
 		// Blending factor of triplanar mapping
 		let bf = normalNode.abs().normalize();
 		bf = bf.div( bf.dot( vec3( 1.0 ) ) );
-
 		// Triplanar mapping
 		const tx = positionNode.yz.mul( scaleNode );
 		const ty = positionNode.zx.mul( scaleNode );
 		const tz = positionNode.xy.mul( scaleNode );
-
 		// Base color
 		const textureX = textureXNode.value;
 		const textureY = textureYNode !== null ? textureYNode.value : textureX;
 		const textureZ = textureZNode !== null ? textureZNode.value : textureX;
-
 		const cx = texture( textureX, tx ).mul( bf.x );
 		const cy = texture( textureY, ty ).mul( bf.y );
 		const cz = texture( textureZ, tz ).mul( bf.z );
-
 		return add( cx, cy, cz );
-
 	}
 
 }

@@ -15,7 +15,6 @@ import { InstancedBufferAttribute } from '../../core/InstancedBufferAttribute.js
  * @augments InstancedBufferAttribute
  */
 class StorageInstancedBufferAttribute extends InstancedBufferAttribute {
-
 	/**
 	 * Constructs a new storage instanced buffer attribute.
 	 *
@@ -25,11 +24,8 @@ class StorageInstancedBufferAttribute extends InstancedBufferAttribute {
 	 * @param {TypedArray.contructor} [typeClass=Float32Array] - A typed array constructor.
 	 */
 	constructor( count, itemSize, typeClass = Float32Array ) {
-
 		const array = ArrayBuffer.isView( count ) ? count : new typeClass( count * itemSize );
-
 		super( array, itemSize );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -38,7 +34,6 @@ class StorageInstancedBufferAttribute extends InstancedBufferAttribute {
 		 * @default true
 		 */
 		this.isStorageInstancedBufferAttribute = true;
-
 	}
 
 }

@@ -17,11 +17,9 @@ import { linearDepth } from '../display/ViewportDepthNode.js';
  * @return {Node<vec2>} The update uv coordinates.
  */
 export const viewportSafeUV = /*@__PURE__*/ Fn( ( [ uv = null ] ) => {
-
 	const depth = linearDepth();
 	const depthDiff = linearDepth( viewportDepthTexture( uv ) ).sub( depth );
 	const finalUV = depthDiff.lessThan( 0 ).select( screenUV, uv );
-
 	return finalUV;
 
 } );

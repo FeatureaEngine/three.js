@@ -11,13 +11,9 @@ import { nodeProxy } from '../tsl/TSLCore.js';
  * @augments Node
  */
 class FunctionOverloadingNode extends Node {
-
 	static get type() {
-
 		return 'FunctionOverloadingNode';
-
 	}
-
 	/**
 	 * Constructs a new function overloading node.
 	 *
@@ -25,23 +21,19 @@ class FunctionOverloadingNode extends Node {
 	 * @param {...Node} parametersNodes - A list of parameter nodes.
 	 */
 	constructor( functionNodes = [], ...parametersNodes ) {
-
 		super();
-
 		/**
 		 * Array of `Fn` function definitions.
 		 *
 		 * @type {Array<Function>}
 		 */
 		this.functionNodes = functionNodes;
-
 		/**
 		 * A list of parameter nodes.
 		 *
 		 * @type {Array<Node>}
 		 */
 		this.parametersNodes = parametersNodes;
-
 		/**
 		 * The selected overloaded function call.
 		 *
@@ -49,7 +41,6 @@ class FunctionOverloadingNode extends Node {
 		 * @type {ShaderCallNodeInternal}
 		 */
 		this._candidateFnCall = null;
-
 		/**
 		 * This node is marked as global.
 		 *
@@ -57,9 +48,7 @@ class FunctionOverloadingNode extends Node {
 		 * @default true
 		 */
 		this.global = true;
-
 	}
-
 	/**
 	 * This method is overwritten since the node type is inferred from
 	 * the function's return type.
@@ -68,73 +57,41 @@ class FunctionOverloadingNode extends Node {
 	 * @return {String} The node type.
 	 */
 	getNodeType() {
-
 		return this.functionNodes[ 0 ].shaderNode.layout.type;
-
 	}
-
 	setup( builder ) {
-
 		const params = this.parametersNodes;
-
 		let candidateFnCall = this._candidateFnCall;
-
 		if ( candidateFnCall === null ) {
-
 			let candidateFn = null;
 			let candidateScore = - 1;
-
 			for ( const functionNode of this.functionNodes ) {
-
 				const shaderNode = functionNode.shaderNode;
 				const layout = shaderNode.layout;
-
 				if ( layout === null ) {
-
 					throw new Error( 'FunctionOverloadingNode: FunctionNode must be a layout.' );
-
 				}
-
 				const inputs = layout.inputs;
-
 				if ( params.length === inputs.length ) {
-
 					let score = 0;
-
 					for ( let i = 0; i < params.length; i ++ ) {
-
 						const param = params[ i ];
 						const input = inputs[ i ];
-
 						if ( param.getNodeType( builder ) === input.type ) {
-
 							score ++;
-
 						} else {
-
 							score = 0;
-
 						}
-
 					}
-
 					if ( score > candidateScore ) {
-
 						candidateFn = functionNode;
 						candidateScore = score;
-
 					}
-
 				}
-
 			}
-
 			this._candidateFnCall = candidateFnCall = candidateFn( ...params );
-
 		}
-
 		return candidateFnCall;
-
 	}
 
 }

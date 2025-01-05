@@ -13,16 +13,12 @@ import { vec4 } from '../tsl/TSLBase.js';
  * @augments LightingModel
  */
 class BasicLightingModel extends LightingModel {
-
 	/**
 	 * Constructs a new basic lighting model.
 	 */
 	constructor() {
-
 		super();
-
 	}
-
 	/**
 	 * Implements the baked indirect lighting with its modulation.
 	 *
@@ -31,33 +27,20 @@ class BasicLightingModel extends LightingModel {
 	 * @param {NodeBuilder} builder - The current node builder.
 	 */
 	indirect( context, stack, builder ) {
-
 		const ambientOcclusion = context.ambientOcclusion;
 		const reflectedLight = context.reflectedLight;
 		const irradianceLightMap = builder.context.irradianceLightMap;
-
 		reflectedLight.indirectDiffuse.assign( vec4( 0.0 ) );
-
 		// accumulation (baked indirect lighting only)
-
 		if ( irradianceLightMap ) {
-
 			reflectedLight.indirectDiffuse.addAssign( irradianceLightMap );
-
 		} else {
-
 			reflectedLight.indirectDiffuse.addAssign( vec4( 1.0, 1.0, 1.0, 0.0 ) );
-
 		}
-
 		// modulation
-
 		reflectedLight.indirectDiffuse.mulAssign( ambientOcclusion );
-
 		reflectedLight.indirectDiffuse.mulAssign( diffuseColor.rgb );
-
 	}
-
 	/**
 	 * Implements the environment mapping.
 	 *
@@ -66,35 +49,25 @@ class BasicLightingModel extends LightingModel {
 	 * @param {NodeBuilder} builder - The current node builder.
 	 */
 	finish( context, stack, builder ) {
-
 		const material = builder.material;
 		const outgoingLight = context.outgoingLight;
 		const envNode = builder.context.environment;
-
 		if ( envNode ) {
-
 			switch ( material.combine ) {
-
 				case MultiplyOperation:
 					outgoingLight.rgb.assign( mix( outgoingLight.rgb, outgoingLight.rgb.mul( envNode.rgb ), materialSpecularStrength.mul( materialReflectivity ) ) );
 					break;
-
 				case MixOperation:
 					outgoingLight.rgb.assign( mix( outgoingLight.rgb, envNode.rgb, materialSpecularStrength.mul( materialReflectivity ) ) );
 					break;
-
 				case AddOperation:
 					outgoingLight.rgb.addAssign( envNode.rgb.mul( materialSpecularStrength.mul( materialReflectivity ) ) );
 					break;
-
 				default:
 					console.warn( 'THREE.BasicLightingModel: Unsupported .combine value:', material.combine );
 					break;
-
 			}
-
 		}
-
 	}
 
 }

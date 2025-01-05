@@ -12,19 +12,16 @@ let _id = 0;
  * @private
  */
 class RenderContext {
-
 	/**
 	 * Constructs a new render context.
 	 */
 	constructor() {
-
 		/**
 		 * The context's ID.
 		 *
 		 * @type {Number}
 		 */
 		this.id = _id ++;
-
 		/**
 		 * Whether the current active framebuffer has a color attachment.
 		 *
@@ -32,7 +29,6 @@ class RenderContext {
 		 * @default true
 		 */
 		this.color = true;
-
 		/**
 		 * Whether the color attachment should be cleared or not.
 		 *
@@ -40,7 +36,6 @@ class RenderContext {
 		 * @default true
 		 */
 		this.clearColor = true;
-
 		/**
 		 * The clear color value.
 		 *
@@ -48,7 +43,6 @@ class RenderContext {
 		 * @default true
 		 */
 		this.clearColorValue = { r: 0, g: 0, b: 0, a: 1 };
-
 		/**
 		 * Whether the current active framebuffer has a depth attachment.
 		 *
@@ -56,7 +50,6 @@ class RenderContext {
 		 * @default true
 		 */
 		this.depth = true;
-
 		/**
 		 * Whether the depth attachment should be cleared or not.
 		 *
@@ -64,7 +57,6 @@ class RenderContext {
 		 * @default true
 		 */
 		this.clearDepth = true;
-
 		/**
 		 * The clear depth value.
 		 *
@@ -72,7 +64,6 @@ class RenderContext {
 		 * @default 1
 		 */
 		this.clearDepthValue = 1;
-
 		/**
 		 * Whether the current active framebuffer has a stencil attachment.
 		 *
@@ -80,7 +71,6 @@ class RenderContext {
 		 * @default false
 		 */
 		this.stencil = false;
-
 		/**
 		 * Whether the stencil attachment should be cleared or not.
 		 *
@@ -88,7 +78,6 @@ class RenderContext {
 		 * @default true
 		 */
 		this.clearStencil = true;
-
 		/**
 		 * The clear stencil value.
 		 *
@@ -96,7 +85,6 @@ class RenderContext {
 		 * @default 1
 		 */
 		this.clearStencilValue = 1;
-
 		/**
 		 * By default the viewport encloses the entire framebuffer If a smaller
 		 * viewport is manually defined, this property is to `true` by the renderer.
@@ -105,7 +93,6 @@ class RenderContext {
 		 * @default false
 		 */
 		this.viewport = false;
-
 		/**
 		 * The viewport value. This value is in physical pixels meaning it incorporates
 		 * the renderer's pixel ratio. The viewport property of render targets or
@@ -114,7 +101,6 @@ class RenderContext {
 		 * @type {Vector4}
 		 */
 		this.viewportValue = new Vector4();
-
 		/**
 		 * When the scissor test is active and scissor rectangle smaller than the
 		 * framebuffers dimensions, this property is to `true` by the renderer.
@@ -123,14 +109,12 @@ class RenderContext {
 		 * @default false
 		 */
 		this.scissor = false;
-
 		/**
 		 * The scissor rectangle.
 		 *
 		 * @type {Vector4}
 		 */
 		this.scissorValue = new Vector4();
-
 		/**
 		 * The textures of the active render target.
 		 * `null` when no render target is set.
@@ -139,7 +123,6 @@ class RenderContext {
 		 * @default null
 		 */
 		this.textures = null;
-
 		/**
 		 * The depth texture of the active render target.
 		 * `null` when no render target is set.
@@ -148,7 +131,6 @@ class RenderContext {
 		 * @default null
 		 */
 		this.depthTexture = null;
-
 		/**
 		 * The active cube face.
 		 *
@@ -156,7 +138,6 @@ class RenderContext {
 		 * @default 0
 		 */
 		this.activeCubeFace = 0;
-
 		/**
 		 * The number of MSAA samples. This value is always `1` when
 		 * MSAA isn't used.
@@ -165,7 +146,6 @@ class RenderContext {
 		 * @default 1
 		 */
 		this.sampleCount = 1;
-
 		/**
 		 * The framebuffers width in physical pixels.
 		 *
@@ -173,7 +153,6 @@ class RenderContext {
 		 * @default 0
 		 */
 		this.width = 0;
-
 		/**
 		 * The framebuffers height in physical pixels.
 		 *
@@ -181,7 +160,6 @@ class RenderContext {
 		 * @default 0
 		 */
 		this.height = 0;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -190,18 +168,14 @@ class RenderContext {
 		 * @default true
 		 */
 		this.isRenderContext = true;
-
 	}
-
 	/**
 	 * Returns the cache key of this render context.
 	 *
 	 * @return {Number} The cache key.
 	 */
 	getCacheKey() {
-
 		return getCacheKey( this );
-
 	}
 
 }
@@ -213,17 +187,11 @@ class RenderContext {
  * @return {Number} The cache key.
  */
 export function getCacheKey( renderContext ) {
-
 	const { textures, activeCubeFace } = renderContext;
-
 	const values = [ activeCubeFace ];
-
 	for ( const texture of textures ) {
-
 		values.push( texture.id );
-
 	}
-
 	return hashArray( values );
 
 }

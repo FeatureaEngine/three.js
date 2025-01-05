@@ -10,13 +10,9 @@ import { nodeProxy } from '../tsl/TSLCore.js';
  * @augments Node
  */
 class ExpressionNode extends Node {
-
 	static get type() {
-
 		return 'ExpressionNode';
-
 	}
-
 	/**
 	 * Constructs a new expression node.
 	 *
@@ -24,9 +20,7 @@ class ExpressionNode extends Node {
 	 * @param {String} [nodeType='void'] - The node type.
 	 */
 	constructor( snippet = '', nodeType = 'void' ) {
-
 		super( nodeType );
-
 		/**
 		 * The native code snippet.
 		 *
@@ -34,24 +28,15 @@ class ExpressionNode extends Node {
 		 * @default ''
 		 */
 		this.snippet = snippet;
-
 	}
-
 	generate( builder, output ) {
-
 		const type = this.getNodeType( builder );
 		const snippet = this.snippet;
-
 		if ( type === 'void' ) {
-
 			builder.addLineFlowCode( snippet, this );
-
 		} else {
-
 			return builder.format( `( ${ snippet } )`, type, output );
-
 		}
-
 	}
 
 }

@@ -12,22 +12,16 @@ const _defaultValues = /*@__PURE__*/ new MeshLambertMaterial();
  * @augments NodeMaterial
  */
 class MeshLambertNodeMaterial extends NodeMaterial {
-
 	static get type() {
-
 		return 'MeshLambertNodeMaterial';
-
 	}
-
 	/**
 	 * Constructs a new mesh lambert node material.
 	 *
 	 * @param {Object?} parameters - The configuration parameter.
 	 */
 	constructor( parameters ) {
-
 		super();
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -36,7 +30,6 @@ class MeshLambertNodeMaterial extends NodeMaterial {
 		 * @default true
 		 */
 		this.isMeshLambertNodeMaterial = true;
-
 		/**
 		 * Set to `true` because lambert materials react on lights.
 		 *
@@ -44,13 +37,9 @@ class MeshLambertNodeMaterial extends NodeMaterial {
 		 * @default true
 		 */
 		this.lights = true;
-
 		this.setDefaultValues( _defaultValues );
-
 		this.setValues( parameters );
-
 	}
-
 	/**
 	 * Overwritten since this type of material uses {@link BasicEnvironmentNode}
 	 * to implement the default environment mapping.
@@ -59,22 +48,16 @@ class MeshLambertNodeMaterial extends NodeMaterial {
 	 * @return {BasicEnvironmentNode<vec3>?} The environment node.
 	 */
 	setupEnvironment( builder ) {
-
 		const envNode = super.setupEnvironment( builder );
-
 		return envNode ? new BasicEnvironmentNode( envNode ) : null;
-
 	}
-
 	/**
 	 * Setups the lighting model.
 	 *
 	 * @return {PhongLightingModel} The lighting model.
 	 */
 	setupLightingModel( /*builder*/ ) {
-
 		return new PhongLightingModel( false ); // ( specular ) -> force lambert
-
 	}
 
 }

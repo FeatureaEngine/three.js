@@ -13,20 +13,14 @@ import { nodeImmutable } from '../tsl/TSLBase.js';
  * @augments Node
  */
 class PointUVNode extends Node {
-
 	static get type() {
-
 		return 'PointUVNode';
-
 	}
-
 	/**
 	 * Constructs a new point uv node.
 	 */
 	constructor() {
-
 		super( 'vec2' );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -35,13 +29,9 @@ class PointUVNode extends Node {
 		 * @default true
 		 */
 		this.isPointUVNode = true;
-
 	}
-
 	generate( /*builder*/ ) {
-
 		return 'vec2( gl_PointCoord.x, 1.0 - gl_PointCoord.y )';
-
 	}
 
 }

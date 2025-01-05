@@ -31,13 +31,9 @@ import { StaticDrawUsage, DynamicDrawUsage } from '../../constants.js';
  * @augments InputNode
  */
 class BufferAttributeNode extends InputNode {
-
 	static get type() {
-
 		return 'BufferAttributeNode';
-
 	}
-
 	/**
 	 * Constructs a new buffer attribute node.
 	 *
@@ -47,9 +43,7 @@ class BufferAttributeNode extends InputNode {
 	 * @param {Number} [bufferOffset=0] - The buffer offset.
 	 */
 	constructor( value, bufferType = null, bufferStride = 0, bufferOffset = 0 ) {
-
 		super( value, bufferType );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -58,7 +52,6 @@ class BufferAttributeNode extends InputNode {
 		 * @default true
 		 */
 		this.isBufferNode = true;
-
 		/**
 		 * The buffer type (e.g. `'vec3'`).
 		 *
@@ -66,7 +59,6 @@ class BufferAttributeNode extends InputNode {
 		 * @default null
 		 */
 		this.bufferType = bufferType;
-
 		/**
 		 * The buffer stride.
 		 *
@@ -74,7 +66,6 @@ class BufferAttributeNode extends InputNode {
 		 * @default 0
 		 */
 		this.bufferStride = bufferStride;
-
 		/**
 		 * The buffer offset.
 		 *
@@ -82,7 +73,6 @@ class BufferAttributeNode extends InputNode {
 		 * @default 0
 		 */
 		this.bufferOffset = bufferOffset;
-
 		/**
 		 * The usage property. Set this to `THREE.DynamicDrawUsage` via `.setUsage()`,
 		 * if you are planning to update the attribute data per frame.
@@ -91,7 +81,6 @@ class BufferAttributeNode extends InputNode {
 		 * @default StaticDrawUsage
 		 */
 		this.usage = StaticDrawUsage;
-
 		/**
 		 * Whether the attribute is instanced or not.
 		 *
@@ -99,7 +88,6 @@ class BufferAttributeNode extends InputNode {
 		 * @default false
 		 */
 		this.instanced = false;
-
 		/**
 		 * A reference to the buffer attribute.
 		 *
@@ -107,7 +95,6 @@ class BufferAttributeNode extends InputNode {
 		 * @default null
 		 */
 		this.attribute = null;
-
 		/**
 		 * `BufferAttributeNode` sets this property to `true` by default.
 		 *
@@ -115,17 +102,12 @@ class BufferAttributeNode extends InputNode {
 		 * @default true
 		 */
 		this.global = true;
-
 		if ( value && value.isBufferAttribute === true ) {
-
 			this.attribute = value;
 			this.usage = value.usage;
 			this.instanced = value.isInstancedBufferAttribute;
-
 		}
-
 	}
-
 	/**
 	 * This method is overwritten since the attribute data might be shared
 	 * and thus the hash should be shared as well.
@@ -134,29 +116,18 @@ class BufferAttributeNode extends InputNode {
 	 * @return {String} The hash.
 	 */
 	getHash( builder ) {
-
 		if ( this.bufferStride === 0 && this.bufferOffset === 0 ) {
-
 			let bufferData = builder.globalCache.getData( this.value );
-
 			if ( bufferData === undefined ) {
-
 				bufferData = {
 					node: this
 				};
-
 				builder.globalCache.setData( this.value, bufferData );
-
 			}
-
 			return bufferData.node.uuid;
-
 		}
-
 		return this.uuid;
-
 	}
-
 	/**
 	 * This method is overwritten since the node type is inferred from
 	 * the buffer attribute.
@@ -165,17 +136,11 @@ class BufferAttributeNode extends InputNode {
 	 * @return {String} The node type.
 	 */
 	getNodeType( builder ) {
-
 		if ( this.bufferType === null ) {
-
 			this.bufferType = builder.getTypeFromAttribute( this.attribute );
-
 		}
-
 		return this.bufferType;
-
 	}
-
 	/**
 	 * Depending on which value was passed to the node, `setup()` behaves
 	 * differently. If no instance of `BufferAttribute` was passed, the method
@@ -184,25 +149,18 @@ class BufferAttributeNode extends InputNode {
 	 * @param {NodeBuilder} builder - The current node builder.
 	 */
 	setup( builder ) {
-
 		if ( this.attribute !== null ) return;
-
 		const type = this.getNodeType( builder );
 		const array = this.value;
 		const itemSize = builder.getTypeLength( type );
 		const stride = this.bufferStride || itemSize;
 		const offset = this.bufferOffset;
-
 		const buffer = array.isInterleavedBuffer === true ? array : new InterleavedBuffer( array, stride );
 		const bufferAttribute = new InterleavedBufferAttribute( buffer, itemSize, offset );
-
 		buffer.setUsage( this.usage );
-
 		this.attribute = bufferAttribute;
 		this.attribute.isInstancedBufferAttribute = this.instanced; // @TODO: Add a possible: InstancedInterleavedBufferAttribute
-
 	}
-
 	/**
 	 * Generates the code snippet of the buffer attribute node.
 	 *
@@ -210,32 +168,19 @@ class BufferAttributeNode extends InputNode {
 	 * @return {String} The generated code snippet.
 	 */
 	generate( builder ) {
-
 		const nodeType = this.getNodeType( builder );
-
 		const nodeAttribute = builder.getBufferAttributeFromNode( this, nodeType );
 		const propertyName = builder.getPropertyName( nodeAttribute );
-
 		let output = null;
-
 		if ( builder.shaderStage === 'vertex' || builder.shaderStage === 'compute' ) {
-
 			this.name = propertyName;
-
 			output = propertyName;
-
 		} else {
-
 			const nodeVarying = varying( this );
-
 			output = nodeVarying.build( builder, nodeType );
-
 		}
-
 		return output;
-
 	}
-
 	/**
 	 * Overwrites the default implementation to return a fixed value `'bufferAttribute'`.
 	 *
@@ -243,11 +188,8 @@ class BufferAttributeNode extends InputNode {
 	 * @return {String} The input type.
 	 */
 	getInputType( /*builder*/ ) {
-
 		return 'bufferAttribute';
-
 	}
-
 	/**
 	 * Sets the `usage` property to the given value.
 	 *
@@ -255,19 +197,12 @@ class BufferAttributeNode extends InputNode {
 	 * @return {BufferAttributeNode} A reference to this node.
 	 */
 	setUsage( value ) {
-
 		this.usage = value;
-
 		if ( this.attribute && this.attribute.isBufferAttribute === true ) {
-
 			this.attribute.usage = value;
-
 		}
-
 		return this;
-
 	}
-
 	/**
 	 * Sets the `instanced` property to the given value.
 	 *
@@ -275,11 +210,8 @@ class BufferAttributeNode extends InputNode {
 	 * @return {BufferAttributeNode} A reference to this node.
 	 */
 	setInstanced( value ) {
-
 		this.instanced = value;
-
 		return this;
-
 	}
 
 }

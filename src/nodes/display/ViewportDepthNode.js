@@ -14,13 +14,9 @@ import { viewportDepthTexture } from './ViewportDepthTextureNode.js';
  * @augments Node
  */
 class ViewportDepthNode extends Node {
-
 	static get type() {
-
 		return 'ViewportDepthNode';
-
 	}
-
 	/**
 	 * Constructs a new viewport depth node.
 	 *
@@ -28,9 +24,7 @@ class ViewportDepthNode extends Node {
 	 * @param {Node?} [valueNode=null] - The value node.
 	 */
 	constructor( scope, valueNode = null ) {
-
 		super( 'float' );
-
 		/**
 		 * The node behaves differently depending on which scope is selected.
 		 *
@@ -42,7 +36,6 @@ class ViewportDepthNode extends Node {
 		 * @type {('depth'|'depthBase'|'linearDepth')}
 		 */
 		this.scope = scope;
-
 		/**
 		 * Can be used to define a custom depth value.
 		 * The property is ignored in the `ViewportDepthNode.DEPTH` scope.
@@ -51,7 +44,6 @@ class ViewportDepthNode extends Node {
 		 * @default null
 		 */
 		this.valueNode = valueNode;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -60,76 +52,42 @@ class ViewportDepthNode extends Node {
 		 * @default true
 		 */
 		this.isViewportDepthNode = true;
-
 	}
-
 	generate( builder ) {
-
 		const { scope } = this;
-
 		if ( scope === ViewportDepthNode.DEPTH_BASE ) {
-
 			return builder.getFragDepth();
-
 		}
-
 		return super.generate( builder );
-
 	}
-
 	setup( { camera } ) {
-
 		const { scope } = this;
 		const value = this.valueNode;
-
 		let node = null;
-
 		if ( scope === ViewportDepthNode.DEPTH_BASE ) {
-
 			if ( value !== null ) {
 
  				node = depthBase().assign( value );
-
 			}
-
 		} else if ( scope === ViewportDepthNode.DEPTH ) {
-
 			if ( camera.isPerspectiveCamera ) {
-
 				node = viewZToPerspectiveDepth( positionView.z, cameraNear, cameraFar );
-
 			} else {
-
 				node = viewZToOrthographicDepth( positionView.z, cameraNear, cameraFar );
-
 			}
-
 		} else if ( scope === ViewportDepthNode.LINEAR_DEPTH ) {
-
 			if ( value !== null ) {
-
 				if ( camera.isPerspectiveCamera ) {
-
 					const viewZ = perspectiveDepthToViewZ( value, cameraNear, cameraFar );
-
 					node = viewZToOrthographicDepth( viewZ, cameraNear, cameraFar );
-
 				} else {
-
 					node = value;
-
 				}
-
 			} else {
-
 				node = viewZToOrthographicDepth( positionView.z, cameraNear, cameraFar );
-
 			}
-
 		}
-
 		return node;
-
 	}
 
 }
@@ -198,7 +156,6 @@ export const perspectiveDepthToViewZ = ( depth, near, far ) => near.mul( far ).d
  * @returns {Node<float>}
  */
 export const viewZToLogarithmicDepth = ( viewZ, near, far ) => {
-
 	// NOTE: viewZ must be negative--see explanation at the end of this comment block.
 	// The final logarithmic depth formula used here is adapted from one described in an
 	// article by Thatcher Ulrich (see http://tulrich.com/geekstuff/log_depth_buffer.txt),
@@ -242,7 +199,6 @@ export const viewZToLogarithmicDepth = ( viewZ, near, far ) => {
  * @returns {Node<float>}
  */
 export const logarithmicDepthToViewZ = ( depth, near, far ) => {
-
 	// NOTE: we add a 'negate()' call to the return value here to maintain consistency with
 	// the functions "orthographicDepthToViewZ" and "perspectiveDepthToViewZ" (they return
 	// a negative viewZ).

@@ -5,14 +5,12 @@ let _id = 0;
  * cache data structure for node data.
  */
 class NodeCache {
-
 	/**
 	 * Constructs a new node cache.
 	 *
 	 * @param {NodeCache?} parent - A reference to a parent cache.
 	 */
 	constructor( parent = null ) {
-
 		/**
 		 * The id of the cache.
 		 *
@@ -20,14 +18,12 @@ class NodeCache {
 		 * @readonly
 		 */
 		this.id = _id ++;
-
 		/**
 		 * A weak map for managing node data.
 		 *
 		 * @type {WeakMap<Node, Object>}
 		 */
 		this.nodesData = new WeakMap();
-
 		/**
 		 * Reference to a parent node cache.
 		 *
@@ -35,9 +31,7 @@ class NodeCache {
 		 * @default null
 		 */
 		this.parent = parent;
-
 	}
-
 	/**
 	 * Returns the data for the given node.
 	 *
@@ -45,19 +39,12 @@ class NodeCache {
 	 * @return {Object?} The data for the node.
 	 */
 	getData( node ) {
-
 		let data = this.nodesData.get( node );
-
 		if ( data === undefined && this.parent !== null ) {
-
 			data = this.parent.getData( node );
-
 		}
-
 		return data;
-
 	}
-
 	/**
 	 * Sets the data for a given node.
 	 *
@@ -65,9 +52,7 @@ class NodeCache {
 	 * @param {Object} data - The data that should be cached.
 	 */
 	setData( node, data ) {
-
 		this.nodesData.set( node, data );
-
 	}
 
 }

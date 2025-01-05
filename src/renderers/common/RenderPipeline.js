@@ -7,7 +7,6 @@ import Pipeline from './Pipeline.js';
  * @augments Pipeline
  */
 class RenderPipeline extends Pipeline {
-
 	/**
 	 * Constructs a new render pipeline.
 	 *
@@ -16,23 +15,19 @@ class RenderPipeline extends Pipeline {
 	 * @param {ProgrammableStage} fragmentProgram - The pipeline's fragment shader.
 	 */
 	constructor( cacheKey, vertexProgram, fragmentProgram ) {
-
 		super( cacheKey );
-
 		/**
 		 * The pipeline's vertex shader.
 		 *
 		 * @type {ProgrammableStage}
 		 */
 		this.vertexProgram = vertexProgram;
-
 		/**
 		 * The pipeline's fragment shader.
 		 *
 		 * @type {ProgrammableStage}
 		 */
 		this.fragmentProgram = fragmentProgram;
-
 	}
 
 }

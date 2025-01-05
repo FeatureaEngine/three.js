@@ -17,22 +17,16 @@ const _defaultValues = /*@__PURE__*/ new SpriteMaterial();
  * @augments NodeMaterial
  */
 class SpriteNodeMaterial extends NodeMaterial {
-
 	static get type() {
-
 		return 'SpriteNodeMaterial';
-
 	}
-
 	/**
 	 * Constructs a new sprite node material.
 	 *
 	 * @param {Object?} parameters - The configuration parameter.
 	 */
 	constructor( parameters ) {
-
 		super();
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -41,9 +35,7 @@ class SpriteNodeMaterial extends NodeMaterial {
 		 * @default true
 		 */
 		this.isSpriteNodeMaterial = true;
-
 		this._useSizeAttenuation = true;
-
 		/**
 		 * This property makes it possible to define the position of the sprite with a
 		 * node. That can be useful when the material is used with instanced rendering
@@ -62,7 +54,6 @@ class SpriteNodeMaterial extends NodeMaterial {
 		 * @default null
 		 */
 		this.positionNode = null;
-
 		/**
 		 * The rotation of sprite materials is by default inferred from the `rotation`,
 		 * property. This node property allows to overwrite the default and define
@@ -75,7 +66,6 @@ class SpriteNodeMaterial extends NodeMaterial {
 		 * @default null
 		 */
 		this.rotationNode = null;
-
 		/**
 		 * This node property provides an additional way to scale sprites next to
 		 * `Object3D.scale`. The scale transformation based in `Object3D.scale`
@@ -85,13 +75,9 @@ class SpriteNodeMaterial extends NodeMaterial {
 		 * @default null
 		 */
 		this.scaleNode = null;
-
 		this.setDefaultValues( _defaultValues );
-
 		this.setValues( parameters );
-
 	}
-
 	/**
 	 * Setups the position node in view space. This method implements
 	 * the sprite specific vertex shader.
@@ -100,68 +86,38 @@ class SpriteNodeMaterial extends NodeMaterial {
 	 * @return {Node<vec3>} The position in view space.
 	 */
 	setupPositionView( builder ) {
-
 		const { object, camera } = builder;
-
 		const sizeAttenuation = this.sizeAttenuation;
-
 		const { positionNode, rotationNode, scaleNode } = this;
-
 		const mvPosition = modelViewMatrix.mul( vec3( positionNode || 0 ) );
-
 		let scale = vec2( modelWorldMatrix[ 0 ].xyz.length(), modelWorldMatrix[ 1 ].xyz.length() );
-
 		if ( scaleNode !== null ) {
-
 			scale = scale.mul( scaleNode );
-
 		}
-
 		if ( sizeAttenuation === false ) {
-
 			if ( camera.isPerspectiveCamera ) {
-
 				scale = scale.mul( mvPosition.z.negate() );
-
 			} else {
-
 				const orthoScale = float( 2.0 ).div( cameraProjectionMatrix.element( 1 ).element( 1 ) );
 				scale = scale.mul( orthoScale.mul( 2 ) );
-
 			}
-
 		}
-
 		let alignedPosition = positionGeometry.xy;
-
 		if ( object.center && object.center.isVector2 === true ) {
-
 			const center = reference( 'center', 'vec2', object );
-
 			alignedPosition = alignedPosition.sub( center.sub( 0.5 ) );
-
 		}
-
 		alignedPosition = alignedPosition.mul( scale );
-
 		const rotation = float( rotationNode || materialRotation );
-
 		const rotatedPosition = rotate( alignedPosition, rotation );
-
 		return vec4( mvPosition.xy.add( rotatedPosition ), mvPosition.zw );
-
 	}
-
 	copy( source ) {
-
 		this.positionNode = source.positionNode;
 		this.rotationNode = source.rotationNode;
 		this.scaleNode = source.scaleNode;
-
 		return super.copy( source );
-
 	}
-
 	/**
 	 * Whether to use size attenuation or not.
 	 *
@@ -169,20 +125,13 @@ class SpriteNodeMaterial extends NodeMaterial {
 	 * @default true
 	 */
 	get sizeAttenuation() {
-
 		return this._useSizeAttenuation;
-
 	}
-
 	set sizeAttenuation( value ) {
-
 		if ( this._useSizeAttenuation !== value ) {
-
 			this._useSizeAttenuation = value;
 			this.needsUpdate = true;
-
 		}
-
 	}
 
 }

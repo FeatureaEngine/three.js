@@ -17,24 +17,17 @@ import { Matrix3 } from '../../math/Matrix3.js';
  * @augments module:Object3DNode~Object3DNode
  */
 class ModelNode extends Object3DNode {
-
 	static get type() {
-
 		return 'ModelNode';
-
 	}
-
 	/**
 	 * Constructs a new object model node.
 	 *
 	 * @param {('position'|'viewPosition'|'direction'|'scale'|'worldMatrix')} scope - The node represents a different type of transformation depending on the scope.
 	 */
 	constructor( scope ) {
-
 		super( scope );
-
 	}
-
 	/**
 	 * Extracts the model reference from the frame state and then
 	 * updates the uniform value depending on the scope.
@@ -42,11 +35,8 @@ class ModelNode extends Object3DNode {
 	 * @param {NodeFrame} frame - The current node frame.
 	 */
 	update( frame ) {
-
 		this.object3d = frame.object;
-
 		super.update( frame );
-
 	}
 
 }
@@ -108,7 +98,6 @@ export const modelWorldMatrixInverse = /*@__PURE__*/ uniform( new Matrix4() ).on
  * @type {Node<mat4>}
  */
 export const modelViewMatrix = /*@__PURE__*/ ( Fn( ( builder ) => {
-
 	return builder.renderer.nodes.modelViewMatrix || mediumpModelViewMatrix;
 
 } ).once() )().toVar( 'modelViewMatrix' );
@@ -131,13 +120,9 @@ export const mediumpModelViewMatrix = /*@__PURE__*/ cameraViewMatrix.mul( modelW
  * @type {Node<mat4>}
  */
 export const highpModelViewMatrix = /*@__PURE__*/ ( Fn( ( builder ) => {
-
 	builder.context.isHighPrecisionModelViewMatrix = true;
-
 	return uniform( 'mat4' ).onObjectUpdate( ( { object, camera } ) => {
-
 		return object.modelViewMatrix.multiplyMatrices( camera.matrixWorldInverse, object.matrixWorld );
-
 	} );
 
 } ).once() )().toVar( 'highpModelViewMatrix' );
@@ -149,19 +134,12 @@ export const highpModelViewMatrix = /*@__PURE__*/ ( Fn( ( builder ) => {
  * @type {Node<mat3>}
  */
 export const highpModelNormalViewMatrix = /*@__PURE__*/ ( Fn( ( builder ) => {
-
 	const isHighPrecisionModelViewMatrix = builder.context.isHighPrecisionModelViewMatrix;
-
 	return uniform( 'mat3' ).onObjectUpdate( ( { object, camera } ) => {
-
 		if ( isHighPrecisionModelViewMatrix !== true ) {
-
 			object.modelViewMatrix.multiplyMatrices( camera.matrixWorldInverse, object.matrixWorld );
-
 		}
-
 		return object.normalMatrix.getNormalMatrix( object.modelViewMatrix );
-
 	} );
 
 } ).once() )().toVar( 'highpModelNormalViewMatrix' );

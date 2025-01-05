@@ -232,7 +232,6 @@ export const ShaderChunk = {
 	uv_pars_vertex: uv_pars_vertex,
 	uv_vertex: uv_vertex,
 	worldpos_vertex: worldpos_vertex,
-
 	background_vert: background.vertex,
 	background_frag: background.fragment,
 	backgroundCube_vert: backgroundCube.vertex,

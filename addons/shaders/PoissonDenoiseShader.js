@@ -11,16 +11,13 @@ import {
  */
 
 const PoissonDenoiseShader = {
-
 	name: 'PoissonDenoiseShader',
-
 	defines: {
 		'SAMPLES': 16,
 		'SAMPLE_VECTORS': generatePdSamplePointInitializer( 16, 2, 1 ),
 		'NORMAL_VECTOR_TYPE': 1,
 		'DEPTH_VALUE_SOURCE': 0,
 	},
-
 	uniforms: {
 		'tDiffuse': { value: null },
 		'tNormal': { value: null },
@@ -34,20 +31,14 @@ const PoissonDenoiseShader = {
 		'radius': { value: 4. },
 		'index': { value: 0 }
 	},
-
 	vertexShader: /* glsl */`
-
 		varying vec2 vUv;
-
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-
 	fragmentShader: /* glsl */`
-
 		varying vec2 vUv;
-
 		uniform sampler2D tDiffuse;
 		uniform sampler2D tNormal;
 		uniform sampler2D tDepth;
@@ -62,21 +53,16 @@ const PoissonDenoiseShader = {
 		
 		#include <common>
 		#include <packing>
-
 		#ifndef SAMPLE_LUMINANCE
 		#define SAMPLE_LUMINANCE dot(vec3(0.2125, 0.7154, 0.0721), a)
 		#endif
-
 		#ifndef FRAGMENT_OUTPUT
 		#define FRAGMENT_OUTPUT vec4(denoised, 1.)
 		#endif
-
 		float getLuminance(const in vec3 a) {
 			return SAMPLE_LUMINANCE;
 		}
-
 		const vec3 poissonDisk[SAMPLES] = SAMPLE_VECTORS;
-
 		vec3 getViewPosition(const in vec2 screenPosition, const in float depth) {
 			vec4 clipSpacePosition = vec4(vec3(screenPosition, depth) * 2.0 - 1.0, 1.0);
 			vec4 viewSpacePosition = cameraProjectionMatrixInverse * clipSpacePosition;
@@ -90,7 +76,6 @@ const PoissonDenoiseShader = {
 			return textureLod(tDepth, uv.xy, 0.0).r;
 		#endif
 		}
-
 		float fetchDepth(const ivec2 uv) {
 			#if DEPTH_VALUE_SOURCE == 1    
 				return texelFetch(tDepth, uv.xy, 0).a;
@@ -98,7 +83,6 @@ const PoissonDenoiseShader = {
 				return texelFetch(tDepth, uv.xy, 0).r;
 			#endif
 		}
-
 		vec3 computeNormalFromDepth(const vec2 uv) {
 			vec2 size = vec2(textureSize(tDepth, 0));
 			ivec2 p = ivec2(uv * size);
@@ -122,7 +106,6 @@ const PoissonDenoiseShader = {
 									: -ce + getViewPosition((uv + vec2(0.0, 1.0 / size.y)), t1).xyz;
 			return normalize(cross(dpdx, dpdy));
 		}
-
 		vec3 getViewNormal(const vec2 uv) {
 		#if NORMAL_VECTOR_TYPE == 2
 			return normalize(textureLod(tNormal, uv, 0.).rgb);
@@ -132,7 +115,6 @@ const PoissonDenoiseShader = {
 			return computeNormalFromDepth(uv);
 		#endif
 		}
-
 		void denoiseSample(in vec3 center, in vec3 viewNormal, in vec3 viewPos, in vec2 sampleUv, inout vec3 denoised, inout float totalWeight) {
 			vec4 sampleTexel = textureLod(tDiffuse, sampleUv, 0.0);
 			float sampleDepth = getDepth(sampleUv);
@@ -162,7 +144,6 @@ const PoissonDenoiseShader = {
 			vec4 texel = textureLod(tDiffuse, vUv, 0.0);
 			vec3 center = texel.rgb;
 			vec3 viewPos = getViewPosition(vUv, depth);
-
 			vec2 noiseResolution = vec2(textureSize(tNoise, 0));
 			vec2 noiseUv = vUv * resolution / noiseResolution;
 			vec4 noiseTexel = textureLod(tNoise, noiseUv, 0.0);
@@ -187,38 +168,27 @@ const PoissonDenoiseShader = {
 };
 
 function generatePdSamplePointInitializer( samples, rings, radiusExponent ) {
-
 	const poissonDisk = generateDenoiseSamples(
 		samples,
 		rings,
 		radiusExponent,
 	);
-
 	let glslCode = 'vec3[SAMPLES](';
-
 	for ( let i = 0; i < samples; i ++ ) {
-
 		const sample = poissonDisk[ i ];
 		glslCode += `vec3(${sample.x}, ${sample.y}, ${sample.z})${( i < samples - 1 ) ? ',' : ')'}`;
-
 	}
-
 	return glslCode;
 
 }
 
 function generateDenoiseSamples( numSamples, numRings, radiusExponent ) {
-
 	const samples = [];
-
 	for ( let i = 0; i < numSamples; i ++ ) {
-
 		const angle = 2 * Math.PI * numRings * i / numSamples;
 		const radius = Math.pow( i / ( numSamples - 1 ), radiusExponent );
 		samples.push( new Vector3( Math.cos( angle ), Math.sin( angle ), radius ) );
-
 	}
-
 	return samples;
 
 }

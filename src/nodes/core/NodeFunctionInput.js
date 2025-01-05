@@ -2,7 +2,6 @@
  * Describes the input of a {@link NodeFunction}.
  */
 class NodeFunctionInput {
-
 	/**
 	 * Constructs a new node function input.
 	 *
@@ -13,21 +12,18 @@ class NodeFunctionInput {
 	 * @param {Boolean} [isConst=false] - Whether the input uses a const qualifier or not (only relevant for GLSL).
 	 */
 	constructor( type, name, count = null, qualifier = '', isConst = false ) {
-
 		/**
 		 *  The input type.
 		 *
 		 * @type {String}
 		 */
 		this.type = type;
-
 		/**
 		 * The input name.
 		 *
 		 * @type {String}
 		 */
 		this.name = name;
-
 		/**
 		 * If the input is an Array, count will be the length.
 		 *
@@ -35,7 +31,6 @@ class NodeFunctionInput {
 		 * @default null
 		 */
 		this.count = count;
-
 		/**
 		 *The parameter qualifier (only relevant for GLSL).
 		 *
@@ -43,7 +38,6 @@ class NodeFunctionInput {
 		 * @default ''
 		 */
 		this.qualifier = qualifier;
-
 		/**
 		 * Whether the input uses a const qualifier or not (only relevant for GLSL).
 		 *
@@ -51,7 +45,6 @@ class NodeFunctionInput {
 		 * @default false
 		 */
 		this.isConst = isConst;
-
 	}
 
 }

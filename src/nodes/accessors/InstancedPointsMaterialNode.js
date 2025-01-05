@@ -10,17 +10,11 @@ import { nodeImmutable } from '../tsl/TSLBase.js';
  * @augments module:MaterialNode~MaterialNode
  */
 class InstancedPointsMaterialNode extends MaterialNode {
-
 	static get type() {
-
 		return 'InstancedPointsMaterialNode';
-
 	}
-
 	setup( /*builder*/ ) {
-
 		return this.getFloat( this.scope );
-
 	}
 
 }

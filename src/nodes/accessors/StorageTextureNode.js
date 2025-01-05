@@ -36,13 +36,9 @@ import { NodeAccess } from '../core/constants.js';
  * @augments module:TextureNode~TextureNode
  */
 class StorageTextureNode extends TextureNode {
-
 	static get type() {
-
 		return 'StorageTextureNode';
-
 	}
-
 	/**
 	 * Constructs a new storage texture node.
 	 *
@@ -51,9 +47,7 @@ class StorageTextureNode extends TextureNode {
 	 * @param {Node?} [storeNode=null] - The value node that should be stored in the texture.
 	 */
 	constructor( value, uvNode, storeNode = null ) {
-
 		super( value, uvNode );
-
 		/**
 		 * The value node that should be stored in the texture.
 		 *
@@ -61,7 +55,6 @@ class StorageTextureNode extends TextureNode {
 		 * @default null
 		 */
 		this.storeNode = storeNode;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -70,7 +63,6 @@ class StorageTextureNode extends TextureNode {
 		 * @default true
 		 */
 		this.isStorageTextureNode = true;
-
 		/**
 		 * The access type of the texture node.
 		 *
@@ -78,9 +70,7 @@ class StorageTextureNode extends TextureNode {
 		 * @default 'writeOnly'
 		 */
 		this.access = NodeAccess.WRITE_ONLY;
-
 	}
-
 	/**
 	 * Overwrites the default implementation to return a fixed value `'storageTexture'`.
 	 *
@@ -88,20 +78,13 @@ class StorageTextureNode extends TextureNode {
 	 * @return {String} The input type.
 	 */
 	getInputType( /*builder*/ ) {
-
 		return 'storageTexture';
-
 	}
-
 	setup( builder ) {
-
 		super.setup( builder );
-
 		const properties = builder.getNodeProperties( this );
 		properties.storeNode = this.storeNode;
-
 	}
-
 	/**
 	 * Defines the node access.
 	 *
@@ -109,12 +92,9 @@ class StorageTextureNode extends TextureNode {
 	 * @return {StorageTextureNode} A reference to this node.
 	 */
 	setAccess( value ) {
-
 		this.access = value;
 		return this;
-
 	}
-
 	/**
 	 * Generates the code snippet of the stroge node. If no `storeNode`
 	 * is defined, the texture node is generated as normal texture.
@@ -124,75 +104,51 @@ class StorageTextureNode extends TextureNode {
 	 * @return {String} The generated code snippet.
 	 */
 	generate( builder, output ) {
-
 		let snippet;
-
 		if ( this.storeNode !== null ) {
-
 			snippet = this.generateStore( builder );
-
 		} else {
-
 			snippet = super.generate( builder, output );
-
 		}
-
 		return snippet;
-
 	}
-
 	/**
 	 * Convenience method for configuring a read/write node access.
 	 *
 	 * @return {StorageTextureNode} A reference to this node.
 	 */
 	toReadWrite() {
-
 		return this.setAccess( NodeAccess.READ_WRITE );
-
 	}
-
 	/**
 	 * Convenience method for configuring a read-only node access.
 	 *
 	 * @return {StorageTextureNode} A reference to this node.
 	 */
 	toReadOnly() {
-
 		return this.setAccess( NodeAccess.READ_ONLY );
-
 	}
-
 	/**
 	 * Convenience method for configuring a write-only node access.
 	 *
 	 * @return {StorageTextureNode} A reference to this node.
 	 */
 	toWriteOnly() {
-
 		return this.setAccess( NodeAccess.WRITE_ONLY );
-
 	}
-
 	/**
 	 * Generates the code snippet of the storage texture node.
 	 *
 	 * @param {NodeBuilder} builder - The current node builder.
 	 */
 	generateStore( builder ) {
-
 		const properties = builder.getNodeProperties( this );
-
 		const { uvNode, storeNode } = properties;
-
 		const textureProperty = super.generate( builder, 'property' );
 		const uvSnippet = uvNode.build( builder, 'uvec2' );
 		const storeSnippet = storeNode.build( builder, 'vec4' );
-
 		const snippet = builder.generateTextureStore( builder, textureProperty, uvSnippet, storeSnippet );
-
 		builder.addLineFlowCode( snippet, this );
-
 	}
 
 }
@@ -221,11 +177,8 @@ export const storageTexture = /*@__PURE__*/ nodeProxy( StorageTextureNode );
  * @returns {StorageTextureNode}
  */
 export const textureStore = ( value, uvNode, storeNode ) => {
-
 	const node = storageTexture( value, uvNode, storeNode );
-
 	if ( storeNode !== null ) node.append();
-
 	return node;
 
 };

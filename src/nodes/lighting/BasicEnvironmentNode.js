@@ -10,22 +10,16 @@ import { cubeMapNode } from '../utils/CubeMapNode.js';
  * @augments LightingNode
  */
 class BasicEnvironmentNode extends LightingNode {
-
 	static get type() {
-
 		return 'BasicEnvironmentNode';
-
 	}
-
 	/**
 	 * Constructs a new basic environment node.
 	 *
 	 * @param {Node} [envNode=null] - A node representing the environment.
 	 */
 	constructor( envNode = null ) {
-
 		super();
-
 		/**
 		 * A node representing the environment.
 		 *
@@ -33,15 +27,10 @@ class BasicEnvironmentNode extends LightingNode {
 		 * @default null
 		 */
 		this.envNode = envNode;
-
 	}
-
 	setup( builder ) {
-
 		// environment property is used in the finish() method of BasicLightingModel
-
 		builder.context.environment = cubeMapNode( this.envNode );
-
 	}
 
 }

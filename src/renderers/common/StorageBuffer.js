@@ -7,7 +7,6 @@ import Buffer from './Buffer.js';
  * @augments Buffer
  */
 class StorageBuffer extends Buffer {
-
 	/**
 	 * Constructs a new uniform buffer.
 	 *
@@ -15,16 +14,13 @@ class StorageBuffer extends Buffer {
 	 * @param {BufferAttribute} attribute - The buffer attribute.
 	 */
 	constructor( name, attribute ) {
-
 		super( name, attribute ? attribute.array : null );
-
 		/**
 		 * This flag can be used for type testing.
 		 *
 		 * @type {BufferAttribute}
 		 */
 		this.attribute = attribute;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -33,7 +29,6 @@ class StorageBuffer extends Buffer {
 		 * @default true
 		 */
 		this.isStorageBuffer = true;
-
 	}
 
 }

@@ -13,12 +13,10 @@ const _defaultCamera = /*@__PURE__*/ new Camera();
  * @private
  */
 class RenderContexts {
-
 	/**
 	 * Constructs a new render context management component.
 	 */
 	constructor() {
-
 		/**
 		 * A dictionary that manages render contexts in chain maps
 		 * for each attachment state.
@@ -26,9 +24,7 @@ class RenderContexts {
 		 * @type {Object<String,ChainMap>}
 		 */
 		this.chainMaps = {};
-
 	}
-
 	/**
 	 * Returns a render context for the given scene, camera and render target.
 	 *
@@ -38,45 +34,26 @@ class RenderContexts {
 	 * @return {RenderContext} The render context.
 	 */
 	get( scene, camera, renderTarget = null ) {
-
 		_chainKeys[ 0 ] = scene;
 		_chainKeys[ 1 ] = camera;
-
 		let attachmentState;
-
 		if ( renderTarget === null ) {
-
 			attachmentState = 'default';
-
 		} else {
-
 			const format = renderTarget.texture.format;
 			const count = renderTarget.textures.length;
-
 			attachmentState = `${ count }:${ format }:${ renderTarget.samples }:${ renderTarget.depthBuffer }:${ renderTarget.stencilBuffer }`;
-
 		}
-
 		const chainMap = this._getChainMap( attachmentState );
-
 		let renderState = chainMap.get( _chainKeys );
-
 		if ( renderState === undefined ) {
-
 			renderState = new RenderContext();
-
 			chainMap.set( _chainKeys, renderState );
-
 		}
-
 		_chainKeys.length = 0;
-
 		if ( renderTarget !== null ) renderState.sampleCount = renderTarget.samples === 0 ? 1 : renderTarget.samples;
-
 		return renderState;
-
 	}
-
 	/**
 	 * Returns a render context intended for clear operations.
 	 *
@@ -84,11 +61,8 @@ class RenderContexts {
 	 * @return {RenderContext} The render context.
 	 */
 	getForClear( renderTarget = null ) {
-
 		return this.get( _defaultScene, _defaultCamera, renderTarget );
-
 	}
-
 	/**
 	 * Returns a chain map for the given attachment state.
 	 *
@@ -97,18 +71,13 @@ class RenderContexts {
 	 * @return {ChainMap} The chain map.
 	 */
 	_getChainMap( attachmentState ) {
-
 		return this.chainMaps[ attachmentState ] || ( this.chainMaps[ attachmentState ] = new ChainMap() );
-
 	}
-
 	/**
 	 * Frees internal resources.
 	 */
 	dispose() {
-
 		this.chainMaps = {};
-
 	}
 
 }

@@ -5,7 +5,6 @@
  * in user-level code.
  */
 class NodeFunction {
-
 	/**
 	 * Constructs a new node function.
 	 *
@@ -15,21 +14,18 @@ class NodeFunction {
 	 * @param {String} [precision=''] - The precision qualifier.
 	 */
 	constructor( type, inputs, name = '', precision = '' ) {
-
 		/**
 		 * The node type. This type is the return type of the node function.
 		 *
 		 * @type {String}
 		 */
 		this.type = type;
-
 		/**
 		 * The function's inputs.
 		 *
 		 * @type {Array<NodeFunctionInput>}
 		 */
 		this.inputs = inputs;
-
 		/**
 		 * The name of the uniform.
 		 *
@@ -37,7 +33,6 @@ class NodeFunction {
 		 * @default ''
 		 */
 		this.name = name;
-
 		/**
 		 * The precision qualifier.
 		 *
@@ -45,9 +40,7 @@ class NodeFunction {
 		 * @default ''
 		 */
 		this.precision = precision;
-
 	}
-
 	/**
 	 * This method returns the native code of the node function.
 	 *
@@ -56,9 +49,7 @@ class NodeFunction {
 	 * @return {String} A shader code.
 	 */
 	getCode( /*name = this.name*/ ) {
-
 		console.warn( 'Abstract function.' );
-
 	}
 
 }

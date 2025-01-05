@@ -15,22 +15,16 @@ import { nodeProxy } from '../tsl/TSLBase.js';
  * @augments module:UniformNode~UniformNode
  */
 class MaxMipLevelNode extends UniformNode {
-
 	static get type() {
-
 		return 'MaxMipLevelNode';
-
 	}
-
 	/**
 	 * Constructs a new max mip level node.
 	 *
 	 * @param {TextureNode} textureNode - The texture node to compute the max mip level for.
 	 */
 	constructor( textureNode ) {
-
 		super( 0 );
-
 		/**
 		 * The texture node to compute the max mip level for.
 		 *
@@ -38,7 +32,6 @@ class MaxMipLevelNode extends UniformNode {
 		 * @type {TextureNode}
 		 */
 		this._textureNode = textureNode;
-
 		/**
 		 * The `updateType` is set to `NodeUpdateType.FRAME` since the node updates
 		 * the texture once per frame in its {@link MaxMipLevelNode#update} method.
@@ -47,9 +40,7 @@ class MaxMipLevelNode extends UniformNode {
 		 * @default 'frame'
 		 */
 		this.updateType = NodeUpdateType.FRAME;
-
 	}
-
 	/**
 	 * The texture node to compute the max mip level for.
 	 *
@@ -57,11 +48,8 @@ class MaxMipLevelNode extends UniformNode {
 	 * @type {TextureNode}
 	 */
 	get textureNode() {
-
 		return this._textureNode;
-
 	}
-
 	/**
 	 * The texture.
 	 *
@@ -69,25 +57,16 @@ class MaxMipLevelNode extends UniformNode {
 	 * @type {Texture}
 	 */
 	get texture() {
-
 		return this._textureNode.value;
-
 	}
-
 	update() {
-
 		const texture = this.texture;
 		const images = texture.images;
 		const image = ( images && images.length > 0 ) ? ( ( images[ 0 ] && images[ 0 ].image ) || images[ 0 ] ) : texture.image;
-
 		if ( image && image.width !== undefined ) {
-
 			const { width, height } = image;
-
 			this.value = Math.log2( Math.max( width, height ) );
-
 		}
-
 	}
 
 }

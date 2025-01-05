@@ -11,17 +11,11 @@ import { nodeProxy, vec4 } from '../tsl/TSLBase.js';
  * @return {Number} The texture index.
  */
 export function getTextureIndex( textures, name ) {
-
 	for ( let i = 0; i < textures.length; i ++ ) {
-
 		if ( textures[ i ].name === name ) {
-
 			return i;
-
 		}
-
 	}
-
 	return - 1;
 
 }
@@ -40,22 +34,16 @@ export function getTextureIndex( textures, name ) {
  * @augments OutputStructNode
  */
 class MRTNode extends OutputStructNode {
-
 	static get type() {
-
 		return 'MRTNode';
-
 	}
-
 	/**
 	 * Constructs a new output struct node.
 	 *
 	 * @param {Object<String, Node>} outputNodes - The MRT outputs.
 	 */
 	constructor( outputNodes ) {
-
 		super();
-
 		/**
 		 * A dictionary representing the MRT outputs. The key
 		 * is the name of the output, the value the node which produces
@@ -64,7 +52,6 @@ class MRTNode extends OutputStructNode {
 		 * @type {Object<String, Node>}
 		 */
 		this.outputNodes = outputNodes;
-
 		/**
 		 * This flag can be used for type testing.
 		 *
@@ -73,9 +60,7 @@ class MRTNode extends OutputStructNode {
 		 * @default true
 		 */
 		this.isMRTNode = true;
-
 	}
-
 	/**
 	 * Returns `true` if the MRT node has an output with the given name.
 	 *
@@ -83,11 +68,8 @@ class MRTNode extends OutputStructNode {
 	 * @return {NodeBuilder} Whether the MRT node has an output for the given name or not.
 	 */
 	has( name ) {
-
 		return this.outputNodes[ name ] !== undefined;
-
 	}
-
 	/**
 	 * Returns the output node for the given name.
 	 *
@@ -95,11 +77,8 @@ class MRTNode extends OutputStructNode {
 	 * @return {Node} The output node.
 	 */
 	get( name ) {
-
 		return this.outputNodes[ name ];
-
 	}
-
 	/**
 	 * Merges the outputs of the given MRT node with the outputs of this node.
 	 *
@@ -107,34 +86,20 @@ class MRTNode extends OutputStructNode {
 	 * @return {MRTNode} A new MRT node with merged outputs..
 	 */
 	merge( mrtNode ) {
-
 		const outputs = { ...this.outputNodes, ...mrtNode.outputNodes };
-
 		return mrt( outputs );
-
 	}
-
 	setup( builder ) {
-
 		const outputNodes = this.outputNodes;
 		const mrt = builder.renderer.getRenderTarget();
-
 		const members = [];
-
 		const textures = mrt.textures;
-
 		for ( const name in outputNodes ) {
-
 			const index = getTextureIndex( textures, name );
-
 			members[ index ] = vec4( outputNodes[ name ] );
-
 		}
-
 		this.members = members;
-
 		return super.setup( builder );
-
 	}
 
 }
