@@ -293,24 +293,8 @@
 		"webgl_worker_offscreencanvas",
 		"webgl_performance"
 	],
-	"webaudio": [
-		"webaudio_orientation",
-		"webaudio_sandbox",
-		"webaudio_timing",
-		"webaudio_visualizer"
-	],
 	"games": [
 		"games_fps"
-	],
-	"physics": [
-		"physics_ammo_break",
-		"physics_ammo_cloth",
-		"physics_ammo_instancing",
-		"physics_ammo_rope",
-		"physics_ammo_terrain",
-		"physics_ammo_volume",
-		"physics_jolt_instancing",
-		"physics_rapier_instancing"
 	],
 	"misc": [
 		"misc_animation_groups",
@@ -334,17 +318,6 @@
 		"misc_exporter_ktx2",
 		"misc_lookat",
 		"misc_raycaster_helper"
-	],
-	"css2d": [
-		"css2d_label"
-	],
-	"css3d": [
-		"css3d_molecules",
-		"css3d_orthographic",
-		"css3d_periodictable",
-		"css3d_sandbox",
-		"css3d_sprites",
-		"css3d_youtube"
 	],
 	"svg": [
 		"svg_lines",

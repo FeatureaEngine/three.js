@@ -114,7 +114,6 @@ export { default as PointLightNode } from './lighting/PointLightNode.js';
 export { default as DirectionalLightNode } from './lighting/DirectionalLightNode.js';
 export { default as RectAreaLightNode } from './lighting/RectAreaLightNode.js';
 export { default as SpotLightNode } from './lighting/SpotLightNode.js';
-export { default as IESSpotLightNode } from './lighting/IESSpotLightNode.js';
 export { default as AmbientLightNode } from './lighting/AmbientLightNode.js';
 export { default as LightsNode } from './lighting/LightsNode.js';
 export { default as LightingNode } from './lighting/LightingNode.js';
