@@ -64,14 +64,14 @@
 				};
 
 				new MTLLoader()
-					.setPath( 'models/obj/male02/' )
+					.setPath( '..res/models/obj/male02/' )
 					.load( 'male02.mtl', function ( materials ) {
 
 						materials.preload();
 
 						new OBJLoader()
 							.setMaterials( materials )
-							.setPath( 'models/obj/male02/' )
+							.setPath( '..res/models/obj/male02/' )
 							.load( 'male02.obj', function ( object ) {
 
 								object.position.y = - 0.95;

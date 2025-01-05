@@ -426,7 +426,7 @@
 				// Model requiring KHR_mesh_quantization
 				// ---------------------------------------------------------------------
 				const loader = new GLTFLoader();
-				loader.load( 'models/gltf/ShaderBall.glb', function ( gltf ) {
+				loader.load( '../res/models/gltf/ShaderBall.glb', function ( gltf ) {
 
 					model = gltf.scene;
 					model.scale.setScalar( 50 );
@@ -485,10 +485,10 @@
 				// Exporting compressed textures and meshes (KTX2 / Draco / Meshopt)
 				// ---------------------------------------------------------------------
 				const ktx2Loader = new KTX2Loader()
-					.setTranscoderPath( 'jsm/libs/basis/' )
+					.setTranscoderPath( '../libs/basis/' )
 					.detectSupport( renderer );
 
-				const gltfLoader = new GLTFLoader().setPath( 'models/gltf/' );
+				const gltfLoader = new GLTFLoader().setPath( '..res/models/gltf/' );
 				gltfLoader.setKTX2Loader( ktx2Loader );
 				gltfLoader.setMeshoptDecoder( MeshoptDecoder );
 				gltfLoader.load( 'coffeemat.glb', function ( gltf ) {

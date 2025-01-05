@@ -72,11 +72,11 @@
 			scene.add( ambientLight );
 
 			const dracoLoader = new DRACOLoader();
-			dracoLoader.setDecoderPath( 'jsm/libs/draco/' );
+			dracoLoader.setDecoderPath( '../libs/draco/' );
 			const gltfLoader = new GLTFLoader();
 			gltfLoader.setDRACOLoader( dracoLoader );
 
-			const gltf = await gltfLoader.loadAsync( 'models/gltf/kira.glb' );
+			const gltf = await gltfLoader.loadAsync( '../res/models/gltf/kira.glb' );
 			gltf.scene.traverse( n => {
 
 				if ( n.name === 'head' ) OOI.head = n;

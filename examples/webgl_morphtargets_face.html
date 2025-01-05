@@ -69,13 +69,13 @@
 				container.appendChild( renderer.domElement );
 
 				const ktx2Loader = new KTX2Loader()
-					.setTranscoderPath( 'jsm/libs/basis/' )
+					.setTranscoderPath( '../libs/basis/' )
 					.detectSupport( renderer );
 
 				new GLTFLoader()
 					.setKTX2Loader( ktx2Loader )
 					.setMeshoptDecoder( MeshoptDecoder )
-					.load( 'models/gltf/facecap.glb', ( gltf ) => {
+					.load( '../res/models/gltf/facecap.glb', ( gltf ) => {
 
 						const mesh = gltf.scene.children[ 0 ];
 

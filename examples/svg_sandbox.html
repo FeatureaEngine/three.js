@@ -50,7 +50,7 @@
 				// QRCODE
 
 				const loader = new THREE.BufferGeometryLoader();
-				loader.load( 'models/json/QRCode_buffergeometry.json', function ( geometry ) {
+				loader.load( '../res/models/json/QRCode_buffergeometry.json', function ( geometry ) {
 
 					mesh = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { vertexColors: true } ) );
 					mesh.scale.x = mesh.scale.y = mesh.scale.z = 2;
@@ -191,7 +191,7 @@
 				// CUSTOM FROM FILE
 
 				const fileLoader = new THREE.FileLoader();
-				fileLoader.load( 'models/svg/hexagon.svg', function ( svg ) {
+				fileLoader.load( '../res/models/svg/hexagon.svg', function ( svg ) {
 
 					const node = document.createElementNS( 'http://www.w3.org/2000/svg', 'g' );
 					const parser = new DOMParser();

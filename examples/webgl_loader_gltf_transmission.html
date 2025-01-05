@@ -64,8 +64,8 @@
 						// model
 
 						new GLTFLoader()
-							.setPath( 'models/gltf/' )
-							.setDRACOLoader( new DRACOLoader().setDecoderPath( 'jsm/libs/draco/gltf/' ) )
+							.setPath( '..res/models/gltf/' )
+							.setDRACOLoader( new DRACOLoader().setDecoderPath( '../libs/draco/gltf/' ) )
 							.load( '../res/IridescentDishWithOlives.glb', function ( gltf ) {
 
 								mixer = new THREE.AnimationMixer( gltf.scene );

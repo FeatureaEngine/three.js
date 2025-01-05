@@ -62,7 +62,7 @@
 
 		// Configure and create Draco decoder.
 		const dracoLoader = new DRACOLoader();
-		dracoLoader.setDecoderPath( 'jsm/libs/draco/' );
+		dracoLoader.setDecoderPath( '../libs/draco/' );
 		dracoLoader.setDecoderConfig( { type: 'js' } );
 
 		init();
@@ -98,7 +98,7 @@
 			spotLight.position.set( - 1, 1, 1 );
 			scene.add( spotLight );
 
-			dracoLoader.load( 'models/draco/bunny.drc', function ( geometry ) {
+			dracoLoader.load( '../res/models/draco/bunny.drc', function ( geometry ) {
 
 				geometry.computeVertexNormals();
 

@@ -51,11 +51,11 @@
 			function init() {
 
 				const dracoLoader = new DRACOLoader();
-				dracoLoader.setDecoderPath( 'jsm/libs/draco/' );
+				dracoLoader.setDecoderPath( '../libs/draco/' );
 				dracoLoader.setDecoderConfig( { type: 'js' } );
 				const loader = new GLTFLoader();
 				loader.setDRACOLoader( dracoLoader );
-				loader.setPath( 'models/gltf/' );
+				loader.setPath( '..res/models/gltf/' );
 
 				clock = new THREE.Clock();
 				const container = document.createElement( 'div' );

@@ -70,10 +70,10 @@
 				scene.add( grid );
 
 				const ktx2Loader = new KTX2Loader()
-					.setTranscoderPath( 'jsm/libs/basis/' )
+					.setTranscoderPath( '../libs/basis/' )
 					.detectSupport( renderer );
 
-				const loader = new GLTFLoader().setPath( 'models/gltf/' );
+				const loader = new GLTFLoader().setPath( '..res/models/gltf/' );
 				loader.setKTX2Loader( ktx2Loader );
 				loader.setMeshoptDecoder( MeshoptDecoder );
 				loader.load( 'coffeemat.glb', function ( gltf ) {
