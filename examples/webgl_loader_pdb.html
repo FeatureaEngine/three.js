@@ -29,12 +29,12 @@
 
 		<script type="module">
 
-			import * as THREE from 'three';
+			import * as THREE from "../src/Three.js";
 
-			import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
-			import { PDBLoader } from 'three/addons/loaders/PDBLoader.js';
-			import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
-			import { GUI } from 'three/libs/lil-gui.module.min.js';
+			import { TrackballControls } from '../addons/controls/TrackballControls.js';
+			import { PDBLoader } from '../addons/loaders/PDBLoader.js';
+			import { CSS2DRenderer, CSS2DObject } from '../addons/renderers/CSS2DRenderer.js';
+			import { GUI } from '../libs/lil-gui.module.min.js';
 
 			let camera, scene, renderer, labelRenderer;
 			let controls;

@@ -13,7 +13,7 @@ import {
 	NearestFilter,
 	Plane,
 	HalfFloatType
-} from 'three';
+} from '../../src/Three.js';
 
 class ReflectorForSSRPass extends Mesh {
 
@@ -205,11 +205,10 @@ class ReflectorForSSRPass extends Mesh {
 
 			const currentRenderTarget = renderer.getRenderTarget();
 
-			const currentXrEnabled = renderer.xr.enabled;
+			const currentXrEnabled = false;
 			const currentShadowAutoUpdate = renderer.shadowMap.autoUpdate;
 			const currentClippingPlanes = renderer.clippingPlanes;
 
-			renderer.xr.enabled = false; // Avoid camera modification
 			renderer.shadowMap.autoUpdate = false; // Avoid re-computing shadows
 			renderer.clippingPlanes = globalPlanes;
 
@@ -220,7 +219,6 @@ class ReflectorForSSRPass extends Mesh {
 			if ( renderer.autoClear === false ) renderer.clear();
 			renderer.render( scene, virtualCamera );
 
-			renderer.xr.enabled = currentXrEnabled;
 			renderer.shadowMap.autoUpdate = currentShadowAutoUpdate;
 			renderer.clippingPlanes = currentClippingPlanes;
 

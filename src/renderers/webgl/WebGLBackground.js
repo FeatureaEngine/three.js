@@ -57,17 +57,17 @@ function WebGLBackground( renderer, cubemaps, cubeuvmaps, state, objects, alpha,
 
 		}
 
-		const environmentBlendMode = renderer.xr.getEnvironmentBlendMode();
-
-		if ( environmentBlendMode === 'additive' ) {
-
-			state.buffers.color.setClear( 0, 0, 0, 1, premultipliedAlpha );
-
-		} else if ( environmentBlendMode === 'alpha-blend' ) {
-
-			state.buffers.color.setClear( 0, 0, 0, 0, premultipliedAlpha );
-
-		}
+		// const environmentBlendMode = renderer.xr.getEnvironmentBlendMode();
+		//
+		// if ( environmentBlendMode === 'additive' ) {
+		//
+		// 	state.buffers.color.setClear( 0, 0, 0, 1, premultipliedAlpha );
+		//
+		// } else if ( environmentBlendMode === 'alpha-blend' ) {
+		//
+		// 	state.buffers.color.setClear( 0, 0, 0, 0, premultipliedAlpha );
+		//
+		// }
 
 		if ( renderer.autoClear || forceClear ) {
 

@@ -9,7 +9,7 @@ import {
 	LinearFilter,
 	HalfFloatType,
 	DataUtils
-} from 'three';
+} from '../../src/Three.js';
 
 class IESLoader extends Loader {
 

@@ -2,7 +2,7 @@ import {
 	Color,
 	LinearSRGBColorSpace,
 	MathUtils
-} from 'three';
+} from '../../src/Three.js';
 
 class Lut {
 

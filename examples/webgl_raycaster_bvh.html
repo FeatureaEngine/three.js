@@ -37,12 +37,12 @@
 
 		<script type="module">
 
-			import * as THREE from 'three';
+			import * as THREE from "../src/Three.js";
 			import { computeBoundsTree, disposeBoundsTree, acceleratedRaycast, MeshBVHHelper } from 'three-mesh-bvh';
-			import Stats from 'three/libs/stats.module.js';
-			import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
-			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-			import { GUI } from 'three/libs/lil-gui.module.min.js';
+			import Stats from '../libs/stats.module.js';
+			import { FBXLoader } from '../addons/loaders/FBXLoader.js';
+			import { OrbitControls } from '../addons/controls/OrbitControls.js';
+			import { GUI } from '../libs/lil-gui.module.min.js';
 
 			// Add the extension functions
 			THREE.BufferGeometry.prototype.computeBoundsTree = computeBoundsTree;

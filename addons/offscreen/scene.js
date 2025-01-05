@@ -1,4 +1,4 @@
-import * as THREE from '../../../build/three.module.js';
+import * as THREE from '../../src/Three.js';
 
 let camera, scene, renderer, group;
 

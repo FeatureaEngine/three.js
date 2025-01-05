@@ -19,14 +19,14 @@
 
 		<script type="module">
 
-			import * as THREE from 'three';
+			import * as THREE from "../src/Three.js";
 
-			import { GUI } from 'three/libs/lil-gui.module.min.js';
+			import { GUI } from '../libs/lil-gui.module.min.js';
 
-			import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-			import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-			import { AfterimagePass } from 'three/addons/postprocessing/AfterimagePass.js';
-			import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+			import { EffectComposer } from '../addons/postprocessing/EffectComposer.js';
+			import { RenderPass } from '../addons/postprocessing/RenderPass.js';
+			import { AfterimagePass } from '../addons/postprocessing/AfterimagePass.js';
+			import { OutputPass } from '../addons/postprocessing/OutputPass.js';
 
 			let camera, scene, renderer, composer;
 			let mesh;

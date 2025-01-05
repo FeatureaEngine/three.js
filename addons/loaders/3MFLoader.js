@@ -18,7 +18,7 @@ import {
 	RepeatWrapping,
 	TextureLoader,
 	SRGBColorSpace
-} from 'three';
+} from '../../src/Three.js';
 import * as fflate from '../../libs/fflate.module.js';
 
 const COLOR_SPACE_3MF = SRGBColorSpace;

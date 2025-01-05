@@ -24,15 +24,15 @@
 
 		<script type="module">
 
-			import * as THREE from 'three';
+			import * as THREE from "../src/Three.js";
 
-			import Stats from 'three/libs/stats.module.js';
-			import { GUI } from 'three/libs/lil-gui.module.min.js';
+			import Stats from '../libs/stats.module.js';
+			import { GUI } from '../libs/lil-gui.module.min.js';
 
-			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-			import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-			import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-			import { HalftonePass } from 'three/addons/postprocessing/HalftonePass.js';
+			import { OrbitControls } from '../addons/controls/OrbitControls.js';
+			import { EffectComposer } from '../addons/postprocessing/EffectComposer.js';
+			import { RenderPass } from '../addons/postprocessing/RenderPass.js';
+			import { HalftonePass } from '../addons/postprocessing/HalftonePass.js';
 
 			let renderer, clock, camera, stats;
 

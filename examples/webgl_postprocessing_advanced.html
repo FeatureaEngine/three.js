@@ -27,28 +27,28 @@
 
 		<script type="module">
 
-			import * as THREE from 'three';
+			import * as THREE from "../src/Three.js";
 
-			import Stats from 'three/libs/stats.module.js';
+			import Stats from '../libs/stats.module.js';
 
-			import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-			import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-			import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
-			import { BloomPass } from 'three/addons/postprocessing/BloomPass.js';
-			import { FilmPass } from 'three/addons/postprocessing/FilmPass.js';
-			import { DotScreenPass } from 'three/addons/postprocessing/DotScreenPass.js';
-			import { MaskPass, ClearMaskPass } from 'three/addons/postprocessing/MaskPass.js';
-			import { TexturePass } from 'three/addons/postprocessing/TexturePass.js';
+			import { EffectComposer } from '../addons/postprocessing/EffectComposer.js';
+			import { RenderPass } from '../addons/postprocessing/RenderPass.js';
+			import { ShaderPass } from '../addons/postprocessing/ShaderPass.js';
+			import { BloomPass } from '../addons/postprocessing/BloomPass.js';
+			import { FilmPass } from '../addons/postprocessing/FilmPass.js';
+			import { DotScreenPass } from '../addons/postprocessing/DotScreenPass.js';
+			import { MaskPass, ClearMaskPass } from '../addons/postprocessing/MaskPass.js';
+			import { TexturePass } from '../addons/postprocessing/TexturePass.js';
 
-			import { BleachBypassShader } from 'three/addons/shaders/BleachBypassShader.js';
-			import { ColorifyShader } from 'three/addons/shaders/ColorifyShader.js';
-			import { HorizontalBlurShader } from 'three/addons/shaders/HorizontalBlurShader.js';
-			import { VerticalBlurShader } from 'three/addons/shaders/VerticalBlurShader.js';
-			import { SepiaShader } from 'three/addons/shaders/SepiaShader.js';
-			import { VignetteShader } from 'three/addons/shaders/VignetteShader.js';
-			import { GammaCorrectionShader } from 'three/addons/shaders/GammaCorrectionShader.js';
+			import { BleachBypassShader } from '../addons/shaders/BleachBypassShader.js';
+			import { ColorifyShader } from '../addons/shaders/ColorifyShader.js';
+			import { HorizontalBlurShader } from '../addons/shaders/HorizontalBlurShader.js';
+			import { VerticalBlurShader } from '../addons/shaders/VerticalBlurShader.js';
+			import { SepiaShader } from '../addons/shaders/SepiaShader.js';
+			import { VignetteShader } from '../addons/shaders/VignetteShader.js';
+			import { GammaCorrectionShader } from '../addons/shaders/GammaCorrectionShader.js';
 
-			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+			import { GLTFLoader } from '../addons/loaders/GLTFLoader.js';
 
 			let container, stats;
 

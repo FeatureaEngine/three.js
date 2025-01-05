@@ -114,9 +114,8 @@ class PMREMGenerator {
 		_oldTarget = this._renderer.getRenderTarget();
 		_oldActiveCubeFace = this._renderer.getActiveCubeFace();
 		_oldActiveMipmapLevel = this._renderer.getActiveMipmapLevel();
-		_oldXrEnabled = this._renderer.xr.enabled;
+		_oldXrEnabled = false;
 
-		this._renderer.xr.enabled = false;
 
 		this._setSize( 256 );
 
@@ -240,7 +239,6 @@ class PMREMGenerator {
 	_cleanup( outputTarget ) {
 
 		this._renderer.setRenderTarget( _oldTarget, _oldActiveCubeFace, _oldActiveMipmapLevel );
-		this._renderer.xr.enabled = _oldXrEnabled;
 
 		outputTarget.scissorTest = false;
 		_setViewport( outputTarget, 0, 0, outputTarget.width, outputTarget.height );
@@ -262,9 +260,8 @@ class PMREMGenerator {
 		_oldTarget = this._renderer.getRenderTarget();
 		_oldActiveCubeFace = this._renderer.getActiveCubeFace();
 		_oldActiveMipmapLevel = this._renderer.getActiveMipmapLevel();
-		_oldXrEnabled = this._renderer.xr.enabled;
+		_oldXrEnabled = false;
 
-		this._renderer.xr.enabled = false;
 
 		const cubeUVRenderTarget = renderTarget || this._allocateTargets();
 		this._textureToCubeUV( texture, cubeUVRenderTarget );

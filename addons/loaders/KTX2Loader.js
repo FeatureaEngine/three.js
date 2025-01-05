@@ -42,7 +42,7 @@ import {
 	RGFormat,
 	SRGBColorSpace,
 	UnsignedByteType,
-} from 'three';
+} from '../../src/Three.js';
 import { WorkerPool } from '../utils/WorkerPool.js';
 import {
 	read,
@@ -69,8 +69,8 @@ import {
 	KHR_DF_PRIMARIES_UNSPECIFIED,
 	KHR_DF_PRIMARIES_BT709,
 	KHR_DF_PRIMARIES_DISPLAYP3
-} from '../libs/ktx-parse.module.js';
-import { ZSTDDecoder } from '../libs/zstddec.module.js';
+} from '../../libs/ktx-parse.module.js';
+import { ZSTDDecoder } from '../../libs/zstddec.module.js';
 import { DisplayP3ColorSpace, LinearDisplayP3ColorSpace } from '../math/ColorSpaces.js';
 
 const _taskCache = new WeakMap();

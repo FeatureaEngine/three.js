@@ -32,10 +32,10 @@
 
 		<script type="module">
 
-			import * as THREE from 'three';
+			import * as THREE from "../src/Three.js";
 
-			import * as CameraUtils from 'three/addons/utils/CameraUtils.js';
-			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+			import * as CameraUtils from '../addons/utils/CameraUtils.js';
+			import { OrbitControls } from '../addons/controls/OrbitControls.js';
 
 			let camera, scene, renderer;
 
@@ -228,9 +228,8 @@
 
 				// save the original camera properties
 				const currentRenderTarget = renderer.getRenderTarget();
-				const currentXrEnabled = renderer.xr.enabled;
+				const currentXrEnabled = false;
 				const currentShadowAutoUpdate = renderer.shadowMap.autoUpdate;
-				renderer.xr.enabled = false; // Avoid camera modification
 				renderer.shadowMap.autoUpdate = false; // Avoid re-computing shadows
 
 				// render the portal effect
@@ -238,7 +237,6 @@
 				renderPortal( rightPortal, leftPortal, rightPortalTexture );
 
 				// restore the original rendering properties
-				renderer.xr.enabled = currentXrEnabled;
 				renderer.shadowMap.autoUpdate = currentShadowAutoUpdate;
 				renderer.setRenderTarget( currentRenderTarget );
 

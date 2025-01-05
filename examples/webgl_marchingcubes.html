@@ -27,14 +27,14 @@
 	</script>
 
 	<script type="module">
-		import * as THREE from 'three';
+		import * as THREE from "../src/Three.js";
 
-		import Stats from 'three/libs/stats.module.js';
+		import Stats from '../libs/stats.module.js';
 
-		import { GUI } from 'three/libs/lil-gui.module.min.js';
-		import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-		import { MarchingCubes } from 'three/addons/objects/MarchingCubes.js';
-		import { ToonShader1, ToonShader2, ToonShaderHatching, ToonShaderDotted } from 'three/addons/shaders/ToonShader.js';
+		import { GUI } from '../libs/lil-gui.module.min.js';
+		import { OrbitControls } from '../addons/controls/OrbitControls.js';
+		import { MarchingCubes } from '../addons/objects/MarchingCubes.js';
+		import { ToonShader1, ToonShader2, ToonShaderHatching, ToonShaderDotted } from '../addons/shaders/ToonShader.js';
 
 		let container, stats;
 

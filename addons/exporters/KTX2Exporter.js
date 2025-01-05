@@ -14,7 +14,7 @@ import {
 	SRGBTransfer,
 	DataTexture,
 	REVISION,
-} from 'three';
+} from '../../src/Three.js';
 
 import {
 	write,
@@ -43,7 +43,7 @@ import {
 	VK_FORMAT_R8G8_UNORM,
 	VK_FORMAT_R8G8B8A8_SRGB,
 	VK_FORMAT_R8G8B8A8_UNORM,
-} from '../libs/ktx-parse.module.js';
+} from '../../libs/ktx-parse.module.js';
 
 /**
  * References:

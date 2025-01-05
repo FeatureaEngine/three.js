@@ -7,7 +7,7 @@ import {
 	TextureLoader,
 	UVMapping,
 	SRGBColorSpace
-} from 'three';
+} from '../../src/Three.js';
 import { MD2Loader } from '../loaders/MD2Loader.js';
 
 class MD2Character {

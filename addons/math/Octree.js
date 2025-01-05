@@ -6,7 +6,7 @@ import {
 	Triangle,
 	Vector3,
 	Layers
-} from 'three';
+} from '../../src/Three.js';
 import { Capsule } from '../math/Capsule.js';
 
 

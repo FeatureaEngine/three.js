@@ -2,7 +2,7 @@ import {
 	Group,
 	Raycaster,
 	Vector2
-} from 'three';
+} from '../../src/Three.js';
 
 const _pointer = new Vector2();
 const _event = { type: '', data: _pointer };

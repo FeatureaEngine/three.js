@@ -23,14 +23,14 @@
 
 		<script type="module">
 
-			import * as THREE from 'three';
+			import * as THREE from "../src/Three.js";
 
-			import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
-			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-			import { KTX2Loader } from 'three/addons/loaders/KTX2Loader.js';
-			import { MeshoptDecoder } from 'three/libs/meshopt_decoder.module.js';
-			import { GUI } from 'three/libs/lil-gui.module.min.js';
-			import * as TextureUtils from 'three/addons/utils/WebGLTextureUtils.js';
+			import { GLTFExporter } from '../addons/exporters/GLTFExporter.js';
+			import { GLTFLoader } from '../addons/loaders/GLTFLoader.js';
+			import { KTX2Loader } from '../addons/loaders/KTX2Loader.js';
+			import { MeshoptDecoder } from '../libs/meshopt_decoder.module.js';
+			import { GUI } from '../libs/lil-gui.module.min.js';
+			import * as TextureUtils from '../addons/utils/WebGLTextureUtils.js';
 
 			function exportGLTF( input ) {
 

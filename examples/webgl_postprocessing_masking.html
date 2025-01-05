@@ -22,13 +22,13 @@
 
 		<script type="module">
 
-			import * as THREE from 'three';
+			import * as THREE from "../src/Three.js";
 
-			import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-			import { TexturePass } from 'three/addons/postprocessing/TexturePass.js';
-			import { ClearPass } from 'three/addons/postprocessing/ClearPass.js';
-			import { MaskPass, ClearMaskPass } from 'three/addons/postprocessing/MaskPass.js';
-			import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+			import { EffectComposer } from '../addons/postprocessing/EffectComposer.js';
+			import { TexturePass } from '../addons/postprocessing/TexturePass.js';
+			import { ClearPass } from '../addons/postprocessing/ClearPass.js';
+			import { MaskPass, ClearMaskPass } from '../addons/postprocessing/MaskPass.js';
+			import { OutputPass } from '../addons/postprocessing/OutputPass.js';
 
 			let camera, composer, renderer;
 			let box, torus;

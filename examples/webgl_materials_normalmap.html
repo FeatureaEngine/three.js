@@ -25,18 +25,18 @@
 
 		<script type="module">
 
-			import * as THREE from 'three';
+			import * as THREE from "../src/Three.js";
 
-			import Stats from 'three/libs/stats.module.js';
+			import Stats from '../libs/stats.module.js';
 
-			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-			import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-			import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-			import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
-			import { BleachBypassShader } from 'three/addons/shaders/BleachBypassShader.js';
-			import { ColorCorrectionShader } from 'three/addons/shaders/ColorCorrectionShader.js';
-			import { FXAAShader } from 'three/addons/shaders/FXAAShader.js';
-			import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+			import { GLTFLoader } from '../addons/loaders/GLTFLoader.js';
+			import { EffectComposer } from '../addons/postprocessing/EffectComposer.js';
+			import { RenderPass } from '../addons/postprocessing/RenderPass.js';
+			import { ShaderPass } from '../addons/postprocessing/ShaderPass.js';
+			import { BleachBypassShader } from '../addons/shaders/BleachBypassShader.js';
+			import { ColorCorrectionShader } from '../addons/shaders/ColorCorrectionShader.js';
+			import { FXAAShader } from '../addons/shaders/FXAAShader.js';
+			import { OutputPass } from '../addons/postprocessing/OutputPass.js';
 
 			let container, stats, loader;
 

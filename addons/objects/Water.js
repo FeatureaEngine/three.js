@@ -11,7 +11,7 @@ import {
 	Vector3,
 	Vector4,
 	WebGLRenderTarget
-} from 'three';
+} from '../../src/Three.js';
 
 /**
  * Work based on :
@@ -292,12 +292,11 @@ class Water extends Mesh {
 
 			const currentRenderTarget = renderer.getRenderTarget();
 
-			const currentXrEnabled = renderer.xr.enabled;
+			const currentXrEnabled = false;
 			const currentShadowAutoUpdate = renderer.shadowMap.autoUpdate;
 
 			scope.visible = false;
 
-			renderer.xr.enabled = false; // Avoid camera modification and recursion
 			renderer.shadowMap.autoUpdate = false; // Avoid re-computing shadows
 
 			renderer.setRenderTarget( renderTarget );
@@ -309,7 +308,6 @@ class Water extends Mesh {
 
 			scope.visible = true;
 
-			renderer.xr.enabled = currentXrEnabled;
 			renderer.shadowMap.autoUpdate = currentShadowAutoUpdate;
 
 			renderer.setRenderTarget( currentRenderTarget );

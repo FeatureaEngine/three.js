@@ -11,7 +11,7 @@ import {
 	NearestFilter,
 	RedFormat,
 	SRGBColorSpace
-} from 'three';
+} from '../../src/Three.js';
 
 class VOXLoader extends Loader {
 

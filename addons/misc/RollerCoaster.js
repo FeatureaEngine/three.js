@@ -6,7 +6,7 @@ import {
 	Raycaster,
 	SRGBColorSpace,
 	Vector3
-} from 'three';
+} from '../../src/Three.js';
 
 class RollerCoasterGeometry extends BufferGeometry {
 

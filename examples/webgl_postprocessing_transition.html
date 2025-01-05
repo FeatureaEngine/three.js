@@ -25,14 +25,14 @@
 
 		<script type="module">
 
-			import * as THREE from 'three';
+			import * as THREE from "../src/Three.js";
 
-			import Stats from 'three/libs/stats.module.js';
-			import { GUI } from 'three/libs/lil-gui.module.min.js';
-			import TWEEN from 'three/libs/tween.module.js';
-			import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-			import { RenderTransitionPass } from 'three/addons/postprocessing/RenderTransitionPass.js';
-			import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+			import Stats from '../libs/stats.module.js';
+			import { GUI } from '../libs/lil-gui.module.min.js';
+			import TWEEN from '../libs/tween.module.js';
+			import { EffectComposer } from '../addons/postprocessing/EffectComposer.js';
+			import { RenderTransitionPass } from '../addons/postprocessing/RenderTransitionPass.js';
+			import { OutputPass } from '../addons/postprocessing/OutputPass.js';
 
 			let stats;
 			let renderer, composer, renderTransitionPass;

@@ -28,19 +28,19 @@
 	</script>
 
 	<script type="module">
-		import * as THREE from 'three';
+		import * as THREE from "../src/Three.js";
 
-		import Stats from 'three/libs/stats.module.js';
+		import Stats from '../libs/stats.module.js';
 
-		import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+		import { OrbitControls } from '../addons/controls/OrbitControls.js';
 
-		import { GUI } from 'three/libs/lil-gui.module.min.js';
-		import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-		import { SSRPass } from 'three/addons/postprocessing/SSRPass.js';
-		import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-		import { ReflectorForSSRPass } from 'three/addons/objects/ReflectorForSSRPass.js';
+		import { GUI } from '../libs/lil-gui.module.min.js';
+		import { EffectComposer } from '../addons/postprocessing/EffectComposer.js';
+		import { SSRPass } from '../addons/postprocessing/SSRPass.js';
+		import { OutputPass } from '../addons/postprocessing/OutputPass.js';
+		import { ReflectorForSSRPass } from '../addons/objects/ReflectorForSSRPass.js';
 
-		import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+		import { DRACOLoader } from '../addons/loaders/DRACOLoader.js';
 
 		const params = {
 			enableSSR: true,

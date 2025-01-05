@@ -9,7 +9,7 @@ import {
 	ACESFilmicToneMapping,
 	NeutralToneMapping,
 	SRGBTransfer
-} from 'three';
+} from '../../src/Three.js';
 import { Pass, FullScreenQuad } from './Pass.js';
 import { OutputShader } from '../shaders/OutputShader.js';
 

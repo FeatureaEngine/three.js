@@ -28,13 +28,13 @@
 
 	<script type="module">
 
-		import * as THREE from 'three';
+		import * as THREE from "../src/Three.js";
 
-		import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-		import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-		import { RenderPixelatedPass } from 'three/addons/postprocessing/RenderPixelatedPass.js';
-		import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-		import { GUI } from 'three/libs/lil-gui.module.min.js';
+		import { OrbitControls } from '../addons/controls/OrbitControls.js';
+		import { EffectComposer } from '../addons/postprocessing/EffectComposer.js';
+		import { RenderPixelatedPass } from '../addons/postprocessing/RenderPixelatedPass.js';
+		import { OutputPass } from '../addons/postprocessing/OutputPass.js';
+		import { GUI } from '../libs/lil-gui.module.min.js';
 
 		let camera, scene, renderer, composer, crystalMesh, clock;
 		let gui, params;

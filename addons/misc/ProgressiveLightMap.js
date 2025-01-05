@@ -1,5 +1,5 @@
-import { DoubleSide, FloatType, HalfFloatType, Mesh, MeshBasicMaterial, MeshPhongMaterial, PlaneGeometry, Scene, WebGLRenderTarget } from 'three';
-import { potpack } from '../libs/potpack.module.js';
+import { DoubleSide, FloatType, HalfFloatType, Mesh, MeshBasicMaterial, MeshPhongMaterial, PlaneGeometry, Scene, WebGLRenderTarget } from '../../src/Three.js';
+import { potpack } from '../../libs/potpack.module.js';
 
 /**
  * Progressive Light Map Accumulator, by [zalo](https://github.com/zalo/)

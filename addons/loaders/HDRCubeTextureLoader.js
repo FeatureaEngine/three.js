@@ -7,7 +7,7 @@ import {
 	LinearFilter,
 	LinearSRGBColorSpace,
 	Loader
-} from 'three';
+} from '../../src/Three.js';
 import { RGBELoader } from '../loaders/RGBELoader.js';
 
 class HDRCubeTextureLoader extends Loader {

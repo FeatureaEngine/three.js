@@ -19,14 +19,14 @@
 
 		<script type="module">
 
-			import * as THREE from 'three';
+			import * as THREE from "../src/Three.js";
 
-			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-			import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
-			import { EdgeSplitModifier } from 'three/addons/modifiers/EdgeSplitModifier.js';
-			import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
+			import { OrbitControls } from '../addons/controls/OrbitControls.js';
+			import { OBJLoader } from '../addons/loaders/OBJLoader.js';
+			import { EdgeSplitModifier } from '../addons/modifiers/EdgeSplitModifier.js';
+			import * as BufferGeometryUtils from '../addons/utils/BufferGeometryUtils.js';
 
-			import { GUI } from 'three/libs/lil-gui.module.min.js';
+			import { GUI } from '../libs/lil-gui.module.min.js';
 
 			let renderer, scene, camera;
 			let modifier, mesh, baseGeometry;

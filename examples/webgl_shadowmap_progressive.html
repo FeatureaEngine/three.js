@@ -24,12 +24,12 @@
 		</script>
 
 		<script type="module">
-			import * as THREE from 'three';
-			import { GUI } from 'three/libs/lil-gui.module.min.js';
-			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-			import { TransformControls } from 'three/addons/controls/TransformControls.js';
-			import { ProgressiveLightMap } from 'three/addons/misc/ProgressiveLightMap.js';
+			import * as THREE from "../src/Three.js";
+			import { GUI } from '../libs/lil-gui.module.min.js';
+			import { GLTFLoader } from '../addons/loaders/GLTFLoader.js';
+			import { OrbitControls } from '../addons/controls/OrbitControls.js';
+			import { TransformControls } from '../addons/controls/TransformControls.js';
+			import { ProgressiveLightMap } from '../addons/misc/ProgressiveLightMap.js';
 
 			// ShadowMap + LightMap Res and Number of Directional Lights
 			const shadowMapRes = 512, lightMapRes = 1024, lightCount = 8;

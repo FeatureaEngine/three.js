@@ -6,7 +6,7 @@ import {
 	RGBAFormat,
 	ShaderMaterial,
 	WebGLRenderTarget
-} from 'three';
+} from '../../src/Three.js';
 
 import { FullScreenQuad } from '../postprocessing/Pass.js';
 
@@ -380,17 +380,15 @@ class GPUComputationRenderer {
 
 			const currentRenderTarget = renderer.getRenderTarget();
 
-			const currentXrEnabled = renderer.xr.enabled;
+			const currentXrEnabled = false;
 			const currentShadowAutoUpdate = renderer.shadowMap.autoUpdate;
 
-			renderer.xr.enabled = false; // Avoid camera modification
 			renderer.shadowMap.autoUpdate = false; // Avoid re-computing shadows
 			quad.material = material;
 			renderer.setRenderTarget( output );
 			quad.render( renderer );
 			quad.material = passThruShader;
 
-			renderer.xr.enabled = currentXrEnabled;
 			renderer.shadowMap.autoUpdate = currentShadowAutoUpdate;
 
 			renderer.setRenderTarget( currentRenderTarget );

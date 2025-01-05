@@ -14,7 +14,7 @@ import {
 	Vector3,
 	Matrix4,
 	MathUtils
-} from 'three';
+} from '../../src/Three.js';
 
 //trackball state
 const STATE = {

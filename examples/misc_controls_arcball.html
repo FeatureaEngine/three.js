@@ -25,14 +25,14 @@
 		</script>
 
 		<script type="module">
-			import * as THREE from 'three';
+			import * as THREE from "../src/Three.js";
 
-			import { GUI } from 'three/libs/lil-gui.module.min.js';
+			import { GUI } from '../libs/lil-gui.module.min.js';
 
-			import { ArcballControls } from 'three/addons/controls/ArcballControls.js';
+			import { ArcballControls } from '../addons/controls/ArcballControls.js';
 
-			import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
-			import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+			import { OBJLoader } from '../addons/loaders/OBJLoader.js';
+			import { RGBELoader } from '../addons/loaders/RGBELoader.js';
 
 			const cameras = [ 'Orthographic', 'Perspective' ];
 			const cameraType = { type: 'Perspective' };

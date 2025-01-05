@@ -19,15 +19,15 @@
 
 		<script type="module">
 
-			import * as THREE from 'three';
+			import * as THREE from "../src/Three.js";
 
-			import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-			import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-			import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+			import { EffectComposer } from '../addons/postprocessing/EffectComposer.js';
+			import { RenderPass } from '../addons/postprocessing/RenderPass.js';
+			import { ShaderPass } from '../addons/postprocessing/ShaderPass.js';
 
-			import { RGBShiftShader } from 'three/addons/shaders/RGBShiftShader.js';
-			import { DotScreenShader } from 'three/addons/shaders/DotScreenShader.js';
-			import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+			import { RGBShiftShader } from '../addons/shaders/RGBShiftShader.js';
+			import { DotScreenShader } from '../addons/shaders/DotScreenShader.js';
+			import { OutputPass } from '../addons/postprocessing/OutputPass.js';
 
 			let camera, renderer, composer;
 			let object;

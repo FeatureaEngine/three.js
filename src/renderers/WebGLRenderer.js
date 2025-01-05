@@ -387,13 +387,6 @@ class WebGLRenderer {
 
 		this.setSize = function ( width, height, updateStyle = true ) {
 
-			if ( xr.isPresenting ) {
-
-				console.warn( 'THREE.WebGLRenderer: Can\'t change size while VR device is presenting.' );
-				return;
-
-			}
-
 			_width = width;
 			_height = height;
 
@@ -645,12 +638,6 @@ class WebGLRenderer {
 			bindingStates.dispose();
 			uniformsGroups.dispose();
 			programCache.dispose();
-
-			xr.dispose();
-
-			xr.removeEventListener( 'sessionstart', onXRSessionStart );
-			xr.removeEventListener( 'sessionend', onXRSessionEnd );
-
 			animation.stop();
 
 		};
@@ -1118,14 +1105,10 @@ class WebGLRenderer {
 		this.setAnimationLoop = function ( callback ) {
 
 			onAnimationFrameCallback = callback;
-			xr.setAnimationLoop( callback );
 
 			( callback === null ) ? animation.stop() : animation.start();
 
 		};
-
-		xr.addEventListener( 'sessionstart', onXRSessionStart );
-		xr.addEventListener( 'sessionend', onXRSessionEnd );
 
 		// Rendering
 
@@ -1148,14 +1131,6 @@ class WebGLRenderer {
 
 			if ( camera.parent === null && camera.matrixWorldAutoUpdate === true ) camera.updateMatrixWorld();
 
-			if ( xr.enabled === true && xr.isPresenting === true ) {
-
-				if ( xr.cameraAutoUpdate === true ) xr.updateCamera( camera );
-
-				camera = xr.getCamera(); // use XR camera for rendering
-
-			}
-
 			//
 			if ( scene.isScene === true ) scene.onBeforeRender( _this, scene, camera, _currentRenderTarget );
 
@@ -1175,18 +1150,6 @@ class WebGLRenderer {
 
 			renderListStack.push( currentRenderList );
 
-			if ( xr.enabled === true && xr.isPresenting === true ) {
-
-				const depthSensingMesh = _this.xr.getDepthSensingMesh();
-
-				if ( depthSensingMesh !== null ) {
-
-					projectObject( depthSensingMesh, camera, - Infinity, _this.sortObjects );
-
-				}
-
-			}
-
 			projectObject( scene, camera, 0, _this.sortObjects );
 
 			currentRenderList.finish();
@@ -1197,7 +1160,7 @@ class WebGLRenderer {
 
 			}
 
-			_renderBackground = xr.enabled === false || xr.isPresenting === false || xr.hasDepthSensing() === false;
+			_renderBackground = true;
 			if ( _renderBackground ) {
 
 				background.addToRenderList( currentRenderList, scene );

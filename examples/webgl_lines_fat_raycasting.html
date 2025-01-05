@@ -26,17 +26,17 @@
 
 		<script type="module">
 
-			import * as THREE from 'three';
+			import * as THREE from "../src/Three.js";
 
 			import Stats from 'stats-gl';
 
-			import { GUI } from 'three/libs/lil-gui.module.min.js';
-			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-			import { LineMaterial } from 'three/addons/lines/LineMaterial.js';
-			import { LineSegments2 } from 'three/addons/lines/LineSegments2.js';
-			import { LineSegmentsGeometry } from 'three/addons/lines/LineSegmentsGeometry.js';
-			import { Line2 } from 'three/addons/lines/Line2.js';
-			import { LineGeometry } from 'three/addons/lines/LineGeometry.js';
+			import { GUI } from '../libs/lil-gui.module.min.js';
+			import { OrbitControls } from '../addons/controls/OrbitControls.js';
+			import { LineMaterial } from '../addons/lines/LineMaterial.js';
+			import { LineSegments2 } from '../addons/lines/LineSegments2.js';
+			import { LineSegmentsGeometry } from '../addons/lines/LineSegmentsGeometry.js';
+			import { Line2 } from '../addons/lines/Line2.js';
+			import { LineGeometry } from '../addons/lines/LineGeometry.js';
 
 			let line, thresholdLine, segments, thresholdSegments;
 			let renderer, scene, camera, controls;

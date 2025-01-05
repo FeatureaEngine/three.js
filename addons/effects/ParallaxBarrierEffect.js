@@ -5,7 +5,7 @@ import {
 	ShaderMaterial,
 	StereoCamera,
 	WebGLRenderTarget
-} from 'three';
+} from '../../src/Three.js';
 import { FullScreenQuad } from '../postprocessing/Pass.js';
 
 class ParallaxBarrierEffect {

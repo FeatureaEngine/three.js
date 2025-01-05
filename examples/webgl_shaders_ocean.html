@@ -13,27 +13,13 @@
 			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - webgl ocean
 		</div>
 
-		<script type="importmap">
-			{
-				"imports": {
-					"three": "../build/three.module.js",
-					"three/addons/": "../addons/",
-					"three/libs/": "../libs/",
-					"three/libs/": "../libs/"
-				}
-			}
-		</script>
-
 		<script type="module">
 
-			import * as THREE from 'three';
-
-			import Stats from 'three/libs/stats.module.js';
-
-			import { GUI } from 'three/libs/lil-gui.module.min.js';
-			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-			import { Water } from 'three/addons/objects/Water.js';
-			import { Sky } from 'three/addons/objects/Sky.js';
+			import * as THREE from "../src/Three.js"
+			import { GUI } from '../libs/lil-gui.module.min.js';
+			import { OrbitControls } from '../addons/controls/OrbitControls.js';
+			import { Water } from '../addons/objects/Water.js';
+			import { Sky } from '../addons/objects/Sky.js';
 
 			let container, stats;
 			let camera, scene, renderer;
@@ -154,11 +140,6 @@
 				controls.maxDistance = 200.0;
 				controls.update();
 
-				//
-
-				stats = new Stats();
-				container.appendChild( stats.dom );
-
 				// GUI
 
 				const gui = new GUI();
@@ -193,7 +174,6 @@
 			function animate() {
 
 				render();
-				stats.update();
 
 			}
 

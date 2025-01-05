@@ -6,7 +6,7 @@ import {
 	PlaneGeometry,
 	SRGBColorSpace,
 	Color
-} from 'three';
+} from '../../src/Three.js';
 
 class HTMLMesh extends Mesh {
 

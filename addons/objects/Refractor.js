@@ -11,7 +11,7 @@ import {
 	Vector4,
 	WebGLRenderTarget,
 	HalfFloatType
-} from 'three';
+} from '../../src/Three.js';
 
 class Refractor extends Mesh {
 
@@ -191,17 +191,15 @@ class Refractor extends Mesh {
 			scope.visible = false;
 
 			const currentRenderTarget = renderer.getRenderTarget();
-			const currentXrEnabled = renderer.xr.enabled;
+			const currentXrEnabled = false;
 			const currentShadowAutoUpdate = renderer.shadowMap.autoUpdate;
 
-			renderer.xr.enabled = false; // avoid camera modification
 			renderer.shadowMap.autoUpdate = false; // avoid re-computing shadows
 
 			renderer.setRenderTarget( renderTarget );
 			if ( renderer.autoClear === false ) renderer.clear();
 			renderer.render( scene, virtualCamera );
 
-			renderer.xr.enabled = currentXrEnabled;
 			renderer.shadowMap.autoUpdate = currentShadowAutoUpdate;
 			renderer.setRenderTarget( currentRenderTarget );
 

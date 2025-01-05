@@ -5,7 +5,7 @@ import {
 	SRGBColorSpace,
 	Vector2,
 	Vector3
-} from 'three';
+} from '../../src/Three.js';
 
 class OBJExporter {
 
