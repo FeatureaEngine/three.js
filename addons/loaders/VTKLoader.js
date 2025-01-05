@@ -7,7 +7,7 @@ import {
 	Loader,
 	SRGBColorSpace
 } from 'three';
-import * as fflate from '../libs/fflate.module.js';
+import * as fflate from '../../libs/fflate.module.js';
 
 class VTKLoader extends Loader {
 

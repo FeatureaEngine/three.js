@@ -4,14 +4,15 @@
 		<title>three.js webgl - clipIntersection</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="../files/example.css">
+		<link type="text/css" rel="stylesheet" href="../public/example.css">
 	</head>
 	<body>
 		<script type="importmap">
 			{
 				"imports": {
 					"three": "../build/three.module.js",
-					"three/addons/": "./jsm/"
+					"three/addons/": "../addons/",
+					"three/libs/": "../libs/"
 				}
 			}
 		</script>
@@ -20,7 +21,7 @@
 
 			import * as THREE from 'three';
 
-			import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+			import { GUI } from 'three/libs/lil-gui.module.min.js';
 
 			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 

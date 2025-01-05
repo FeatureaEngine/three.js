@@ -4,7 +4,7 @@
 		<title>three.js webgl - materials - manual mipmaping</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="../files/example.css">
+		<link type="text/css" rel="stylesheet" href="../public/example.css">
 		<style>
 
 			.lbl { color:#fff; font-size:16px; font-weight:bold; position: absolute; bottom:0px; z-index:100; text-shadow:#000 1px 1px 1px; background-color:rgba(0,0,0,0.85); padding:1em }
@@ -47,7 +47,8 @@
 			{
 				"imports": {
 					"three": "../build/three.module.js",
-					"three/addons/": "./jsm/"
+					"three/addons/": "../addons/",
+					"three/libs/": "../libs/"
 				}
 			}
 		</script>

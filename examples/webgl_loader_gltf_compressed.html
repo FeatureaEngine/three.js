@@ -4,7 +4,7 @@
 		<title>three.js webgl - GLTFloader + compressed</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="../files/example.css">
+		<link type="text/css" rel="stylesheet" href="../public/example.css">
 	</head>
 
 	<body>
@@ -18,7 +18,8 @@
 			{
 				"imports": {
 					"three": "../build/three.module.js",
-					"three/addons/": "./jsm/"
+					"three/addons/": "../addons/",
+					"three/libs/": "../libs/"
 				}
 			}
 		</script>
@@ -32,7 +33,7 @@
 			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 			import { KTX2Loader } from 'three/addons/loaders/KTX2Loader.js';
-			import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+			import { MeshoptDecoder } from 'three/libs/meshopt_decoder.module.js';
 
 			let camera, scene, renderer;
 

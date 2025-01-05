@@ -44,7 +44,7 @@ import {
 	VectorKeyframeTrack
 } from 'three';
 
-import * as fflate from '../libs/fflate.module.js';
+import * as fflate from '../../libs/fflate.module.js';
 import { NURBSCurve } from '../curves/NURBSCurve.js';
 
 /**

@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<title>three.js examples</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link rel="shortcut icon" href="../files/favicon_white.ico" media="(prefers-color-scheme: dark)"/>
-		<link rel="shortcut icon" href="../files/favicon.ico" media="(prefers-color-scheme: light)" />
-		<link rel="stylesheet" type="text/css" href="../files/main.css">
+		<link rel="shortcut icon" href="../public/favicon_white.ico" media="(prefers-color-scheme: dark)"/>
+		<link rel="shortcut icon" href="../public/favicon.ico" media="(prefers-color-scheme: light)" />
+		<link rel="stylesheet" type="text/css" href="../public/main.css">
 	</head>
 	<body>
 
@@ -33,7 +33,7 @@
 				</div>
 
 				<div id="content">
-					<img id="previewsToggler" src="../files/thumbnails.svg" width="20" height="20" />
+					<img id="previewsToggler" src="../public/thumbnails.svg" width="20" height="20" />
 				</div>
 			</div>
 
@@ -41,7 +41,7 @@
 
 		<iframe id="viewer" name="viewer" allow="fullscreen; xr-spatial-tracking;"></iframe>
 
-		<a id="button" target="_blank"><img src="../files/ic_code_black_24dp.svg"></a>
+		<a id="button" target="_blank"><img src="../public/ic_code_black_24dp.svg"></a>
 
 		<script>
 
@@ -70,8 +70,8 @@
 
 			viewSrcButton.style.display = 'none';
 
-			const files = await ( await fetch( '../files/index.json' ) ).json();
-			const tags = await ( await fetch( '../files/tags.json' ) ).json();
+			const files = await ( await fetch( '../public/index.json' ) ).json();
+			const tags = await ( await fetch( '../public/tags.json' ) ).json();
 
 			for ( const key in files ) {
 
@@ -209,7 +209,7 @@
 				<div class="card">
 					<a href="${ file }.html" target="viewer">
 						<div class="cover">
-							<img src="../files/screenshots/${ file }.jpg" loading="lazy" width="400" />
+							<img src="../public/screenshots/${ file }.jpg" loading="lazy" width="400" />
 						</div>
 						<div class="title">${ getName( file ) }${ external }</div>
 					</a>
@@ -404,7 +404,7 @@
 						<meta charset="utf-8">
 						<title>three.js examples</title>
 						<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-						<link rel="stylesheet" type="text/css" href="../files/main.css">
+						<link rel="stylesheet" type="text/css" href="../public/main.css">
 						<style>
 						html, body {
 							height: 100%;

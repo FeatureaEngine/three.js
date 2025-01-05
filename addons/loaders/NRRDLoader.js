@@ -4,7 +4,7 @@ import {
 	Matrix4,
 	Vector3
 } from 'three';
-import * as fflate from '../libs/fflate.module.js';
+import * as fflate from '../../libs/fflate.module.js';
 import { Volume } from '../misc/Volume.js';
 
 class NRRDLoader extends Loader {
