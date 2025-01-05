@@ -75,7 +75,6 @@ function WebGLCubeUVMaps(renderer) {
         get: get,
         dispose: dispose
     };
-
 }
 
 export {WebGLCubeUVMaps};

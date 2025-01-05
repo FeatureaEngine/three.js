@@ -15,7 +15,6 @@ function initJank() {
         }
     });
     result = document.getElementById('result');
-
 }
 
 function jank() {
@@ -24,7 +23,6 @@ function jank() {
         number += Math.random();
     }
     result.textContent = number;
-
 }
 
 export default initJank;

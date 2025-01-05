@@ -3,12 +3,10 @@ export default /* glsl */`
 float G_BlinnPhong_Implicit( /* const in float dotNL, const in float dotNV */ ) {
 	// geometry term is (n dot l)(n dot v) / 4(n dot l)(n dot v)
 	return 0.25;
-
 }
 
 float D_BlinnPhong( const in float shininess, const in float dotNH ) {
 	return RECIPROCAL_PI * ( shininess * 0.5 + 1.0 ) * pow( dotNH, shininess );
-
 }
 
 vec3 BRDF_BlinnPhong( const in vec3 lightDir, const in vec3 viewDir, const in vec3 normal, const in vec3 specularColor, const in float shininess ) {

@@ -1,4 +1,4 @@
-import {CompressedTextureLoader} from '../../src/Three.js';
+import {CompressedTextureLoader} from '../../libs/three/Three.js';
 
 /**
  * for description see https://www.khronos.org/opengles/sdk/tools/KTX/

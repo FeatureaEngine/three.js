@@ -17,7 +17,6 @@ export function getTextureIndex(textures, name) {
         }
     }
     return -1;
-
 }
 
 /**

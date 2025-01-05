@@ -56,7 +56,6 @@ function WebGLCubeMaps(renderer) {
         get: get,
         dispose: dispose
     };
-
 }
 
 export {WebGLCubeMaps};

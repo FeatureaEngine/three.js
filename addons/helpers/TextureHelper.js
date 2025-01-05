@@ -1,4 +1,4 @@
-import {BoxGeometry, BufferAttribute, DoubleSide, Mesh, PlaneGeometry, ShaderMaterial, Vector3,} from '../../src/Three.js';
+import {BoxGeometry, BufferAttribute, DoubleSide, Mesh, PlaneGeometry, ShaderMaterial, Vector3,} from '../../libs/three/Three.js';
 import {mergeGeometries} from '../utils/BufferGeometryUtils.js';
 
 class TextureHelper extends Mesh {
@@ -106,7 +106,6 @@ function createCubeGeometry(width, height, depth) {
     geometry.deleteAttribute('uv');
     geometry.setAttribute('uvw', uvw);
     return geometry;
-
 }
 
 function createSliceGeometry(texture, width, height, depth) {
@@ -134,7 +133,6 @@ function createSliceGeometry(texture, width, height, depth) {
         geometries.push(geometry);
     }
     return mergeGeometries(geometries);
-
 }
 
 export {TextureHelper};

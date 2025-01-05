@@ -1,4 +1,4 @@
-import {BufferGeometry, Color, FileLoader, Float32BufferAttribute, Loader, SRGBColorSpace} from '../../src/Three.js';
+import {BufferGeometry, Color, FileLoader, Float32BufferAttribute, Loader, SRGBColorSpace} from '../../libs/three/Three.js';
 
 /**
  * Description: A THREE loader for PLY ASCII files (known as the Polygon

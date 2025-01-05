@@ -18,7 +18,6 @@ let c = 0;
 for (let i = 0; i < (ITERATIONS + 1); i++) {
     bins[i] = new Uint32Array(bins_buffer, c, BIN_SIZE);
     c += BIN_SIZE * 4;
-
 }
 
 const defaultGet = (el) => el;

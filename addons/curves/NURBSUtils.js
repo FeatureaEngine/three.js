@@ -1,4 +1,4 @@
-import {Vector3, Vector4} from '../../src/Three.js';
+import {Vector3, Vector4} from '../../libs/three/Three.js';
 
 /**
  * NURBS utils
@@ -40,7 +40,6 @@ function findSpan(p, u, U) {
         mid = Math.floor((low + high) / 2);
     }
     return mid;
-
 }
 
 
@@ -73,7 +72,6 @@ function calcBasisFunctions(span, u, p, U) {
         N[j] = saved;
     }
     return N;
-
 }
 
 
@@ -101,7 +99,6 @@ function calcBSplinePoint(p, U, P, u) {
         C.w += point.w * Nj;
     }
     return C;
-
 }
 
 
@@ -186,7 +183,6 @@ function calcBasisFunctionDerivatives(span, u, p, n, U) {
         r *= p - k;
     }
     return ders;
-
 }
 
 
@@ -224,7 +220,6 @@ function calcBSplineDerivatives(p, U, P, u, nd) {
         CK[k] = new Vector4(0, 0, 0);
     }
     return CK;
-
 }
 
 
@@ -246,7 +241,6 @@ function calcKoverI(k, i) {
         denom *= j;
     }
     return nom / denom;
-
 }
 
 
@@ -275,7 +269,6 @@ function calcRationalCurveDerivatives(Pders) {
         CK[k] = v.divideScalar(wders[0]);
     }
     return CK;
-
 }
 
 
@@ -293,7 +286,6 @@ returns array with derivatives.
 function calcNURBSDerivatives(p, U, P, u, nd) {
     const Pders = calcBSplineDerivatives(p, U, P, u, nd);
     return calcRationalCurveDerivatives(Pders);
-
 }
 
 
@@ -330,7 +322,6 @@ function calcSurfacePoint(p, q, U, V, P, u, v, target) {
     }
     Sw.divideScalar(Sw.w);
     target.set(Sw.x, Sw.y, Sw.z);
-
 }
 
 /*
@@ -373,7 +364,6 @@ function calcVolumePoint(p, q, r, U, V, W, P, u, v, w, target) {
     }
     Sw.divideScalar(Sw.w);
     target.set(Sw.x, Sw.y, Sw.z);
-
 }
 
 

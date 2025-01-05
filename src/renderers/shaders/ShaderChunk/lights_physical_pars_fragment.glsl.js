@@ -63,7 +63,6 @@ float V_GGX_SmithCorrelated( const in float alpha, const in float dotNL, const i
 	float gv = dotNL * sqrt( a2 + ( 1.0 - a2 ) * pow2( dotNV ) );
 	float gl = dotNV * sqrt( a2 + ( 1.0 - a2 ) * pow2( dotNL ) );
 	return 0.5 / max( gv + gl, EPSILON );
-
 }
 
 // Microfacet Models for Refraction through Rough Surfaces - equation (33)
@@ -73,7 +72,6 @@ float D_GGX( const in float alpha, const in float dotNH ) {
 	float a2 = pow2( alpha );
 	float denom = pow2( dotNH ) * ( a2 - 1.0 ) + 1.0; // avoid alpha = 0 with dotNH = 1
 	return RECIPROCAL_PI * a2 / pow2( denom );
-
 }
 
 // https://google.github.io/filament/Filament.md.html#materialsystem/anisotropicmodel/anisotropicspecularbrdf
@@ -142,7 +140,6 @@ vec3 BRDF_GGX( const in vec3 lightDir, const in vec3 viewDir, const in vec3 norm
 		float D = D_GGX( alpha, dotNH );
 	#endif
 	return F * ( V * D );
-
 }
 
 // Rect Area Light
@@ -160,7 +157,6 @@ vec2 LTC_Uv( const in vec3 N, const in vec3 V, const in float roughness ) {
 	vec2 uv = vec2( roughness, sqrt( 1.0 - dotNV ) );
 	uv = uv * LUT_SCALE + LUT_BIAS;
 	return uv;
-
 }
 
 float LTC_ClippedSphereFormFactor( const in vec3 f ) {
@@ -168,7 +164,6 @@ float LTC_ClippedSphereFormFactor( const in vec3 f ) {
 	// An approximation of the form factor of a horizon-clipped rectangle.
 	float l = length( f );
 	return max( ( l * l + f.z ) / ( l + 1.0 ), 0.0 );
-
 }
 
 vec3 LTC_EdgeVectorFormFactor( const in vec3 v1, const in vec3 v2 ) {
@@ -180,7 +175,6 @@ vec3 LTC_EdgeVectorFormFactor( const in vec3 v1, const in vec3 v2 ) {
 	float v = a / b;
 	float theta_sintheta = ( x > 0.0 ) ? v : 0.5 * inversesqrt( max( 1.0 - x * x, 1e-7 ) ) - v;
 	return cross( v1, v2 ) * theta_sintheta;
-
 }
 
 vec3 LTC_Evaluate( const in vec3 N, const in vec3 V, const in vec3 P, const in mat3 mInv, const in vec3 rectCoords[ 4 ] ) {
@@ -231,7 +225,6 @@ vec3 LTC_Evaluate( const in vec3 N, const in vec3 V, const in vec3 P, const in m
 	float result = len * scale;
 */
 	return vec3( result );
-
 }
 
 // End Rect Area Light
@@ -246,14 +239,12 @@ float D_Charlie( float roughness, float dotNH ) {
 	float cos2h = dotNH * dotNH;
 	float sin2h = max( 1.0 - cos2h, 0.0078125 ); // 2^(-14/2), so sin2h^2 > 0 in fp16
 	return ( 2.0 + invAlpha ) * pow( sin2h, invAlpha * 0.5 ) / ( 2.0 * PI );
-
 }
 
 // https://github.com/google/filament/blob/master/shaders/src/brdf.fs
 float V_Neubelt( float dotNV, float dotNL ) {
 	// Neubelt and Pettineo 2013, "Crafting a Next-gen Material Pipeline for The Order: 1886"
 	return saturate( 1.0 / ( 4.0 * ( dotNL + dotNV - dotNL * dotNV ) ) );
-
 }
 
 vec3 BRDF_Sheen( const in vec3 lightDir, const in vec3 viewDir, const in vec3 normal, vec3 sheenColor, const in float sheenRoughness ) {
@@ -264,7 +255,6 @@ vec3 BRDF_Sheen( const in vec3 lightDir, const in vec3 viewDir, const in vec3 no
 	float D = D_Charlie( sheenRoughness, dotNH );
 	float V = V_Neubelt( dotNV, dotNL );
 	return sheenColor * ( D * V );
-
 }
 
 #endif
@@ -279,7 +269,6 @@ float IBLSheenBRDF( const in vec3 normal, const in vec3 viewDir, const in float 
 	float b = roughness < 0.25 ? 44.0 * r2 - 23.7 * roughness + 3.26 : 1.97 * r2 - 3.27 * roughness + 0.72;
 	float DG = exp( a * dotNV + b ) + ( roughness < 0.25 ? 0.0 : 0.1 * ( roughness - 0.25 ) );
 	return saturate( DG * RECIPROCAL_PI );
-
 }
 
 // Analytical approximation of the DFG LUT, one half of the
@@ -294,13 +283,11 @@ vec2 DFGApprox( const in vec3 normal, const in vec3 viewDir, const in float roug
 	float a004 = min( r.x * r.x, exp2( - 9.28 * dotNV ) ) * r.x + r.y;
 	vec2 fab = vec2( - 1.04, 1.04 ) * a004 + r.zw;
 	return fab;
-
 }
 
 vec3 EnvironmentBRDF( const in vec3 normal, const in vec3 viewDir, const in vec3 specularColor, const in float specularF90, const in float roughness ) {
 	vec2 fab = DFGApprox( normal, viewDir, roughness );
 	return specularColor * fab.x + specularF90 * fab.y;
-
 }
 
 // Fdez-Agüera's "Multiple-Scattering Microfacet Model for Real-Time Image Based Lighting"
@@ -324,7 +311,6 @@ void computeMultiscattering( const in vec3 normal, const in vec3 viewDir, const 
 	vec3 Fms = FssEss * Favg / ( 1.0 - Ems * Favg );
 	singleScatter += FssEss;
 	multiScatter += Fms * Ems;
-
 }
 
 #if NUM_RECT_AREA_LIGHTS > 0
@@ -376,7 +362,6 @@ void RE_Direct_Physical( const in IncidentLight directLight, const in vec3 geome
 
 void RE_IndirectDiffuse_Physical( const in vec3 irradiance, const in vec3 geometryPosition, const in vec3 geometryNormal, const in vec3 geometryViewDir, const in vec3 geometryClearcoatNormal, const in PhysicalMaterial material, inout ReflectedLight reflectedLight ) {
 	reflectedLight.indirectDiffuse += irradiance * BRDF_Lambert( material.diffuseColor );
-
 }
 
 void RE_IndirectSpecular_Physical( const in vec3 radiance, const in vec3 irradiance, const in vec3 clearcoatRadiance, const in vec3 geometryPosition, const in vec3 geometryNormal, const in vec3 geometryViewDir, const in vec3 geometryClearcoatNormal, const in PhysicalMaterial material, inout ReflectedLight reflectedLight) {
@@ -400,7 +385,6 @@ void RE_IndirectSpecular_Physical( const in vec3 radiance, const in vec3 irradia
 	reflectedLight.indirectSpecular += radiance * singleScattering;
 	reflectedLight.indirectSpecular += multiScattering * cosineWeightedIrradiance;
 	reflectedLight.indirectDiffuse += diffuse * cosineWeightedIrradiance;
-
 }
 
 #define RE_Direct				RE_Direct_Physical

@@ -229,7 +229,6 @@ function WebGLUniformsGroups(gl, info, capabilities, state) {
         update: update,
         dispose: dispose
     };
-
 }
 
 

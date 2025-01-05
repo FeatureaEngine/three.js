@@ -5,7 +5,7 @@ import {
     InstancedBufferAttribute,
     Sphere,
     Vector3
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 const _vector = new Vector3();
 

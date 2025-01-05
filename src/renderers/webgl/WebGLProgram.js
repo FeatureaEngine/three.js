@@ -42,7 +42,6 @@ function handleSource(string, errorLine) {
         lines2.push(`${line === errorLine ? '>' : ' '} ${line}: ${lines[i]}`);
     }
     return lines2.join('\n');
-
 }
 
 const _m0 = /*@__PURE__*/ new Matrix3();
@@ -85,7 +84,6 @@ function getTexelEncodingFunction(functionName, colorSpace) {
         `	return ${components[1]}( vec4( value.rgb * ${components[0]}, value.a ) );`,
         '}',
     ].join('\n');
-
 }
 
 function getToneMappingFunction(functionName, toneMapping) {
@@ -117,7 +115,6 @@ function getToneMappingFunction(functionName, toneMapping) {
             toneMappingName = 'Linear';
     }
     return 'vec3 ' + functionName + '( vec3 color ) { return ' + toneMappingName + 'ToneMapping( color ); }';
-
 }
 
 const _v0 = /*@__PURE__*/ new Vector3();
@@ -133,7 +130,6 @@ function getLuminanceFunction() {
         '	return dot( weights, rgb );',
         '}'
     ].join('\n');
-
 }
 
 function generateVertexExtensions(parameters) {
@@ -142,7 +138,6 @@ function generateVertexExtensions(parameters) {
         parameters.extensionMultiDraw ? '#extension GL_ANGLE_multi_draw : require' : '',
     ];
     return chunks.filter(filterEmptyLine).join('\n');
-
 }
 
 function generateDefines(defines) {
@@ -153,7 +148,6 @@ function generateDefines(defines) {
         chunks.push('#define ' + name + ' ' + value);
     }
     return chunks.join('\n');
-
 }
 
 function fetchAttributeLocations(gl, program) {
@@ -174,12 +168,10 @@ function fetchAttributeLocations(gl, program) {
         };
     }
     return attributes;
-
 }
 
 function filterEmptyLine(string) {
     return string !== '';
-
 }
 
 function replaceLightNums(string, parameters) {
@@ -196,14 +188,12 @@ function replaceLightNums(string, parameters) {
         .replace(/NUM_SPOT_LIGHT_SHADOWS_WITH_MAPS/g, parameters.numSpotLightShadowsWithMaps)
         .replace(/NUM_SPOT_LIGHT_SHADOWS/g, parameters.numSpotLightShadows)
         .replace(/NUM_POINT_LIGHT_SHADOWS/g, parameters.numPointLightShadows);
-
 }
 
 function replaceClippingPlaneNums(string, parameters) {
     return string
         .replace(/NUM_CLIPPING_PLANES/g, parameters.numClippingPlanes)
         .replace(/UNION_CLIPPING_PLANES/g, (parameters.numClippingPlanes - parameters.numClipIntersection));
-
 }
 
 // Resolve Includes
@@ -212,7 +202,6 @@ const includePattern = /^[ \t]*#include +<([\w\d./]+)>/gm;
 
 function resolveIncludes(string) {
     return string.replace(includePattern, includeReplacer);
-
 }
 
 const shaderChunkMap = new Map();
@@ -229,7 +218,6 @@ function includeReplacer(match, include) {
         }
     }
     return resolveIncludes(string);
-
 }
 
 // Unroll Loops
@@ -238,7 +226,6 @@ const unrollLoopPattern = /#pragma unroll_loop_start\s+for\s*\(\s*int\s+i\s*=\s*
 
 function unrollLoops(string) {
     return string.replace(unrollLoopPattern, loopReplacer);
-
 }
 
 function loopReplacer(match, start, end, snippet) {
@@ -249,7 +236,6 @@ function loopReplacer(match, start, end, snippet) {
             .replace(/UNROLLED_LOOP_INDEX/g, i);
     }
     return string;
-
 }
 
 //
@@ -281,7 +267,6 @@ function generatePrecision(parameters) {
         precisionstring += '\n#define LOW_PRECISION';
     }
     return precisionstring;
-
 }
 
 function generateShadowMapTypeDefine(parameters) {
@@ -294,7 +279,6 @@ function generateShadowMapTypeDefine(parameters) {
         shadowMapTypeDefine = 'SHADOWMAP_TYPE_VSM';
     }
     return shadowMapTypeDefine;
-
 }
 
 function generateEnvMapTypeDefine(parameters) {
@@ -311,7 +295,6 @@ function generateEnvMapTypeDefine(parameters) {
         }
     }
     return envMapTypeDefine;
-
 }
 
 function generateEnvMapModeDefine(parameters) {
@@ -324,7 +307,6 @@ function generateEnvMapModeDefine(parameters) {
         }
     }
     return envMapModeDefine;
-
 }
 
 function generateEnvMapBlendingDefine(parameters) {
@@ -343,7 +325,6 @@ function generateEnvMapBlendingDefine(parameters) {
         }
     }
     return envMapBlendingDefine;
-
 }
 
 function generateCubeUVSize(parameters) {
@@ -353,7 +334,6 @@ function generateCubeUVSize(parameters) {
     const texelHeight = 1.0 / imageHeight;
     const texelWidth = 1.0 / (3 * Math.max(Math.pow(2, maxMip), 7 * 16));
     return {texelWidth, texelHeight, maxMip};
-
 }
 
 function WebGLProgram(renderer, cacheKey, parameters, bindingStates) {
@@ -754,7 +734,6 @@ function WebGLProgram(renderer, cacheKey, parameters, bindingStates) {
     this.vertexShader = glVertexShader;
     this.fragmentShader = glFragmentShader;
     return this;
-
 }
 
 export {WebGLProgram};

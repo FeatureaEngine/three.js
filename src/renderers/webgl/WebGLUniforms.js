@@ -90,7 +90,6 @@ function flatten(array, nBlocks, blockSize) {
         }
     }
     return r;
-
 }
 
 function arraysEqual(a, b) {
@@ -99,7 +98,6 @@ function arraysEqual(a, b) {
         if (a[i] !== b[i]) return false;
     }
     return true;
-
 }
 
 function copyArray(a, b) {
@@ -121,7 +119,6 @@ function allocTexUnits(textures, n) {
         r[i] = textures.allocateTextureUnit();
     }
     return r;
-
 }
 
 // --- Setters ---
@@ -136,7 +133,6 @@ function setValueV1f(gl, v) {
     if (cache[0] === v) return;
     gl.uniform1f(this.addr, v);
     cache[0] = v;
-
 }
 
 // Single float vector (from flat array or THREE.VectorN)
@@ -256,7 +252,6 @@ function setValueV1i(gl, v) {
     if (cache[0] === v) return;
     gl.uniform1i(this.addr, v);
     cache[0] = v;
-
 }
 
 // Single integer / boolean vector (from flat array or THREE.VectorN)
@@ -319,7 +314,6 @@ function setValueV1ui(gl, v) {
     if (cache[0] === v) return;
     gl.uniform1ui(this.addr, v);
     cache[0] = v;
-
 }
 
 // Single unsigned integer vector (from flat array or THREE.VectorN)
@@ -393,7 +387,6 @@ function setValueT1(gl, v, textures) {
         emptyTexture2D = emptyTexture;
     }
     textures.setTexture2D(v || emptyTexture2D, unit);
-
 }
 
 function setValueT3D1(gl, v, textures) {
@@ -404,7 +397,6 @@ function setValueT3D1(gl, v, textures) {
         cache[0] = unit;
     }
     textures.setTexture3D(v || empty3dTexture, unit);
-
 }
 
 function setValueT6(gl, v, textures) {
@@ -415,7 +407,6 @@ function setValueT6(gl, v, textures) {
         cache[0] = unit;
     }
     textures.setTextureCube(v || emptyCubeTexture, unit);
-
 }
 
 function setValueT2DArray1(gl, v, textures) {
@@ -426,7 +417,6 @@ function setValueT2DArray1(gl, v, textures) {
         cache[0] = unit;
     }
     textures.setTexture2DArray(v || emptyArrayTexture, unit);
-
 }
 
 // Helper to pick the right setter for the singular case
@@ -496,7 +486,6 @@ function getSingularSetter(type) {
 
 function setValueV1fArray(gl, v) {
     gl.uniform1fv(this.addr, v);
-
 }
 
 // Array of vectors (from flat array or array of THREE.VectorN)
@@ -504,19 +493,16 @@ function setValueV1fArray(gl, v) {
 function setValueV2fArray(gl, v) {
     const data = flatten(v, this.size, 2);
     gl.uniform2fv(this.addr, data);
-
 }
 
 function setValueV3fArray(gl, v) {
     const data = flatten(v, this.size, 3);
     gl.uniform3fv(this.addr, data);
-
 }
 
 function setValueV4fArray(gl, v) {
     const data = flatten(v, this.size, 4);
     gl.uniform4fv(this.addr, data);
-
 }
 
 // Array of matrices (from flat array or array of THREE.MatrixN)
@@ -524,67 +510,56 @@ function setValueV4fArray(gl, v) {
 function setValueM2Array(gl, v) {
     const data = flatten(v, this.size, 4);
     gl.uniformMatrix2fv(this.addr, false, data);
-
 }
 
 function setValueM3Array(gl, v) {
     const data = flatten(v, this.size, 9);
     gl.uniformMatrix3fv(this.addr, false, data);
-
 }
 
 function setValueM4Array(gl, v) {
     const data = flatten(v, this.size, 16);
     gl.uniformMatrix4fv(this.addr, false, data);
-
 }
 
 // Array of integer / boolean
 
 function setValueV1iArray(gl, v) {
     gl.uniform1iv(this.addr, v);
-
 }
 
 // Array of integer / boolean vectors (from flat array)
 
 function setValueV2iArray(gl, v) {
     gl.uniform2iv(this.addr, v);
-
 }
 
 function setValueV3iArray(gl, v) {
     gl.uniform3iv(this.addr, v);
-
 }
 
 function setValueV4iArray(gl, v) {
     gl.uniform4iv(this.addr, v);
-
 }
 
 // Array of unsigned integer
 
 function setValueV1uiArray(gl, v) {
     gl.uniform1uiv(this.addr, v);
-
 }
 
 // Array of unsigned integer vectors (from flat array)
 
 function setValueV2uiArray(gl, v) {
     gl.uniform2uiv(this.addr, v);
-
 }
 
 function setValueV3uiArray(gl, v) {
     gl.uniform3uiv(this.addr, v);
-
 }
 
 function setValueV4uiArray(gl, v) {
     gl.uniform4uiv(this.addr, v);
-
 }
 
 
@@ -774,7 +749,6 @@ const RePathPart = /(\w+)(\])?(\[|\.)?/g;
 function addUniform(container, uniformObject) {
     container.seq.push(uniformObject);
     container.map[uniformObject.id] = uniformObject;
-
 }
 
 function parseUniform(activeInfo, addr, container) {

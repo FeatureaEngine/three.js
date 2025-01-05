@@ -1,6 +1,6 @@
 import {
     Vector2
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 /**
  * Convolution shader
@@ -60,7 +60,6 @@ const ConvolutionShader = {
 
 function gauss(x, sigma) {
     return Math.exp(-(x * x) / (2.0 * sigma * sigma));
-
 }
 
 export {ConvolutionShader};

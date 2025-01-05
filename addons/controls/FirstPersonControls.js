@@ -3,7 +3,7 @@ import {
     MathUtils,
     Spherical,
     Vector3
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 const _lookDirection = new Vector3();
 const _spherical = new Spherical();
@@ -160,7 +160,6 @@ function onPointerDown(event) {
         }
     }
     this.mouseDragOn = true;
-
 }
 
 function onPointerUp(event) {
@@ -175,7 +174,6 @@ function onPointerUp(event) {
         }
     }
     this.mouseDragOn = false;
-
 }
 
 function onPointerMove(event) {
@@ -248,7 +246,6 @@ function onKeyUp(event) {
 function onContextMenu(event) {
     if (this.enabled === false) return;
     event.preventDefault();
-
 }
 
 export {FirstPersonControls};

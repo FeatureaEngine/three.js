@@ -4,7 +4,7 @@ import {
     RepeatWrapping,
     Vector2,
     Vector3,
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 /**
  * References:
@@ -319,7 +319,6 @@ function generateMagicSquareNoise(size = 5) {
     noiseTexture.wrapT = RepeatWrapping;
     noiseTexture.needsUpdate = true;
     return noiseTexture;
-
 }
 
 function generateMagicSquare(size) {
@@ -351,7 +350,6 @@ function generateMagicSquare(size) {
         i--;
     }
     return magicSquare;
-
 }
 
 

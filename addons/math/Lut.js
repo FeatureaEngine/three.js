@@ -1,4 +1,4 @@
-import {Color, LinearSRGBColorSpace, MathUtils} from '../../src/Three.js';
+import {Color, LinearSRGBColorSpace, MathUtils} from '../../libs/three/Three.js';
 
 class Lut {
 

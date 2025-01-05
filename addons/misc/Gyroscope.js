@@ -1,4 +1,4 @@
-import {Object3D, Quaternion, Vector3} from '../../src/Three.js';
+import {Object3D, Quaternion, Vector3} from '../../libs/three/Three.js';
 
 const _translationObject = new Vector3();
 const _quaternionObject = new Quaternion();

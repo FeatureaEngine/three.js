@@ -26,7 +26,6 @@ function _generateCubeUVSize(imageHeight) {
     const texelHeight = 1.0 / imageHeight;
     const texelWidth = 1.0 / (3 * Math.max(Math.pow(2, maxMip), 7 * 16));
     return {texelWidth, texelHeight, maxMip};
-
 }
 
 /**
@@ -59,7 +58,6 @@ function _getPMREMFromTexture(texture) {
         _cache.set(texture, cacheTexture);
     }
     return cacheTexture.texture;
-
 }
 
 /**
@@ -265,7 +263,6 @@ function isCubeMapReady(image) {
 function isEquirectangularMapReady(image) {
     if (image === null || image === undefined) return false;
     return image.height > 0;
-
 }
 
 /**

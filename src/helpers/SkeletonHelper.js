@@ -79,7 +79,6 @@ function getBoneList(object) {
         boneList.push.apply(boneList, getBoneList(object.children[i]));
     }
     return boneList;
-
 }
 
 

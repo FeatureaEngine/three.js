@@ -1,4 +1,4 @@
-import {BufferGeometry, Color, FileLoader, Float32BufferAttribute, Int32BufferAttribute, Loader, Points, PointsMaterial, SRGBColorSpace} from '../../src/Three.js';
+import {BufferGeometry, Color, FileLoader, Float32BufferAttribute, Int32BufferAttribute, Loader, Points, PointsMaterial, SRGBColorSpace} from '../../libs/three/Three.js';
 
 class PCDLoader extends Loader {
 

@@ -1,4 +1,4 @@
-import {FileLoader, Loader} from '../../src/Three.js';
+import {FileLoader, Loader} from '../../libs/three/Three.js';
 import opentype from '../../libs/opentype.module.js';
 
 /**

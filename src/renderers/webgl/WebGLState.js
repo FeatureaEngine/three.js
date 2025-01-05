@@ -861,7 +861,6 @@ function WebGLState(gl, extensions) {
         viewport: viewport,
         reset: reset
     };
-
 }
 
 export {WebGLState};

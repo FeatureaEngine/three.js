@@ -1,4 +1,4 @@
-import {StereoCamera, Vector2} from '../../src/Three.js';
+import {StereoCamera, Vector2} from '../../libs/three/Three.js';
 
 class StereoEffect {
 

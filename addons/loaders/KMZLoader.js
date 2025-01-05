@@ -1,4 +1,4 @@
-import {FileLoader, Group, Loader, LoadingManager} from '../../src/Three.js';
+import {FileLoader, Group, Loader, LoadingManager} from '../../libs/three/Three.js';
 import {ColladaLoader} from '../loaders/ColladaLoader.js';
 import * as fflate from '../../libs/fflate.module.js';
 

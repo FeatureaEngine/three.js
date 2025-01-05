@@ -14,7 +14,7 @@ import {
     SRGBTransfer,
     DataTexture,
     REVISION,
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 import {
     write,
@@ -217,7 +217,6 @@ async function toDataTexture(renderer, rtt) {
     const texture = new DataTexture(view, rtt.width, rtt.height, rtt.texture.format, rtt.texture.type);
     texture.colorSpace = rtt.texture.colorSpace;
     return texture;
-
 }
 
 function getChannelCount(texture) {

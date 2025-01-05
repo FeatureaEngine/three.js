@@ -33,7 +33,7 @@ import {
     TextureLoader,
     Vector2,
     Vector3
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 import chevrotain from '../../libs/chevrotain.module.min.js';
 
 

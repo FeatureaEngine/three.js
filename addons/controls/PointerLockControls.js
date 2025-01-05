@@ -2,7 +2,7 @@ import {
     Controls,
     Euler,
     Vector3
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 const _euler = new Euler(0, 0, 0, 'YXZ');
 const _vector = new Vector3();
@@ -95,7 +95,6 @@ function onMouseMove(event) {
     _euler.x = Math.max(_PI_2 - this.maxPolarAngle, Math.min(_PI_2 - this.minPolarAngle, _euler.x));
     camera.quaternion.setFromEuler(_euler);
     this.dispatchEvent(_changeEvent);
-
 }
 
 function onPointerlockChange() {
@@ -111,7 +110,6 @@ function onPointerlockChange() {
 
 function onPointerlockError() {
     console.error('THREE.PointerLockControls: Unable to use Pointer Lock API');
-
 }
 
 export {PointerLockControls};

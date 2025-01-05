@@ -6,7 +6,7 @@ import {
     UnsignedByteType,
     ClampToEdgeWrapping,
     LinearFilter,
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 export class LUTImageLoader extends Loader {
 

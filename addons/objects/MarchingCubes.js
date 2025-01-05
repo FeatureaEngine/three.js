@@ -6,7 +6,7 @@ import {
     Mesh,
     Sphere,
     Vector3
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 /**
  * Port of http://webglsamples.org/blob/blob.html

@@ -10,7 +10,7 @@ import {
     HalfFloatType,
     RGBAFormat,
     DataUtils,
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 import * as fflate from '../../libs/fflate.module.js';
 
 const textEncoder = new TextEncoder();
@@ -107,7 +107,6 @@ function buildInfoRTT(renderTarget, options = {}) {
         numInputChannels: 4,
         numOutputChannels: NUM_CHANNELS,
     };
-
 }
 
 function buildInfoDT(texture, options = {}) {
@@ -138,7 +137,6 @@ function buildInfoDT(texture, options = {}) {
         numInputChannels: 4,
         numOutputChannels: NUM_CHANNELS,
     };
-
 }
 
 async function getPixelData(renderer, rtt, info) {
@@ -154,7 +152,6 @@ async function getPixelData(renderer, rtt, info) {
         dataBuffer = await renderer.readRenderTargetPixelsAsync(rtt, 0, 0, info.width, info.height);
     }
     return dataBuffer;
-
 }
 
 function reorganizeDataBuffer(inBuffer, info) {
@@ -187,7 +184,6 @@ function reorganizeDataBuffer(inBuffer, info) {
         }
     }
     return outBuffer;
-
 }
 
 function compressData(inBuffer, info) {
@@ -216,12 +212,10 @@ function compressData(inBuffer, info) {
     }
     chunks.totalSize = sum;
     return chunks;
-
 }
 
 function compressNONE(data) {
     return data;
-
 }
 
 function compressZIP(data, tmpBuffer) {
@@ -249,7 +243,6 @@ function compressZIP(data, tmpBuffer) {
     }
     const deflate = fflate.zlibSync(tmpBuffer);
     return deflate;
-
 }
 
 function fillHeader(outBuffer, chunks, info) {
@@ -344,7 +337,6 @@ function fillData(chunks, info) {
         offset.value += size;
     }
     return outBuffer;
-
 }
 
 function decodeLinear(dec, r, g, b, a) {
@@ -352,7 +344,6 @@ function decodeLinear(dec, r, g, b, a) {
     dec.g = g;
     dec.b = b;
     dec.a = a;
-
 }
 
 // function decodeSRGB( dec, r, g, b, a ) {
@@ -368,31 +359,26 @@ function decodeLinear(dec, r, g, b, a) {
 function setUint8(dv, value, offset) {
     dv.setUint8(offset.value, value);
     offset.value += 1;
-
 }
 
 function setUint32(dv, value, offset) {
     dv.setUint32(offset.value, value, true);
     offset.value += 4;
-
 }
 
 function setFloat16(dv, value, offset) {
     dv.setUint16(offset.value, DataUtils.toHalfFloat(value), true);
     offset.value += 2;
-
 }
 
 function setFloat32(dv, value, offset) {
     dv.setFloat32(offset.value, value, true);
     offset.value += 4;
-
 }
 
 function setUint64(dv, value, offset) {
     dv.setBigUint64(offset.value, BigInt(value), true);
     offset.value += 8;
-
 }
 
 function setString(dv, string, offset) {
@@ -415,17 +401,14 @@ function decodeFloat16(binary) {
             ) :
             6.103515625e-5 * (fraction / 0x400)
     );
-
 }
 
 function getFloat16(arr, i) {
     return decodeFloat16(arr[i]);
-
 }
 
 function getFloat32(arr, i) {
     return arr[i];
-
 }
 
 export {EXRExporter, NO_COMPRESSION, ZIP_COMPRESSION, ZIPS_COMPRESSION};

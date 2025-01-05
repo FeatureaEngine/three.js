@@ -25,20 +25,17 @@ vec3 shGetIrradianceAt( in vec3 normal, in vec3 shCoefficients[ 9 ] ) {
 	result += shCoefficients[ 7 ] * 2.0 * 0.429043 * x * z;
 	result += shCoefficients[ 8 ] * 0.429043 * ( x * x - y * y );
 	return result;
-
 }
 
 vec3 getLightProbeIrradiance( const in vec3 lightProbe[ 9 ], const in vec3 normal ) {
 	vec3 worldNormal = inverseTransformDirection( normal, viewMatrix );
 	vec3 irradiance = shGetIrradianceAt( worldNormal, lightProbe );
 	return irradiance;
-
 }
 
 vec3 getAmbientLightIrradiance( const in vec3 ambientLightColor ) {
 	vec3 irradiance = ambientLightColor;
 	return irradiance;
-
 }
 
 float getDistanceAttenuation( const in float lightDistance, const in float cutoffDistance, const in float decayExponent ) {
@@ -50,12 +47,10 @@ float getDistanceAttenuation( const in float lightDistance, const in float cutof
 		distanceFalloff *= pow2( saturate( 1.0 - pow4( lightDistance / cutoffDistance ) ) );
 	}
 	return distanceFalloff;
-
 }
 
 float getSpotAttenuation( const in float coneCosine, const in float penumbraCosine, const in float angleCosine ) {
 	return smoothstep( coneCosine, penumbraCosine, angleCosine );
-
 }
 
 #if NUM_DIR_LIGHTS > 0

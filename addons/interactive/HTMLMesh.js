@@ -6,7 +6,7 @@ import {
     PlaneGeometry,
     SRGBColorSpace,
     Color
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 class HTMLMesh extends Mesh {
 
@@ -334,7 +334,6 @@ function html2canvas(element) {
     drawElement(element);
     // console.timeEnd( 'drawElement' );
     return canvas;
-
 }
 
 function htmlevent(element, event, x, y) {
@@ -369,7 +368,6 @@ function htmlevent(element, event, x, y) {
     }
 
     traverse(element);
-
 }
 
 export {HTMLMesh};

@@ -1,4 +1,4 @@
-import {ClampToEdgeWrapping, DataTexture, FloatType, NearestFilter, RGBAFormat, ShaderMaterial, WebGLRenderTarget} from '../../src/Three.js';
+import {ClampToEdgeWrapping, DataTexture, FloatType, NearestFilter, RGBAFormat, ShaderMaterial, WebGLRenderTarget} from '../../libs/three/Three.js';
 
 import {FullScreenQuad} from '../postprocessing/Pass.js';
 

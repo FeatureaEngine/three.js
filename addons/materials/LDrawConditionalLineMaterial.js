@@ -3,7 +3,7 @@ import {
     ShaderMaterial,
     UniformsLib,
     UniformsUtils,
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 class LDrawConditionalLineMaterial extends ShaderMaterial {
 

@@ -1,4 +1,4 @@
-import {InstancedInterleavedBuffer, InterleavedBufferAttribute, Mesh, Vector3, Vector4} from '../../src/Three.js';
+import {InstancedInterleavedBuffer, InterleavedBufferAttribute, Mesh, Vector3, Vector4} from '../../libs/three/Three.js';
 import {LineSegmentsGeometry} from '../lines/LineSegmentsGeometry.js';
 import {LineMaterial} from '../lines/LineMaterial.js';
 

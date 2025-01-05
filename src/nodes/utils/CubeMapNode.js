@@ -129,7 +129,6 @@ export default CubeMapNode;
 function isEquirectangularMapReady(image) {
     if (image === null || image === undefined) return false;
     return image.height > 0;
-
 }
 
 /**

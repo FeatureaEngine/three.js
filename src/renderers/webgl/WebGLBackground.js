@@ -201,7 +201,6 @@ function WebGLBackground(renderer, cubemaps, cubeuvmaps, state, objects, alpha, 
         addToRenderList: addToRenderList,
         dispose: dispose
     };
-
 }
 
 

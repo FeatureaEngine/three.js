@@ -1,4 +1,4 @@
-import {LinearFilter, NearestFilter, RGBAFormat, ShaderMaterial, StereoCamera, WebGLRenderTarget} from '../../src/Three.js';
+import {LinearFilter, NearestFilter, RGBAFormat, ShaderMaterial, StereoCamera, WebGLRenderTarget} from '../../libs/three/Three.js';
 import {FullScreenQuad} from '../postprocessing/Pass.js';
 
 class ParallaxBarrierEffect {

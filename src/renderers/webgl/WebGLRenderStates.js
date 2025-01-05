@@ -42,7 +42,6 @@ function WebGLRenderState(extensions) {
         pushLight: pushLight,
         pushShadow: pushShadow
     };
-
 }
 
 function WebGLRenderStates(extensions) {
@@ -73,7 +72,6 @@ function WebGLRenderStates(extensions) {
         get: get,
         dispose: dispose
     };
-
 }
 
 

@@ -5,7 +5,7 @@ import {
     Vector2,
     Vector3,
     Vector4
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 import * as BufferGeometryUtils from '../utils/BufferGeometryUtils.js';
 
 /**
@@ -141,13 +141,11 @@ class SimplifyModifier {
 
 function pushIfUnique(array, object) {
     if (array.indexOf(object) === -1) array.push(object);
-
 }
 
 function removeFromArray(array, object) {
     const k = array.indexOf(object);
     if (k > -1) array.splice(k, 1);
-
 }
 
 function computeEdgeCollapseCost(u, v) {
@@ -186,7 +184,6 @@ function computeEdgeCollapseCost(u, v) {
     }
     const amt = edgelength * curvature + borders;
     return amt;
-
 }
 
 function computeEdgeCostAtVertex(v) {
@@ -224,7 +221,6 @@ function computeEdgeCostAtVertex(v) {
     // we average the cost of collapsing at this vertex
     v.collapseCost = v.totalCost / v.costCount;
     // v.collapseCost = v.minCost;
-
 }
 
 function removeVertex(v, vertices) {
@@ -234,7 +230,6 @@ function removeVertex(v, vertices) {
         removeFromArray(n.neighbors, v);
     }
     removeFromArray(vertices, v);
-
 }
 
 function removeFace(f, faces) {
@@ -304,7 +299,6 @@ function minimumCostEdge(vertices) {
         }
     }
     return least;
-
 }
 
 // we use a triangle class to represent structure of face slightly differently

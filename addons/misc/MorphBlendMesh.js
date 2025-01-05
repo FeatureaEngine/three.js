@@ -1,4 +1,4 @@
-import {MathUtils, Mesh} from '../../src/Three.js';
+import {MathUtils, Mesh} from '../../libs/three/Three.js';
 
 class MorphBlendMesh extends Mesh {
 

@@ -1,4 +1,4 @@
-import {Mesh, MeshBasicMaterial, SphereGeometry, Vector3} from '../../src/Three.js';
+import {Mesh, MeshBasicMaterial, SphereGeometry, Vector3} from '../../libs/three/Three.js';
 
 /**
  * A ground-projected skybox. The height is how far the camera that took the photo was above the ground -

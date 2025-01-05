@@ -7,7 +7,7 @@ import {
     Vector3,
     MOUSE,
     TOUCH
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 const _plane = new Plane();
 
@@ -201,7 +201,6 @@ function onPointerMove(event) {
         }
     }
     _previousPointer.copy(_pointer);
-
 }
 
 function onPointerDown(event) {
@@ -236,7 +235,6 @@ function onPointerDown(event) {
         this.dispatchEvent({type: 'dragstart', object: _selected});
     }
     _previousPointer.copy(_pointer);
-
 }
 
 function onPointerCancel() {
@@ -247,20 +245,17 @@ function onPointerCancel() {
     }
     this.domElement.style.cursor = _hovered ? 'pointer' : 'auto';
     this.state = STATE.NONE;
-
 }
 
 function onContextMenu(event) {
     if (this.enabled === false) return;
     event.preventDefault();
-
 }
 
 function findGroup(obj, group = null) {
     if (obj.isGroup) group = obj;
     if (obj.parent === null) return group;
     return findGroup(obj.parent, group);
-
 }
 
 export {DragControls};

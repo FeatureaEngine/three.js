@@ -1,4 +1,4 @@
-import {Vector4} from '../../src/Three.js';
+import {Vector4} from '../../libs/three/Three.js';
 import * as NURBSUtils from '../curves/NURBSUtils.js';
 
 /**

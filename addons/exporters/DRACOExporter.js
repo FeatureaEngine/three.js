@@ -1,4 +1,4 @@
-import {Color, ColorManagement, SRGBColorSpace} from '../../src/Three.js';
+import {Color, ColorManagement, SRGBColorSpace} from '../../libs/three/Three.js';
 
 /**
  * Export draco compressed files from threejs geometry objects.
@@ -147,7 +147,6 @@ function createVertexColorSRGBArray(attribute) {
         }
     }
     return array;
-
 }
 
 // Encoder methods

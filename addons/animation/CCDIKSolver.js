@@ -11,7 +11,7 @@ import {
     Quaternion,
     SphereGeometry,
     Vector3
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 const _q = new Quaternion();
 const _targetPos = new Vector3();
@@ -187,7 +187,6 @@ function getPosition(bone, matrixWorldInv) {
     return _vector
         .setFromMatrixPosition(bone.matrixWorld)
         .applyMatrix4(matrixWorldInv);
-
 }
 
 function setPositionOfBoneToAttributeArray(array, index, bone, matrixWorldInv) {
@@ -195,7 +194,6 @@ function setPositionOfBoneToAttributeArray(array, index, bone, matrixWorldInv) {
     array[index * 3 + 0] = v.x;
     array[index * 3 + 1] = v.y;
     array[index * 3 + 2] = v.z;
-
 }
 
 /**

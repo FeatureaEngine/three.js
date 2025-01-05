@@ -101,7 +101,6 @@ function WebGLGeometries(gl, attributes, info, bindingStates) {
         update: update,
         getWireframeAttribute: getWireframeAttribute
     };
-
 }
 
 

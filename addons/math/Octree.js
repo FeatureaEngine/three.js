@@ -1,4 +1,4 @@
-import {Box3, Layers, Line3, Plane, Sphere, Triangle, Vector3} from '../../src/Three.js';
+import {Box3, Layers, Line3, Plane, Sphere, Triangle, Vector3} from '../../libs/three/Three.js';
 import {Capsule} from '../math/Capsule.js';
 
 

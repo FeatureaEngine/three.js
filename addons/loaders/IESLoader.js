@@ -1,4 +1,4 @@
-import {DataTexture, DataUtils, FileLoader, FloatType, HalfFloatType, LinearFilter, Loader, MathUtils, RedFormat, UnsignedByteType} from '../../src/Three.js';
+import {DataTexture, DataUtils, FileLoader, FloatType, HalfFloatType, LinearFilter, Loader, MathUtils, RedFormat, UnsignedByteType} from '../../libs/three/Three.js';
 
 class IESLoader extends Loader {
 

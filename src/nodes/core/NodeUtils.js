@@ -32,7 +32,6 @@ function cyrb53(value, seed = 0) {
     h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
     h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
     return 4294967296 * (2097151 & h2) + (h1 >>> 0);
-
 }
 
 /**
@@ -80,7 +79,6 @@ export function getCacheKey(object, force = false) {
         values.push(values, cyrb53(property.slice(0, -4)), childNode.getCacheKey(force));
     }
     return cyrb53(values);
-
 }
 
 /**
@@ -138,7 +136,6 @@ const dataFromObject = /*@__PURE__*/ new WeakMap();
  */
 export function getTypeFromLength(length) {
     return typeFromLength.get(length);
-
 }
 
 /**
@@ -165,7 +162,6 @@ export function getTypedArrayFromType(type) {
     if (/uint/.test(type)) return Uint32Array;
     if (/int/.test(type)) return Int32Array;
     throw new Error(`THREE.NodeUtils: Unsupported type: ${type}`);
-
 }
 
 /**
@@ -183,7 +179,6 @@ export function getLengthFromType(type) {
     if (/mat3/.test(type)) return 9;
     if (/mat4/.test(type)) return 16;
     console.error('THREE.TSL: Unsupported type:', type);
-
 }
 
 /**
@@ -222,7 +217,6 @@ export function getValueType(value) {
         return 'ArrayBuffer';
     }
     return null;
-
 }
 
 /**
@@ -262,7 +256,6 @@ export function getValueFromType(type, ...params) {
         return base64ToArrayBuffer(params[0]);
     }
     return null;
-
 }
 
 /**
@@ -278,7 +271,6 @@ export function getDataFromObject(object) {
         dataFromObject.set(object, data);
     }
     return data;
-
 }
 
 /**
@@ -295,7 +287,6 @@ export function arrayBufferToBase64(arrayBuffer) {
         chars += String.fromCharCode(array[i]);
     }
     return btoa(chars);
-
 }
 
 /**

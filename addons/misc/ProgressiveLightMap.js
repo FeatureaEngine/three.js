@@ -1,4 +1,4 @@
-import {DoubleSide, FloatType, HalfFloatType, Mesh, MeshBasicMaterial, MeshPhongMaterial, PlaneGeometry, Scene, WebGLRenderTarget} from '../../src/Three.js';
+import {DoubleSide, FloatType, HalfFloatType, Mesh, MeshBasicMaterial, MeshPhongMaterial, PlaneGeometry, Scene, WebGLRenderTarget} from '../../libs/three/Three.js';
 import {potpack} from '../../libs/potpack.module.js';
 
 /**

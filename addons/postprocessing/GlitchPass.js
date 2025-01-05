@@ -5,7 +5,7 @@ import {
     RedFormat,
     ShaderMaterial,
     UniformsUtils
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 import {Pass, FullScreenQuad} from './Pass.js';
 import {DigitalGlitch} from '../shaders/DigitalGlitch.js';
 

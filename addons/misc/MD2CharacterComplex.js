@@ -1,4 +1,4 @@
-import {Box3, MathUtils, MeshLambertMaterial, Object3D, SRGBColorSpace, TextureLoader, UVMapping} from '../../src/Three.js';
+import {Box3, MathUtils, MeshLambertMaterial, Object3D, SRGBColorSpace, TextureLoader, UVMapping} from '../../libs/three/Three.js';
 import {MD2Loader} from '../loaders/MD2Loader.js';
 import {MorphBlendMesh} from '../misc/MorphBlendMesh.js';
 

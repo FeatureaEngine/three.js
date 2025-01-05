@@ -42,7 +42,7 @@ import {
     RGFormat,
     SRGBColorSpace,
     UnsignedByteType,
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 import {WorkerPool} from '../utils/WorkerPool.js';
 import {
     read,
@@ -737,7 +737,6 @@ async function createRawTexture(container) {
     texture.needsUpdate = true;
     //
     return Promise.resolve(texture);
-
 }
 
 function parseColorSpace(container) {

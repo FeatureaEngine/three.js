@@ -33,7 +33,6 @@ function WebGLProperties() {
         update: update,
         dispose: dispose
     };
-
 }
 
 

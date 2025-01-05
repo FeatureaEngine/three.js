@@ -8,7 +8,7 @@ import {
     Vector2,
     Vector3,
     Vector4
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 class RenderableObject {
 

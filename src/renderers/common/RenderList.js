@@ -57,7 +57,6 @@ function reversePainterSortStable(a, b) {
 function needsDoublePass(material) {
     const hasTransmission = material.transmission > 0 || material.transmissionNode;
     return hasTransmission && material.side === DoubleSide && material.forceSinglePass === false;
-
 }
 
 /**

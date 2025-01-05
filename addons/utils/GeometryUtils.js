@@ -1,4 +1,4 @@
-import {Vector3} from '../../src/Three.js';
+import {Vector3} from '../../libs/three/Three.js';
 
 
 /**
@@ -41,7 +41,6 @@ function hilbert2D(center = new Vector3(0, 0, 0), size = 10, iterations = 1, v0 
     }
     // Return complete Hilbert Curve.
     return vec;
-
 }
 
 /**
@@ -101,7 +100,6 @@ function hilbert3D(center = new Vector3(0, 0, 0), size = 10, iterations = 1, v0 
     }
     // Return complete Hilbert Curve.
     return vec;
-
 }
 
 /**
@@ -166,7 +164,6 @@ function gosper(size = 1) {
         angle: Math.PI / 3 // 60 degrees
     });
     return points;
-
 }
 
 

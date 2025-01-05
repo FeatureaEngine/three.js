@@ -1,4 +1,4 @@
-import {MOUSE, TOUCH} from '../../src/Three.js';
+import {MOUSE, TOUCH} from '../../libs/three/Three.js';
 
 import {OrbitControls} from './OrbitControls.js';
 

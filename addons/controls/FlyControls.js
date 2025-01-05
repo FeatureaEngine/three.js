@@ -2,7 +2,7 @@ import {
     Controls,
     Quaternion,
     Vector3
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 const _changeEvent = {type: 'change'};
 
@@ -162,7 +162,6 @@ function onKeyDown(event) {
     }
     this._updateMovementVector();
     this._updateRotationVector();
-
 }
 
 function onKeyUp(event) {
@@ -211,7 +210,6 @@ function onKeyUp(event) {
     }
     this._updateMovementVector();
     this._updateRotationVector();
-
 }
 
 function onPointerDown(event) {
@@ -262,7 +260,6 @@ function onPointerUp(event) {
         this._updateMovementVector();
     }
     this._updateRotationVector();
-
 }
 
 function onPointerCancel() {
@@ -276,13 +273,11 @@ function onPointerCancel() {
         this._updateMovementVector();
     }
     this._updateRotationVector();
-
 }
 
 function onContextMenu(event) {
     if (this.enabled === false) return;
     event.preventDefault();
-
 }
 
 export {FlyControls};

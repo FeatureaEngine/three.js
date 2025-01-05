@@ -498,7 +498,6 @@ function WebGLPrograms(renderer, cubemaps, cubeuvmaps, extensions, capabilities,
         programs: programs,
         dispose: dispose
     };
-
 }
 
 export {WebGLPrograms};

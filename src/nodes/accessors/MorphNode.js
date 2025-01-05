@@ -106,7 +106,6 @@ function getEntry(geometry) {
         geometry.addEventListener('dispose', disposeTexture);
     }
     return entry;
-
 }
 
 /**

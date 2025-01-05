@@ -1,4 +1,4 @@
-import {Box3, MathUtils, Matrix3, Matrix4, Ray, Vector3} from '../../src/Three.js';
+import {Box3, MathUtils, Matrix3, Matrix4, Ray, Vector3} from '../../libs/three/Three.js';
 
 // module scope helper variables
 

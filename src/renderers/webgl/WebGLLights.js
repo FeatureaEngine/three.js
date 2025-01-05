@@ -58,7 +58,6 @@ function UniformsCache() {
             return uniforms;
         }
     };
-
 }
 
 function ShadowUniformsCache() {
@@ -105,7 +104,6 @@ function ShadowUniformsCache() {
             return uniforms;
         }
     };
-
 }
 
 
@@ -113,7 +111,6 @@ let nextVersion = 0;
 
 function shadowCastingAndTexturingLightsFirst(lightA, lightB) {
     return (lightB.castShadow ? 2 : 0) - (lightA.castShadow ? 2 : 0) + (lightB.map ? 1 : 0) - (lightA.map ? 1 : 0);
-
 }
 
 function WebGLLights(extensions) {
@@ -389,7 +386,6 @@ function WebGLLights(extensions) {
         setupView: setupView,
         state: state
     };
-
 }
 
 

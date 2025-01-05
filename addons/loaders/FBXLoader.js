@@ -42,7 +42,7 @@ import {
     Vector3,
     Vector4,
     VectorKeyframeTrack
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 import * as fflate from '../../libs/fflate.module.js';
 import {NURBSCurve} from '../curves/NURBSCurve.js';
@@ -2552,7 +2552,6 @@ class FBXTree {
 function isFbxFormatBinary(buffer) {
     const CORRECT = 'Kaydara\u0020FBX\u0020Binary\u0020\u0020\0';
     return buffer.byteLength >= CORRECT.length && CORRECT === convertArrayBufferToString(buffer, 0, CORRECT.length);
-
 }
 
 function isFbxFormatASCII(text) {
@@ -2573,7 +2572,6 @@ function isFbxFormatASCII(text) {
         }
     }
     return true;
-
 }
 
 function getFbxVersion(text) {
@@ -2584,13 +2582,11 @@ function getFbxVersion(text) {
         return version;
     }
     throw new Error('THREE.FBXLoader: Cannot find the version number for the file given.');
-
 }
 
 // Converts FBX ticks into real time seconds.
 function convertFBXTimeToSeconds(time) {
     return time / 46186158000;
-
 }
 
 const dataArray = [];
@@ -2618,7 +2614,6 @@ function getData(polygonVertexIndex, polygonIndex, vertexIndex, infoObject) {
     const from = index * infoObject.dataSize;
     const to = from + infoObject.dataSize;
     return slice(dataArray, infoObject.buffer, from, to);
-
 }
 
 const tempEuler = new Euler();
@@ -2703,7 +2698,6 @@ function generateTransform(transformData) {
     // from global to local
     lTransform.premultiply(lParentGX.invert());
     return lTransform;
-
 }
 
 // Returns the three.js intrinsic Euler order corresponding to FBX extrinsic Euler order
@@ -2724,7 +2718,6 @@ function getEulerOrder(order) {
         return enums[0];
     }
     return enums[order];
-
 }
 
 // Parses comma separated list of numbers and returns them an array.
@@ -2734,14 +2727,12 @@ function parseNumberArray(value) {
         return parseFloat(val);
     });
     return array;
-
 }
 
 function convertArrayBufferToString(buffer, from, to) {
     if (from === undefined) from = 0;
     if (to === undefined) to = buffer.byteLength;
     return new TextDecoder().decode(new Uint8Array(buffer, from, to));
-
 }
 
 function append(a, b) {
@@ -2756,7 +2747,6 @@ function slice(a, b, from, to) {
         a[j] = b[i];
     }
     return a;
-
 }
 
 

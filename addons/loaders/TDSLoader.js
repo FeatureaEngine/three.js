@@ -12,7 +12,7 @@ import {
     Mesh,
     MeshPhongMaterial,
     TextureLoader
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 /**
  * Autodesk 3DS three.js file loader, based on lib3ds.

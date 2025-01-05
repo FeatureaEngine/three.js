@@ -151,7 +151,6 @@ function checkIntersection(object, raycaster, ray, thresholdSq, a, b) {
         barycoord: null,
         object: object
     };
-
 }
 
 export {Line};

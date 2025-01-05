@@ -9,7 +9,7 @@ import {
     SRGBColorSpace,
     Vector3,
     WebGLCoordinateSystem
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 class LightProbeGenerator {
     // https://www.ppsloan.org/publications/StupidSH36.pdf
@@ -197,7 +197,6 @@ function convertColorToLinear(color, colorSpace) {
             break;
     }
     return color;
-
 }
 
 export {LightProbeGenerator};

@@ -14,7 +14,7 @@ import {
     PointsMaterial,
     SRGBColorSpace,
     Vector3
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 // o object_name | g group_name
 const _object_pattern = /^[og]\s*(.+)?/;
@@ -279,7 +279,6 @@ function ParserState() {
     };
     state.startObject('', false);
     return state;
-
 }
 
 //

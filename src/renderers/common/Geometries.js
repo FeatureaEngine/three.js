@@ -17,7 +17,6 @@ function arrayNeedsUint32(array) {
         if (array[i] >= 65535) return true; // account for PRIMITIVE_RESTART_FIXED_INDEX, #24565
     }
     return false;
-
 }
 
 /**
@@ -30,7 +29,6 @@ function arrayNeedsUint32(array) {
  */
 function getWireframeVersion(geometry) {
     return (geometry.index !== null) ? geometry.index.version : geometry.attributes.position.version;
-
 }
 
 /**
@@ -65,7 +63,6 @@ function getWireframeIndex(geometry) {
     const attribute = new (arrayNeedsUint32(indices) ? Uint32BufferAttribute : Uint16BufferAttribute)(indices, 1);
     attribute.version = getWireframeVersion(geometry);
     return attribute;
-
 }
 
 /**

@@ -5,7 +5,7 @@ import {
     CubeTexture,
     HalfFloatType,
     DataUtils
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 class RGBMLoader extends DataTextureLoader {
 

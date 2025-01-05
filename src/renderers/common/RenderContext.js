@@ -195,7 +195,6 @@ export function getCacheKey(renderContext) {
         values.push(texture.id);
     }
     return hashArray(values);
-
 }
 
 export default RenderContext;

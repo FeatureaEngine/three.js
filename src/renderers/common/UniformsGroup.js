@@ -356,7 +356,6 @@ function arraysEqual(a, b, offset) {
         if (a[offset + i] !== b[i]) return false;
     }
     return true;
-
 }
 
 export default UniformsGroup;

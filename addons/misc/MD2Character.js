@@ -1,4 +1,4 @@
-import {AnimationMixer, Box3, Mesh, MeshLambertMaterial, Object3D, SRGBColorSpace, TextureLoader, UVMapping} from '../../src/Three.js';
+import {AnimationMixer, Box3, Mesh, MeshLambertMaterial, Object3D, SRGBColorSpace, TextureLoader, UVMapping} from '../../libs/three/Three.js';
 import {MD2Loader} from '../loaders/MD2Loader.js';
 
 class MD2Character {

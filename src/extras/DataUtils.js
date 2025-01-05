@@ -87,7 +87,6 @@ function _generateTables() {
         exponentTable: exponentTable,
         offsetTable: offsetTable
     };
-
 }
 
 // float32 to float16
@@ -99,7 +98,6 @@ function toHalfFloat(val) {
     const f = _tables.uint32View[0];
     const e = (f >> 23) & 0x1ff;
     return _tables.baseTable[e] + ((f & 0x007fffff) >> _tables.shiftTable[e]);
-
 }
 
 // float16 to float32
@@ -108,7 +106,6 @@ function fromHalfFloat(val) {
     const m = val >> 10;
     _tables.uint32View[0] = _tables.mantissaTable[_tables.offsetTable[m] + (val & 0x3ff)] + _tables.exponentTable[m];
     return _tables.floatView[0];
-
 }
 
 const DataUtils = {

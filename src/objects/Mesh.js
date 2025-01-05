@@ -218,7 +218,6 @@ function checkIntersection(object, material, raycaster, ray, pA, pB, pC, point) 
         point: _intersectionPointWorld.clone(),
         object: object
     };
-
 }
 
 function checkGeometryIntersection(object, material, raycaster, ray, uv, uv1, normal, a, b, c) {
@@ -253,7 +252,6 @@ function checkGeometryIntersection(object, material, raycaster, ray, uv, uv1, no
         intersection.barycoord = barycoord;
     }
     return intersection;
-
 }
 
 export {Mesh};

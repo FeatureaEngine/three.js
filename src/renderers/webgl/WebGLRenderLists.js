@@ -120,7 +120,6 @@ function WebGLRenderList() {
         finish: finish,
         sort: sort
     };
-
 }
 
 function WebGLRenderLists() {
@@ -151,7 +150,6 @@ function WebGLRenderLists() {
         get: get,
         dispose: dispose
     };
-
 }
 
 

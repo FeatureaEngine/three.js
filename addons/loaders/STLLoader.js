@@ -1,4 +1,4 @@
-import {BufferAttribute, BufferGeometry, Color, FileLoader, Float32BufferAttribute, Loader, SRGBColorSpace, Vector3} from '../../src/Three.js';
+import {BufferAttribute, BufferGeometry, Color, FileLoader, Float32BufferAttribute, Loader, SRGBColorSpace, Vector3} from '../../libs/three/Three.js';
 
 /**
  * Description: A THREE loader for STL ASCII files, as created by Solidworks and other CAD programs.

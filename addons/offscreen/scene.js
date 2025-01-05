@@ -1,4 +1,4 @@
-import * as THREE from '../../src/Three.js';
+import * as THREE from '../../libs/three/Three.js';
 
 let camera, scene, renderer, group;
 
@@ -36,7 +36,6 @@ function init(canvas, width, height, pixelRatio, path) {
         renderer.setSize(width, height, false);
         animate();
     });
-
 }
 
 function animate() {
@@ -58,7 +57,6 @@ let seed = 1;
 function random() {
     const x = Math.sin(seed++) * 10000;
     return x - Math.floor(x);
-
 }
 
 export default init;

@@ -10,7 +10,7 @@ import {
     MeshStandardMaterial,
     PointLight,
     Scene,
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 class RoomEnvironment extends Scene {
 
@@ -109,7 +109,6 @@ function createAreaLightMaterial(intensity) {
     const material = new MeshBasicMaterial();
     material.color.setScalar(intensity);
     return material;
-
 }
 
 export {RoomEnvironment};

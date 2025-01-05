@@ -854,21 +854,18 @@ class Debugger {
 
 function isEven(num) {
     return num % 2;
-
 }
 
 // calculate the length of the string in the buffer
 // this will be string.length + nullbyte + optional padbyte to make the length even
 function stringOffset(string) {
     return string.length + 1 + (isEven(string.length + 1) ? 1 : 0);
-
 }
 
 // for testing purposes, dump buffer to console
 // printBuffer( this.reader.dv.buffer, this.reader.offset, length );
 function printBuffer(buffer, from, to) {
     console.log(new TextDecoder().decode(new Uint8Array(buffer, from, to)));
-
 }
 
 export {IFFParser};

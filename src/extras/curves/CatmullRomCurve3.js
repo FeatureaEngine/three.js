@@ -58,7 +58,6 @@ function CubicPoly() {
             return c0 + c1 * t + c2 * t2 + c3 * t3;
         }
     };
-
 }
 
 //

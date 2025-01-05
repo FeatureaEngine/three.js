@@ -331,7 +331,6 @@ function WebGLMaterials(renderer, properties) {
         refreshFogUniforms: refreshFogUniforms,
         refreshMaterialUniforms: refreshMaterialUniforms
     };
-
 }
 
 export {WebGLMaterials};

@@ -48,7 +48,6 @@ function WebGLExtensions(gl) {
             return extension;
         }
     };
-
 }
 
 

@@ -5,7 +5,7 @@ import {
     Quaternion,
     Vector2,
     Vector3
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 const _changeEvent = {type: 'change'};
 const _startEvent = {type: 'start'};
@@ -367,14 +367,12 @@ function onPointerUp(event) {
 
 function onPointerCancel(event) {
     this._removePointer(event);
-
 }
 
 function onKeyUp() {
     if (this.enabled === false) return;
     this.keyState = _STATE.NONE;
     window.addEventListener('keydown', this._onKeyDown);
-
 }
 
 function onKeyDown(event) {
@@ -432,7 +430,6 @@ function onMouseDown(event) {
         this._panEnd.copy(this._panStart);
     }
     this.dispatchEvent(_startEvent);
-
 }
 
 function onMouseMove(event) {
@@ -451,7 +448,6 @@ function onMouseMove(event) {
 function onMouseUp() {
     this.state = _STATE.NONE;
     this.dispatchEvent(_endEvent);
-
 }
 
 function onMouseWheel(event) {
@@ -474,13 +470,11 @@ function onMouseWheel(event) {
     }
     this.dispatchEvent(_startEvent);
     this.dispatchEvent(_endEvent);
-
 }
 
 function onContextMenu(event) {
     if (this.enabled === false) return;
     event.preventDefault();
-
 }
 
 function onTouchStart(event) {
@@ -503,7 +497,6 @@ function onTouchStart(event) {
             break;
     }
     this.dispatchEvent(_startEvent);
-
 }
 
 function onTouchMove(event) {
@@ -549,7 +542,6 @@ function onTouchEnd(event) {
             break;
     }
     this.dispatchEvent(_endEvent);
-
 }
 
 export {TrackballControls};

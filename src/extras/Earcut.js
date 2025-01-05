@@ -46,7 +46,6 @@ function linkedList(data, start, end, dim, clockwise) {
         last = last.next;
     }
     return last;
-
 }
 
 // eliminate colinear or duplicate points
@@ -67,7 +66,6 @@ function filterPoints(start, end) {
         }
     } while (again || p !== end);
     return end;
-
 }
 
 // main ear slicing loop which triangulates a polygon (given as a linked list)
@@ -133,7 +131,6 @@ function isEar(ear) {
         p = p.next;
     }
     return true;
-
 }
 
 function isEarHashed(ear, minX, minY, invSize) {
@@ -174,7 +171,6 @@ function isEarHashed(ear, minX, minY, invSize) {
         n = n.nextZ;
     }
     return true;
-
 }
 
 // go through all polygon nodes and cure small local self-intersections
@@ -195,7 +191,6 @@ function cureLocalIntersections(start, triangles, dim) {
         p = p.next;
     } while (p !== start);
     return filterPoints(p);
-
 }
 
 // try splitting polygon into two and triangulate them independently
@@ -220,7 +215,6 @@ function splitEarcut(start, triangles, dim, minX, minY, invSize) {
         }
         a = a.next;
     } while (a !== start);
-
 }
 
 // link every hole into the outer loop, producing a single-ring polygon without holes
@@ -240,12 +234,10 @@ function eliminateHoles(data, holeIndices, outerNode, dim) {
         outerNode = eliminateHole(queue[i], outerNode);
     }
     return outerNode;
-
 }
 
 function compareX(a, b) {
     return a.x - b.x;
-
 }
 
 // find a bridge between vertices that connects hole with an outer ring and link it
@@ -258,7 +250,6 @@ function eliminateHole(hole, outerNode) {
     // filter collinear points around the cuts
     filterPoints(bridgeReverse, bridgeReverse.next);
     return filterPoints(bridge, bridge.next);
-
 }
 
 // David Eberly's algorithm for finding a bridge between hole and outer polygon
@@ -301,13 +292,11 @@ function findHoleBridge(hole, outerNode) {
         p = p.next;
     } while (p !== stop);
     return m;
-
 }
 
 // whether sector in vertex m contains sector in vertex p in the same coordinates
 function sectorContainsSector(m, p) {
     return area(m.prev, m, p.prev) < 0 && area(p.next, m, m.next) < 0;
-
 }
 
 // interlink polygon nodes in z-order
@@ -322,7 +311,6 @@ function indexCurve(start, minX, minY, invSize) {
     p.prevZ.nextZ = null;
     p.prevZ = null;
     sortLinked(p);
-
 }
 
 // Simon Tatham's linked list merge sort algorithm
@@ -366,7 +354,6 @@ function sortLinked(list) {
         inSize *= 2;
     } while (numMerges > 1);
     return list;
-
 }
 
 // z-order of a point given coords and inverse of the longer side of data bbox
@@ -383,7 +370,6 @@ function zOrder(x, y, minX, minY, invSize) {
     y = (y | (y << 2)) & 0x33333333;
     y = (y | (y << 1)) & 0x55555555;
     return x | (y << 1);
-
 }
 
 // find the leftmost node of a polygon ring
@@ -395,7 +381,6 @@ function getLeftmost(start) {
         p = p.next;
     } while (p !== start);
     return leftmost;
-
 }
 
 // check if a point lies within a convex triangle
@@ -403,7 +388,6 @@ function pointInTriangle(ax, ay, bx, by, cx, cy, px, py) {
     return (cx - px) * (ay - py) >= (ax - px) * (cy - py) &&
         (ax - px) * (by - py) >= (bx - px) * (ay - py) &&
         (bx - px) * (cy - py) >= (cx - px) * (by - py);
-
 }
 
 // check if a diagonal between two polygon nodes is valid (lies in polygon interior)
@@ -418,13 +402,11 @@ function isValidDiagonal(a, b) {
 // signed area of a triangle
 function area(p, q, r) {
     return (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
-
 }
 
 // check if two points are equal
 function equals(p1, p2) {
     return p1.x === p2.x && p1.y === p2.y;
-
 }
 
 // check if two segments intersect
@@ -439,18 +421,15 @@ function intersects(p1, q1, p2, q2) {
     if (o3 === 0 && onSegment(p2, p1, q2)) return true; // p2, q2 and p1 are collinear and p1 lies on p2q2
     if (o4 === 0 && onSegment(p2, q1, q2)) return true; // p2, q2 and q1 are collinear and q1 lies on p2q2
     return false;
-
 }
 
 // for collinear points p, q, r, check if point q lies on segment pr
 function onSegment(p, q, r) {
     return q.x <= Math.max(p.x, r.x) && q.x >= Math.min(p.x, r.x) && q.y <= Math.max(p.y, r.y) && q.y >= Math.min(p.y, r.y);
-
 }
 
 function sign(num) {
     return num > 0 ? 1 : num < 0 ? -1 : 0;
-
 }
 
 // check if a polygon diagonal intersects any polygon segments
@@ -462,7 +441,6 @@ function intersectsPolygon(a, b) {
         p = p.next;
     } while (p !== a);
     return false;
-
 }
 
 // check if a polygon diagonal is locally inside the polygon
@@ -470,7 +448,6 @@ function locallyInside(a, b) {
     return area(a.prev, a, a.next) < 0 ?
         area(a, b, a.next) >= 0 && area(a, a.prev, b) >= 0 :
         area(a, b, a.prev) < 0 || area(a, a.next, b) < 0;
-
 }
 
 // check if the middle point of a polygon diagonal is inside the polygon
@@ -486,7 +463,6 @@ function middleInside(a, b) {
         p = p.next;
     } while (p !== a);
     return inside;
-
 }
 
 // link two polygon vertices with a bridge; if the vertices belong to the same ring, it splits polygon into two;
@@ -505,7 +481,6 @@ function splitPolygon(a, b) {
     bp.next = b2;
     b2.prev = bp;
     return b2;
-
 }
 
 // create a node and optionally link it with previous one (in a circular doubly linked list)
@@ -521,7 +496,6 @@ function insertNode(i, x, y, last) {
         last.next = p;
     }
     return p;
-
 }
 
 function removeNode(p) {
@@ -529,7 +503,6 @@ function removeNode(p) {
     p.prev.next = p.next;
     if (p.prevZ) p.prevZ.nextZ = p.nextZ;
     if (p.nextZ) p.nextZ.prevZ = p.prevZ;
-
 }
 
 function Node(i, x, y) {
@@ -548,7 +521,6 @@ function Node(i, x, y) {
     this.nextZ = null;
     // indicates whether this is a steiner point
     this.steiner = false;
-
 }
 
 function signedArea(data, start, end, dim) {
@@ -558,7 +530,6 @@ function signedArea(data, start, end, dim) {
         j = i;
     }
     return sum;
-
 }
 
 export {Earcut};

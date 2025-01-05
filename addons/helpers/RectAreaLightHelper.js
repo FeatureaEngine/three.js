@@ -1,4 +1,4 @@
-import {BackSide, BufferGeometry, Float32BufferAttribute, Line, LineBasicMaterial, Mesh, MeshBasicMaterial} from '../../src/Three.js';
+import {BackSide, BufferGeometry, Float32BufferAttribute, Line, LineBasicMaterial, Mesh, MeshBasicMaterial} from '../../libs/three/Three.js';
 
 /**
  *  This helper must be added as a child of the light

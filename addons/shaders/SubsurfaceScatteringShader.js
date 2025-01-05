@@ -3,7 +3,7 @@ import {
     ShaderChunk,
     ShaderLib,
     UniformsUtils
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 /**
  * ------------------------------------------------------------------------------------------
@@ -15,7 +15,6 @@ import {
 
 function replaceAll(string, find, replace) {
     return string.split(find).join(replace);
-
 }
 
 const meshphong_frag_head = ShaderChunk['meshphong_frag'].slice(0, ShaderChunk['meshphong_frag'].indexOf('void main() {'));

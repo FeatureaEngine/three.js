@@ -350,7 +350,6 @@ function WebGLBindingStates(gl, attributes) {
         enableAttribute: enableAttribute,
         disableUnusedAttributes: disableUnusedAttributes
     };
-
 }
 
 

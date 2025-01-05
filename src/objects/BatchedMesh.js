@@ -13,17 +13,14 @@ import {Color} from '../math/Color.js';
 
 function ascIdSort(a, b) {
     return a - b;
-
 }
 
 function sortOpaque(a, b) {
     return a.z - b.z;
-
 }
 
 function sortTransparent(a, b) {
     return b.z - a.z;
-
 }
 
 class MultiDrawRenderList {
@@ -90,7 +87,6 @@ function copyAttributeData(src, target, targetOffset = 0) {
         target.array.set(src.array, targetOffset * itemSize);
     }
     target.needsUpdate = true;
-
 }
 
 // safely copies array contents to a potentially smaller array

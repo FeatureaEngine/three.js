@@ -5,7 +5,7 @@
  *
  */
 
-import {BufferAttribute, Matrix3, Matrix4, Vector3} from '../../src/Three.js';
+import {BufferAttribute, Matrix3, Matrix4, Vector3} from '../../libs/three/Three.js';
 
 
 /**
@@ -76,7 +76,6 @@ function compressNormals(geometry, encodeMethod) {
     geometry.attributes.normal.needsUpdate = true;
     geometry.attributes.normal.isPacked = true;
     geometry.attributes.normal.packingMethod = encodeMethod;
-
 }
 
 
@@ -106,7 +105,6 @@ function compressPositions(geometry) {
     geometry.attributes.position.isPacked = true;
     geometry.attributes.position.needsUpdate = true;
     geometry.attributes.position.bytes = quantized.length * encodingBytes;
-
 }
 
 /**
@@ -176,7 +174,6 @@ function anglesEncode(x, y, z) {
     const normal0 = parseInt(0.5 * (1.0 + Math.atan2(y, x) / Math.PI) * 65535);
     const normal1 = parseInt(0.5 * (1.0 + z) * 65535);
     return new Uint16Array([normal0, normal1]);
-
 }
 
 // for `Octahedron` encoding
@@ -318,7 +315,6 @@ function quantizedEncode(array, bytes) {
         quantized: quantized,
         decodeMat: decodeMat
     };
-
 }
 
 function quantizedEncodeUV(array, bytes) {
@@ -362,7 +358,6 @@ function quantizedEncodeUV(array, bytes) {
         quantized: quantized,
         decodeMat: decodeMat
     };
-
 }
 
 

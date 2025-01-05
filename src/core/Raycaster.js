@@ -66,7 +66,6 @@ class Raycaster {
 
 function ascSort(a, b) {
     return a.distance - b.distance;
-
 }
 
 function intersect(object, raycaster, intersects, recursive) {

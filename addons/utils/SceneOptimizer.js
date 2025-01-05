@@ -1,4 +1,4 @@
-import * as THREE from "../src/Three.js";
+import * as THREE from "../libs/three/Three.js";
 
 class SceneOptimizer {
 

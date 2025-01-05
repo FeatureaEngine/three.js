@@ -10,7 +10,7 @@ import {
     UniformsUtils,
     Vector2,
     Vector4
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 import {Reflector} from '../objects/Reflector.js';
 import {Refractor} from '../objects/Refractor.js';
 

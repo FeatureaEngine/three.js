@@ -50,7 +50,6 @@ function WebGLInfo(gl) {
         reset: reset,
         update: update
     };
-
 }
 
 

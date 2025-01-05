@@ -22,7 +22,6 @@ function getViewZNode(builder) {
         viewZ = getViewZ(this);
     }
     return (viewZ || positionView.z).negate();
-
 }
 
 /**
@@ -70,7 +69,6 @@ export const fog = Fn(([color, factor]) => {
 export function rangeFog(color, near, far) { // @deprecated, r171
     console.warn('THREE.TSL: "rangeFog( color, near, far )" is deprecated. Use "fog( color, rangeFogFactor( near, far ) )" instead.');
     return fog(color, rangeFogFactor(near, far));
-
 }
 
 export function densityFog(color, density) { // @deprecated, r171

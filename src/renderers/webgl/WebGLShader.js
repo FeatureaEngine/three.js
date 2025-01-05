@@ -3,7 +3,6 @@ function WebGLShader(gl, type, string) {
     gl.shaderSource(shader, string);
     gl.compileShader(shader);
     return shader;
-
 }
 
 export {WebGLShader};

@@ -1,4 +1,4 @@
-import {Vector3} from '../../src/Three.js';
+import {Vector3} from '../../libs/three/Three.js';
 
 class Capsule {
 

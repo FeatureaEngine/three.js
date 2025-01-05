@@ -68,7 +68,6 @@ function contain(texture, aspect) {
         texture.offset.y = 0;
     }
     return texture;
-
 }
 
 function cover(texture, aspect) {
@@ -85,7 +84,6 @@ function cover(texture, aspect) {
         texture.offset.y = (1 - texture.repeat.y) / 2;
     }
     return texture;
-
 }
 
 function fill(texture) {
@@ -94,7 +92,6 @@ function fill(texture) {
     texture.offset.x = 0;
     texture.offset.y = 0;
     return texture;
-
 }
 
 
@@ -197,7 +194,6 @@ function getByteLength(width, height, format, type) {
     throw new Error(
         `Unable to determine texture byte length for ${format} format.`,
     );
-
 }
 
 function getTextureTypeByteLength(type) {
@@ -220,7 +216,6 @@ function getTextureTypeByteLength(type) {
             return {byteLength: 4, components: 3};
     }
     throw new Error(`Unknown texture type ${type}.`);
-
 }
 
 const TextureUtils = {

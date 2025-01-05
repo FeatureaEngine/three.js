@@ -1,4 +1,4 @@
-import {AnimationClip, Bone, FileLoader, Loader, Quaternion, QuaternionKeyframeTrack, Skeleton, Vector3, VectorKeyframeTrack} from '../../src/Three.js';
+import {AnimationClip, Bone, FileLoader, Loader, Quaternion, QuaternionKeyframeTrack, Skeleton, Vector3, VectorKeyframeTrack} from '../../libs/three/Three.js';
 
 /**
  * Description: reads BVH files and outputs a single Skeleton and an AnimationClip

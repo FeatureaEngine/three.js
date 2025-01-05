@@ -19,7 +19,7 @@ import {
     SphereGeometry,
     TorusGeometry,
     Vector3
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 const _raycaster = new Raycaster();
 
@@ -455,13 +455,11 @@ function onPointerDown(event) {
     this.domElement.addEventListener('pointermove', this._onPointerMove);
     this.pointerHover(this._getPointer(event));
     this.pointerDown(this._getPointer(event));
-
 }
 
 function onPointerMove(event) {
     if (!this.enabled) return;
     this.pointerMove(this._getPointer(event));
-
 }
 
 function onPointerUp(event) {
@@ -469,7 +467,6 @@ function onPointerUp(event) {
     this.domElement.releasePointerCapture(event.pointerId);
     this.domElement.removeEventListener('pointermove', this._onPointerMove);
     this.pointerUp(this._getPointer(event));
-
 }
 
 function intersectObjectWithRay(object, raycaster, includeInvisible) {
@@ -480,7 +477,6 @@ function intersectObjectWithRay(object, raycaster, includeInvisible) {
         }
     }
     return false;
-
 }
 
 //

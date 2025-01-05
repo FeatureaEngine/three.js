@@ -25,7 +25,7 @@ import {
     Vector3,
     Quaternion,
     REVISION
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 /**
  * The KHR_mesh_quantization extension allows these extra attribute component types
@@ -239,7 +239,6 @@ function equalArray(array1, array2) {
     return (array1.length === array2.length) && array1.every(function (element, index) {
         return element === array2[index];
     });
-
 }
 
 /**
@@ -249,7 +248,6 @@ function equalArray(array1, array2) {
  */
 function stringToArrayBuffer(text) {
     return new TextEncoder().encode(text).buffer;
-
 }
 
 /**
@@ -260,7 +258,6 @@ function stringToArrayBuffer(text) {
  */
 function isIdentityMatrix(matrix) {
     return equalArray(matrix.elements, [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
-
 }
 
 /**
@@ -295,7 +292,6 @@ function getMinMax(attribute, start, count) {
         }
     }
     return output;
-
 }
 
 /**
@@ -308,7 +304,6 @@ function getMinMax(attribute, start, count) {
  */
 function getPaddedBufferSize(bufferSize) {
     return Math.ceil(bufferSize / 4) * 4;
-
 }
 
 /**
@@ -331,7 +326,6 @@ function getPaddedArrayBuffer(arrayBuffer, paddingByte = 0) {
         return array.buffer;
     }
     return arrayBuffer;
-
 }
 
 function getCanvas() {
@@ -339,7 +333,6 @@ function getCanvas() {
         return new OffscreenCanvas(1, 1);
     }
     return document.createElement('canvas');
-
 }
 
 function getToBlobPromise(canvas, mimeType) {
@@ -358,7 +351,6 @@ function getToBlobPromise(canvas, mimeType) {
         type: mimeType,
         quality: quality
     });
-
 }
 
 /**

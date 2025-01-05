@@ -1,4 +1,4 @@
-import {BufferAttribute, BufferGeometry, Color, Group, Matrix4, Mesh, Vector3} from '../../src/Three.js';
+import {BufferAttribute, BufferGeometry, Color, Group, Matrix4, Mesh, Vector3} from '../../libs/three/Three.js';
 
 import {deepCloneAttribute, mergeGroups} from './BufferGeometryUtils.js';
 
@@ -19,7 +19,6 @@ function createMeshesFromInstancedMesh(instancedMesh) {
     group.copy(instancedMesh);
     group.updateMatrixWorld(); // ensure correct world matrices of meshes
     return group;
-
 }
 
 function createMeshesFromMultiMaterialMesh(mesh) {
@@ -64,7 +63,6 @@ function createMeshesFromMultiMaterialMesh(mesh) {
         object.add(newMesh);
     }
     return object;
-
 }
 
 function createMultiMaterialObject(geometry, materials) {
@@ -73,7 +71,6 @@ function createMultiMaterialObject(geometry, materials) {
         group.add(new Mesh(geometry, materials[i]));
     }
     return group;
-
 }
 
 function reduceVertices(object, func, initialValue) {
@@ -100,7 +97,6 @@ function reduceVertices(object, func, initialValue) {
         }
     });
     return value;
-
 }
 
 /**

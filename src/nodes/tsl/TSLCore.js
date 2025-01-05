@@ -21,7 +21,6 @@ export function addMethodChaining(name, nodeElement) {
     }
     if (typeof nodeElement !== 'function') throw new Error(`Node element ${name} is not a function`);
     NodeElements.set(name, nodeElement);
-
 }
 
 const parseSwizzle = (props) => props.replace(/r|s/g, 'x').replace(/g|t/g, 'y').replace(/b|p/g, 'z').replace(/a|q/g, 'w');
@@ -316,7 +315,6 @@ export const getConstNodeType = (value) => (value !== undefined && value !== nul
 
 export function ShaderNode(jsFunc, nodeType) {
     return new Proxy(new ShaderNodeInternal(jsFunc, nodeType), shaderNodeHandler);
-
 }
 
 export const nodeObject = (val, altType = null) => /* new */ ShaderNodeObject(val, altType);
@@ -381,7 +379,6 @@ export const If = (...params) => currentStack.If(...params);
 export function append(node) {
     if (currentStack) currentStack.add(node);
     return node;
-
 }
 
 addMethodChaining('append', append);

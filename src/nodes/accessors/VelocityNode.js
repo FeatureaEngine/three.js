@@ -154,7 +154,6 @@ function getData(object) {
         _objectData.set(object, objectData);
     }
     return objectData;
-
 }
 
 function getPreviousMatrix(object, index = 0) {
@@ -164,7 +163,6 @@ function getPreviousMatrix(object, index = 0) {
         objectData[index] = matrix = new Matrix4();
     }
     return matrix;
-
 }
 
 export default VelocityNode;

@@ -2,7 +2,7 @@ import {
     Matrix4,
     Vector2,
     Vector3,
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 /**
  * References:
@@ -179,7 +179,6 @@ function generatePdSamplePointInitializer(samples, rings, radiusExponent) {
         glslCode += `vec3(${sample.x}, ${sample.y}, ${sample.z})${(i < samples - 1) ? ',' : ')'}`;
     }
     return glslCode;
-
 }
 
 function generateDenoiseSamples(numSamples, numRings, radiusExponent) {
@@ -190,7 +189,6 @@ function generateDenoiseSamples(numSamples, numRings, radiusExponent) {
         samples.push(new Vector3(Math.cos(angle), Math.sin(angle), radius));
     }
     return samples;
-
 }
 
 export {generatePdSamplePointInitializer, PoissonDenoiseShader};

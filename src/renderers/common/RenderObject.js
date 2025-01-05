@@ -18,7 +18,6 @@ function getKeys(obj) {
         proto = Object.getPrototypeOf(proto);
     }
     return keys;
-
 }
 
 /**

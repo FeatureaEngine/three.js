@@ -488,7 +488,6 @@ function _createPlanes(lodMax) {
         }
     }
     return {lodPlanes, sizeLods, sigmas};
-
 }
 
 function _createRenderTarget(width, height, params) {
@@ -497,13 +496,11 @@ function _createRenderTarget(width, height, params) {
     cubeUVRenderTarget.texture.name = 'PMREM.cubeUv';
     cubeUVRenderTarget.scissorTest = true;
     return cubeUVRenderTarget;
-
 }
 
 function _setViewport(target, x, y, width, height) {
     target.viewport.set(x, y, width, height);
     target.scissor.set(x, y, width, height);
-
 }
 
 function _getBlurShader(lodMax, width, height) {
@@ -571,7 +568,6 @@ function _getBlurShader(lodMax, width, height) {
         depthWrite: false
     });
     return shaderMaterial;
-
 }
 
 function _getEquirectMaterial() {
@@ -597,7 +593,6 @@ function _getEquirectMaterial() {
         depthTest: false,
         depthWrite: false
     });
-
 }
 
 function _getCubemapMaterial() {
@@ -622,7 +617,6 @@ function _getCubemapMaterial() {
         depthTest: false,
         depthWrite: false
     });
-
 }
 
 function _getCommonVertexShader() {
@@ -658,7 +652,6 @@ function _getCommonVertexShader() {
 			gl_Position = vec4( position, 1.0 );
 		}
 	`;
-
 }
 
 export {PMREMGenerator};

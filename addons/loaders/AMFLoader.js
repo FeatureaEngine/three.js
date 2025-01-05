@@ -1,4 +1,4 @@
-import {BufferGeometry, Color, FileLoader, Float32BufferAttribute, Group, Loader, Mesh, MeshPhongMaterial} from '../../src/Three.js';
+import {BufferGeometry, Color, FileLoader, Float32BufferAttribute, Group, Loader, Mesh, MeshPhongMaterial} from '../../libs/three/Three.js';
 import * as fflate from '../../libs/fflate.module.js';
 
 /**

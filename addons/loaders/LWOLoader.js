@@ -37,7 +37,7 @@ import {
     SRGBColorSpace,
     TextureLoader,
     Vector2
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 import {IFFParser} from './lwo/IFFParser.js';
 
@@ -698,7 +698,6 @@ function extractParentUrl(url, dir) {
     const index = url.indexOf(dir);
     if (index === -1) return './';
     return url.slice(0, index);
-
 }
 
 export {LWOLoader};

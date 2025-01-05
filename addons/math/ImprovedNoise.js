@@ -13,24 +13,20 @@ const _p = [151, 160, 137, 91, 90, 15, 131, 13, 201, 95, 96, 53, 194, 233, 7, 22
 
 for (let i = 0; i < 256; i++) {
     _p[256 + i] = _p[i];
-
 }
 
 function fade(t) {
     return t * t * t * (t * (t * 6 - 15) + 10);
-
 }
 
 function lerp(t, a, b) {
     return a + t * (b - a);
-
 }
 
 function grad(hash, x, y, z) {
     const h = hash & 15;
     const u = h < 8 ? x : y, v = h < 4 ? y : h == 12 || h == 14 ? x : z;
     return ((h & 1) == 0 ? u : -u) + ((h & 2) == 0 ? v : -v);
-
 }
 
 class ImprovedNoise {

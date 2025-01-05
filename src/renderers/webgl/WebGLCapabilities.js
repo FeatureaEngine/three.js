@@ -85,7 +85,6 @@ function WebGLCapabilities(gl, extensions, parameters, utils) {
         vertexTextures: vertexTextures,
         maxSamples: maxSamples
     };
-
 }
 
 

@@ -28,7 +28,6 @@ export function cloneUniforms(src) {
         }
     }
     return dst;
-
 }
 
 export function mergeUniforms(uniforms) {
@@ -40,7 +39,6 @@ export function mergeUniforms(uniforms) {
         }
     }
     return merged;
-
 }
 
 export function cloneUniformsGroups(src) {
@@ -49,7 +47,6 @@ export function cloneUniformsGroups(src) {
         dst.push(src[u].clone());
     }
     return dst;
-
 }
 
 export function getUnlitUniformColorSpace(renderer) {
@@ -63,7 +60,6 @@ export function getUnlitUniformColorSpace(renderer) {
         return currentRenderTarget.texture.colorSpace;
     }
     return ColorManagement.workingColorSpace;
-
 }
 
 // Legacy

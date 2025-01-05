@@ -1,11 +1,10 @@
-import {AnimationClip, AnimationMixer, Matrix4, Quaternion, QuaternionKeyframeTrack, SkeletonHelper, Vector3, VectorKeyframeTrack} from '../../src/Three.js';
+import {AnimationClip, AnimationMixer, Matrix4, Quaternion, QuaternionKeyframeTrack, SkeletonHelper, Vector3, VectorKeyframeTrack} from '../../libs/three/Three.js';
 
 function getBoneName(bone, options) {
     if (options.getBoneName !== undefined) {
         return options.getBoneName(bone);
     }
     return options.names[bone.name];
-
 }
 
 function retarget(target, source, options = {}) {
@@ -200,7 +199,6 @@ function retargetClip(target, source, clip, options = {}) {
     }
     mixer.uncacheAction(clip);
     return new AnimationClip(clip.name, -1, convertedTracks);
-
 }
 
 function clone(source) {
@@ -224,7 +222,6 @@ function clone(source) {
         clonedMesh.bind(clonedMesh.skeleton, clonedMesh.bindMatrix);
     });
     return clone;
-
 }
 
 // internal helper
@@ -239,7 +236,6 @@ function getBoneByName(name, skeleton) {
 
 function getBones(skeleton) {
     return Array.isArray(skeleton) ? skeleton : skeleton.bones;
-
 }
 
 
@@ -247,7 +243,6 @@ function getHelperFromSkeleton(skeleton) {
     const source = new SkeletonHelper(skeleton.bones[0]);
     source.skeleton = skeleton;
     return source;
-
 }
 
 function parallelTraverse(a, b, callback) {

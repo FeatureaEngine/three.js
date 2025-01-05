@@ -9,7 +9,7 @@ import {
     Plane,
     Ray,
     MathUtils
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 // OrbitControls performs orbiting, dollying (zooming), and panning.
 // Unlike TrackballControls, it maintains the "up" direction object.up (+Y by default).
@@ -857,13 +857,11 @@ function onMouseWheel(event) {
     this.dispatchEvent(_startEvent);
     this._handleMouseWheel(this._customWheelEvent(event));
     this.dispatchEvent(_endEvent);
-
 }
 
 function onKeyDown(event) {
     if (this.enabled === false) return;
     this._handleKeyDown(event);
-
 }
 
 function onTouchStart(event) {
@@ -942,7 +940,6 @@ function onTouchMove(event) {
 function onContextMenu(event) {
     if (this.enabled === false) return;
     event.preventDefault();
-
 }
 
 function interceptControlDown(event) {

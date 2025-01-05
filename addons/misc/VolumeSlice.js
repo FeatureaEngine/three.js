@@ -1,4 +1,4 @@
-import {ClampToEdgeWrapping, DoubleSide, LinearFilter, Mesh, MeshBasicMaterial, PlaneGeometry, SRGBColorSpace, Texture} from '../../src/Three.js';
+import {ClampToEdgeWrapping, DoubleSide, LinearFilter, Mesh, MeshBasicMaterial, PlaneGeometry, SRGBColorSpace, Texture} from '../../libs/three/Three.js';
 
 /**
  * This class has been made to hold a slice of a volume data

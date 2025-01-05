@@ -45,7 +45,6 @@ class Clock {
 
 function now() {
     return performance.now();
-
 }
 
 export {Clock};

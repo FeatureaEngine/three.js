@@ -5,7 +5,7 @@
  *
  */
 
-import {UniformsUtils, UniformsLib, ShaderMaterial, Color, MultiplyOperation} from '../../src/Three.js';
+import {UniformsUtils, UniformsLib, ShaderMaterial, Color, MultiplyOperation} from '../../libs/three/Three.js';
 
 const GouraudShader = {
     name: 'GouraudShader',

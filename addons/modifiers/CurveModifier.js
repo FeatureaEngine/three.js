@@ -14,7 +14,7 @@ import {
     LinearFilter,
     DynamicDrawUsage,
     Matrix4
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 /**
  * Make a new DataTexture to store the descriptions of the curves.
@@ -37,7 +37,6 @@ export function initSplineTexture(numberOfCurves = 1) {
     dataTexture.minFilter = LinearFilter;
     dataTexture.needsUpdate = true;
     return dataTexture;
-
 }
 
 /**
@@ -66,7 +65,6 @@ export function updateSplineTexture(texture, splineCurve, offset = 0) {
         setTextureValue(texture, rowIndex, pt.x, pt.y, pt.z, 3 + rowOffset + (TEXTURE_HEIGHT * offset));
     }
     texture.needsUpdate = true;
-
 }
 
 
@@ -78,7 +76,6 @@ function setTextureValue(texture, index, x, y, z, o) {
     data[index * CHANNELS + i + 1] = DataUtils.toHalfFloat(y);
     data[index * CHANNELS + i + 2] = DataUtils.toHalfFloat(z);
     data[index * CHANNELS + i + 3] = DataUtils.toHalfFloat(1);
-
 }
 
 /**
@@ -97,7 +94,6 @@ export function getUniforms(splineTexture) {
         flow: {type: 'i', value: 1},
     };
     return uniforms;
-
 }
 
 export function modifyShader(material, uniforms, numberOfCurves = 1) {
@@ -171,7 +167,6 @@ vec3 transformedNormal = normalMatrix * (basis * objectNormal);
             );
         shader.vertexShader = vertexShader;
     };
-
 }
 
 /**

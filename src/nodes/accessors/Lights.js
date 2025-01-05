@@ -13,7 +13,6 @@ function getLightData(light) {
     let uniforms = uniformsLib.get(light);
     if (uniforms === undefined) uniformsLib.set(light, uniforms = {});
     return uniforms;
-
 }
 
 /**
@@ -31,7 +30,6 @@ export function lightShadowMatrix(light) {
         }
         return light.shadow.matrix;
     }));
-
 }
 
 /**
@@ -50,7 +48,6 @@ export function lightProjectionUV(light) {
 
     }
     return data.projectionUV;
-
 }
 
 /**
@@ -63,7 +60,6 @@ export function lightProjectionUV(light) {
 export function lightPosition(light) {
     const data = getLightData(light);
     return data.position || (data.position = uniform(new Vector3()).setGroup(renderGroup).onRenderUpdate((_, self) => self.value.setFromMatrixPosition(light.matrixWorld)));
-
 }
 
 /**
@@ -76,7 +72,6 @@ export function lightPosition(light) {
 export function lightTargetPosition(light) {
     const data = getLightData(light);
     return data.targetPosition || (data.targetPosition = uniform(new Vector3()).setGroup(renderGroup).onRenderUpdate((_, self) => self.value.setFromMatrixPosition(light.target.matrixWorld)));
-
 }
 
 /**
@@ -93,7 +88,6 @@ export function lightViewPosition(light) {
         self.value.setFromMatrixPosition(light.matrixWorld);
         self.value.applyMatrix4(camera.matrixWorldInverse);
     }));
-
 }
 
 /**

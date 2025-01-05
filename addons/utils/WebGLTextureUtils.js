@@ -1,4 +1,4 @@
-import {CanvasTexture, Mesh, PerspectiveCamera, PlaneGeometry, Scene, ShaderMaterial, SRGBColorSpace, Uniform, WebGLRenderer} from '../../src/Three.js';
+import {CanvasTexture, Mesh, PerspectiveCamera, PlaneGeometry, Scene, ShaderMaterial, SRGBColorSpace, Uniform, WebGLRenderer} from '../../libs/three/Three.js';
 
 let _renderer;
 let fullscreenQuadGeometry;

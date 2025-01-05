@@ -1,4 +1,4 @@
-import {Curve, Vector3} from '../../src/Three.js';
+import {Curve, Vector3} from '../../libs/three/Three.js';
 
 /**
  * A bunch of parametric curves
@@ -186,7 +186,6 @@ class TrefoilPolynomialKnot extends Curve {
 function scaleTo(x, y, t) {
     const r = y - x;
     return t * r + x;
-
 }
 
 // FigureEightPolynomialKnot

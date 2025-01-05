@@ -1,4 +1,4 @@
-import {Box3, InstancedInterleavedBuffer, InterleavedBufferAttribute, Line3, MathUtils, Matrix4, Mesh, Sphere, Vector3, Vector4} from '../../src/Three.js';
+import {Box3, InstancedInterleavedBuffer, InterleavedBufferAttribute, Line3, MathUtils, Matrix4, Mesh, Sphere, Vector3, Vector4} from '../../libs/three/Three.js';
 import {LineSegmentsGeometry} from '../lines/LineSegmentsGeometry.js';
 import {LineMaterial} from '../lines/LineMaterial.js';
 
@@ -35,7 +35,6 @@ function getWorldSpaceHalfWidth(camera, distance, resolution) {
     _clipToWorldVector.applyMatrix4(camera.projectionMatrixInverse);
     _clipToWorldVector.multiplyScalar(1.0 / _clipToWorldVector.w);
     return Math.abs(Math.max(_clipToWorldVector.x, _clipToWorldVector.y));
-
 }
 
 function raycastWorldUnits(lineSegments, intersects) {

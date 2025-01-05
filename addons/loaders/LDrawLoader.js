@@ -13,7 +13,7 @@ import {
     SRGBColorSpace,
     Vector3,
     Ray
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 // Special surface finish tag types.
 // Note: "MATERIAL" tag (e.g. GLITTER, SPECKLE) is not implemented
@@ -300,12 +300,10 @@ function smoothNormals(faces, lineSegments, checkSubSegments = false) {
 
 function isPartType(type) {
     return type === 'Part' || type === 'Unofficial_Part';
-
 }
 
 function isPrimitiveType(type) {
     return /primitive/i.test(type) || type === 'Subpart';
-
 }
 
 class LineParser {
@@ -825,7 +823,6 @@ function getMaterialFromCode(colorCode, parentColorCode, materialHierarchy, forE
         colorCode = parentColorCode;
     }
     return materialHierarchy[colorCode] || null;
-
 }
 
 // Class used to parse and build LDraw parts as three.js objects and cache them if they're a "Part" type.
@@ -1040,7 +1037,6 @@ function sortByMaterial(a, b) {
         return -1;
     }
     return 1;
-
 }
 
 function createObject(loader, elements, elementSize, isConditionalSegments = false, totalElements = null) {
@@ -1197,7 +1193,6 @@ function createObject(loader, elements, elementSize, isConditionalSegments = fal
         bufferGeometry.setAttribute('direction', new BufferAttribute(directionArray, 3, false));
     }
     return object3d;
-
 }
 
 //

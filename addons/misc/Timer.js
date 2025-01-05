@@ -75,12 +75,10 @@ class FixedTimer extends Timer {
 
 function now() {
     return performance.now();
-
 }
 
 function handleVisibilityChange() {
     if (document.hidden === false) this.reset();
-
 }
 
 export {Timer, FixedTimer};

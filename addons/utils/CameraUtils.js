@@ -1,4 +1,4 @@
-import {MathUtils, Quaternion, Vector3} from '../../src/Three.js';
+import {MathUtils, Quaternion, Vector3} from '../../libs/three/Three.js';
 
 const _va = /*@__PURE__*/ new Vector3(), // from pe to pa
     _vb = /*@__PURE__*/ new Vector3(), // from pe to pb

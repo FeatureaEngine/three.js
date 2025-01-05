@@ -1,4 +1,4 @@
-import {DataTextureLoader, DataUtils, FloatType, HalfFloatType, LinearFilter, LinearSRGBColorSpace, NoColorSpace, RedFormat, RGBAFormat} from '../../src/Three.js';
+import {DataTextureLoader, DataUtils, FloatType, HalfFloatType, LinearFilter, LinearSRGBColorSpace, NoColorSpace, RedFormat, RGBAFormat} from '../../libs/three/Three.js';
 import * as fflate from '../../libs/fflate.module.js';
 
 /**

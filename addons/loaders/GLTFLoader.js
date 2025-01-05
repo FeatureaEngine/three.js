@@ -64,7 +64,7 @@ import {
     VectorKeyframeTrack,
     SRGBColorSpace,
     InstancedBufferAttribute
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 import {toTrianglesDrawMode} from '../utils/BufferGeometryUtils.js';
 
 class GLTFLoader extends Loader {
@@ -305,7 +305,6 @@ function GLTFRegistry() {
             objects = {};
         }
     };
-
 }
 
 /*********************************/
@@ -1535,7 +1534,6 @@ function createDefaultMaterial(cache) {
         });
     }
     return cache['DefaultMaterial'];
-
 }
 
 function addUnknownExtensionsToUserData(knownExtensions, object, objectDef) {
@@ -1622,7 +1620,6 @@ function addMorphTargets(geometry, targets, parser) {
         geometry.morphTargetsRelative = true;
         return geometry;
     });
-
 }
 
 /**
@@ -1667,7 +1664,6 @@ function createPrimitiveKey(primitiveDef) {
         }
     }
     return geometryKey;
-
 }
 
 function createAttributesKey(attributes) {
@@ -1677,7 +1673,6 @@ function createAttributesKey(attributes) {
         attributesKey += keys[i] + ':' + attributes[keys[i]] + ';';
     }
     return attributesKey;
-
 }
 
 function getNormalizedComponentScale(constructor) {
@@ -1703,7 +1698,6 @@ function getImageURIMimeType(uri) {
     if (uri.search(/\.webp($|\?)/i) > 0 || uri.search(/^data\:image\/webp/) === 0) return 'image/webp';
     if (uri.search(/\.ktx2($|\?)/i) > 0 || uri.search(/^data\:image\/ktx2/) === 0) return 'image/ktx2';
     return 'image/png';
-
 }
 
 const _identityMatrix = new Matrix4();
@@ -3028,7 +3022,6 @@ function computeBounds(geometry, primitiveDef, parser) {
     box.getCenter(sphere.center);
     sphere.radius = box.min.distanceTo(box.max) / 2;
     geometry.boundingSphere = sphere;
-
 }
 
 /**
@@ -3070,7 +3063,6 @@ function addPrimitiveAttributes(geometry, primitiveDef, parser) {
             ? addMorphTargets(geometry, primitiveDef.targets, parser)
             : geometry;
     });
-
 }
 
 export {GLTFLoader};

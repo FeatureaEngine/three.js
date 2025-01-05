@@ -1,4 +1,4 @@
-import {Matrix3, Matrix4, Vector3} from '../../src/Three.js';
+import {Matrix3, Matrix4, Vector3} from '../../libs/three/Three.js';
 import {VolumeSlice} from '../misc/VolumeSlice.js';
 
 /**

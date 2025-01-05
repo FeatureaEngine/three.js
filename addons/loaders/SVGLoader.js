@@ -1,4 +1,4 @@
-import {Box2, BufferGeometry, FileLoader, Float32BufferAttribute, Loader, Matrix3, Path, Shape, ShapePath, ShapeUtils, SRGBColorSpace, Vector2, Vector3} from '../../src/Three.js';
+import {Box2, BufferGeometry, FileLoader, Float32BufferAttribute, Loader, Matrix3, Path, Shape, ShapePath, ShapeUtils, SRGBColorSpace, Vector2, Vector3} from '../../libs/three/Three.js';
 
 const COLOR_SPACE_SVG = SRGBColorSpace;
 

@@ -113,7 +113,6 @@ function toJSON(shapes, data) {
         data.shapes.push(shapes.uuid);
     }
     return data;
-
 }
 
 export {ShapeGeometry};

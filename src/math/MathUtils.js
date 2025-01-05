@@ -18,25 +18,21 @@ function generateUUID() {
         _lut[d3 & 0xff] + _lut[d3 >> 8 & 0xff] + _lut[d3 >> 16 & 0xff] + _lut[d3 >> 24 & 0xff];
     // .toLowerCase() here flattens concatenated strings to save heap memory space.
     return uuid.toLowerCase();
-
 }
 
 function clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
-
 }
 
 // compute euclidean modulo of m % n
 // https://en.wikipedia.org/wiki/Modulo_operation
 function euclideanModulo(n, m) {
     return ((n % m) + m) % m;
-
 }
 
 // Linear mapping from range <a1, a2> to range <b1, b2>
 function mapLinear(x, a1, a2, b1, b2) {
     return b1 + (x - a1) * (b2 - b1) / (a2 - a1);
-
 }
 
 // https://www.gamedev.net/tutorials/programming/general-and-gameplay-programming/inverse-lerp-a-super-useful-yet-often-overlooked-function-r5230/
@@ -52,19 +48,16 @@ function inverseLerp(x, y, value) {
 // https://en.wikipedia.org/wiki/Linear_interpolation
 function lerp(x, y, t) {
     return (1 - t) * x + t * y;
-
 }
 
 // http://www.rorydriscoll.com/2016/03/07/frame-rate-independent-damping-using-lerp/
 function damp(x, y, lambda, dt) {
     return lerp(x, y, 1 - Math.exp(-lambda * dt));
-
 }
 
 // https://www.desmos.com/calculator/vcsjnyz7x4
 function pingpong(x, length = 1) {
     return length - Math.abs(euclideanModulo(x, length * 2) - length);
-
 }
 
 // http://en.wikipedia.org/wiki/Smoothstep
@@ -73,7 +66,6 @@ function smoothstep(x, min, max) {
     if (x >= max) return 1;
     x = (x - min) / (max - min);
     return x * x * (3 - 2 * x);
-
 }
 
 function smootherstep(x, min, max) {
@@ -81,25 +73,21 @@ function smootherstep(x, min, max) {
     if (x >= max) return 1;
     x = (x - min) / (max - min);
     return x * x * x * (x * (x * 6 - 15) + 10);
-
 }
 
 // Random integer from <low, high> interval
 function randInt(low, high) {
     return low + Math.floor(Math.random() * (high - low + 1));
-
 }
 
 // Random float from <low, high> interval
 function randFloat(low, high) {
     return low + Math.random() * (high - low);
-
 }
 
 // Random float from <-range/2, range/2> interval
 function randFloatSpread(range) {
     return range * (0.5 - Math.random());
-
 }
 
 // Deterministic pseudo-random float in the interval [ 0, 1 ]
@@ -110,32 +98,26 @@ function seededRandom(s) {
     t = Math.imul(t ^ t >>> 15, t | 1);
     t ^= t + Math.imul(t ^ t >>> 7, t | 61);
     return ((t ^ t >>> 14) >>> 0) / 4294967296;
-
 }
 
 function degToRad(degrees) {
     return degrees * DEG2RAD;
-
 }
 
 function radToDeg(radians) {
     return radians * RAD2DEG;
-
 }
 
 function isPowerOfTwo(value) {
     return (value & (value - 1)) === 0 && value !== 0;
-
 }
 
 function ceilPowerOfTwo(value) {
     return Math.pow(2, Math.ceil(Math.log(value) / Math.LN2));
-
 }
 
 function floorPowerOfTwo(value) {
     return Math.pow(2, Math.floor(Math.log(value) / Math.LN2));
-
 }
 
 function setQuaternionFromProperEuler(q, a, b, c, order) {

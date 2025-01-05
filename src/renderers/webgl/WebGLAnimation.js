@@ -27,7 +27,6 @@ function WebGLAnimation() {
             context = value;
         }
     };
-
 }
 
 export {WebGLAnimation};

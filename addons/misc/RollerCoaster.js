@@ -1,4 +1,4 @@
-import {BufferAttribute, BufferGeometry, Color, Quaternion, Raycaster, SRGBColorSpace, Vector3} from '../../src/Three.js';
+import {BufferAttribute, BufferGeometry, Color, Quaternion, Raycaster, SRGBColorSpace, Vector3} from '../../libs/three/Three.js';
 
 class RollerCoasterGeometry extends BufferGeometry {
 

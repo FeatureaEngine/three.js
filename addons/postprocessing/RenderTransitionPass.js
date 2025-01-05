@@ -2,7 +2,7 @@ import {
     HalfFloatType,
     ShaderMaterial,
     WebGLRenderTarget
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 import {FullScreenQuad, Pass} from './Pass.js';
 
 class RenderTransitionPass extends Pass {

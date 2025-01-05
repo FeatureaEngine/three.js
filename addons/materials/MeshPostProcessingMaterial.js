@@ -1,4 +1,4 @@
-import {MeshPhysicalMaterial} from '../../src/Three.js';
+import {MeshPhysicalMaterial} from '../../libs/three/Three.js';
 
 /**
  * The aim of this mesh material is to use information from a post processing pass in the diffuse color pass.

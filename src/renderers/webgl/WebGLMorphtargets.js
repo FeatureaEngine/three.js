@@ -102,7 +102,6 @@ function WebGLMorphtargets(gl, capabilities, textures) {
     return {
         update: update
     };
-
 }
 
 

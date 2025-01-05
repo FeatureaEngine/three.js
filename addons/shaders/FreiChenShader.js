@@ -1,6 +1,6 @@
 import {
     Vector2
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 /**
  * Edge Detection Shader using Frei-Chen filter

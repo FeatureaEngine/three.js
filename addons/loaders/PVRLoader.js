@@ -1,4 +1,4 @@
-import {CompressedTextureLoader, RGB_PVRTC_2BPPV1_Format, RGB_PVRTC_4BPPV1_Format, RGBA_PVRTC_2BPPV1_Format, RGBA_PVRTC_4BPPV1_Format} from '../../src/Three.js';
+import {CompressedTextureLoader, RGB_PVRTC_2BPPV1_Format, RGB_PVRTC_4BPPV1_Format, RGBA_PVRTC_2BPPV1_Format, RGBA_PVRTC_4BPPV1_Format} from '../../libs/three/Three.js';
 
 /*
  *	 PVR v2 (legacy) parser
@@ -73,7 +73,6 @@ function _parseV3(pvrDatas) {
     pvrDatas.numMipmaps = numMipmaps;
     pvrDatas.isCubemap = (numFaces === 6);
     return _extract(pvrDatas);
-
 }
 
 function _parseV2(pvrDatas) {
@@ -118,7 +117,6 @@ function _parseV2(pvrDatas) {
     // it's just a pvr containing 6 surface (no explicit cubemap type)
     pvrDatas.isCubemap = (numSurfs === 6);
     return _extract(pvrDatas);
-
 }
 
 
@@ -173,7 +171,6 @@ function _extract(pvrDatas) {
         mipLevel++;
     }
     return pvr;
-
 }
 
 export {PVRLoader};

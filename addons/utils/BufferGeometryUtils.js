@@ -9,7 +9,7 @@ import {
     TrianglesDrawMode,
     TriangleStripDrawMode,
     Vector3,
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 function computeMikkTSpaceTangents(geometry, MikkTSpace, negateSign = true) {
     if (!MikkTSpace || !MikkTSpace.isReady) {
@@ -58,7 +58,6 @@ function computeMikkTSpaceTangents(geometry, MikkTSpace, negateSign = true) {
         geometry.copy(_geometry);
     }
     return geometry;
-
 }
 
 /**
@@ -167,7 +166,6 @@ function mergeGeometries(geometries, useGroups = false) {
         }
     }
     return mergedGeometry;
-
 }
 
 /**
@@ -226,7 +224,6 @@ function mergeAttributes(attributes) {
         result.gpuType = gpuType;
     }
     return result;
-
 }
 
 /**
@@ -241,7 +238,6 @@ export function deepCloneAttribute(attribute) {
         return new InstancedBufferAttribute().copy(attribute);
     }
     return new BufferAttribute().copy(attribute);
-
 }
 
 /**
@@ -287,7 +283,6 @@ function interleaveAttributes(attributes) {
         }
     }
     return res;
-
 }
 
 // returns a new, non-interleaved version of the provided attribute
@@ -316,7 +311,6 @@ export function deinterleaveAttribute(attribute) {
         }
     }
     return newAttribute;
-
 }
 
 // deinterleaves all attributes on the geometry
@@ -361,7 +355,6 @@ function estimateBytesUsed(geometry) {
     const indices = geometry.getIndex();
     mem += indices ? indices.count * indices.itemSize * indices.array.BYTES_PER_ELEMENT : 0;
     return mem;
-
 }
 
 /**
@@ -474,7 +467,6 @@ function mergeVertices(geometry, tolerance = 1e-4) {
     // indices
     result.setIndex(newIndices);
     return result;
-
 }
 
 /**
@@ -748,7 +740,6 @@ function computeMorphedAttributes(object) {
         morphedPositionAttribute: morphedPositionAttribute,
         morphedNormalAttribute: morphedNormalAttribute
     };
-
 }
 
 function mergeGroups(geometry) {
@@ -804,7 +795,6 @@ function mergeGroups(geometry) {
         }
     }
     return geometry;
-
 }
 
 
@@ -890,7 +880,6 @@ function toCreasedNormals(geometry, creaseAngle = Math.PI / 3 /* 60 degrees */) 
     }
     resultGeometry.setAttribute('normal', normAttr);
     return resultGeometry;
-
 }
 
 export {

@@ -5,7 +5,6 @@ function arrayMin(array) {
         if (array[i] < min) min = array[i];
     }
     return min;
-
 }
 
 function arrayMax(array) {
@@ -15,7 +14,6 @@ function arrayMax(array) {
         if (array[i] > max) max = array[i];
     }
     return max;
-
 }
 
 function arrayNeedsUint32(array) {
@@ -24,7 +22,6 @@ function arrayNeedsUint32(array) {
         if (array[i] >= 65535) return true; // account for PRIMITIVE_RESTART_FIXED_INDEX, #24565
     }
     return false;
-
 }
 
 const TYPED_ARRAYS = {
@@ -41,19 +38,16 @@ const TYPED_ARRAYS = {
 
 function getTypedArray(type, buffer) {
     return new TYPED_ARRAYS[type](buffer);
-
 }
 
 function createElementNS(name) {
     return document.createElementNS('http://www.w3.org/1999/xhtml', name);
-
 }
 
 function createCanvasElement() {
     const canvas = createElementNS('canvas');
     canvas.style.display = 'block';
     return canvas;
-
 }
 
 const _cache = {};
@@ -62,7 +56,6 @@ function warnOnce(message) {
     if (message in _cache) return;
     _cache[message] = true;
     console.warn(message);
-
 }
 
 function probeAsync(gl, sync, interval) {
@@ -82,7 +75,6 @@ function probeAsync(gl, sync, interval) {
 
         setTimeout(probe, interval);
     });
-
 }
 
 function toNormalizedProjectionMatrix(projectionMatrix) {
@@ -92,7 +84,6 @@ function toNormalizedProjectionMatrix(projectionMatrix) {
     m[6] = 0.5 * m[6] + 0.5 * m[7];
     m[10] = 0.5 * m[10] + 0.5 * m[11];
     m[14] = 0.5 * m[14] + 0.5 * m[15];
-
 }
 
 function toReversedProjectionMatrix(projectionMatrix) {

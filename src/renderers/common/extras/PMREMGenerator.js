@@ -553,7 +553,6 @@ function _createPlanes(lodMax) {
         }
     }
     return {lodPlanes, sizeLods, sigmas, lodMeshes};
-
 }
 
 function _createRenderTarget(width, height, params) {
@@ -563,13 +562,11 @@ function _createRenderTarget(width, height, params) {
     cubeUVRenderTarget.texture.isPMREMTexture = true;
     cubeUVRenderTarget.scissorTest = true;
     return cubeUVRenderTarget;
-
 }
 
 function _setViewport(target, x, y, width, height) {
     target.viewport.set(x, y, width, height);
     target.scissor.set(x, y, width, height);
-
 }
 
 function _getMaterial(type) {
@@ -579,7 +576,6 @@ function _getMaterial(type) {
     material.blending = NoBlending;
     material.name = `PMREM_${type}`;
     return material;
-
 }
 
 function _getBlurShader(lodMax, width, height) {
@@ -612,21 +608,18 @@ function _getBlurShader(lodMax, width, height) {
     material.uniforms = materialUniforms; // TODO: Move to outside of the material
     material.fragmentNode = blur({...materialUniforms, latitudinal: latitudinal.equal(1)});
     return material;
-
 }
 
 function _getCubemapMaterial(envTexture) {
     const material = _getMaterial('cubemap');
     material.fragmentNode = cubeTexture(envTexture, outputDirection);
     return material;
-
 }
 
 function _getEquirectMaterial(envTexture) {
     const material = _getMaterial('equirect');
     material.fragmentNode = texture(envTexture, equirectUV(outputDirection), 0);
     return material;
-
 }
 
 export default PMREMGenerator;

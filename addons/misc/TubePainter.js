@@ -1,4 +1,4 @@
-import {BufferAttribute, BufferGeometry, Color, DynamicDrawUsage, Matrix4, Mesh, MeshStandardMaterial, Vector3} from '../../src/Three.js';
+import {BufferAttribute, BufferGeometry, Color, DynamicDrawUsage, Matrix4, Mesh, MeshStandardMaterial, Vector3} from '../../libs/three/Three.js';
 
 function TubePainter() {
     const BUFFER_SIZE = 1000000 * 3;
@@ -130,7 +130,6 @@ function TubePainter() {
         setSize: setSize,
         update: update
     };
-
 }
 
 export {TubePainter};

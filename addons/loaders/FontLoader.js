@@ -1,4 +1,4 @@
-import {FileLoader, Loader, ShapePath} from '../../src/Three.js';
+import {FileLoader, Loader, ShapePath} from '../../libs/three/Three.js';
 
 class FontLoader extends Loader {
 
@@ -63,7 +63,6 @@ function createPaths(text, size, data) {
         }
     }
     return paths;
-
 }
 
 function createPath(char, scale, offsetX, offsetY, data) {
@@ -109,7 +108,6 @@ function createPath(char, scale, offsetX, offsetY, data) {
         }
     }
     return {offsetX: glyph.ha * scale, path: path};
-
 }
 
 export {FontLoader, Font};

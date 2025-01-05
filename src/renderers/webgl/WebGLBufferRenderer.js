@@ -50,7 +50,6 @@ function WebGLBufferRenderer(gl, extensions, info) {
     this.renderInstances = renderInstances;
     this.renderMultiDraw = renderMultiDraw;
     this.renderMultiDrawInstances = renderMultiDrawInstances;
-
 }
 
 

@@ -21,7 +21,7 @@ import {
     Vector3,
     WebGLRenderTarget,
     ZeroFactor
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 import {Pass, FullScreenQuad} from './Pass.js';
 import {SimplexNoise} from '../math/SimplexNoise.js';
 import {SSAOBlurShader, SSAODepthShader, SSAOShader} from '../shaders/SSAOShader.js';

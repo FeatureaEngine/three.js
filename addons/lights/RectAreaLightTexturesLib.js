@@ -1,4 +1,4 @@
-import {ClampToEdgeWrapping, DataTexture, DataUtils, FloatType, HalfFloatType, LinearFilter, NearestFilter, RGBAFormat, UVMapping} from '../../src/Three.js';
+import {ClampToEdgeWrapping, DataTexture, DataUtils, FloatType, HalfFloatType, LinearFilter, NearestFilter, RGBAFormat, UVMapping} from '../../libs/three/Three.js';
 
 /**
  * Uniforms library for RectAreaLight shared webgl shaders

@@ -1,4 +1,4 @@
-import {CanvasTexture, DoubleSide, Mesh, MeshBasicMaterial, OrthographicCamera, PlaneGeometry, Scene, ShaderMaterial, UniformsUtils} from '../../src/Three.js';
+import {CanvasTexture, DoubleSide, Mesh, MeshBasicMaterial, OrthographicCamera, PlaneGeometry, Scene, ShaderMaterial, UniformsUtils} from '../../libs/three/Three.js';
 import {UnpackDepthRGBAShader} from '../shaders/UnpackDepthRGBAShader.js';
 
 /**

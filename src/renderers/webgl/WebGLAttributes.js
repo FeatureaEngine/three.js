@@ -138,7 +138,6 @@ function WebGLAttributes(gl) {
         remove: remove,
         update: update
     };
-
 }
 
 

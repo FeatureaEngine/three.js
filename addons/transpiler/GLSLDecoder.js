@@ -72,14 +72,12 @@ const operatorsRegExp = new RegExp('^(\\' + [
 
 function getFunctionName(str) {
     return glslToTSL[str] || str;
-
 }
 
 function getGroupDelta(str) {
     if (str === '(' || str === '[' || str === '{') return 1;
     if (str === ')' || str === ']' || str === '}') return -1;
     return 0;
-
 }
 
 class Token {

@@ -1,7 +1,7 @@
 import {
     Matrix4,
     Vector2
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 /**
  * TODO

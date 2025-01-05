@@ -27,7 +27,6 @@ export function saveRendererState(renderer, state = {}) {
     state.autoClear = renderer.autoClear;
     state.scissorTest = renderer.getScissorTest();
     return state;
-
 }
 
 /**
@@ -48,7 +47,6 @@ export function resetRendererState(renderer, state) {
     renderer.setClearColor(0x000000, 1);
     renderer.autoClear = true;
     return state;
-
 }
 
 /**
@@ -69,7 +67,6 @@ export function restoreRendererState(renderer, state) {
     renderer.setClearColor(state.clearColor, state.clearAlpha);
     renderer.autoClear = state.autoClear;
     renderer.setScissorTest(state.scissorTest);
-
 }
 
 /**
@@ -87,7 +84,6 @@ export function saveSceneState(scene, state = {}) {
     state.backgroundNode = scene.backgroundNode;
     state.overrideMaterial = scene.overrideMaterial;
     return state;
-
 }
 
 /**
@@ -107,7 +103,6 @@ export function resetSceneState(scene, state) {
     scene.backgroundNode = null;
     scene.overrideMaterial = null;
     return state;
-
 }
 
 /**
@@ -121,7 +116,6 @@ export function restoreSceneState(scene, state) {
     scene.background = state.background;
     scene.backgroundNode = state.backgroundNode;
     scene.overrideMaterial = state.overrideMaterial;
-
 }
 
 /**
@@ -139,7 +133,6 @@ export function saveRendererAndSceneState(renderer, scene, state = {}) {
     state = saveRendererState(renderer, state);
     state = saveSceneState(scene, state);
     return state;
-
 }
 
 /**
@@ -158,7 +151,6 @@ export function resetRendererAndSceneState(renderer, scene, state) {
     state = resetRendererState(renderer, state);
     state = resetSceneState(scene, state);
     return state;
-
 }
 
 /**

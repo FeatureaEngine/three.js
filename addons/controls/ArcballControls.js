@@ -14,7 +14,7 @@ import {
     Sphere,
     Vector2,
     Vector3
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 //trackball state
 const STATE = {
@@ -1871,7 +1871,6 @@ function onWindowResize() {
         this._gizmos.children[gizmo].geometry = curveGeometry;
     }
     this.dispatchEvent(_changeEvent);
-
 }
 
 function onContextMenu(event) {
@@ -1892,7 +1891,6 @@ function onPointerCancel() {
     this._touchStart.splice(0, this._touchStart.length);
     this._touchCurrent.splice(0, this._touchCurrent.length);
     this._input = INPUT.NONE;
-
 }
 
 function onPointerDown(event) {

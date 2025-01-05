@@ -1,4 +1,4 @@
-import {BufferGeometry, Float32BufferAttribute, LineBasicMaterial, LineSegments, Matrix3, Vector3} from '../../src/Three.js';
+import {BufferGeometry, Float32BufferAttribute, LineBasicMaterial, LineSegments, Matrix3, Vector3} from '../../libs/three/Three.js';
 
 const _v1 = new Vector3();
 const _v2 = new Vector3();

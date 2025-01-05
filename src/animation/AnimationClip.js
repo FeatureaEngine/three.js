@@ -267,7 +267,6 @@ function getTrackTypeForValueTypeName(typeName) {
             return StringKeyframeTrack;
     }
     throw new Error('THREE.KeyframeTrack: Unsupported typeName: ' + typeName);
-
 }
 
 function parseKeyframeTrack(json) {

@@ -1,4 +1,4 @@
-import {UniformsLib} from '../../src/Three.js';
+import {UniformsLib} from '../../libs/three/Three.js';
 import {RectAreaLightTexturesLib} from './RectAreaLightTexturesLib.js';
 
 class RectAreaLightUniformsLib {

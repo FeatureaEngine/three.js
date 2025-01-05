@@ -1,4 +1,4 @@
-import {MathUtils} from '../../src/Three.js';
+import {MathUtils} from '../../libs/three/Three.js';
 
 const _hsl = {};
 

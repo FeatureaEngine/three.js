@@ -15,7 +15,6 @@ function convertArray(array, type, forceClone) {
 function isTypedArray(object) {
     return ArrayBuffer.isView(object) &&
         !(object instanceof DataView);
-
 }
 
 // returns an array by which times and values can be sorted
@@ -29,7 +28,6 @@ function getKeyframeOrder(times) {
     for (let i = 0; i !== n; ++i) result[i] = i;
     result.sort(compareTime);
     return result;
-
 }
 
 // uses the array previously returned by 'getKeyframeOrder' to sort data
@@ -43,7 +41,6 @@ function sortedArray(values, stride, order) {
         }
     }
     return result;
-
 }
 
 // function for parsing AOS keyframe formats
@@ -124,7 +121,6 @@ function subclip(sourceClip, name, startFrame, endFrame, fps = 30) {
     }
     clip.resetDuration();
     return clip;
-
 }
 
 function makeClipAdditive(targetClip, referenceFrame = 0, referenceClip = targetClip, fps = 30) {
@@ -204,7 +200,6 @@ function makeClipAdditive(targetClip, referenceFrame = 0, referenceClip = target
     }
     targetClip.blendMode = AdditiveAnimationBlendMode;
     return targetClip;
-
 }
 
 const AnimationUtils = {

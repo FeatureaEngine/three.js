@@ -8,7 +8,7 @@ import {
     ShaderMaterial,
     UniformsUtils,
     WebGLRenderTarget
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 import {Pass, FullScreenQuad} from './Pass.js';
 import {BokehShader} from '../shaders/BokehShader.js';
 

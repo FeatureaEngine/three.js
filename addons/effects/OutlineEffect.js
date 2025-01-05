@@ -1,4 +1,4 @@
-import {BackSide, Color, ShaderMaterial, UniformsLib, UniformsUtils} from '../../src/Three.js';
+import {BackSide, Color, ShaderMaterial, UniformsLib, UniformsUtils} from '../../libs/three/Three.js';
 
 /**
  * Reference: https://en.wikipedia.org/wiki/Cel_shading

@@ -2,7 +2,7 @@ import {
     NoColorSpace,
     DoubleSide,
     Color,
-} from '../../src/Three.js';
+} from '../../libs/three/Three.js';
 
 import {
     strToU8,
@@ -139,7 +139,6 @@ function buildHeader() {
 )
 
 `;
-
 }
 
 function buildSceneStart(options) {
@@ -162,7 +161,6 @@ function buildSceneStart(options) {
 		)
 		{${alignment}
 `;
-
 }
 
 function buildSceneEnd() {
@@ -172,14 +170,12 @@ function buildSceneEnd() {
 }
 
 `;
-
 }
 
 function buildUSDFileAsString(dataToInsert) {
     let output = buildHeader();
     output += dataToInsert;
     return strToU8(output);
-
 }
 
 // Xform
@@ -201,18 +197,15 @@ function buildXform(object, geometry, material) {
 }
 
 `;
-
 }
 
 function buildMatrix(matrix) {
     const array = matrix.elements;
     return `( ${buildMatrixRow(array, 0)}, ${buildMatrixRow(array, 4)}, ${buildMatrixRow(array, 8)}, ${buildMatrixRow(array, 12)} )`;
-
 }
 
 function buildMatrixRow(array, offset) {
     return `(${array[offset + 0]}, ${array[offset + 1]}, ${array[offset + 2]}, ${array[offset + 3]})`;
-
 }
 
 // Mesh
@@ -225,7 +218,6 @@ def "Geometry"
 ${mesh}
 }
 `;
-
 }
 
 function buildMesh(geometry) {
@@ -245,13 +237,11 @@ ${buildPrimvars(attributes)}
 		uniform token subdivisionScheme = "none"
 	}
 `;
-
 }
 
 function buildMeshVertexCount(geometry) {
     const count = geometry.index !== null ? geometry.index.count : geometry.attributes.position.count;
     return Array(count / 3).fill(3).join(', ');
-
 }
 
 function buildMeshVertexIndices(geometry) {
@@ -268,7 +258,6 @@ function buildMeshVertexIndices(geometry) {
         }
     }
     return array.join(', ');
-
 }
 
 function buildVector3Array(attribute, count) {
@@ -284,7 +273,6 @@ function buildVector3Array(attribute, count) {
         array.push(`(${x.toPrecision(PRECISION)}, ${y.toPrecision(PRECISION)}, ${z.toPrecision(PRECISION)})`);
     }
     return array.join(', ');
-
 }
 
 function buildVector2Array(attribute) {
@@ -295,7 +283,6 @@ function buildVector2Array(attribute) {
         array.push(`(${x.toPrecision(PRECISION)}, ${1 - y.toPrecision(PRECISION)})`);
     }
     return array.join(', ');
-
 }
 
 function buildPrimvars(attributes) {
@@ -320,7 +307,6 @@ function buildPrimvars(attributes) {
 		)`;
     }
     return string;
-
 }
 
 // Materials
@@ -337,7 +323,6 @@ ${array.join('')}
 }
 
 `;
-
 }
 
 function buildMaterial(material, textures, quickLookCompatible = false) {
@@ -489,22 +474,18 @@ ${inputs.join('\n')}
 ${samplers.join('\n')}
 	}
 `;
-
 }
 
 function buildColor(color) {
     return `(${color.r}, ${color.g}, ${color.b})`;
-
 }
 
 function buildColor4(color) {
     return `(${color.r}, ${color.g}, ${color.b}, 1.0)`;
-
 }
 
 function buildVector2(vector) {
     return `(${vector.x}, ${vector.y})`;
-
 }
 
 

@@ -1289,7 +1289,6 @@ function WebGLTextures(_gl, extensions, state, properties, capabilities, utils, 
     this.setupDepthRenderbuffer = setupDepthRenderbuffer;
     this.setupFrameBufferTexture = setupFrameBufferTexture;
     this.useMultisampledRTT = useMultisampledRTT;
-
 }
 
 export {WebGLTextures};

@@ -1,4 +1,4 @@
-import {BufferAttribute, BufferGeometry, Color, FileLoader, Float32BufferAttribute, Loader, SRGBColorSpace} from '../../src/Three.js';
+import {BufferAttribute, BufferGeometry, Color, FileLoader, Float32BufferAttribute, Loader, SRGBColorSpace} from '../../libs/three/Three.js';
 import * as fflate from '../../libs/fflate.module.js';
 
 class VTKLoader extends Loader {

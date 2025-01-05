@@ -353,7 +353,6 @@ function satForAxes(axes, v0, v1, v2, extents) {
         }
     }
     return true;
-
 }
 
 export {Box3};

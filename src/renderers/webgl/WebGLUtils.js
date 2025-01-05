@@ -190,7 +190,6 @@ function WebGLUtils(gl, extensions) {
     }
 
     return {convert: convert};
-
 }
 
 

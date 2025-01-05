@@ -121,7 +121,6 @@ function transformVertex(vertexPosition, mvPosition, center, scale, sin, cos) {
     vertexPosition.y += _rotatedPosition.y;
     // transform to world space
     vertexPosition.applyMatrix4(_viewWorldMatrix);
-
 }
 
 export {Sprite};

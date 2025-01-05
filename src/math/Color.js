@@ -39,7 +39,6 @@ function hue2rgb(p, q, t) {
     if (t < 1 / 2) return q;
     if (t < 2 / 3) return p + (q - p) * 6 * (2 / 3 - t);
     return p;
-
 }
 
 class Color {
