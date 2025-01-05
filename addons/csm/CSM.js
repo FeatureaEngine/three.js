@@ -15,7 +15,7 @@ const _up = new Vector3(0, 1, 0);
 export class CSM {
 
     constructor(data) {
-        this.camera = data.camera;
+        this.camera = 123; // enabling d.ts todo revert back `data.camera`
         this.parent = data.parent;
         this.cascades = data.cascades || 3;
         this.maxFar = data.maxFar || 100000;
