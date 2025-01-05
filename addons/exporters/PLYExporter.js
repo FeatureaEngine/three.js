@@ -18,7 +18,6 @@ import {
  * Format Definition:
  * http://paulbourke.net/dataformats/ply/
  */
-
 class PLYExporter {
     parse(object, onDone, options = {}) {
         // Iterate over the valid meshes in the object

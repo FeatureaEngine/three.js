@@ -22,7 +22,6 @@ import {
  * reference: http://blog.wolfire.com/2009/06/how-to-project-decals/
  *
  */
-
 class DecalGeometry extends BufferGeometry {
 
     constructor(mesh = new Mesh(), position = new Vector3(), orientation = new Euler(), size = new Vector3(1, 1, 1)) {

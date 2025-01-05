@@ -6,7 +6,6 @@ import opentype from '../../libs/opentype.module.js';
  * Loads TTF files and converts them into typeface JSON that can be used directly
  * to create THREE.Font objects.
  */
-
 class TTFLoader extends Loader {
 
     constructor(manager) {

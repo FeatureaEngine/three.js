@@ -19,7 +19,6 @@ import {
  * https://home.adelphi.edu/~stemkoski/ : An implementation of water shader based on the flat mirror
  * http://29a.ch/ && http://29a.ch/slides/2012/webglwater/ : Water shader explanations in WebGL
  */
-
 class Water extends Mesh {
 
     constructor(geometry, options = {}) {

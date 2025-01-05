@@ -16,7 +16,6 @@ const _camera = new Camera();
  *    - based on frustum visualization in lightgl.js shadowmap example
  *        https://github.com/evanw/lightgl.js/blob/master/tests/shadowmap.html
  */
-
 class CameraHelper extends LineSegments {
 
     constructor(camera) {

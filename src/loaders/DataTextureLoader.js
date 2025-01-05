@@ -8,7 +8,6 @@ import {Loader} from './Loader.js';
  *
  * Sub classes have to implement the parse() method which will be used in load().
  */
-
 class DataTextureLoader extends Loader {
 
     constructor(manager) {

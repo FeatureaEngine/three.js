@@ -16,7 +16,6 @@ import {
 /**
  * Loads a Wavefront .mtl file specifying materials
  */
-
 class MTLLoader extends Loader {
 
     constructor(manager) {
@@ -127,7 +126,6 @@ class MTLLoader extends Loader {
  *                                  Default: false
  * @constructor
  */
-
 class MaterialCreator {
 
     constructor(baseUrl = '', options = {}) {

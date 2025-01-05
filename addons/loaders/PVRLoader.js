@@ -5,7 +5,6 @@ import {CompressedTextureLoader, RGB_PVRTC_2BPPV1_Format, RGB_PVRTC_4BPPV1_Forma
  *   TODO : Add Support for PVR v3 format
  *   TODO : implement loadMipmaps option
  */
-
 class PVRLoader extends CompressedTextureLoader {
 
     constructor(manager) {

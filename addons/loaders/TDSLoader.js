@@ -22,7 +22,6 @@ import {
  * @class TDSLoader
  * @constructor
  */
-
 class TDSLoader extends Loader {
 
     constructor(manager) {

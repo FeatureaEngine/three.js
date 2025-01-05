@@ -27,7 +27,6 @@ import {UnpackDepthRGBAShader} from '../shaders/UnpackDepthRGBAShader.js';
  *
  *    6) If you set the position or size members directly, you need to call shadowMapViewer.update();
  */
-
 class ShadowMapViewer {
 
     constructor(light) {

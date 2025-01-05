@@ -3,7 +3,6 @@ import {BackSide, BufferGeometry, Float32BufferAttribute, Line, LineBasicMateria
 /**
  *  This helper must be added as a child of the light
  */
-
 class RectAreaLightHelper extends Line {
 
     constructor(light, color) {

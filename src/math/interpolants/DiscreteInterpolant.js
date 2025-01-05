@@ -5,7 +5,6 @@ import {Interpolant} from '../Interpolant.js';
  * Interpolant that evaluates to the sample value at the position preceding
  * the parameter.
  */
-
 class DiscreteInterpolant extends Interpolant {
 
     constructor(parameterPositions, sampleValues, sampleSize, resultBuffer) {

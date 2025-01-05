@@ -18,7 +18,6 @@
  *        http://www.oodesign.com/template-method-pattern.html
  *
  */
-
 class Interpolant {
 
     constructor(parameterPositions, sampleValues, sampleSize, resultBuffer) {

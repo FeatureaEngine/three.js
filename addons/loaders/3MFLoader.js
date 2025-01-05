@@ -40,7 +40,6 @@ const COLOR_SPACE_3MF = SRGBColorSpace;
  * - Color Groups (Vertex Colors)
  * - Metallic Display Properties (PBR)
  */
-
 class ThreeMFLoader extends Loader {
 
     constructor(manager) {

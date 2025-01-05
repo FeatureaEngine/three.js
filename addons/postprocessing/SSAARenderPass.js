@@ -18,7 +18,6 @@ import {CopyShader} from '../shaders/CopyShader.js';
  * References: https://en.wikipedia.org/wiki/Supersampling
  *
  */
-
 class SSAARenderPass extends Pass {
 
     constructor(scene, camera, clearColor, clearAlpha) {

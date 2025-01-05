@@ -1703,7 +1703,6 @@ function getImageURIMimeType(uri) {
 const _identityMatrix = new Matrix4();
 
 /* GLTF PARSER */
-
 class GLTFParser {
 
     constructor(json = {}, options = {}) {

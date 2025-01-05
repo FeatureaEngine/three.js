@@ -55,7 +55,6 @@ import {BackSide, Color, ShaderMaterial, UniformsLib, UniformsUtils} from '../..
  *    keepAlive: true
  * };
  */
-
 class OutlineEffect {
 
     constructor(renderer, parameters = {}) {

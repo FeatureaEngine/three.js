@@ -53,7 +53,6 @@ import {
  * See https://en.wikipedia.org/wiki/Utah_teapot for the history of the teapot
  *
  */
-
 class TeapotGeometry extends BufferGeometry {
 
     constructor(size = 50, segments = 10, bottom = true, lid = true, body = true, fitLid = true, blinn = true) {

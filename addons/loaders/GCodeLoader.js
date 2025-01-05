@@ -16,7 +16,6 @@ import {
  * @class GCodeLoader
  * @param {Manager} manager Loading manager.
  */
-
 class GCodeLoader extends Loader {
 
     constructor(manager) {

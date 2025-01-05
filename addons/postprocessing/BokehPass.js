@@ -15,7 +15,6 @@ import {BokehShader} from '../shaders/BokehShader.js';
 /**
  * Depth-of-field post-process with bokeh shader
  */
-
 class BokehPass extends Pass {
 
     constructor(scene, camera, params) {

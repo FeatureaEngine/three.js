@@ -15,7 +15,6 @@ import {SSAARenderPass} from './SSAARenderPass.js';
  * TODO: Add support for motion vector pas so that accumulation of samples across frames can occur on dynamics scenes.
  *
  */
-
 class TAARenderPass extends SSAARenderPass {
 
     constructor(scene, camera, clearColor, clearAlpha) {

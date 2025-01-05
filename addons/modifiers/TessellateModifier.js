@@ -9,7 +9,6 @@ import {
 /**
  * Break faces with edges longer than maxEdgeLength
  */
-
 class TessellateModifier {
 
     constructor(maxEdgeLength = 0.1, maxIterations = 6) {

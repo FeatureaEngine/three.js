@@ -16,7 +16,6 @@ import * as fflate from '../../libs/fflate.module.js';
  * No constellation support (yet)!
  *
  */
-
 class AMFLoader extends Loader {
 
     constructor(manager) {

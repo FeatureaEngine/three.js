@@ -6,7 +6,6 @@ import {AnimationClip, Bone, FileLoader, Loader, Quaternion, QuaternionKeyframeT
  * Currently only supports bvh files containing a single root.
  *
  */
-
 class BVHLoader extends Loader {
 
     constructor(manager) {

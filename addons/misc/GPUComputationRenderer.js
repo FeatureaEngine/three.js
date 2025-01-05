@@ -98,7 +98,6 @@ import {FullScreenQuad} from '../postprocessing/Pass.js';
  * @param {int} sizeY Computation problem size is always 2d: sizeX * sizeY elements.
  * @param {WebGLRenderer} renderer The renderer
  */
-
 class GPUComputationRenderer {
 
     constructor(sizeX, sizeY, renderer) {

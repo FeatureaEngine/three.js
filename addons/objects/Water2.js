@@ -20,7 +20,6 @@ import {Refractor} from '../objects/Refractor.js';
  *    http://graphicsrunner.blogspot.de/2010/08/water-using-flow-maps.html
  *
  */
-
 class Water extends Mesh {
 
     constructor(geometry, options = {}) {

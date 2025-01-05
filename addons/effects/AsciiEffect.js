@@ -3,7 +3,6 @@
  *
  * 16 April 2012 - @blurspline
  */
-
 class AsciiEffect {
 
     constructor(renderer, charSet = ' .:-=+*#%@', options = {}) {

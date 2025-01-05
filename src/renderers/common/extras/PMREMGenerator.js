@@ -94,7 +94,6 @@ const outputDirection = vec3(direction.x, direction.y, direction.z);
  * Paper: Fast, Accurate Image-Based Lighting
  * https://drive.google.com/file/d/15y8r_UpKlU9SvV4ILb0C3qCPecS8pvLz/view
  */
-
 class PMREMGenerator {
 
     constructor(renderer) {

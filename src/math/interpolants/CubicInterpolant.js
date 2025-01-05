@@ -8,7 +8,6 @@ import {Interpolant} from '../Interpolant.js';
  * at each sample position to the linear slope between neighboring positions
  * over their parameter interval.
  */
-
 class CubicInterpolant extends Interpolant {
 
     constructor(parameterPositions, sampleValues, sampleSize, resultBuffer) {

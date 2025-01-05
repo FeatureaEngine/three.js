@@ -44,7 +44,6 @@ const _matrix = new Matrix4();
  *    maxAngle: 1.0,
  * } ];
  */
-
 class CCDIKSolver {
 
     /**

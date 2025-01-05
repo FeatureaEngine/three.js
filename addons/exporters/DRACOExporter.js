@@ -16,7 +16,6 @@ import {Color, ColorManagement, SRGBColorSpace} from '../../libs/three/Three.js'
  */
 
 /* global DracoEncoderModule */
-
 class DRACOExporter {
     parse(object, options = {}) {
         options = Object.assign({

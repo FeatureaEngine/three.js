@@ -25,7 +25,6 @@ import {CopyShader} from '../shaders/CopyShader.js';
 /**
  * SAO implementation inspired from bhouston previous SAO work
  */
-
 class SAOPass extends Pass {
 
     constructor(scene, camera, resolution = new Vector2(256, 256)) {

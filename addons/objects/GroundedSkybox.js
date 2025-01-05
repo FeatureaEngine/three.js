@@ -6,7 +6,6 @@ import {Mesh, MeshBasicMaterial, SphereGeometry, Vector3} from '../../libs/three
  * so it is often helpful to set skybox.position.y = height to put the ground at the origin. Set the radius
  * large enough to ensure your user's camera stays inside.
  */
-
 class GroundedSkybox extends Mesh {
 
     constructor(map, height, radius, resolution = 128) {
