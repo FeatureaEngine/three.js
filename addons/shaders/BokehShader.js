@@ -5,28 +5,28 @@
  */
 
 const BokehShader = {
-	name: 'BokehShader',
-	defines: {
-		'DEPTH_PACKING': 1,
-		'PERSPECTIVE_CAMERA': 1,
-	},
-	uniforms: {
-		'tColor': { value: null },
-		'tDepth': { value: null },
-		'focus': { value: 1.0 },
-		'aspect': { value: 1.0 },
-		'aperture': { value: 0.025 },
-		'maxblur': { value: 0.01 },
-		'nearClip': { value: 1.0 },
-		'farClip': { value: 1000.0 },
-	},
-	vertexShader: /* glsl */`
+    name: 'BokehShader',
+    defines: {
+        'DEPTH_PACKING': 1,
+        'PERSPECTIVE_CAMERA': 1,
+    },
+    uniforms: {
+        'tColor': {value: null},
+        'tDepth': {value: null},
+        'focus': {value: 1.0},
+        'aspect': {value: 1.0},
+        'aperture': {value: 0.025},
+        'maxblur': {value: 0.01},
+        'nearClip': {value: 1.0},
+        'farClip': {value: 1000.0},
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		#include <common>
 		varying vec2 vUv;
 		uniform sampler2D tColor;
@@ -109,4 +109,4 @@ const BokehShader = {
 
 };
 
-export { BokehShader };
+export {BokehShader};

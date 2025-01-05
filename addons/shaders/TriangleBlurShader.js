@@ -1,5 +1,5 @@
 import {
-	Vector2
+    Vector2
 } from '../../src/Three.js';
 
 /**
@@ -13,18 +13,18 @@ import {
  */
 
 const TriangleBlurShader = {
-	name: 'TriangleBlurShader',
-	uniforms: {
-		'texture': { value: null },
-		'delta': { value: new Vector2( 1, 1 ) }
-	},
-	vertexShader: /* glsl */`
+    name: 'TriangleBlurShader',
+    uniforms: {
+        'texture': {value: null},
+        'delta': {value: new Vector2(1, 1)}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		#include <common>
 		#define ITERATIONS 10.0
 		uniform sampler2D texture;
@@ -46,4 +46,4 @@ const TriangleBlurShader = {
 
 };
 
-export { TriangleBlurShader };
+export {TriangleBlurShader};

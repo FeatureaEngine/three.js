@@ -1,5 +1,5 @@
 import MaterialNode from './MaterialNode.js';
-import { nodeImmutable } from '../tsl/TSLBase.js';
+import {nodeImmutable} from '../tsl/TSLBase.js';
 
 /** @module InstancedPointsMaterialNode **/
 
@@ -10,12 +10,14 @@ import { nodeImmutable } from '../tsl/TSLBase.js';
  * @augments module:MaterialNode~MaterialNode
  */
 class InstancedPointsMaterialNode extends MaterialNode {
-	static get type() {
-		return 'InstancedPointsMaterialNode';
-	}
-	setup( /*builder*/ ) {
-		return this.getFloat( this.scope );
-	}
+
+    static get type() {
+        return 'InstancedPointsMaterialNode';
+    }
+
+    setup( /*builder*/) {
+        return this.getFloat(this.scope);
+    }
 
 }
 
@@ -28,4 +30,4 @@ export default InstancedPointsMaterialNode;
  *
  * @type {InstancedPointsMaterialNode<float>}
  */
-export const materialPointWidth = /*@__PURE__*/ nodeImmutable( InstancedPointsMaterialNode, InstancedPointsMaterialNode.POINT_WIDTH );
+export const materialPointWidth = /*@__PURE__*/ nodeImmutable(InstancedPointsMaterialNode, InstancedPointsMaterialNode.POINT_WIDTH);

@@ -4,17 +4,17 @@
  */
 
 const LuminosityShader = {
-	name: 'LuminosityShader',
-	uniforms: {
-		'tDiffuse': { value: null }
-	},
-	vertexShader: /* glsl */`
+    name: 'LuminosityShader',
+    uniforms: {
+        'tDiffuse': {value: null}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		#include <common>
 		uniform sampler2D tDiffuse;
 		varying vec2 vUv;
@@ -26,4 +26,4 @@ const LuminosityShader = {
 
 };
 
-export { LuminosityShader };
+export {LuminosityShader};

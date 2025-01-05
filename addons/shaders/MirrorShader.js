@@ -6,18 +6,18 @@
  */
 
 const MirrorShader = {
-	name: 'MirrorShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'side': { value: 1 }
-	},
-	vertexShader: /* glsl */`
+    name: 'MirrorShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'side': {value: 1}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform sampler2D tDiffuse;
 		uniform int side;
 		varying vec2 vUv;
@@ -38,4 +38,4 @@ const MirrorShader = {
 
 };
 
-export { MirrorShader };
+export {MirrorShader};

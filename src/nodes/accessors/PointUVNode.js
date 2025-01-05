@@ -1,5 +1,5 @@
 import Node from '../core/Node.js';
-import { nodeImmutable } from '../tsl/TSLBase.js';
+import {nodeImmutable} from '../tsl/TSLBase.js';
 
 /** @module PointUVNode **/
 
@@ -13,26 +13,29 @@ import { nodeImmutable } from '../tsl/TSLBase.js';
  * @augments Node
  */
 class PointUVNode extends Node {
-	static get type() {
-		return 'PointUVNode';
-	}
-	/**
-	 * Constructs a new point uv node.
-	 */
-	constructor() {
-		super( 'vec2' );
-		/**
-		 * This flag can be used for type testing.
-		 *
-		 * @type {Boolean}
-		 * @readonly
-		 * @default true
-		 */
-		this.isPointUVNode = true;
-	}
-	generate( /*builder*/ ) {
-		return 'vec2( gl_PointCoord.x, 1.0 - gl_PointCoord.y )';
-	}
+
+    static get type() {
+        return 'PointUVNode';
+    }
+
+    /**
+     * Constructs a new point uv node.
+     */
+    constructor() {
+        super('vec2');
+        /**
+         * This flag can be used for type testing.
+         *
+         * @type {Boolean}
+         * @readonly
+         * @default true
+         */
+        this.isPointUVNode = true;
+    }
+
+    generate( /*builder*/) {
+        return 'vec2( gl_PointCoord.x, 1.0 - gl_PointCoord.y )';
+    }
 
 }
 
@@ -43,4 +46,4 @@ export default PointUVNode;
  *
  * @type {PointUVNode}
  */
-export const pointUV = /*@__PURE__*/ nodeImmutable( PointUVNode );
+export const pointUV = /*@__PURE__*/ nodeImmutable(PointUVNode);

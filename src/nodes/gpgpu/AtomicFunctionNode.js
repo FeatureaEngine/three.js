@@ -1,5 +1,5 @@
 import TempNode from '../core/TempNode.js';
-import { nodeProxy } from '../tsl/TSLCore.js';
+import {nodeProxy} from '../tsl/TSLCore.js';
 
 /** @module AtomicFunctionNode **/
 
@@ -15,81 +15,86 @@ import { nodeProxy } from '../tsl/TSLCore.js';
  * @augments TempNode
  */
 class AtomicFunctionNode extends TempNode {
-	static get type() {
-		return 'AtomicFunctionNode';
-	}
-	/**
-	 * Constructs a new atomic function node.
-	 *
-	 * @param {String} method - The signature of the atomic function to construct.
-	 * @param {Node} pointerNode - An atomic variable or element of an atomic buffer.
-	 * @param {Node} valueNode - The value that mutates the atomic variable.
-	 * @param {Node?} [storeNode=null] - A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
-	 */
-	constructor( method, pointerNode, valueNode, storeNode = null ) {
-		super( 'uint' );
-		/**
-		 * The signature of the atomic function to construct.
-		 *
-		 * @type {String}
-		 */
-		this.method = method;
-		/**
-		 * An atomic variable or element of an atomic buffer.
-		 *
-		 * @type {Node}
-		 */
-		this.pointerNode = pointerNode;
-		/**
-		 * A value that modifies the atomic variable.
-		 *
-		 * @type {Node}
-		 */
-		this.valueNode = valueNode;
-		/**
-		 * A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
-		 *
-		 * @type {Node?}
-		 * @default null
-		 */
-		this.storeNode = storeNode;
-	}
-	/**
-	 * Overwrites the default implementation to return the type of
-	 * the pointer node.
-	 *
-	 * @param {NodeBuilder} builder - The current node builder.
-	 * @return {String} The input type.
-	 */
-	getInputType( builder ) {
-		return this.pointerNode.getNodeType( builder );
-	}
-	/**
-	 * Overwritten since the node type is inferred from the input type.
-	 *
-	 * @param {NodeBuilder} builder - The current node builder.
-	 * @return {String} The node type.
-	 */
-	getNodeType( builder ) {
-		return this.getInputType( builder );
-	}
-	generate( builder ) {
-		const method = this.method;
-		const type = this.getNodeType( builder );
-		const inputType = this.getInputType( builder );
-		const a = this.pointerNode;
-		const b = this.valueNode;
-		const params = [];
-		params.push( `&${ a.build( builder, inputType ) }` );
-		params.push( b.build( builder, inputType ) );
-		const methodSnippet = `${ builder.getMethod( method, type ) }( ${params.join( ', ' )} )`;
-		if ( this.storeNode !== null ) {
-			const varSnippet = this.storeNode.build( builder, inputType );
-			builder.addLineFlowCode( `${varSnippet} = ${methodSnippet}`, this );
-		} else {
-			builder.addLineFlowCode( methodSnippet, this );
-		}
-	}
+
+    static get type() {
+        return 'AtomicFunctionNode';
+    }
+
+    /**
+     * Constructs a new atomic function node.
+     *
+     * @param {String} method - The signature of the atomic function to construct.
+     * @param {Node} pointerNode - An atomic variable or element of an atomic buffer.
+     * @param {Node} valueNode - The value that mutates the atomic variable.
+     * @param {Node?} [storeNode=null] - A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
+     */
+    constructor(method, pointerNode, valueNode, storeNode = null) {
+        super('uint');
+        /**
+         * The signature of the atomic function to construct.
+         *
+         * @type {String}
+         */
+        this.method = method;
+        /**
+         * An atomic variable or element of an atomic buffer.
+         *
+         * @type {Node}
+         */
+        this.pointerNode = pointerNode;
+        /**
+         * A value that modifies the atomic variable.
+         *
+         * @type {Node}
+         */
+        this.valueNode = valueNode;
+        /**
+         * A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
+         *
+         * @type {Node?}
+         * @default null
+         */
+        this.storeNode = storeNode;
+    }
+
+    /**
+     * Overwrites the default implementation to return the type of
+     * the pointer node.
+     *
+     * @param {NodeBuilder} builder - The current node builder.
+     * @return {String} The input type.
+     */
+    getInputType(builder) {
+        return this.pointerNode.getNodeType(builder);
+    }
+
+    /**
+     * Overwritten since the node type is inferred from the input type.
+     *
+     * @param {NodeBuilder} builder - The current node builder.
+     * @return {String} The node type.
+     */
+    getNodeType(builder) {
+        return this.getInputType(builder);
+    }
+
+    generate(builder) {
+        const method = this.method;
+        const type = this.getNodeType(builder);
+        const inputType = this.getInputType(builder);
+        const a = this.pointerNode;
+        const b = this.valueNode;
+        const params = [];
+        params.push(`&${a.build(builder, inputType)}`);
+        params.push(b.build(builder, inputType));
+        const methodSnippet = `${builder.getMethod(method, type)}( ${params.join(', ')} )`;
+        if (this.storeNode !== null) {
+            const varSnippet = this.storeNode.build(builder, inputType);
+            builder.addLineFlowCode(`${varSnippet} = ${methodSnippet}`, this);
+        } else {
+            builder.addLineFlowCode(methodSnippet, this);
+        }
+    }
 
 }
 
@@ -115,7 +120,7 @@ export default AtomicFunctionNode;
  * @param {Node?} [storeNode=null] - A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
  * @returns {AtomicFunctionNode}
  */
-const atomicNode = nodeProxy( AtomicFunctionNode );
+const atomicNode = nodeProxy(AtomicFunctionNode);
 
 /**
  * TSL function for appending an atomic function call into the programmatic flow of a compute shader.
@@ -127,10 +132,10 @@ const atomicNode = nodeProxy( AtomicFunctionNode );
  * @param {Node?} [storeNode=null] - A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
  * @returns {AtomicFunctionNode}
  */
-export const atomicFunc = ( method, pointerNode, valueNode, storeNode = null ) => {
-	const node = atomicNode( method, pointerNode, valueNode, storeNode );
-	node.append();
-	return node;
+export const atomicFunc = (method, pointerNode, valueNode, storeNode = null) => {
+    const node = atomicNode(method, pointerNode, valueNode, storeNode);
+    node.append();
+    return node;
 
 };
 
@@ -143,7 +148,7 @@ export const atomicFunc = ( method, pointerNode, valueNode, storeNode = null ) =
  * @param {Node?} [storeNode=null] - A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
  * @returns {AtomicFunctionNode}
  */
-export const atomicStore = ( pointerNode, valueNode, storeNode = null ) => atomicFunc( AtomicFunctionNode.ATOMIC_STORE, pointerNode, valueNode, storeNode );
+export const atomicStore = (pointerNode, valueNode, storeNode = null) => atomicFunc(AtomicFunctionNode.ATOMIC_STORE, pointerNode, valueNode, storeNode);
 
 /**
  * Increments the value stored in the atomic variable.
@@ -154,7 +159,7 @@ export const atomicStore = ( pointerNode, valueNode, storeNode = null ) => atomi
  * @param {Node?} [storeNode=null] - A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
  * @returns {AtomicFunctionNode}
  */
-export const atomicAdd = ( pointerNode, valueNode, storeNode = null ) => atomicFunc( AtomicFunctionNode.ATOMIC_ADD, pointerNode, valueNode, storeNode );
+export const atomicAdd = (pointerNode, valueNode, storeNode = null) => atomicFunc(AtomicFunctionNode.ATOMIC_ADD, pointerNode, valueNode, storeNode);
 
 /**
  * Decrements the value stored in the atomic variable.
@@ -165,7 +170,7 @@ export const atomicAdd = ( pointerNode, valueNode, storeNode = null ) => atomicF
  * @param {Node?} [storeNode=null] - A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
  * @returns {AtomicFunctionNode}
  */
-export const atomicSub = ( pointerNode, valueNode, storeNode = null ) => atomicFunc( AtomicFunctionNode.ATOMIC_SUB, pointerNode, valueNode, storeNode );
+export const atomicSub = (pointerNode, valueNode, storeNode = null) => atomicFunc(AtomicFunctionNode.ATOMIC_SUB, pointerNode, valueNode, storeNode);
 
 /**
  * Stores in an atomic variable the maximum between its current value and a parameter.
@@ -176,7 +181,7 @@ export const atomicSub = ( pointerNode, valueNode, storeNode = null ) => atomicF
  * @param {Node?} [storeNode=null] - A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
  * @returns {AtomicFunctionNode}
  */
-export const atomicMax = ( pointerNode, valueNode, storeNode = null ) => atomicFunc( AtomicFunctionNode.ATOMIC_MAX, pointerNode, valueNode, storeNode );
+export const atomicMax = (pointerNode, valueNode, storeNode = null) => atomicFunc(AtomicFunctionNode.ATOMIC_MAX, pointerNode, valueNode, storeNode);
 
 /**
  * Stores in an atomic variable the minimum between its current value and a parameter.
@@ -187,7 +192,7 @@ export const atomicMax = ( pointerNode, valueNode, storeNode = null ) => atomicF
  * @param {Node?} [storeNode=null] - A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
  * @returns {AtomicFunctionNode}
  */
-export const atomicMin = ( pointerNode, valueNode, storeNode = null ) => atomicFunc( AtomicFunctionNode.ATOMIC_MIN, pointerNode, valueNode, storeNode );
+export const atomicMin = (pointerNode, valueNode, storeNode = null) => atomicFunc(AtomicFunctionNode.ATOMIC_MIN, pointerNode, valueNode, storeNode);
 
 /**
  * Stores in an atomic variable the bitwise AND of its value with a parameter.
@@ -198,7 +203,7 @@ export const atomicMin = ( pointerNode, valueNode, storeNode = null ) => atomicF
  * @param {Node?} [storeNode=null] - A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
  * @returns {AtomicFunctionNode}
  */
-export const atomicAnd = ( pointerNode, valueNode, storeNode = null ) => atomicFunc( AtomicFunctionNode.ATOMIC_AND, pointerNode, valueNode, storeNode );
+export const atomicAnd = (pointerNode, valueNode, storeNode = null) => atomicFunc(AtomicFunctionNode.ATOMIC_AND, pointerNode, valueNode, storeNode);
 
 /**
  * Stores in an atomic variable the bitwise OR of its value with a parameter.
@@ -209,7 +214,7 @@ export const atomicAnd = ( pointerNode, valueNode, storeNode = null ) => atomicF
  * @param {Node?} [storeNode=null] - A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
  * @returns {AtomicFunctionNode}
  */
-export const atomicOr = ( pointerNode, valueNode, storeNode = null ) => atomicFunc( AtomicFunctionNode.ATOMIC_OR, pointerNode, valueNode, storeNode );
+export const atomicOr = (pointerNode, valueNode, storeNode = null) => atomicFunc(AtomicFunctionNode.ATOMIC_OR, pointerNode, valueNode, storeNode);
 
 /**
  * Stores in an atomic variable the bitwise XOR of its value with a parameter.
@@ -220,4 +225,4 @@ export const atomicOr = ( pointerNode, valueNode, storeNode = null ) => atomicFu
  * @param {Node?} [storeNode=null] - A variable storing the return value of an atomic operation, typically the value of the atomic variable before the operation.
  * @returns {AtomicFunctionNode}
  */
-export const atomicXor = ( pointerNode, valueNode, storeNode = null ) => atomicFunc( AtomicFunctionNode.ATOMIC_XOR, pointerNode, valueNode, storeNode );
+export const atomicXor = (pointerNode, valueNode, storeNode = null) => atomicFunc(AtomicFunctionNode.ATOMIC_XOR, pointerNode, valueNode, storeNode);

@@ -1,7 +1,7 @@
 import {
-	UniformsLib,
-	UniformsUtils,
-	Matrix4
+    UniformsLib,
+    UniformsUtils,
+    Matrix4
 } from '../../src/Three.js';
 
 /**
@@ -9,17 +9,17 @@ import {
  */
 
 const VelocityShader = {
-	name: 'VelocityShader',
-	uniforms: UniformsUtils.merge( [
-		UniformsLib.common,
-		UniformsLib.displacementmap,
-		{
-			modelMatrixPrev: { value: new Matrix4() },
-			currentProjectionViewMatrix: { value: new Matrix4() },
-			previousProjectionViewMatrix: { value: new Matrix4() }
-		}
-	] ),
-	vertexShader: /* glsl */`
+    name: 'VelocityShader',
+    uniforms: UniformsUtils.merge([
+        UniformsLib.common,
+        UniformsLib.displacementmap,
+        {
+            modelMatrixPrev: {value: new Matrix4()},
+            currentProjectionViewMatrix: {value: new Matrix4()},
+            previousProjectionViewMatrix: {value: new Matrix4()}
+        }
+    ]),
+    vertexShader: /* glsl */`
 #define NORMAL
 
 #if defined( FLAT_SHADED ) || defined( USE_BUMPMAP ) || defined( USE_NORMALMAP_TANGENTSPACE )
@@ -76,7 +76,7 @@ void main() {
 	#include <clipping_planes_vertex>
 }
 `,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 #define NORMAL
 
 uniform float opacity;
@@ -112,4 +112,4 @@ void main() {
 `
 };
 
-export { VelocityShader };
+export {VelocityShader};

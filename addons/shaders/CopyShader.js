@@ -3,18 +3,18 @@
  */
 
 const CopyShader = {
-	name: 'CopyShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'opacity': { value: 1.0 }
-	},
-	vertexShader: /* glsl */`
+    name: 'CopyShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'opacity': {value: 1.0}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform float opacity;
 		uniform sampler2D tDiffuse;
 		varying vec2 vUv;
@@ -26,4 +26,4 @@ const CopyShader = {
 
 };
 
-export { CopyShader };
+export {CopyShader};

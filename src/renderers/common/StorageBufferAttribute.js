@@ -1,4 +1,4 @@
-import { BufferAttribute } from '../../core/BufferAttribute.js';
+import {BufferAttribute} from '../../core/BufferAttribute.js';
 
 /**
  * This special type of buffer attribute is intended for compute shaders.
@@ -15,26 +15,27 @@ import { BufferAttribute } from '../../core/BufferAttribute.js';
  * @augments BufferAttribute
  */
 class StorageBufferAttribute extends BufferAttribute {
-	/**
-	 * Constructs a new storage buffer attribute.
-	 *
-	 * @param {Number|TypedArray} count - The item count. It is also valid to pass a typed array as an argument.
-	 * The subsequent parameters are then obsolete.
-	 * @param {Number} itemSize - The item size.
-	 * @param {TypedArray.contructor} [typeClass=Float32Array] - A typed array constructor.
-	 */
-	constructor( count, itemSize, typeClass = Float32Array ) {
-		const array = ArrayBuffer.isView( count ) ? count : new typeClass( count * itemSize );
-		super( array, itemSize );
-		/**
-		 * This flag can be used for type testing.
-		 *
-		 * @type {Boolean}
-		 * @readonly
-		 * @default true
-		 */
-		this.isStorageBufferAttribute = true;
-	}
+
+    /**
+     * Constructs a new storage buffer attribute.
+     *
+     * @param {Number|TypedArray} count - The item count. It is also valid to pass a typed array as an argument.
+     * The subsequent parameters are then obsolete.
+     * @param {Number} itemSize - The item size.
+     * @param {TypedArray.contructor} [typeClass=Float32Array] - A typed array constructor.
+     */
+    constructor(count, itemSize, typeClass = Float32Array) {
+        const array = ArrayBuffer.isView(count) ? count : new typeClass(count * itemSize);
+        super(array, itemSize);
+        /**
+         * This flag can be used for type testing.
+         *
+         * @type {Boolean}
+         * @readonly
+         * @default true
+         */
+        this.isStorageBufferAttribute = true;
+    }
 
 }
 

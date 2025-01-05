@@ -1,5 +1,5 @@
 import Node from './Node.js';
-import { addMethodChaining, nodeProxy } from '../tsl/TSLCore.js';
+import {addMethodChaining, nodeProxy} from '../tsl/TSLCore.js';
 
 /** @module ContextNode **/
 
@@ -14,73 +14,80 @@ import { addMethodChaining, nodeProxy } from '../tsl/TSLCore.js';
  * @augments Node
  */
 class ContextNode extends Node {
-	static get type() {
-		return 'ContextNode';
-	}
-	/**
-	 * Constructs a new context node.
-	 *
-	 * @param {Node} node - The node whose context should be modified.
-	 * @param {Object} [value={}] - The modified context data.
-	 */
-	constructor( node, value = {} ) {
-		super();
-		/**
-		 * This flag can be used for type testing.
-		 *
-		 * @type {Boolean}
-		 * @readonly
-		 * @default true
-		 */
-		this.isContextNode = true;
-		/**
-		 * The node whose context should be modified.
-		 *
-		 * @type {Node}
-		 */
-		this.node = node;
-		/**
-		 * The modified context data.
-		 *
-		 * @type {Object}
-		 * @default {}
-		 */
-		this.value = value;
-	}
-	/**
-	 * This method is overwritten to ensure it returns the reference to {@link module:ContextNode~ContextNode#node}.
-	 *
-	 * @return {Node} A reference to {@link module:ContextNode~ContextNode#node}.
-	 */
-	getScope() {
-		return this.node.getScope();
-	}
-	/**
-	 * This method is overwritten to ensure it returns the type of {@link module:ContextNode~ContextNode#node}.
-	 *
-	 * @param {NodeBuilder} builder - The current node builder.
-	 * @return {String} The node type.
-	 */
-	getNodeType( builder ) {
-		return this.node.getNodeType( builder );
-	}
-	analyze( builder ) {
-		this.node.build( builder );
-	}
-	setup( builder ) {
-		const previousContext = builder.getContext();
-		builder.setContext( { ...builder.context, ...this.value } );
-		const node = this.node.build( builder );
-		builder.setContext( previousContext );
-		return node;
-	}
-	generate( builder, output ) {
-		const previousContext = builder.getContext();
-		builder.setContext( { ...builder.context, ...this.value } );
-		const snippet = this.node.build( builder, output );
-		builder.setContext( previousContext );
-		return snippet;
-	}
+
+    static get type() {
+        return 'ContextNode';
+    }
+
+    /**
+     * Constructs a new context node.
+     *
+     * @param {Node} node - The node whose context should be modified.
+     * @param {Object} [value={}] - The modified context data.
+     */
+    constructor(node, value = {}) {
+        super();
+        /**
+         * This flag can be used for type testing.
+         *
+         * @type {Boolean}
+         * @readonly
+         * @default true
+         */
+        this.isContextNode = true;
+        /**
+         * The node whose context should be modified.
+         *
+         * @type {Node}
+         */
+        this.node = node;
+        /**
+         * The modified context data.
+         *
+         * @type {Object}
+         * @default {}
+         */
+        this.value = value;
+    }
+
+    /**
+     * This method is overwritten to ensure it returns the reference to {@link module:ContextNode~ContextNode#node}.
+     *
+     * @return {Node} A reference to {@link module:ContextNode~ContextNode#node}.
+     */
+    getScope() {
+        return this.node.getScope();
+    }
+
+    /**
+     * This method is overwritten to ensure it returns the type of {@link module:ContextNode~ContextNode#node}.
+     *
+     * @param {NodeBuilder} builder - The current node builder.
+     * @return {String} The node type.
+     */
+    getNodeType(builder) {
+        return this.node.getNodeType(builder);
+    }
+
+    analyze(builder) {
+        this.node.build(builder);
+    }
+
+    setup(builder) {
+        const previousContext = builder.getContext();
+        builder.setContext({...builder.context, ...this.value});
+        const node = this.node.build(builder);
+        builder.setContext(previousContext);
+        return node;
+    }
+
+    generate(builder, output) {
+        const previousContext = builder.getContext();
+        builder.setContext({...builder.context, ...this.value});
+        const snippet = this.node.build(builder, output);
+        builder.setContext(previousContext);
+        return snippet;
+    }
 
 }
 
@@ -94,7 +101,7 @@ export default ContextNode;
  * @param {Object} [value={}] - The modified context data.
  * @returns {ContextNode}
  */
-export const context = /*@__PURE__*/ nodeProxy( ContextNode );
+export const context = /*@__PURE__*/ nodeProxy(ContextNode);
 
 /**
  * TSL function for defining a label context value for a given node.
@@ -104,7 +111,7 @@ export const context = /*@__PURE__*/ nodeProxy( ContextNode );
  * @param {String} name - The name/label to set.
  * @returns {ContextNode}
  */
-export const label = ( node, name ) => context( node, { label: name } );
+export const label = (node, name) => context(node, {label: name});
 
-addMethodChaining( 'context', context );
-addMethodChaining( 'label', label );
+addMethodChaining('context', context);
+addMethodChaining('label', label);

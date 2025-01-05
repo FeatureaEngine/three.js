@@ -1,5 +1,5 @@
 import {
-	Vector2
+    Vector2
 } from '../../src/Three.js';
 
 /**
@@ -8,20 +8,20 @@ import {
  */
 
 const NormalMapShader = {
-	name: 'NormalMapShader',
-	uniforms: {
-		'heightMap': { value: null },
-		'resolution': { value: new Vector2( 512, 512 ) },
-		'scale': { value: new Vector2( 1, 1 ) },
-		'height': { value: 0.05 }
-	},
-	vertexShader: /* glsl */`
+    name: 'NormalMapShader',
+    uniforms: {
+        'heightMap': {value: null},
+        'resolution': {value: new Vector2(512, 512)},
+        'scale': {value: new Vector2(1, 1)},
+        'height': {value: 0.05}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform float height;
 		uniform vec2 resolution;
 		uniform sampler2D heightMap;
@@ -35,4 +35,4 @@ const NormalMapShader = {
 
 };
 
-export { NormalMapShader };
+export {NormalMapShader};

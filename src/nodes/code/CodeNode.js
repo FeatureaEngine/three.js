@@ -1,5 +1,5 @@
 import Node from '../core/Node.js';
-import { nodeProxy } from '../tsl/TSLBase.js';
+import {nodeProxy} from '../tsl/TSLBase.js';
 
 /** @module CodeNode **/
 
@@ -11,94 +11,102 @@ import { nodeProxy } from '../tsl/TSLBase.js';
  * @augments Node
  */
 class CodeNode extends Node {
-	static get type() {
-		return 'CodeNode';
-	}
-	/**
-	 * Constructs a new code node.
-	 *
-	 * @param {String} [code=''] - The native code.
-	 * @param {Array<Node>} [includes=[]] - An array of includes.
-	 * @param {('js'|'wgsl'|'glsl')} [language=''] - The used language.
-	 */
-	constructor( code = '', includes = [], language = '' ) {
-		super( 'code' );
-		/**
-		 * This flag can be used for type testing.
-		 *
-		 * @type {Boolean}
-		 * @readonly
-		 * @default true
-		 */
-		this.isCodeNode = true;
-		/**
-		 * The native code.
-		 *
-		 * @type {String}
-		 * @default ''
-		 */
-		this.code = code;
-		/**
-		 * An array of includes
-		 *
-		 * @type {Array<Node>}
-		 * @default []
-		 */
-		this.includes = includes;
-		/**
-		 * The used language.
-		 *
-		 * @type {('js'|'wgsl'|'glsl')}
-		 * @default ''
-		 */
-		this.language = language;
-	}
-	/**
-	 * The method is overwritten so it always returns `true`.
-	 *
-	 * @return {Boolean} Whether this node is global or not.
-	 */
-	isGlobal() {
-		return true;
-	}
-	/**
-	 * Sets the includes of this code node.
-	 *
-	 * @param {Array<Node>} includes - The includes to set.
-	 * @return {CodeNode} A reference to this node.
-	 */
-	setIncludes( includes ) {
-		this.includes = includes;
-		return this;
-	}
-	/**
-	 * Returns the includes of this code node.
-	 *
-	 * @param {NodeBuilder} builder - The current node builder.
-	 * @return {Array<Node>} The includes.
-	 */
-	getIncludes( /*builder*/ ) {
-		return this.includes;
-	}
-	generate( builder ) {
-		const includes = this.getIncludes( builder );
-		for ( const include of includes ) {
-			include.build( builder );
-		}
-		const nodeCode = builder.getCodeFromNode( this, this.getNodeType( builder ) );
-		nodeCode.code = this.code;
-		return nodeCode.code;
-	}
-	serialize( data ) {
-		super.serialize( data );
-		data.code = this.code;
-		data.language = this.language;
-	}
-	deserialize( data ) {
-		super.deserialize( data );
-		this.code = data.code;
-		this.language = data.language;
-	}
+
+    static get type() {
+        return 'CodeNode';
+    }
+
+    /**
+     * Constructs a new code node.
+     *
+     * @param {String} [code=''] - The native code.
+     * @param {Array<Node>} [includes=[]] - An array of includes.
+     * @param {('js'|'wgsl'|'glsl')} [language=''] - The used language.
+     */
+    constructor(code = '', includes = [], language = '') {
+        super('code');
+        /**
+         * This flag can be used for type testing.
+         *
+         * @type {Boolean}
+         * @readonly
+         * @default true
+         */
+        this.isCodeNode = true;
+        /**
+         * The native code.
+         *
+         * @type {String}
+         * @default ''
+         */
+        this.code = code;
+        /**
+         * An array of includes
+         *
+         * @type {Array<Node>}
+         * @default []
+         */
+        this.includes = includes;
+        /**
+         * The used language.
+         *
+         * @type {('js'|'wgsl'|'glsl')}
+         * @default ''
+         */
+        this.language = language;
+    }
+
+    /**
+     * The method is overwritten so it always returns `true`.
+     *
+     * @return {Boolean} Whether this node is global or not.
+     */
+    isGlobal() {
+        return true;
+    }
+
+    /**
+     * Sets the includes of this code node.
+     *
+     * @param {Array<Node>} includes - The includes to set.
+     * @return {CodeNode} A reference to this node.
+     */
+    setIncludes(includes) {
+        this.includes = includes;
+        return this;
+    }
+
+    /**
+     * Returns the includes of this code node.
+     *
+     * @param {NodeBuilder} builder - The current node builder.
+     * @return {Array<Node>} The includes.
+     */
+    getIncludes( /*builder*/) {
+        return this.includes;
+    }
+
+    generate(builder) {
+        const includes = this.getIncludes(builder);
+        for (const include of includes) {
+            include.build(builder);
+        }
+        const nodeCode = builder.getCodeFromNode(this, this.getNodeType(builder));
+        nodeCode.code = this.code;
+        return nodeCode.code;
+    }
+
+    serialize(data) {
+        super.serialize(data);
+        data.code = this.code;
+        data.language = this.language;
+    }
+
+    deserialize(data) {
+        super.deserialize(data);
+        this.code = data.code;
+        this.language = data.language;
+    }
 
 }
 
@@ -113,7 +121,7 @@ export default CodeNode;
  * @param {('js'|'wgsl'|'glsl')} [language=''] - The used language.
  * @returns {CodeNode}
  */
-export const code = /*@__PURE__*/ nodeProxy( CodeNode );
+export const code = /*@__PURE__*/ nodeProxy(CodeNode);
 
 /**
  * TSL function for creating a JS code node.
@@ -123,7 +131,7 @@ export const code = /*@__PURE__*/ nodeProxy( CodeNode );
  * @param {Array<Node>} includes - An array of includes.
  * @returns {CodeNode}
  */
-export const js = ( src, includes ) => code( src, includes, 'js' );
+export const js = (src, includes) => code(src, includes, 'js');
 
 /**
  * TSL function for creating a WGSL code node.
@@ -133,7 +141,7 @@ export const js = ( src, includes ) => code( src, includes, 'js' );
  * @param {Array<Node>} includes - An array of includes.
  * @returns {CodeNode}
  */
-export const wgsl = ( src, includes ) => code( src, includes, 'wgsl' );
+export const wgsl = (src, includes) => code(src, includes, 'wgsl');
 
 /**
  * TSL function for creating a GLSL code node.
@@ -143,4 +151,4 @@ export const wgsl = ( src, includes ) => code( src, includes, 'wgsl' );
  * @param {Array<Node>} includes - An array of includes.
  * @returns {CodeNode}
  */
-export const glsl = ( src, includes ) => code( src, includes, 'glsl' );
+export const glsl = (src, includes) => code(src, includes, 'glsl');

@@ -5,34 +5,35 @@
  * this purpose.
  */
 class NodeVar {
-	/**
-	 * Constructs a new node variable.
-	 *
-	 * @param {String} name - The name of the variable.
-	 * @param {String} type - The type of the variable.
-	 */
-	constructor( name, type ) {
-		/**
-		 * This flag can be used for type testing.
-		 *
-		 * @type {Boolean}
-		 * @readonly
-		 * @default true
-		 */
-		this.isNodeVar = true;
-		/**
-		 * The name of the variable.
-		 *
-		 * @type {String}
-		 */
-		this.name = name;
-		/**
-		 * The type of the variable.
-		 *
-		 * @type {String}
-		 */
-		this.type = type;
-	}
+
+    /**
+     * Constructs a new node variable.
+     *
+     * @param {String} name - The name of the variable.
+     * @param {String} type - The type of the variable.
+     */
+    constructor(name, type) {
+        /**
+         * This flag can be used for type testing.
+         *
+         * @type {Boolean}
+         * @readonly
+         * @default true
+         */
+        this.isNodeVar = true;
+        /**
+         * The name of the variable.
+         *
+         * @type {String}
+         */
+        this.name = name;
+        /**
+         * The type of the variable.
+         *
+         * @type {String}
+         */
+        this.type = type;
+    }
 
 }
 

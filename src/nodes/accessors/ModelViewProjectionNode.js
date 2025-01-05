@@ -1,4 +1,4 @@
-import { Fn } from '../tsl/TSLCore.js';
+import {Fn} from '../tsl/TSLCore.js';
 
 /** @module ModelViewProjectionNode **/
 
@@ -7,7 +7,7 @@ import { Fn } from '../tsl/TSLCore.js';
  *
  * @type {VaryingNode<vec4>}
  */
-export const modelViewProjection = /*@__PURE__*/ ( Fn( ( builder ) => {
-	return builder.context.setupModelViewProjection();
+export const modelViewProjection = /*@__PURE__*/ (Fn((builder) => {
+    return builder.context.setupModelViewProjection();
 
-}, 'vec4' ).once() )().varying( 'v_modelViewProjection' );
+}, 'vec4').once())().varying('v_modelViewProjection');

@@ -1,18 +1,18 @@
 const FilmShader = {
-	name: 'FilmShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'time': { value: 0.0 },
-		'intensity': { value: 0.5 },
-		'grayscale': { value: false }
-	},
-	vertexShader: /* glsl */`
+    name: 'FilmShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'time': {value: 0.0},
+        'intensity': {value: 0.5},
+        'grayscale': {value: false}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		#include <common>
 		uniform float intensity;
 		uniform bool grayscale;
@@ -32,4 +32,4 @@ const FilmShader = {
 
 };
 
-export { FilmShader };
+export {FilmShader};

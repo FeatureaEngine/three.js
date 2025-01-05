@@ -5,19 +5,19 @@
  */
 
 const VignetteShader = {
-	name: 'VignetteShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'offset': { value: 1.0 },
-		'darkness': { value: 1.0 }
-	},
-	vertexShader: /* glsl */`
+    name: 'VignetteShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'offset': {value: 1.0},
+        'darkness': {value: 1.0}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform float offset;
 		uniform float darkness;
 		uniform sampler2D tDiffuse;
@@ -31,4 +31,4 @@ const VignetteShader = {
 
 };
 
-export { VignetteShader };
+export {VignetteShader};

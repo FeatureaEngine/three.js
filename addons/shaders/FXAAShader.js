@@ -1,20 +1,20 @@
 import {
-	Vector2
+    Vector2
 } from '../../src/Three.js';
 
 const FXAAShader = {
-	name: 'FXAAShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'resolution': { value: new Vector2( 1 / 1024, 1 / 512 ) }
-	},
-	vertexShader: /* glsl */`
+    name: 'FXAAShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'resolution': {value: new Vector2(1 / 1024, 1 / 512)}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		// FXAA algorithm from NVIDIA, C# implementation by Jasper Flick, GLSL port by Dave Hoskins
 		// http://developer.download.nvidia.com/assets/gamedev/files/sdk/11/FXAA_WhitePaper.pdf
 		// https://catlikecoding.com/unity/tutorials/advanced-rendering/fxaa/
@@ -184,4 +184,4 @@ const FXAAShader = {
 
 };
 
-export { FXAAShader };
+export {FXAAShader};

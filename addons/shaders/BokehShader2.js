@@ -1,5 +1,5 @@
 import {
-	Vector2
+    Vector2
 } from '../../src/Three.js';
 
 /**
@@ -10,40 +10,40 @@ import {
  * Requires #define RINGS and SAMPLES integers
  */
 const BokehShader = {
-	name: 'BokehShader',
-	uniforms: {
-		'textureWidth': { value: 1.0 },
-		'textureHeight': { value: 1.0 },
-		'focalDepth': { value: 1.0 },
-		'focalLength': { value: 24.0 },
-		'fstop': { value: 0.9 },
-		'tColor': { value: null },
-		'tDepth': { value: null },
-		'maxblur': { value: 1.0 },
-		'showFocus': { value: 0 },
-		'manualdof': { value: 0 },
-		'vignetting': { value: 0 },
-		'depthblur': { value: 0 },
-		'threshold': { value: 0.5 },
-		'gain': { value: 2.0 },
-		'bias': { value: 0.5 },
-		'fringe': { value: 0.7 },
-		'znear': { value: 0.1 },
-		'zfar': { value: 100 },
-		'noise': { value: 1 },
-		'dithering': { value: 0.0001 },
-		'pentagon': { value: 0 },
-		'shaderFocus': { value: 1 },
-		'focusCoords': { value: new Vector2() }
+    name: 'BokehShader',
+    uniforms: {
+        'textureWidth': {value: 1.0},
+        'textureHeight': {value: 1.0},
+        'focalDepth': {value: 1.0},
+        'focalLength': {value: 24.0},
+        'fstop': {value: 0.9},
+        'tColor': {value: null},
+        'tDepth': {value: null},
+        'maxblur': {value: 1.0},
+        'showFocus': {value: 0},
+        'manualdof': {value: 0},
+        'vignetting': {value: 0},
+        'depthblur': {value: 0},
+        'threshold': {value: 0.5},
+        'gain': {value: 2.0},
+        'bias': {value: 0.5},
+        'fringe': {value: 0.7},
+        'znear': {value: 0.1},
+        'zfar': {value: 100},
+        'noise': {value: 1},
+        'dithering': {value: 0.0001},
+        'pentagon': {value: 0},
+        'shaderFocus': {value: 1},
+        'focusCoords': {value: new Vector2()}
 
-	},
-	vertexShader: /* glsl */`
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		#include <common>
 		varying vec2 vUv;
 		uniform sampler2D tColor;
@@ -257,19 +257,19 @@ const BokehShader = {
 };
 
 const BokehDepthShader = {
-	name: 'BokehDepthShader',
-	uniforms: {
-		'mNear': { value: 1.0 },
-		'mFar': { value: 1000.0 },
-	},
-	vertexShader: /* glsl */`
+    name: 'BokehDepthShader',
+    uniforms: {
+        'mNear': {value: 1.0},
+        'mFar': {value: 1000.0},
+    },
+    vertexShader: /* glsl */`
 		varying float vViewZDepth;
 		void main() {
 			#include <begin_vertex>
 			#include <project_vertex>
 			vViewZDepth = - mvPosition.z;
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform float mNear;
 		uniform float mFar;
 		varying float vViewZDepth;
@@ -280,4 +280,4 @@ const BokehDepthShader = {
 
 };
 
-export { BokehShader, BokehDepthShader };
+export {BokehShader, BokehDepthShader};

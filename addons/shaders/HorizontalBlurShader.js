@@ -8,18 +8,18 @@
  */
 
 const HorizontalBlurShader = {
-	name: 'HorizontalBlurShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'h': { value: 1.0 / 512.0 }
-	},
-	vertexShader: /* glsl */`
+    name: 'HorizontalBlurShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'h': {value: 1.0 / 512.0}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform sampler2D tDiffuse;
 		uniform float h;
 		varying vec2 vUv;
@@ -39,4 +39,4 @@ const HorizontalBlurShader = {
 
 };
 
-export { HorizontalBlurShader };
+export {HorizontalBlurShader};

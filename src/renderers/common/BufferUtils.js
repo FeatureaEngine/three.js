@@ -1,4 +1,4 @@
-import { GPU_CHUNK_BYTES } from './Constants.js';
+import {GPU_CHUNK_BYTES} from './Constants.js';
 
 /** @module BufferUtils **/
 
@@ -10,9 +10,9 @@ import { GPU_CHUNK_BYTES } from './Constants.js';
  * @param {Number} floatLength - The buffer length.
  * @return {Number} The padded length.
  */
-function getFloatLength( floatLength ) {
-	// ensure chunk size alignment (STD140 layout)
-	return floatLength + ( ( GPU_CHUNK_BYTES - ( floatLength % GPU_CHUNK_BYTES ) ) % GPU_CHUNK_BYTES );
+function getFloatLength(floatLength) {
+    // ensure chunk size alignment (STD140 layout)
+    return floatLength + ((GPU_CHUNK_BYTES - (floatLength % GPU_CHUNK_BYTES)) % GPU_CHUNK_BYTES);
 
 }
 
@@ -25,10 +25,10 @@ function getFloatLength( floatLength ) {
  * @param {Number} [vectorLength=4] - The vector length.
  * @return {Number} The padded length.
  */
-function getVectorLength( count, vectorLength = 4 ) {
-	const strideLength = getStrideLength( vectorLength );
-	const floatLength = strideLength * count;
-	return getFloatLength( floatLength );
+function getVectorLength(count, vectorLength = 4) {
+    const strideLength = getStrideLength(vectorLength);
+    const floatLength = strideLength * count;
+    return getFloatLength(floatLength);
 
 }
 
@@ -40,14 +40,14 @@ function getVectorLength( count, vectorLength = 4 ) {
  * @param {Number} vectorLength - The vector length.
  * @return {Number} The padded length.
  */
-function getStrideLength( vectorLength ) {
-	const strideLength = 4;
-	return vectorLength + ( ( strideLength - ( vectorLength % strideLength ) ) % strideLength );
+function getStrideLength(vectorLength) {
+    const strideLength = 4;
+    return vectorLength + ((strideLength - (vectorLength % strideLength)) % strideLength);
 
 }
 
 export {
-	getFloatLength,
-	getVectorLength,
-	getStrideLength
+    getFloatLength,
+    getVectorLength,
+    getStrideLength
 };

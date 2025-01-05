@@ -9,19 +9,19 @@
  */
 
 const KaleidoShader = {
-	name: 'KaleidoShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'sides': { value: 6.0 },
-		'angle': { value: 0.0 }
-	},
-	vertexShader: /* glsl */`
+    name: 'KaleidoShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'sides': {value: 6.0},
+        'angle': {value: 0.0}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform sampler2D tDiffuse;
 		uniform float sides;
 		uniform float angle;
@@ -40,4 +40,4 @@ const KaleidoShader = {
 
 };
 
-export { KaleidoShader };
+export {KaleidoShader};

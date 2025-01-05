@@ -5,19 +5,19 @@
  */
 
 const AfterimageShader = {
-	name: 'AfterimageShader',
-	uniforms: {
-		'damp': { value: 0.96 },
-		'tOld': { value: null },
-		'tNew': { value: null }
-	},
-	vertexShader: /* glsl */`
+    name: 'AfterimageShader',
+    uniforms: {
+        'damp': {value: 0.96},
+        'tOld': {value: null},
+        'tNew': {value: null}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform float damp;
 		uniform sampler2D tOld;
 		uniform sampler2D tNew;
@@ -34,4 +34,4 @@ const AfterimageShader = {
 
 };
 
-export { AfterimageShader };
+export {AfterimageShader};

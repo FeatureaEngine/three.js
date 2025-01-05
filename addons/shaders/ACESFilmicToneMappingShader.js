@@ -7,18 +7,18 @@
  */
 
 const ACESFilmicToneMappingShader = {
-	name: 'ACESFilmicToneMappingShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'exposure': { value: 1.0 }
-	},
-	vertexShader: /* glsl */`
+    name: 'ACESFilmicToneMappingShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'exposure': {value: 1.0}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		#define saturate(a) clamp( a, 0.0, 1.0 )
 		uniform sampler2D tDiffuse;
 		uniform float exposure;
@@ -56,4 +56,4 @@ const ACESFilmicToneMappingShader = {
 
 };
 
-export { ACESFilmicToneMappingShader };
+export {ACESFilmicToneMappingShader};

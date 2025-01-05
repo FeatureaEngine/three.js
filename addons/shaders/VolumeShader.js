@@ -1,6 +1,6 @@
 import {
-	Vector2,
-	Vector3
+    Vector2,
+    Vector3
 } from '../../src/Three.js';
 
 /**
@@ -10,15 +10,15 @@ import {
  */
 
 const VolumeRenderShader1 = {
-	uniforms: {
-		'u_size': { value: new Vector3( 1, 1, 1 ) },
-		'u_renderstyle': { value: 0 },
-		'u_renderthreshold': { value: 0.5 },
-		'u_clim': { value: new Vector2( 1, 1 ) },
-		'u_data': { value: null },
-		'u_cmdata': { value: null }
-	},
-	vertexShader: /* glsl */`
+    uniforms: {
+        'u_size': {value: new Vector3(1, 1, 1)},
+        'u_renderstyle': {value: 0},
+        'u_renderthreshold': {value: 0.5},
+        'u_clim': {value: new Vector2(1, 1)},
+        'u_data': {value: null},
+        'u_cmdata': {value: null}
+    },
+    vertexShader: /* glsl */`
 		varying vec4 v_nearpos;
 		varying vec4 v_farpos;
 		varying vec3 v_position;
@@ -43,7 +43,7 @@ const VolumeRenderShader1 = {
 				v_position = position;
 				gl_Position = projectionMatrix * viewMatrix * modelMatrix * position4;
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 				precision highp float;
 				precision mediump sampler3D;
 				uniform vec3 u_size;
@@ -236,4 +236,4 @@ const VolumeRenderShader1 = {
 
 };
 
-export { VolumeRenderShader1 };
+export {VolumeRenderShader1};

@@ -1,5 +1,5 @@
 import InstanceNode from './InstanceNode.js';
-import { nodeProxy } from '../tsl/TSLBase.js';
+import {nodeProxy} from '../tsl/TSLBase.js';
 
 /** @module InstancedMeshNode **/
 
@@ -10,24 +10,26 @@ import { nodeProxy } from '../tsl/TSLBase.js';
  * @augments module:InstanceNode~InstanceNode
  */
 class InstancedMeshNode extends InstanceNode {
-	static get type() {
-		return 'InstancedMeshNode';
-	}
-	/**
-	 * Constructs a new instanced mesh node.
-	 *
-	 * @param {InstancedMesh} instancedMesh - The instanced mesh.
-	 */
-	constructor( instancedMesh ) {
-		const { count, instanceMatrix, instanceColor } = instancedMesh;
-		super( count, instanceMatrix, instanceColor );
-		/**
-		 * A reference to the instanced mesh.
-		 *
-		 * @type {InstancedMesh}
-		 */
-		this.instancedMesh = instancedMesh;
-	}
+
+    static get type() {
+        return 'InstancedMeshNode';
+    }
+
+    /**
+     * Constructs a new instanced mesh node.
+     *
+     * @param {InstancedMesh} instancedMesh - The instanced mesh.
+     */
+    constructor(instancedMesh) {
+        const {count, instanceMatrix, instanceColor} = instancedMesh;
+        super(count, instanceMatrix, instanceColor);
+        /**
+         * A reference to the instanced mesh.
+         *
+         * @type {InstancedMesh}
+         */
+        this.instancedMesh = instancedMesh;
+    }
 
 }
 
@@ -40,4 +42,4 @@ export default InstancedMeshNode;
  * @param {InstancedMesh} instancedMesh - The instancedMesh.
  * @returns {InstancedMeshNode}
  */
-export const instancedMesh = /*@__PURE__*/ nodeProxy( InstancedMeshNode );
+export const instancedMesh = /*@__PURE__*/ nodeProxy(InstancedMeshNode);

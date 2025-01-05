@@ -6,19 +6,19 @@
  */
 
 const HueSaturationShader = {
-	name: 'HueSaturationShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'hue': { value: 0 },
-		'saturation': { value: 0 }
-	},
-	vertexShader: /* glsl */`
+    name: 'HueSaturationShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'hue': {value: 0},
+        'saturation': {value: 0}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform sampler2D tDiffuse;
 		uniform float hue;
 		uniform float saturation;
@@ -46,4 +46,4 @@ const HueSaturationShader = {
 
 };
 
-export { HueSaturationShader };
+export {HueSaturationShader};

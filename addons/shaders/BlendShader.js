@@ -3,20 +3,20 @@
  */
 
 const BlendShader = {
-	name: 'BlendShader',
-	uniforms: {
-		'tDiffuse1': { value: null },
-		'tDiffuse2': { value: null },
-		'mixRatio': { value: 0.5 },
-		'opacity': { value: 1.0 }
-	},
-	vertexShader: /* glsl */`
+    name: 'BlendShader',
+    uniforms: {
+        'tDiffuse1': {value: null},
+        'tDiffuse2': {value: null},
+        'mixRatio': {value: 0.5},
+        'opacity': {value: 1.0}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform float opacity;
 		uniform float mixRatio;
 		uniform sampler2D tDiffuse1;
@@ -30,4 +30,4 @@ const BlendShader = {
 
 };
 
-export { BlendShader };
+export {BlendShader};

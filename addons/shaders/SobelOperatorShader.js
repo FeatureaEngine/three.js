@@ -1,5 +1,5 @@
 import {
-	Vector2
+    Vector2
 } from '../../src/Three.js';
 
 /**
@@ -10,18 +10,18 @@ import {
  */
 
 const SobelOperatorShader = {
-	name: 'SobelOperatorShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'resolution': { value: new Vector2() }
-	},
-	vertexShader: /* glsl */`
+    name: 'SobelOperatorShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'resolution': {value: new Vector2()}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform sampler2D tDiffuse;
 		uniform vec2 resolution;
 		varying vec2 vUv;
@@ -58,4 +58,4 @@ const SobelOperatorShader = {
 
 };
 
-export { SobelOperatorShader };
+export {SobelOperatorShader};

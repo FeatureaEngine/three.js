@@ -1,5 +1,5 @@
 import {
-	Vector2
+    Vector2
 } from '../../src/Three.js';
 
 /**
@@ -9,21 +9,21 @@ import {
  */
 
 const DotScreenShader = {
-	name: 'DotScreenShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'tSize': { value: new Vector2( 256, 256 ) },
-		'center': { value: new Vector2( 0.5, 0.5 ) },
-		'angle': { value: 1.57 },
-		'scale': { value: 1.0 }
-	},
-	vertexShader: /* glsl */`
+    name: 'DotScreenShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'tSize': {value: new Vector2(256, 256)},
+        'center': {value: new Vector2(0.5, 0.5)},
+        'angle': {value: 1.57},
+        'scale': {value: 1.0}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform vec2 center;
 		uniform float angle;
 		uniform float scale;
@@ -44,4 +44,4 @@ const DotScreenShader = {
 
 };
 
-export { DotScreenShader };
+export {DotScreenShader};

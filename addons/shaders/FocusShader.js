@@ -5,21 +5,21 @@
  */
 
 const FocusShader = {
-	name: 'FocusShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'screenWidth': { value: 1024 },
-		'screenHeight': { value: 1024 },
-		'sampleDistance': { value: 0.94 },
-		'waveFactor': { value: 0.00125 }
-	},
-	vertexShader: /* glsl */`
+    name: 'FocusShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'screenWidth': {value: 1024},
+        'screenHeight': {value: 1024},
+        'sampleDistance': {value: 0.94},
+        'waveFactor': {value: 0.00125}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform float screenWidth;
 		uniform float screenHeight;
 		uniform float sampleDistance;
@@ -57,4 +57,4 @@ const FocusShader = {
 
 };
 
-export { FocusShader };
+export {FocusShader};

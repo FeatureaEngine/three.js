@@ -1,5 +1,5 @@
 import {
-	Vector2
+    Vector2
 } from '../../src/Three.js';
 
 /**
@@ -9,15 +9,15 @@ import {
  */
 
 const SMAAEdgesShader = {
-	name: 'SMAAEdgesShader',
-	defines: {
-		'SMAA_THRESHOLD': '0.1'
-	},
-	uniforms: {
-		'tDiffuse': { value: null },
-		'resolution': { value: new Vector2( 1 / 1024, 1 / 512 ) }
-	},
-	vertexShader: /* glsl */`
+    name: 'SMAAEdgesShader',
+    defines: {
+        'SMAA_THRESHOLD': '0.1'
+    },
+    uniforms: {
+        'tDiffuse': {value: null},
+        'resolution': {value: new Vector2(1 / 1024, 1 / 512)}
+    },
+    vertexShader: /* glsl */`
 		uniform vec2 resolution;
 		varying vec2 vUv;
 		varying vec4 vOffset[ 3 ];
@@ -31,7 +31,7 @@ const SMAAEdgesShader = {
 			SMAAEdgeDetectionVS( vUv );
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform sampler2D tDiffuse;
 		varying vec2 vUv;
 		varying vec4 vOffset[ 3 ];
@@ -80,20 +80,20 @@ const SMAAEdgesShader = {
 };
 
 const SMAAWeightsShader = {
-	name: 'SMAAWeightsShader',
-	defines: {
-		'SMAA_MAX_SEARCH_STEPS': '8',
-		'SMAA_AREATEX_MAX_DISTANCE': '16',
-		'SMAA_AREATEX_PIXEL_SIZE': '( 1.0 / vec2( 160.0, 560.0 ) )',
-		'SMAA_AREATEX_SUBTEX_SIZE': '( 1.0 / 7.0 )'
-	},
-	uniforms: {
-		'tDiffuse': { value: null },
-		'tArea': { value: null },
-		'tSearch': { value: null },
-		'resolution': { value: new Vector2( 1 / 1024, 1 / 512 ) }
-	},
-	vertexShader: /* glsl */`
+    name: 'SMAAWeightsShader',
+    defines: {
+        'SMAA_MAX_SEARCH_STEPS': '8',
+        'SMAA_AREATEX_MAX_DISTANCE': '16',
+        'SMAA_AREATEX_PIXEL_SIZE': '( 1.0 / vec2( 160.0, 560.0 ) )',
+        'SMAA_AREATEX_SUBTEX_SIZE': '( 1.0 / 7.0 )'
+    },
+    uniforms: {
+        'tDiffuse': {value: null},
+        'tArea': {value: null},
+        'tSearch': {value: null},
+        'resolution': {value: new Vector2(1 / 1024, 1 / 512)}
+    },
+    vertexShader: /* glsl */`
 		uniform vec2 resolution;
 		varying vec2 vUv;
 		varying vec4 vOffset[ 3 ];
@@ -111,7 +111,7 @@ const SMAAWeightsShader = {
 			SMAABlendingWeightCalculationVS( vUv );
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		#define SMAASampleLevelZeroOffset( tex, coord, offset ) texture2D( tex, coord + float( offset ) * resolution, 0.0 )
 		uniform sampler2D tDiffuse;
 		uniform sampler2D tArea;
@@ -266,13 +266,13 @@ const SMAAWeightsShader = {
 };
 
 const SMAABlendShader = {
-	name: 'SMAABlendShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'tColor': { value: null },
-		'resolution': { value: new Vector2( 1 / 1024, 1 / 512 ) }
-	},
-	vertexShader: /* glsl */`
+    name: 'SMAABlendShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'tColor': {value: null},
+        'resolution': {value: new Vector2(1 / 1024, 1 / 512)}
+    },
+    vertexShader: /* glsl */`
 		uniform vec2 resolution;
 		varying vec2 vUv;
 		varying vec4 vOffset[ 2 ];
@@ -285,7 +285,7 @@ const SMAABlendShader = {
 			SMAANeighborhoodBlendingVS( vUv );
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform sampler2D tDiffuse;
 		uniform sampler2D tColor;
 		uniform vec2 resolution;
@@ -332,4 +332,4 @@ const SMAABlendShader = {
 
 };
 
-export { SMAAEdgesShader, SMAAWeightsShader, SMAABlendShader };
+export {SMAAEdgesShader, SMAAWeightsShader, SMAABlendShader};

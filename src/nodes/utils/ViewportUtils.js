@@ -1,7 +1,7 @@
-import { Fn } from '../tsl/TSLBase.js';
-import { screenUV } from '../display/ScreenNode.js';
-import { viewportDepthTexture } from '../display/ViewportDepthTextureNode.js';
-import { linearDepth } from '../display/ViewportDepthNode.js';
+import {Fn} from '../tsl/TSLBase.js';
+import {screenUV} from '../display/ScreenNode.js';
+import {viewportDepthTexture} from '../display/ViewportDepthTextureNode.js';
+import {linearDepth} from '../display/ViewportDepthNode.js';
 
 /** @module ViewportUtils **/
 
@@ -16,10 +16,10 @@ import { linearDepth } from '../display/ViewportDepthNode.js';
  * @param {Node<vec2>?} uv - Optional uv coordinates. By default `screenUV` is used.
  * @return {Node<vec2>} The update uv coordinates.
  */
-export const viewportSafeUV = /*@__PURE__*/ Fn( ( [ uv = null ] ) => {
-	const depth = linearDepth();
-	const depthDiff = linearDepth( viewportDepthTexture( uv ) ).sub( depth );
-	const finalUV = depthDiff.lessThan( 0 ).select( screenUV, uv );
-	return finalUV;
+export const viewportSafeUV = /*@__PURE__*/ Fn(([uv = null]) => {
+    const depth = linearDepth();
+    const depthDiff = linearDepth(viewportDepthTexture(uv)).sub(depth);
+    const finalUV = depthDiff.lessThan(0).select(screenUV, uv);
+    return finalUV;
 
-} );
+});

@@ -1,5 +1,5 @@
 import Node from '../core/Node.js';
-import { nodeProxy } from '../tsl/TSLBase.js';
+import {nodeProxy} from '../tsl/TSLBase.js';
 
 /** @module BuiltinNode **/
 
@@ -10,37 +10,39 @@ import { nodeProxy } from '../tsl/TSLBase.js';
  * @augments Node
  */
 class BuiltinNode extends Node {
-	/**
-	 * Constructs a new builtin node.
-	 *
-	 * @param {String} name - The name of the built-in shader variable.
-	 */
-	constructor( name ) {
-		super( 'float' );
-		/**
-		 * The name of the built-in shader variable.
-		 *
-		 * @type {String}
-		 */
-		this.name = name;
-		/**
-		 * This flag can be used for type testing.
-		 *
-		 * @type {Boolean}
-		 * @readonly
-		 * @default true
-		 */
-		this.isBuiltinNode = true;
-	}
-	/**
-	 * Generates the code snippet of the builtin node.
-	 *
-	 * @param {NodeBuilder} builder - The current node builder.
-	 * @return {String} The generated code snippet.
-	 */
-	generate( /* builder */ ) {
-		return this.name;
-	}
+
+    /**
+     * Constructs a new builtin node.
+     *
+     * @param {String} name - The name of the built-in shader variable.
+     */
+    constructor(name) {
+        super('float');
+        /**
+         * The name of the built-in shader variable.
+         *
+         * @type {String}
+         */
+        this.name = name;
+        /**
+         * This flag can be used for type testing.
+         *
+         * @type {Boolean}
+         * @readonly
+         * @default true
+         */
+        this.isBuiltinNode = true;
+    }
+
+    /**
+     * Generates the code snippet of the builtin node.
+     *
+     * @param {NodeBuilder} builder - The current node builder.
+     * @return {String} The generated code snippet.
+     */
+    generate( /* builder */) {
+        return this.name;
+    }
 
 }
 
@@ -53,4 +55,4 @@ export default BuiltinNode;
  * @param {String} name - The name of the built-in shader variable.
  * @returns {BuiltinNode}
  */
-export const builtin = nodeProxy( BuiltinNode );
+export const builtin = nodeProxy(BuiltinNode);

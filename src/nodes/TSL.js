@@ -146,17 +146,17 @@ export * from './procedural/Checker.js';
 export * from './materialx/MaterialXNodes.js';
 
 // functions
-export { default as BRDF_GGX } from './functions/BSDF/BRDF_GGX.js';
-export { default as BRDF_Lambert } from './functions/BSDF/BRDF_Lambert.js';
-export { default as D_GGX } from './functions/BSDF/D_GGX.js';
-export { default as DFGApprox } from './functions/BSDF/DFGApprox.js';
-export { default as F_Schlick } from './functions/BSDF/F_Schlick.js';
-export { default as Schlick_to_F0 } from './functions/BSDF/Schlick_to_F0.js';
-export { default as V_GGX_SmithCorrelated } from './functions/BSDF/V_GGX_SmithCorrelated.js';
+export {default as BRDF_GGX} from './functions/BSDF/BRDF_GGX.js';
+export {default as BRDF_Lambert} from './functions/BSDF/BRDF_Lambert.js';
+export {default as D_GGX} from './functions/BSDF/D_GGX.js';
+export {default as DFGApprox} from './functions/BSDF/DFGApprox.js';
+export {default as F_Schlick} from './functions/BSDF/F_Schlick.js';
+export {default as Schlick_to_F0} from './functions/BSDF/Schlick_to_F0.js';
+export {default as V_GGX_SmithCorrelated} from './functions/BSDF/V_GGX_SmithCorrelated.js';
 
 export * from './lighting/LightUtils.js';
 
-export { default as getGeometryRoughness } from './functions/material/getGeometryRoughness.js';
-export { default as getParallaxCorrectNormal } from './functions/material/getParallaxCorrectNormal.js';
-export { default as getRoughness } from './functions/material/getRoughness.js';
-export { default as getShIrradianceAt } from './functions/material/getShIrradianceAt.js';
+export {default as getGeometryRoughness} from './functions/material/getGeometryRoughness.js';
+export {default as getParallaxCorrectNormal} from './functions/material/getParallaxCorrectNormal.js';
+export {default as getRoughness} from './functions/material/getRoughness.js';
+export {default as getShIrradianceAt} from './functions/material/getShIrradianceAt.js';

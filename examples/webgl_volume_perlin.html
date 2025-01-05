@@ -1,58 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>three.js webgl2 - volume</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="../public/example.css">
-	</head>
-	<body>
-		<div id="info">
-			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> webgl2 - volume
-		</div>
+<head>
+    <title>three.js webgl2 - volume</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="../public/example.css">
+</head>
+<body>
+<div id="info">
+    <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> webgl2 - volume
+</div>
 
 
-		<script type="module">
-			import * as THREE from "../src/Three.js";
-			import { OrbitControls } from '../addons/controls/OrbitControls.js';
-			import { ImprovedNoise } from '../addons/math/ImprovedNoise.js';
-			import { GUI } from '../libs/lil-gui.module.min.js';
-			let renderer, scene, camera;
-			let mesh;
-			init();
-			function init() {
-				renderer = new THREE.WebGLRenderer();
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				renderer.setAnimationLoop( animate );
-				document.body.appendChild( renderer.domElement );
-				scene = new THREE.Scene();
-				camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 100 );
-				camera.position.set( 0, 0, 2 );
-				new OrbitControls( camera, renderer.domElement );
-				// Texture
-				const size = 128;
-				const data = new Uint8Array( size * size * size );
-				let i = 0;
-				const perlin = new ImprovedNoise();
-				const vector = new THREE.Vector3();
-				for ( let z = 0; z < size; z ++ ) {
-					for ( let y = 0; y < size; y ++ ) {
-						for ( let x = 0; x < size; x ++ ) {
-							vector.set( x, y, z ).divideScalar( size );
-							const d = perlin.noise( vector.x * 6.5, vector.y * 6.5, vector.z * 6.5 );
-							data[ i ++ ] = d * 128 + 128;
-						}
-					}
-				}
-				const texture = new THREE.Data3DTexture( data, size, size, size );
-				texture.format = THREE.RedFormat;
-				texture.minFilter = THREE.LinearFilter;
-				texture.magFilter = THREE.LinearFilter;
-				texture.unpackAlignment = 1;
-				texture.needsUpdate = true;
-				// Material
-				const vertexShader = /* glsl */`
+<script type="module">
+    import * as THREE from "../src/Three.js";
+    import {OrbitControls} from '../addons/controls/OrbitControls.js';
+    import {ImprovedNoise} from '../addons/math/ImprovedNoise.js';
+    import {GUI} from '../libs/lil-gui.module.min.js';
+
+    let renderer, scene, camera;
+    let mesh;
+    init();
+
+    function init() {
+        renderer = new THREE.WebGLRenderer();
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setAnimationLoop(animate);
+        document.body.appendChild(renderer.domElement);
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 0, 2);
+        new OrbitControls(camera, renderer.domElement);
+        // Texture
+        const size = 128;
+        const data = new Uint8Array(size * size * size);
+        let i = 0;
+        const perlin = new ImprovedNoise();
+        const vector = new THREE.Vector3();
+        for (let z = 0; z < size; z++) {
+            for (let y = 0; y < size; y++) {
+                for (let x = 0; x < size; x++) {
+                    vector.set(x, y, z).divideScalar(size);
+                    const d = perlin.noise(vector.x * 6.5, vector.y * 6.5, vector.z * 6.5);
+                    data[i++] = d * 128 + 128;
+                }
+            }
+        }
+        const texture = new THREE.Data3DTexture(data, size, size, size);
+        texture.format = THREE.RedFormat;
+        texture.minFilter = THREE.LinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        texture.unpackAlignment = 1;
+        texture.needsUpdate = true;
+        // Material
+        const vertexShader = /* glsl */`
 					in vec3 position;
 					uniform mat4 modelMatrix;
 					uniform mat4 modelViewMatrix;
@@ -67,7 +69,7 @@
 						gl_Position = projectionMatrix * mvPosition;
 					}
 				`;
-				const fragmentShader = /* glsl */`
+        const fragmentShader = /* glsl */`
 					precision highp float;
 					precision highp sampler3D;
 					uniform mat4 modelViewMatrix;
@@ -128,41 +130,45 @@
 						if ( color.a == 0.0 ) discard;
 					}
 				`;
-				const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-				const material = new THREE.RawShaderMaterial( {
-					glslVersion: THREE.GLSL3,
-					uniforms: {
-						map: { value: texture },
-						cameraPos: { value: new THREE.Vector3() },
-						threshold: { value: 0.6 },
-						steps: { value: 200 }
-					},
-					vertexShader,
-					fragmentShader,
-					side: THREE.BackSide,
-				} );
-				mesh = new THREE.Mesh( geometry, material );
-				scene.add( mesh );
-				//
-				const parameters = { threshold: 0.6, steps: 200 };
-				function update() {
-					material.uniforms.threshold.value = parameters.threshold;
-					material.uniforms.steps.value = parameters.steps;
-				}
-				const gui = new GUI();
-				gui.add( parameters, 'threshold', 0, 1, 0.01 ).onChange( update );
-				gui.add( parameters, 'steps', 0, 300, 1 ).onChange( update );
-				window.addEventListener( 'resize', onWindowResize );
-			}
-			function onWindowResize() {
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-				renderer.setSize( window.innerWidth, window.innerHeight );
-			}
-			function animate() {
-				mesh.material.uniforms.cameraPos.value.copy( camera.position );
-				renderer.render( scene, camera );
-			}
-		</script>
-	</body>
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.RawShaderMaterial({
+            glslVersion: THREE.GLSL3,
+            uniforms: {
+                map: {value: texture},
+                cameraPos: {value: new THREE.Vector3()},
+                threshold: {value: 0.6},
+                steps: {value: 200}
+            },
+            vertexShader,
+            fragmentShader,
+            side: THREE.BackSide,
+        });
+        mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+        //
+        const parameters = {threshold: 0.6, steps: 200};
+
+        function update() {
+            material.uniforms.threshold.value = parameters.threshold;
+            material.uniforms.steps.value = parameters.steps;
+        }
+
+        const gui = new GUI();
+        gui.add(parameters, 'threshold', 0, 1, 0.01).onChange(update);
+        gui.add(parameters, 'steps', 0, 300, 1).onChange(update);
+        window.addEventListener('resize', onWindowResize);
+    }
+
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function animate() {
+        mesh.material.uniforms.cameraPos.value.copy(camera.position);
+        renderer.render(scene, camera);
+    }
+</script>
+</body>
 </html>

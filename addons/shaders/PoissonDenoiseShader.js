@@ -1,7 +1,7 @@
 import {
-	Matrix4,
-	Vector2,
-	Vector3,
+    Matrix4,
+    Vector2,
+    Vector3,
 } from '../../src/Three.js';
 
 /**
@@ -11,33 +11,33 @@ import {
  */
 
 const PoissonDenoiseShader = {
-	name: 'PoissonDenoiseShader',
-	defines: {
-		'SAMPLES': 16,
-		'SAMPLE_VECTORS': generatePdSamplePointInitializer( 16, 2, 1 ),
-		'NORMAL_VECTOR_TYPE': 1,
-		'DEPTH_VALUE_SOURCE': 0,
-	},
-	uniforms: {
-		'tDiffuse': { value: null },
-		'tNormal': { value: null },
-		'tDepth': { value: null },
-		'tNoise': { value: null },
-		'resolution': { value: new Vector2() },
-		'cameraProjectionMatrixInverse': { value: new Matrix4() },
-		'lumaPhi': { value: 5. },
-		'depthPhi': { value: 5. },
-		'normalPhi': { value: 5. },
-		'radius': { value: 4. },
-		'index': { value: 0 }
-	},
-	vertexShader: /* glsl */`
+    name: 'PoissonDenoiseShader',
+    defines: {
+        'SAMPLES': 16,
+        'SAMPLE_VECTORS': generatePdSamplePointInitializer(16, 2, 1),
+        'NORMAL_VECTOR_TYPE': 1,
+        'DEPTH_VALUE_SOURCE': 0,
+    },
+    uniforms: {
+        'tDiffuse': {value: null},
+        'tNormal': {value: null},
+        'tDepth': {value: null},
+        'tNoise': {value: null},
+        'resolution': {value: new Vector2()},
+        'cameraProjectionMatrixInverse': {value: new Matrix4()},
+        'lumaPhi': {value: 5.},
+        'depthPhi': {value: 5.},
+        'normalPhi': {value: 5.},
+        'radius': {value: 4.},
+        'index': {value: 0}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		varying vec2 vUv;
 		uniform sampler2D tDiffuse;
 		uniform sampler2D tNormal;
@@ -167,30 +167,30 @@ const PoissonDenoiseShader = {
 
 };
 
-function generatePdSamplePointInitializer( samples, rings, radiusExponent ) {
-	const poissonDisk = generateDenoiseSamples(
-		samples,
-		rings,
-		radiusExponent,
-	);
-	let glslCode = 'vec3[SAMPLES](';
-	for ( let i = 0; i < samples; i ++ ) {
-		const sample = poissonDisk[ i ];
-		glslCode += `vec3(${sample.x}, ${sample.y}, ${sample.z})${( i < samples - 1 ) ? ',' : ')'}`;
-	}
-	return glslCode;
+function generatePdSamplePointInitializer(samples, rings, radiusExponent) {
+    const poissonDisk = generateDenoiseSamples(
+        samples,
+        rings,
+        radiusExponent,
+    );
+    let glslCode = 'vec3[SAMPLES](';
+    for (let i = 0; i < samples; i++) {
+        const sample = poissonDisk[i];
+        glslCode += `vec3(${sample.x}, ${sample.y}, ${sample.z})${(i < samples - 1) ? ',' : ')'}`;
+    }
+    return glslCode;
 
 }
 
-function generateDenoiseSamples( numSamples, numRings, radiusExponent ) {
-	const samples = [];
-	for ( let i = 0; i < numSamples; i ++ ) {
-		const angle = 2 * Math.PI * numRings * i / numSamples;
-		const radius = Math.pow( i / ( numSamples - 1 ), radiusExponent );
-		samples.push( new Vector3( Math.cos( angle ), Math.sin( angle ), radius ) );
-	}
-	return samples;
+function generateDenoiseSamples(numSamples, numRings, radiusExponent) {
+    const samples = [];
+    for (let i = 0; i < numSamples; i++) {
+        const angle = 2 * Math.PI * numRings * i / numSamples;
+        const radius = Math.pow(i / (numSamples - 1), radiusExponent);
+        samples.push(new Vector3(Math.cos(angle), Math.sin(angle), radius));
+    }
+    return samples;
 
 }
 
-export { generatePdSamplePointInitializer, PoissonDenoiseShader };
+export {generatePdSamplePointInitializer, PoissonDenoiseShader};

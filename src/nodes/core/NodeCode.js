@@ -5,35 +5,36 @@
  * for this purpose.
  */
 class NodeCode {
-	/**
-	 * Constructs a new code node.
-	 *
-	 * @param {String} name - The name of the code.
-	 * @param {String} type - The node type.
-	 * @param {String} [code=''] - The native shader code.
-	 */
-	constructor( name, type, code = '' ) {
-		/**
-		 * The name of the code.
-		 *
-		 * @type {String}
-		 */
-		this.name = name;
-		/**
-		 * The node type.
-		 *
-		 * @type {String}
-		 */
-		this.type = type;
-		/**
-		 * The native shader code.
-		 *
-		 * @type {String}
-		 * @default ''
-		 */
-		this.code = code;
-		Object.defineProperty( this, 'isNodeCode', { value: true } );
-	}
+
+    /**
+     * Constructs a new code node.
+     *
+     * @param {String} name - The name of the code.
+     * @param {String} type - The node type.
+     * @param {String} [code=''] - The native shader code.
+     */
+    constructor(name, type, code = '') {
+        /**
+         * The name of the code.
+         *
+         * @type {String}
+         */
+        this.name = name;
+        /**
+         * The node type.
+         *
+         * @type {String}
+         */
+        this.type = type;
+        /**
+         * The native shader code.
+         *
+         * @type {String}
+         * @default ''
+         */
+        this.code = code;
+        Object.defineProperty(this, 'isNodeCode', {value: true});
+    }
 
 }
 

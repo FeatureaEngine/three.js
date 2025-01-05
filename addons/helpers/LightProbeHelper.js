@@ -1,25 +1,22 @@
-import {
-	Mesh,
-	ShaderMaterial,
-	SphereGeometry
-} from '../../src/Three.js';
+import {Mesh, ShaderMaterial, SphereGeometry} from '../../src/Three.js';
 
 class LightProbeHelper extends Mesh {
-	constructor( lightProbe, size = 1 ) {
-		const material = new ShaderMaterial( {
-			type: 'LightProbeHelperMaterial',
-			uniforms: {
-				sh: { value: lightProbe.sh.coefficients }, // by reference
-				intensity: { value: lightProbe.intensity }
-			},
-			vertexShader: /* glsl */`
+
+    constructor(lightProbe, size = 1) {
+        const material = new ShaderMaterial({
+            type: 'LightProbeHelperMaterial',
+            uniforms: {
+                sh: {value: lightProbe.sh.coefficients}, // by reference
+                intensity: {value: lightProbe.intensity}
+            },
+            vertexShader: /* glsl */`
 				varying vec3 vNormal;
 				void main() {
 					vNormal = normalize( normalMatrix * normal );
 					gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 				}
 			`,
-			fragmentShader: /* glsl */`
+            fragmentShader: /* glsl */`
 				#define RECIPROCAL_PI 0.318309886
 				vec3 inverseTransformDirection( in vec3 normal, in mat4 matrix ) {
 					// matrix is assumed to be orthogonal
@@ -54,24 +51,26 @@ class LightProbeHelper extends Mesh {
 					gl_FragColor = linearToOutputTexel( vec4( outgoingLight, 1.0 ) );
 				}
 			`,
-		} );
-		const geometry = new SphereGeometry( 1, 32, 16 );
-		super( geometry, material );
-		this.lightProbe = lightProbe;
-		this.size = size;
-		this.type = 'LightProbeHelper';
-		this.onBeforeRender();
-	}
-	dispose() {
-		this.geometry.dispose();
-		this.material.dispose();
-	}
-	onBeforeRender() {
-		this.position.copy( this.lightProbe.position );
-		this.scale.set( 1, 1, 1 ).multiplyScalar( this.size );
-		this.material.uniforms.intensity.value = this.lightProbe.intensity;
-	}
+        });
+        const geometry = new SphereGeometry(1, 32, 16);
+        super(geometry, material);
+        this.lightProbe = lightProbe;
+        this.size = size;
+        this.type = 'LightProbeHelper';
+        this.onBeforeRender();
+    }
+
+    dispose() {
+        this.geometry.dispose();
+        this.material.dispose();
+    }
+
+    onBeforeRender() {
+        this.position.copy(this.lightProbe.position);
+        this.scale.set(1, 1, 1).multiplyScalar(this.size);
+        this.material.uniforms.intensity.value = this.lightProbe.intensity;
+    }
 
 }
 
-export { LightProbeHelper };
+export {LightProbeHelper};

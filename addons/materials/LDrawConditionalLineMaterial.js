@@ -1,28 +1,30 @@
 import {
-	Color,
-	ShaderMaterial,
-	UniformsLib,
-	UniformsUtils,
+    Color,
+    ShaderMaterial,
+    UniformsLib,
+    UniformsUtils,
 } from '../../src/Three.js';
 
 class LDrawConditionalLineMaterial extends ShaderMaterial {
-	static get type() {
-		return 'LDrawConditionalLineMaterial';
-	}
-	constructor( parameters ) {
-		super( {
-			uniforms: UniformsUtils.merge( [
-				UniformsLib.fog,
-				{
-					diffuse: {
-						value: new Color()
-					},
-					opacity: {
-						value: 1.0
-					}
-				}
-			] ),
-			vertexShader: /* glsl */`
+
+    static get type() {
+        return 'LDrawConditionalLineMaterial';
+    }
+
+    constructor(parameters) {
+        super({
+            uniforms: UniformsUtils.merge([
+                UniformsLib.fog,
+                {
+                    diffuse: {
+                        value: new Color()
+                    },
+                    opacity: {
+                        value: 1.0
+                    }
+                }
+            ]),
+            vertexShader: /* glsl */`
 				attribute vec3 control0;
 				attribute vec3 control1;
 				attribute vec3 direction;
@@ -61,7 +63,7 @@ class LDrawConditionalLineMaterial extends ShaderMaterial {
 					#include <fog_vertex>
 				}
 			`,
-			fragmentShader: /* glsl */`
+            fragmentShader: /* glsl */`
 			uniform vec3 diffuse;
 			uniform float opacity;
 			varying float discardFlag;
@@ -85,26 +87,26 @@ class LDrawConditionalLineMaterial extends ShaderMaterial {
 				#include <premultiplied_alpha_fragment>
 			}
 			`,
-		} );
-		Object.defineProperties( this, {
-			opacity: {
-				get: function () {
-					return this.uniforms.opacity.value;
-				},
-				set: function ( value ) {
-					this.uniforms.opacity.value = value;
-				}
-			},
-			color: {
-				get: function () {
-					return this.uniforms.diffuse.value;
-				}
-			}
-		} );
-		this.setValues( parameters );
-		this.isLDrawConditionalLineMaterial = true;
-	}
+        });
+        Object.defineProperties(this, {
+            opacity: {
+                get: function () {
+                    return this.uniforms.opacity.value;
+                },
+                set: function (value) {
+                    this.uniforms.opacity.value = value;
+                }
+            },
+            color: {
+                get: function () {
+                    return this.uniforms.diffuse.value;
+                }
+            }
+        });
+        this.setValues(parameters);
+        this.isLDrawConditionalLineMaterial = true;
+    }
 
 }
 
-export { LDrawConditionalLineMaterial };
+export {LDrawConditionalLineMaterial};

@@ -1,23 +1,23 @@
 const WaterRefractionShader = {
-	name: 'WaterRefractionShader',
-	uniforms: {
-		'color': {
-			value: null
-		},
-		'time': {
-			value: 0
-		},
-		'tDiffuse': {
-			value: null
-		},
-		'tDudv': {
-			value: null
-		},
-		'textureMatrix': {
-			value: null
-		}
-	},
-	vertexShader: /* glsl */`
+    name: 'WaterRefractionShader',
+    uniforms: {
+        'color': {
+            value: null
+        },
+        'time': {
+            value: 0
+        },
+        'tDiffuse': {
+            value: null
+        },
+        'tDudv': {
+            value: null
+        },
+        'textureMatrix': {
+            value: null
+        }
+    },
+    vertexShader: /* glsl */`
 		uniform mat4 textureMatrix;
 		varying vec2 vUv;
 		varying vec4 vUvRefraction;
@@ -26,7 +26,7 @@ const WaterRefractionShader = {
 			vUvRefraction = textureMatrix * vec4( position, 1.0 );
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform vec3 color;
 		uniform float time;
 		uniform sampler2D tDiffuse;
@@ -57,4 +57,4 @@ const WaterRefractionShader = {
 
 };
 
-export { WaterRefractionShader };
+export {WaterRefractionShader};

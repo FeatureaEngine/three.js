@@ -1,5 +1,5 @@
 import {
-	Vector2
+    Vector2
 } from '../../src/Three.js';
 
 /**
@@ -10,18 +10,18 @@ import {
  */
 
 const FreiChenShader = {
-	name: 'FreiChenShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'aspect': { value: new Vector2( 512, 512 ) }
-	},
-	vertexShader: /* glsl */`
+    name: 'FreiChenShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'aspect': {value: new Vector2(512, 512)}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform sampler2D tDiffuse;
 		varying vec2 vUv;
 		uniform vec2 aspect;
@@ -71,4 +71,4 @@ const FreiChenShader = {
 
 };
 
-export { FreiChenShader };
+export {FreiChenShader};

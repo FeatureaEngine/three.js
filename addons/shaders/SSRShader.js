@@ -1,45 +1,46 @@
 import {
-	Matrix4,
-	Vector2
+    Matrix4,
+    Vector2
 } from '../../src/Three.js';
+
 /**
  * References:
  * https://lettier.github.io/3d-game-shaders-for-beginners/screen-space-reflection.html
  */
 
 const SSRShader = {
-	name: 'SSRShader',
-	defines: {
-		MAX_STEP: 0,
-		PERSPECTIVE_CAMERA: true,
-		DISTANCE_ATTENUATION: true,
-		FRESNEL: true,
-		INFINITE_THICK: false,
-		SELECTIVE: false,
-	},
-	uniforms: {
-		'tDiffuse': { value: null },
-		'tNormal': { value: null },
-		'tMetalness': { value: null },
-		'tDepth': { value: null },
-		'cameraNear': { value: null },
-		'cameraFar': { value: null },
-		'resolution': { value: new Vector2() },
-		'cameraProjectionMatrix': { value: new Matrix4() },
-		'cameraInverseProjectionMatrix': { value: new Matrix4() },
-		'opacity': { value: .5 },
-		'maxDistance': { value: 180 },
-		'cameraRange': { value: 0 },
-		'thickness': { value: .018 }
-	},
-	vertexShader: /* glsl */`
+    name: 'SSRShader',
+    defines: {
+        MAX_STEP: 0,
+        PERSPECTIVE_CAMERA: true,
+        DISTANCE_ATTENUATION: true,
+        FRESNEL: true,
+        INFINITE_THICK: false,
+        SELECTIVE: false,
+    },
+    uniforms: {
+        'tDiffuse': {value: null},
+        'tNormal': {value: null},
+        'tMetalness': {value: null},
+        'tDepth': {value: null},
+        'cameraNear': {value: null},
+        'cameraFar': {value: null},
+        'resolution': {value: new Vector2()},
+        'cameraProjectionMatrix': {value: new Matrix4()},
+        'cameraInverseProjectionMatrix': {value: new Matrix4()},
+        'opacity': {value: .5},
+        'maxDistance': {value: 180},
+        'cameraRange': {value: 0},
+        'thickness': {value: .018}
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}
 	`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		// precision highp float;
 		precision highp sampler2D;
 		varying vec2 vUv;
@@ -206,23 +207,23 @@ const SSRShader = {
 };
 
 const SSRDepthShader = {
-	name: 'SSRDepthShader',
-	defines: {
-		'PERSPECTIVE_CAMERA': 1
-	},
-	uniforms: {
-		'tDepth': { value: null },
-		'cameraNear': { value: null },
-		'cameraFar': { value: null },
-	},
-	vertexShader: /* glsl */`
+    name: 'SSRDepthShader',
+    defines: {
+        'PERSPECTIVE_CAMERA': 1
+    },
+    uniforms: {
+        'tDepth': {value: null},
+        'cameraNear': {value: null},
+        'cameraFar': {value: null},
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}
 	`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform sampler2D tDepth;
 		uniform float cameraNear;
 		uniform float cameraFar;
@@ -248,20 +249,20 @@ const SSRDepthShader = {
 };
 
 const SSRBlurShader = {
-	name: 'SSRBlurShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'resolution': { value: new Vector2() },
-		'opacity': { value: .5 },
-	},
-	vertexShader: /* glsl */`
+    name: 'SSRBlurShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'resolution': {value: new Vector2()},
+        'opacity': {value: .5},
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}
 	`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform sampler2D tDiffuse;
 		uniform vec2 resolution;
 		varying vec2 vUv;
@@ -291,4 +292,4 @@ const SSRBlurShader = {
 
 };
 
-export { SSRShader, SSRDepthShader, SSRBlurShader };
+export {SSRShader, SSRDepthShader, SSRBlurShader};

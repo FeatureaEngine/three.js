@@ -1,14 +1,14 @@
-import { InterpolateDiscrete } from '../../constants.js';
-import { KeyframeTrack } from '../KeyframeTrack.js';
+import {InterpolateDiscrete} from '../../constants.js';
+import {KeyframeTrack} from '../KeyframeTrack.js';
 
 /**
  * A Track of Boolean keyframe values.
  */
 class BooleanKeyframeTrack extends KeyframeTrack {
-	// No interpolation parameter because only InterpolateDiscrete is valid.
-	constructor( name, times, values ) {
-		super( name, times, values );
-	}
+    // No interpolation parameter because only InterpolateDiscrete is valid.
+    constructor(name, times, values) {
+        super(name, times, values);
+    }
 
 }
 
@@ -22,4 +22,4 @@ BooleanKeyframeTrack.prototype.InterpolantFactoryMethodSmooth = undefined;
 // representation of a single value and a custom interpolant that
 // computes "firstValue ^ isOdd( index )".
 
-export { BooleanKeyframeTrack };
+export {BooleanKeyframeTrack};

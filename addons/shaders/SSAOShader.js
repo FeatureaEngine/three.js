@@ -1,6 +1,6 @@
 import {
-	Matrix4,
-	Vector2
+    Matrix4,
+    Vector2
 } from '../../src/Three.js';
 
 /**
@@ -11,32 +11,32 @@ import {
  */
 
 const SSAOShader = {
-	name: 'SSAOShader',
-	defines: {
-		'PERSPECTIVE_CAMERA': 1,
-		'KERNEL_SIZE': 32
-	},
-	uniforms: {
-		'tNormal': { value: null },
-		'tDepth': { value: null },
-		'tNoise': { value: null },
-		'kernel': { value: null },
-		'cameraNear': { value: null },
-		'cameraFar': { value: null },
-		'resolution': { value: new Vector2() },
-		'cameraProjectionMatrix': { value: new Matrix4() },
-		'cameraInverseProjectionMatrix': { value: new Matrix4() },
-		'kernelRadius': { value: 8 },
-		'minDistance': { value: 0.005 },
-		'maxDistance': { value: 0.05 },
-	},
-	vertexShader: /* glsl */`
+    name: 'SSAOShader',
+    defines: {
+        'PERSPECTIVE_CAMERA': 1,
+        'KERNEL_SIZE': 32
+    },
+    uniforms: {
+        'tNormal': {value: null},
+        'tDepth': {value: null},
+        'tNoise': {value: null},
+        'kernel': {value: null},
+        'cameraNear': {value: null},
+        'cameraFar': {value: null},
+        'resolution': {value: new Vector2()},
+        'cameraProjectionMatrix': {value: new Matrix4()},
+        'cameraInverseProjectionMatrix': {value: new Matrix4()},
+        'kernelRadius': {value: 8},
+        'minDistance': {value: 0.005},
+        'maxDistance': {value: 0.05},
+    },
+    vertexShader: /* glsl */`
 		varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader: /* glsl */`
+    fragmentShader: /* glsl */`
 		uniform highp sampler2D tNormal;
 		uniform highp sampler2D tDepth;
 		uniform sampler2D tNoise;
@@ -116,23 +116,23 @@ const SSAOShader = {
 };
 
 const SSAODepthShader = {
-	name: 'SSAODepthShader',
-	defines: {
-		'PERSPECTIVE_CAMERA': 1
-	},
-	uniforms: {
-		'tDepth': { value: null },
-		'cameraNear': { value: null },
-		'cameraFar': { value: null },
-	},
-	vertexShader:
-		`varying vec2 vUv;
+    name: 'SSAODepthShader',
+    defines: {
+        'PERSPECTIVE_CAMERA': 1
+    },
+    uniforms: {
+        'tDepth': {value: null},
+        'cameraNear': {value: null},
+        'cameraFar': {value: null},
+    },
+    vertexShader:
+        `varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader:
-		`uniform sampler2D tDepth;
+    fragmentShader:
+        `uniform sampler2D tDepth;
 		uniform float cameraNear;
 		uniform float cameraFar;
 		varying vec2 vUv;
@@ -154,19 +154,19 @@ const SSAODepthShader = {
 };
 
 const SSAOBlurShader = {
-	name: 'SSAOBlurShader',
-	uniforms: {
-		'tDiffuse': { value: null },
-		'resolution': { value: new Vector2() }
-	},
-	vertexShader:
-		`varying vec2 vUv;
+    name: 'SSAOBlurShader',
+    uniforms: {
+        'tDiffuse': {value: null},
+        'resolution': {value: new Vector2()}
+    },
+    vertexShader:
+        `varying vec2 vUv;
 		void main() {
 			vUv = uv;
 			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 		}`,
-	fragmentShader:
-		`uniform sampler2D tDiffuse;
+    fragmentShader:
+        `uniform sampler2D tDiffuse;
 		uniform vec2 resolution;
 		varying vec2 vUv;
 		void main() {
@@ -183,4 +183,4 @@ const SSAOBlurShader = {
 
 };
 
-export { SSAOShader, SSAODepthShader, SSAOBlurShader };
+export {SSAOShader, SSAODepthShader, SSAOBlurShader};

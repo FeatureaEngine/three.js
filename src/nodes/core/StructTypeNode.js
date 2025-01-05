@@ -7,47 +7,50 @@ import Node from './Node.js';
  * for this purpose.
  */
 class StructTypeNode extends Node {
-	static get type() {
-		return 'StructTypeNode';
-	}
-	/**
-	 * Constructs a new struct type node.
-	 *
-	 * @param {String} name - The name of the struct.
-	 * @param {Array<String>} types - An array of types.
-	 */
-	constructor( name, types ) {
-		super();
-		/**
-		 * The name of the struct.
-		 *
-		 * @type {String}
-		 */
-		this.name = name;
 
-		/**
-		 * An array of types.
-		 *
-		 * @type {Array<String>}
-		 */
-		this.types = types;
-		/**
-		 * This flag can be used for type testing.
-		 *
-		 * @type {Boolean}
-		 * @readonly
-		 * @default true
-		 */
-		this.isStructTypeNode = true;
-	}
-	/**
-	 * Returns the member types.
-	 *
-	 * @return {Array<String>} The types.
-	 */
-	getMemberTypes() {
-		return this.types;
-	}
+    static get type() {
+        return 'StructTypeNode';
+    }
+
+    /**
+     * Constructs a new struct type node.
+     *
+     * @param {String} name - The name of the struct.
+     * @param {Array<String>} types - An array of types.
+     */
+    constructor(name, types) {
+        super();
+        /**
+         * The name of the struct.
+         *
+         * @type {String}
+         */
+        this.name = name;
+
+        /**
+         * An array of types.
+         *
+         * @type {Array<String>}
+         */
+        this.types = types;
+        /**
+         * This flag can be used for type testing.
+         *
+         * @type {Boolean}
+         * @readonly
+         * @default true
+         */
+        this.isStructTypeNode = true;
+    }
+
+    /**
+     * Returns the member types.
+     *
+     * @return {Array<String>} The types.
+     */
+    getMemberTypes() {
+        return this.types;
+    }
 
 }
 

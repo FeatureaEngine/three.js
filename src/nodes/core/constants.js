@@ -7,8 +7,8 @@
  * @property {string} FRAGMENT The fragment shader stage.
  */
 export const NodeShaderStage = {
-	VERTEX: 'vertex',
-	FRAGMENT: 'fragment'
+    VERTEX: 'vertex',
+    FRAGMENT: 'fragment'
 };
 
 /**
@@ -20,10 +20,10 @@ export const NodeShaderStage = {
  * @property {string} OBJECT The update method is executed per {@link Object3D} that uses the node for rendering.
  */
 export const NodeUpdateType = {
-	NONE: 'none',
-	FRAME: 'frame',
-	RENDER: 'render',
-	OBJECT: 'object'
+    NONE: 'none',
+    FRAME: 'frame',
+    RENDER: 'render',
+    OBJECT: 'object'
 };
 
 /**
@@ -40,15 +40,15 @@ export const NodeUpdateType = {
  * @property {string} MATRIX4 4x4 matrix type.
  */
 export const NodeType = {
-	BOOLEAN: 'bool',
-	INTEGER: 'int',
-	FLOAT: 'float',
-	VECTOR2: 'vec2',
-	VECTOR3: 'vec3',
-	VECTOR4: 'vec4',
-	MATRIX2: 'mat2',
-	MATRIX3: 'mat3',
-	MATRIX4: 'mat4'
+    BOOLEAN: 'bool',
+    INTEGER: 'int',
+    FLOAT: 'float',
+    VECTOR2: 'vec2',
+    VECTOR3: 'vec3',
+    VECTOR4: 'vec4',
+    MATRIX2: 'mat2',
+    MATRIX3: 'mat3',
+    MATRIX4: 'mat4'
 };
 
 /**
@@ -59,12 +59,12 @@ export const NodeType = {
  * @property {string} READ_WRITE Read and write access.
  */
 export const NodeAccess = {
-	READ_ONLY: 'readOnly',
-	WRITE_ONLY: 'writeOnly',
-	READ_WRITE: 'readWrite',
+    READ_ONLY: 'readOnly',
+    WRITE_ONLY: 'writeOnly',
+    READ_WRITE: 'readWrite',
 };
 
-export const defaultShaderStages = [ 'fragment', 'vertex' ];
-export const defaultBuildStages = [ 'setup', 'analyze', 'generate' ];
-export const shaderStages = [ ...defaultShaderStages, 'compute' ];
-export const vectorComponents = [ 'x', 'y', 'z', 'w' ];
+export const defaultShaderStages = ['fragment', 'vertex'];
+export const defaultBuildStages = ['setup', 'analyze', 'generate'];
+export const shaderStages = [...defaultShaderStages, 'compute'];
+export const vectorComponents = ['x', 'y', 'z', 'w'];

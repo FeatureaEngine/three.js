@@ -1,7 +1,7 @@
 import NodeMaterial from './NodeMaterial.js';
 import ToonLightingModel from '../../nodes/functions/ToonLightingModel.js';
 
-import { MeshToonMaterial } from '../MeshToonMaterial.js';
+import {MeshToonMaterial} from '../MeshToonMaterial.js';
 
 const _defaultValues = /*@__PURE__*/ new MeshToonMaterial();
 
@@ -11,42 +11,45 @@ const _defaultValues = /*@__PURE__*/ new MeshToonMaterial();
  * @augments NodeMaterial
  */
 class MeshToonNodeMaterial extends NodeMaterial {
-	static get type() {
-		return 'MeshToonNodeMaterial';
-	}
-	/**
-	 * Constructs a new mesh toon node material.
-	 *
-	 * @param {Object?} parameters - The configuration parameter.
-	 */
-	constructor( parameters ) {
-		super();
-		/**
-		 * This flag can be used for type testing.
-		 *
-		 * @type {Boolean}
-		 * @readonly
-		 * @default true
-		 */
-		this.isMeshToonNodeMaterial = true;
-		/**
-		 * Set to `true` because toon materials react on lights.
-		 *
-		 * @type {Boolean}
-		 * @default true
-		 */
-		this.lights = true;
-		this.setDefaultValues( _defaultValues );
-		this.setValues( parameters );
-	}
-	/**
-	 * Setups the lighting model.
-	 *
-	 * @return {ToonLightingModel} The lighting model.
-	 */
-	setupLightingModel( /*builder*/ ) {
-		return new ToonLightingModel();
-	}
+
+    static get type() {
+        return 'MeshToonNodeMaterial';
+    }
+
+    /**
+     * Constructs a new mesh toon node material.
+     *
+     * @param {Object?} parameters - The configuration parameter.
+     */
+    constructor(parameters) {
+        super();
+        /**
+         * This flag can be used for type testing.
+         *
+         * @type {Boolean}
+         * @readonly
+         * @default true
+         */
+        this.isMeshToonNodeMaterial = true;
+        /**
+         * Set to `true` because toon materials react on lights.
+         *
+         * @type {Boolean}
+         * @default true
+         */
+        this.lights = true;
+        this.setDefaultValues(_defaultValues);
+        this.setValues(parameters);
+    }
+
+    /**
+     * Setups the lighting model.
+     *
+     * @return {ToonLightingModel} The lighting model.
+     */
+    setupLightingModel( /*builder*/) {
+        return new ToonLightingModel();
+    }
 
 }
 
