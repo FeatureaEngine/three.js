@@ -145,7 +145,7 @@
 
 			async function initTextures() {
 
-				const path = 'textures/wide_gamut/logo_{colorSpace}.png';
+				const path = '../res/textures/wide_gamut/logo_{colorSpace}.png';
 
 				textureL = await loader.loadAsync( path.replace( '{colorSpace}', 'srgb' ) );
 				textureR = await loader.loadAsync( path.replace( '{colorSpace}', 'p3' ) );

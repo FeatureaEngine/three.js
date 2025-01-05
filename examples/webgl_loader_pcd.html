@@ -48,7 +48,7 @@
 				//scene.add( new THREE.AxesHelper( 1 ) );
 
 				const loader = new PCDLoader();
-				loader.load( '/models/pcd/binary/Zaghetto.pcd', function ( points ) {
+				loader.load( '../res/models/pcd/binary/Zaghetto.pcd', function ( points ) {
 
 					points.geometry.center();
 					points.geometry.rotateX( Math.PI );

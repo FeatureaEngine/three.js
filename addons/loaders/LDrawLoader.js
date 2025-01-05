@@ -595,7 +595,7 @@ class LDrawParsedCache {
 					break;
 
 				case FILE_LOCATION_TRY_MODELS:
-					subobjectURL = 'models/' + subobjectURL;
+					subobjectURL = '../res/models/' + subobjectURL;
 					locationState = locationState + 1;
 					break;
 

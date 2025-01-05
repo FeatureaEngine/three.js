@@ -49,8 +49,8 @@
 				controls.addEventListener( 'change', render );
 				controls.update();
 
-				const rgbeLoader = new RGBELoader().setPath( 'textures/equirectangular/' );
-				const gltfLoader = new GLTFLoader().setPath( '..res/models/gltf/' );
+				const rgbeLoader = new RGBELoader().setPath( '../res/textures/equirectangular/' );
+				const gltfLoader = new GLTFLoader().setPath( '../res/models/gltf/' );
 
 				const [ texture, gltf ] = await Promise.all( [
 					rgbeLoader.loadAsync( 'royal_esplanade_1k.hdr' ),

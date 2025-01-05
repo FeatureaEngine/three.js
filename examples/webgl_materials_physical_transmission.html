@@ -42,8 +42,8 @@
 			let mesh;
 
 			const hdrEquirect = new RGBELoader()
-				.setPath( 'textures/equirectangular/' )
-				.load( '../res/royal_esplanade_1k.hdr', function () {
+				.setPath( '../res/textures/equirectangular/' )
+				.load( 'royal_esplanade_1k.hdr', function () {
 
 					hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;
 

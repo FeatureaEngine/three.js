@@ -42,7 +42,7 @@
 				camera.position.z = 13;
 
 				//cubemap
-				const path = 'textures/cube/SwedishRoyalCastle/';
+				const path = '../res/textures/cube/SwedishRoyalCastle/';
 				const format = '.jpg';
 				const urls = [
 					path + 'px' + format, path + 'nx' + format,
@@ -72,8 +72,8 @@
 				//models
 				const objLoader = new OBJLoader();
 
-				objLoader.setPath( '..res/models/obj/walt/' );
-				objLoader.load( '../res/WaltHead.obj', function ( object ) {
+				objLoader.setPath( '../res/models/obj/walt/' );
+				objLoader.load( 'WaltHead.obj', function ( object ) {
 
 					const head = object.children[ 0 ];
 					head.scale.setScalar( 0.1 );

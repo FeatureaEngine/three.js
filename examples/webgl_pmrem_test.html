@@ -115,7 +115,7 @@
 				let radianceMap = null;
 				new RGBELoader()
 					// .setDataType( THREE.FloatType )
-					.setPath( 'textures/equirectangular/' )
+					.setPath( '../res/textures/equirectangular/' )
 					.load( 'spot1Lux.hdr', function ( texture ) {
 
 						radianceMap = pmremGenerator.fromEquirectangular( texture ).texture;

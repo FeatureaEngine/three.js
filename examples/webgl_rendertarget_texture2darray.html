@@ -179,7 +179,7 @@
 
 				new THREE.FileLoader()
 					.setResponseType( 'arraybuffer' )
-					.load( 'textures/3d/head256x256x109.zip', function ( data ) {
+					.load( '../res/textures/3d/head256x256x109.zip', function ( data ) {
 
 						const zip = unzipSync( new Uint8Array( data ) );
 						const array = new Uint8Array( zip[ 'head256x256x109' ].buffer );

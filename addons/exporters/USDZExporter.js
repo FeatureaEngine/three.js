@@ -123,7 +123,7 @@ class USDZExporter {
 			const canvas = imageToCanvas( texture.image, texture.flipY, options.maxTextureSize );
 			const blob = await new Promise( resolve => canvas.toBlob( resolve, 'image/png', 1 ) );
 
-			files[ `textures/Texture_${ id }.png` ] = new Uint8Array( await blob.arrayBuffer() );
+			files[ `../res/textures/Texture_${ id }.png` ] = new Uint8Array( await blob.arrayBuffer() );
 
 		}
 

@@ -67,11 +67,11 @@
 		if ( formats.pvrtc ) {
 
 			material1 = new THREE.MeshBasicMaterial( {
-				map: loader.load( 'textures/compressed/disturb_PVR2bpp.ktx' )
+				map: loader.load( '../res/textures/compressed/disturb_PVR2bpp.ktx' )
 			} );
 			material1.map.colorSpace = THREE.SRGBColorSpace;
 			material2 = new THREE.MeshBasicMaterial( {
-				map: loader.load( 'textures/compressed/lensflare_PVR4bpp.ktx' ),
+				map: loader.load( '../res/textures/compressed/lensflare_PVR4bpp.ktx' ),
 				depthTest: false,
 				transparent: true,
 				side: THREE.DoubleSide
@@ -86,11 +86,11 @@
 		if ( formats.s3tc ) {
 
 			material1 = new THREE.MeshBasicMaterial( {
-				map: loader.load( 'textures/compressed/disturb_BC1.ktx' )
+				map: loader.load( '../res/textures/compressed/disturb_BC1.ktx' )
 			} );
 			material1.map.colorSpace = THREE.SRGBColorSpace;
 			material2 = new THREE.MeshBasicMaterial( {
-				map: loader.load( 'textures/compressed/lensflare_BC3.ktx' ),
+				map: loader.load( '../res/textures/compressed/lensflare_BC3.ktx' ),
 				depthTest: false,
 				transparent: true,
 				side: THREE.DoubleSide
@@ -105,7 +105,7 @@
 		if ( formats.etc1 ) {
 
 			material1 = new THREE.MeshBasicMaterial( {
-				map: loader.load( 'textures/compressed/disturb_ETC1.ktx' )
+				map: loader.load( '../res/textures/compressed/disturb_ETC1.ktx' )
 			} );
 
 			meshes.push( new THREE.Mesh( geometry, material1 ) );
@@ -115,11 +115,11 @@
 		if ( formats.astc ) {
 
 			material1 = new THREE.MeshBasicMaterial( {
-				map: loader.load( 'textures/compressed/disturb_ASTC4x4.ktx' )
+				map: loader.load( '../res/textures/compressed/disturb_ASTC4x4.ktx' )
 			} );
 			material1.map.colorSpace = THREE.SRGBColorSpace;
 			material2 = new THREE.MeshBasicMaterial( {
-				map: loader.load( 'textures/compressed/lensflare_ASTC8x8.ktx' ),
+				map: loader.load( '../res/textures/compressed/lensflare_ASTC8x8.ktx' ),
 				depthTest: false,
 				transparent: true,
 				side: THREE.DoubleSide

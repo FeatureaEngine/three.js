@@ -135,7 +135,7 @@
 
 			// environment map
 
-			const path = 'textures/cube/SwedishRoyalCastle/';
+			const path = '../res/textures/cube/SwedishRoyalCastle/';
 			const format = '.jpg';
 			const urls = [
 				path + 'px' + format, path + 'nx' + format,
@@ -156,7 +156,7 @@
 			const hatchingMaterial = createShaderMaterial( ToonShaderHatching, light, ambientLight );
 			const dottedMaterial = createShaderMaterial( ToonShaderDotted, light, ambientLight );
 
-			const texture = new THREE.TextureLoader().load( 'textures/uv_grid_opengl.jpg' );
+			const texture = new THREE.TextureLoader().load( '../res/textures/uv_grid_opengl.jpg' );
 			texture.wrapS = THREE.RepeatWrapping;
 			texture.wrapT = THREE.RepeatWrapping;
 			texture.colorSpace = THREE.SRGBColorSpace;

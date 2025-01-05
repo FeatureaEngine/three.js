@@ -57,7 +57,7 @@
 				document.body.appendChild( renderer.domElement );
 
 				const loader = new AMFLoader();
-				loader.load( '/models/amf/rook.amf', function ( amfobject ) {
+				loader.load( '../res/models/amf/rook.amf', function ( amfobject ) {
 
 					scene.add( amfobject );
 					render();

@@ -48,7 +48,7 @@
 				scene.add( ground );
 
 				const textureLoader = new THREE.TextureLoader();
-				textureLoader.load( 'textures/floors/FloorsCheckerboard_S_Diffuse.jpg', function ( map ) {
+				textureLoader.load( '../res/textures/floors/FloorsCheckerboard_S_Diffuse.jpg', function ( map ) {
 
 					map.wrapS = THREE.RepeatWrapping;
 					map.wrapT = THREE.RepeatWrapping;
@@ -63,7 +63,7 @@
 				// water
 
 				const waterGeometry = new THREE.PlaneGeometry( 20, 20 );
-				const flowMap = textureLoader.load( 'textures/water/Water_1_M_Flow.jpg' );
+				const flowMap = textureLoader.load( '../res/textures/water/Water_1_M_Flow.jpg' );
 
 				water = new Water( waterGeometry, {
 					scale: 2,

@@ -42,10 +42,10 @@
 				scene = new THREE.Scene();
 
 				const rgbeLoader = new RGBELoader()
-					.setPath( 'textures/equirectangular/' );
+					.setPath( '../res/textures/equirectangular/' );
 
 				const usdzLoader = new USDZLoader()
-					.setPath( '..res/models/usdz/' );
+					.setPath( '../res/models/usdz/' );
 
 				const [ texture, model ] = await Promise.all( [
 					rgbeLoader.loadAsync( 'venice_sunset_1k.hdr' ),

@@ -47,7 +47,7 @@
 				dracoLoader.setDecoderConfig( { type: 'js' } );
 				const loader = new GLTFLoader();
 				loader.setDRACOLoader( dracoLoader );
-				loader.setPath( '..res/models/gltf/' );
+				loader.setPath( '../res/models/gltf/' );
 
 				clock = new THREE.Clock();
 				const container = document.createElement( 'div' );
@@ -93,7 +93,7 @@
 
 				//
 
-				loader.load( '../res/LittlestTokyo.glb', ( gltf ) => {
+				loader.load( 'LittlestTokyo.glb', ( gltf ) => {
 
 					const model = gltf.scene;
 					model.position.set( 1, 1, 0 );

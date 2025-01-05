@@ -47,7 +47,7 @@
 
 				camera = new THREE.OrthographicCamera( - aspect, aspect, 1, - 1, 0, 1 );
 
-				new RGBMLoader().setMaxRange( 16 ).load( 'textures/memorial.png', function ( texture ) {
+				new RGBMLoader().setMaxRange( 16 ).load( '../res/textures/memorial.png', function ( texture ) {
 
 					const material = new THREE.MeshBasicMaterial( { map: texture } );
 

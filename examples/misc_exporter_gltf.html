@@ -262,7 +262,7 @@
 				// ---------------------------------------------------------------------
 				// Hierarchy
 				// ---------------------------------------------------------------------
-				const mapWood = new THREE.TextureLoader().load( 'textures/hardwood2_diffuse.jpg' );
+				const mapWood = new THREE.TextureLoader().load( '../res/textures/hardwood2_diffuse.jpg' );
 				material = new THREE.MeshStandardMaterial( { map: mapWood, side: THREE.DoubleSide } );
 
 				object = new THREE.Mesh( new THREE.BoxGeometry( 40, 100, 100 ), material );
@@ -480,7 +480,7 @@
 					.setTranscoderPath( '../libs/basis/' )
 					.detectSupport( renderer );
 
-				const gltfLoader = new GLTFLoader().setPath( '..res/models/gltf/' );
+				const gltfLoader = new GLTFLoader().setPath( '../res/models/gltf/' );
 				gltfLoader.setKTX2Loader( ktx2Loader );
 				gltfLoader.setMeshoptDecoder( MeshoptDecoder );
 				gltfLoader.load( 'coffeemat.glb', function ( gltf ) {

@@ -26,7 +26,7 @@ import {
 	TextureLoader
 } from '../../src/Three.js';
 
-import { EXRLoader } from 'EXRLoader.js';
+import { EXRLoader } from './EXRLoader.js';
 
 const _taskCache = new WeakMap();
 

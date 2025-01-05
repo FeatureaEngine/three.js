@@ -43,9 +43,9 @@
 			const intersects = [];
 
 			const textureLoader = new THREE.TextureLoader();
-			const decalDiffuse = textureLoader.load( 'textures/decal/decal-diffuse.png' );
+			const decalDiffuse = textureLoader.load( '../res/textures/decal/decal-diffuse.png' );
 			decalDiffuse.colorSpace = THREE.SRGBColorSpace;
-			const decalNormal = textureLoader.load( 'textures/decal/decal-normal.jpg' );
+			const decalNormal = textureLoader.load( '../res/textures/decal/decal-normal.jpg' );
 
 			const decalMaterial = new THREE.MeshPhongMaterial( {
 				specular: 0x444444,

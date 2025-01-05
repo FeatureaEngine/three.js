@@ -163,7 +163,7 @@
 
 				cubeTexturePassP = null;
 
-				const ldrUrls = genCubeUrls( 'textures/cube/pisa/', '.png' );
+				const ldrUrls = genCubeUrls( '../res/textures/cube/pisa/', '.png' );
 				new THREE.CubeTextureLoader().load( ldrUrls, function ( ldrCubeMap ) {
 
 					cubeTexturePassP = new CubeTexturePass( cameraP, ldrCubeMap );

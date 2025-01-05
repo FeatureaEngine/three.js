@@ -57,7 +57,7 @@
 				document.body.appendChild( stats.dom );
 
 				new RGBELoader()
-					.setPath( 'textures/equirectangular/' )
+					.setPath( '../res/textures/equirectangular/' )
 					.load( 'royal_esplanade_1k.hdr', function ( texture ) {
 
 						texture.mapping = THREE.EquirectangularReflectionMapping;
@@ -66,7 +66,7 @@
 
 						// model
 
-						const loader = new GLTFLoader().setPath( '..res/models/gltf/' );
+						const loader = new GLTFLoader().setPath( '../res/models/gltf/' );
 						loader.load( 'dungeon_warkarma.glb', async function ( gltf ) {
 
 							const model = gltf.scene;

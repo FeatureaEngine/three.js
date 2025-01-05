@@ -55,7 +55,7 @@
 				scene = new THREE.Scene();
 
 				const hdrLoader = new RGBELoader();
-				const envMap = await hdrLoader.loadAsync( 'textures/equirectangular/blouberg_sunrise_2_1k.hdr' );
+				const envMap = await hdrLoader.loadAsync( '../res/textures/equirectangular/blouberg_sunrise_2_1k.hdr' );
 				envMap.mapping = THREE.EquirectangularReflectionMapping;
 
 				skybox = new GroundedSkybox( envMap, params.height, params.radius );

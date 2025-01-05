@@ -96,9 +96,9 @@
 				controls.update();
 
 				const rgbeLoader = new RGBELoader()
-					.setPath( 'textures/equirectangular/' );
+					.setPath( '../res/textures/equirectangular/' );
 
-				const gltfLoader = new GLTFLoader().setPath( '..res/models/gltf/DamagedHelmet/glTF/' );
+				const gltfLoader = new GLTFLoader().setPath( '../res/models/gltf/DamagedHelmet/glTF/' );
 
 				const [ texture, gltf ] = await Promise.all( [
 					rgbeLoader.loadAsync( 'venice_sunset_1k.hdr' ),

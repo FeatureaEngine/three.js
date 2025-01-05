@@ -18,7 +18,7 @@ function init( canvas, width, height, pixelRatio, path ) {
 
 	const loader = new THREE.ImageBitmapLoader().setPath( path );
 	loader.setOptions( { imageOrientation: 'flipY' } );
-	loader.load( 'textures/matcaps/matcap-porcelain-white.jpg', function ( imageBitmap ) {
+	loader.load( '../res/textures/matcaps/matcap-porcelain-white.jpg', function ( imageBitmap ) {
 
 		const texture = new THREE.CanvasTexture( imageBitmap );
 

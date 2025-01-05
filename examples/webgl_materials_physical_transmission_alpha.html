@@ -83,13 +83,13 @@
 			let mesh, material;
 
 			const hdrEquirect = new RGBELoader()
-				.setPath( 'textures/equirectangular/' )
+				.setPath( '../res/textures/equirectangular/' )
 				.load( 'royal_esplanade_1k.hdr', function () {
 
 					hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;
 
 					new GLTFLoader()
-						.setPath( '..res/models/gltf/' )
+						.setPath( '../res/models/gltf/' )
 						.load( 'DragonAttenuation.glb', function ( gltf ) {
 
 							gltf.scene.traverse( function ( child ) {

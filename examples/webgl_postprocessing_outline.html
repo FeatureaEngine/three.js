@@ -243,7 +243,7 @@
 				composer.addPass( outlinePass );
 
 				const textureLoader = new THREE.TextureLoader();
-				textureLoader.load( 'textures/tri_pattern.jpg', function ( texture ) {
+				textureLoader.load( '../res/textures/tri_pattern.jpg', function ( texture ) {
 
 					outlinePass.patternTexture = texture;
 					texture.wrapS = THREE.RepeatWrapping;

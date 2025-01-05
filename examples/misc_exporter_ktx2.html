@@ -55,7 +55,7 @@
 				const pmremGenerator = new THREE.PMREMGenerator( renderer );
 				pmremGenerator.compileEquirectangularShader();
 
-				rgbeloader.load( 'textures/equirectangular/venice_sunset_1k.hdr', function ( texture ) {
+				rgbeloader.load( '../res/textures/equirectangular/venice_sunset_1k.hdr', function ( texture ) {
 
 					texture.mapping = THREE.EquirectangularReflectionMapping;
 

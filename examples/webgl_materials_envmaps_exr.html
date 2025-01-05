@@ -84,7 +84,7 @@
 
 				};
 
-				new EXRLoader().load( 'textures/piz_compressed.exr', function ( texture ) {
+				new EXRLoader().load( '../res/textures/piz_compressed.exr', function ( texture ) {
 
 					texture.mapping = THREE.EquirectangularReflectionMapping;
 
@@ -93,7 +93,7 @@
 
 				} );
 
-				new THREE.TextureLoader().load( 'textures/equirectangular.png', function ( texture ) {
+				new THREE.TextureLoader().load( '../res/textures/equirectangular.png', function ( texture ) {
 
 					texture.mapping = THREE.EquirectangularReflectionMapping;
 					texture.colorSpace = THREE.SRGBColorSpace;

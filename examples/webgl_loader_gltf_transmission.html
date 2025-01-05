@@ -43,8 +43,8 @@
 				scene = new THREE.Scene();
 
 				new RGBELoader()
-					.setPath( 'textures/equirectangular/' )
-					.load( '../res/royal_esplanade_1k.hdr', function ( texture ) {
+					.setPath( '../res/textures/equirectangular/' )
+					.load( 'royal_esplanade_1k.hdr', function ( texture ) {
 
 						texture.mapping = THREE.EquirectangularReflectionMapping;
 
@@ -56,9 +56,9 @@
 						// model
 
 						new GLTFLoader()
-							.setPath( '..res/models/gltf/' )
+							.setPath( '../res/models/gltf/' )
 							.setDRACOLoader( new DRACOLoader().setDecoderPath( '../libs/draco/gltf/' ) )
-							.load( '../res/IridescentDishWithOlives.glb', function ( gltf ) {
+							.load( 'IridescentDishWithOlives.glb', function ( gltf ) {
 
 								mixer = new THREE.AnimationMixer( gltf.scene );
 								mixer.clipAction( gltf.animations[ 0 ] ).play();

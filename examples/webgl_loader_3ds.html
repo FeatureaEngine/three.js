@@ -45,7 +45,7 @@
 				const normal = new THREE.TextureLoader().load( '../res/models/3ds/portalgun/textures/normal.jpg' );
 
 				const loader = new TDSLoader( );
-				loader.setResourcePath( '..res/models/3ds/portalgun/textures/' );
+				loader.setResourcePath( '../res/models/3ds/portalgun/textures/' );
 				loader.load( '../res/models/3ds/portalgun/portalgun.3ds', function ( object ) {
 
 					object.traverse( function ( child ) {

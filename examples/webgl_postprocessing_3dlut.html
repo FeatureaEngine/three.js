@@ -68,8 +68,8 @@
 				scene = new THREE.Scene();
 
 				new RGBELoader()
-					.setPath( 'textures/equirectangular/' )
-					.load( '../res/royal_esplanade_1k.hdr', function ( texture ) {
+					.setPath( '../res/textures/equirectangular/' )
+					.load( 'royal_esplanade_1k.hdr', function ( texture ) {
 
 						texture.mapping = THREE.EquirectangularReflectionMapping;
 
@@ -78,8 +78,8 @@
 
 						// model
 
-						const loader = new GLTFLoader().setPath( '..res/models/gltf/DamagedHelmet/glTF/' );
-						loader.load( '../res/DamagedHelmet.gltf', function ( gltf ) {
+						const loader = new GLTFLoader().setPath( '../res/models/gltf/DamagedHelmet/glTF/' );
+						loader.load( 'DamagedHelmet.gltf', function ( gltf ) {
 
 							scene.add( gltf.scene );
 
@@ -101,7 +101,7 @@
 					} else if ( /\LUT$/i.test( name ) ) {
 			
 						new LUTImageLoader()
-							.load( `luts/${name}.png`, function ( result ) {
+							.load( `../res/luts/${name}.png`, function ( result ) {
 
 								lutMap[ name ] = result;
 

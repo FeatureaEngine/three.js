@@ -68,7 +68,7 @@
 				// load dudv map for distortion effect
 
 				const loader = new THREE.TextureLoader();
-				const dudvMap = await loader.loadAsync( 'textures/waterdudv.jpg' );
+				const dudvMap = await loader.loadAsync( '../res/textures/waterdudv.jpg' );
 
 				dudvMap.wrapS = dudvMap.wrapT = THREE.RepeatWrapping;
 				refractor.material.uniforms.tDudv.value = dudvMap;

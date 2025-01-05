@@ -43,13 +43,13 @@
 
 				scene = new THREE.Scene();
 				scene.background = new THREE.CubeTextureLoader()
-					.setPath( 'textures/cube/Park3Med/' )
+					.setPath( '../res/textures/cube/Park3Med/' )
 					.load( [ 'px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg' ] );
 
 				const geometry = new THREE.SphereGeometry( 100, 32, 16 );
 
 				const textureCube = new THREE.CubeTextureLoader()
-					.setPath( 'textures/cube/Park3Med/' )
+					.setPath( '../res/textures/cube/Park3Med/' )
 					.load( [ 'px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg' ] );
 				textureCube.mapping = THREE.CubeRefractionMapping;
 

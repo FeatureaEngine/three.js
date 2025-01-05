@@ -93,7 +93,6 @@
 		"webgl_loader_gltf_transmission",
 		"webgl_loader_gltf_variants",
 		"webgl_loader_gltf_anisotropy",
-		"webgl_loader_ifc",
 		"webgl_loader_imagebitmap",
 		"webgl_loader_kmz",
 		"webgl_loader_ldraw",
@@ -121,7 +120,6 @@
 		"webgl_loader_texture_tga",
 		"webgl_loader_texture_tiff",
 		"webgl_loader_ttf",
-		"webgl_loader_usdz",
 		"webgl_loader_vox",
 		"webgl_loader_vrml",
 		"webgl_loader_vtk",
@@ -191,7 +189,6 @@
 		"webgl_raycaster_sprite",
 		"webgl_raycaster_texture",
 		"webgl_read_float_buffer",
-		"webgl_renderer_pathtracer",
 		"webgl_refraction",
 		"webgl_rtt",
 		"webgl_shader",
@@ -302,7 +299,6 @@
 		"misc_boxselection",
 		"misc_controls_arcball",
 		"misc_controls_drag",
-		"misc_controls_fly",
 		"misc_controls_map",
 		"misc_controls_orbit",
 		"misc_controls_pointerlock",
@@ -316,8 +312,7 @@
 		"misc_exporter_usdz",
 		"misc_exporter_exr",
 		"misc_exporter_ktx2",
-		"misc_lookat",
-		"misc_raycaster_helper"
+		"misc_lookat"
 	],
 	"svg": [
 		"svg_lines",
