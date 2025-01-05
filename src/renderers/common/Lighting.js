@@ -1,7 +1,7 @@
 import {LightsNode} from '../../nodes/Nodes.js';
 import ChainMap from './ChainMap.js';
 
-const _defaultLights = /*@__PURE__*/ new LightsNode();
+const _defaultLights = new LightsNode();
 const _chainKeys = [];
 
 /**

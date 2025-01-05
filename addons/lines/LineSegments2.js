@@ -1,6 +1,6 @@
 import {Box3, InstancedInterleavedBuffer, InterleavedBufferAttribute, Line3, MathUtils, Matrix4, Mesh, Sphere, Vector3, Vector4} from '../../libs/three/Three.js';
-import {LineSegmentsGeometry} from '../lines/LineSegmentsGeometry.js';
-import {LineMaterial} from '../lines/LineMaterial.js';
+import {LineSegmentsGeometry} from './LineSegmentsGeometry';
+import {LineMaterial} from './LineMaterial';
 
 const _viewport = new Vector4();
 

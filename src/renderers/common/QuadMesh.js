@@ -3,7 +3,7 @@ import {Float32BufferAttribute} from '../../core/BufferAttribute.js';
 import {Mesh} from '../../objects/Mesh.js';
 import {OrthographicCamera} from '../../cameras/OrthographicCamera.js';
 
-const _camera = /*@__PURE__*/ new OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const _camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
 /**
  * The purpose of this special geometry is to fill the entire viewport with a single triangle.
@@ -29,7 +29,7 @@ class QuadGeometry extends BufferGeometry {
 
 }
 
-const _geometry = /*@__PURE__*/ new QuadGeometry();
+const _geometry = new QuadGeometry();
 
 
 /**

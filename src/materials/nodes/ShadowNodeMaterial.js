@@ -3,7 +3,7 @@ import ShadowMaskModel from '../../nodes/functions/ShadowMaskModel.js';
 
 import {ShadowMaterial} from '../ShadowMaterial.js';
 
-const _defaultValues = /*@__PURE__*/ new ShadowMaterial();
+const _defaultValues = new ShadowMaterial();
 
 /**
  * Node material version of `ShadowMaterial`.

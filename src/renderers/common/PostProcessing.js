@@ -3,8 +3,8 @@ import {vec4, renderOutput} from '../../nodes/TSL.js';
 import {LinearSRGBColorSpace, NoToneMapping} from '../../constants.js';
 import QuadMesh from '../../renderers/common/QuadMesh.js';
 
-const _material = /*@__PURE__*/ new NodeMaterial();
-const _quadMesh = /*@__PURE__*/ new QuadMesh(_material);
+const _material = new NodeMaterial();
+const _quadMesh = new QuadMesh(_material);
 
 /**
  * This module is responsible to manage the post processing setups in apps.

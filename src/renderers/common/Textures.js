@@ -14,7 +14,7 @@ import {
     UnsignedByteType
 } from '../../constants.js';
 
-const _size = /*@__PURE__*/ new Vector3();
+const _size = new Vector3();
 
 /**
  * This module manages the textures of the renderer.

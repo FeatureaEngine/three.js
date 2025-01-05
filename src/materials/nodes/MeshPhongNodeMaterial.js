@@ -7,7 +7,7 @@ import PhongLightingModel from '../../nodes/functions/PhongLightingModel.js';
 
 import {MeshPhongMaterial} from '../MeshPhongMaterial.js';
 
-const _defaultValues = /*@__PURE__*/ new MeshPhongMaterial();
+const _defaultValues = new MeshPhongMaterial();
 
 /**
  * Node material version of `MeshPhongMaterial`.

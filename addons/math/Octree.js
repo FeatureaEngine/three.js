@@ -1,5 +1,5 @@
 import {Box3, Layers, Line3, Plane, Sphere, Triangle, Vector3} from '../../libs/three/Three.js';
-import {Capsule} from '../math/Capsule.js';
+import {Capsule} from './Capsule';
 
 
 const _v1 = new Vector3();

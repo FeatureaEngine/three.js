@@ -16,8 +16,8 @@ import {FloatType} from '../../constants.js';
 
 /** @module MorphNode **/
 
-const _morphTextures = /*@__PURE__*/ new WeakMap();
-const _morphVec4 = /*@__PURE__*/ new Vector4();
+const _morphTextures = new WeakMap();
+const _morphVec4 = new Vector4();
 
 const getMorph = /*@__PURE__*/ Fn(({bufferMap, influence, stride, width, depth, offset}) => {
     const texelIndex = int(vertexIndex).mul(stride).add(offset);

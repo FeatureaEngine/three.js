@@ -4,8 +4,8 @@ import {Scene} from '../../scenes/Scene.js';
 import {Camera} from '../../cameras/Camera.js';
 
 const _chainKeys = [];
-const _defaultScene = /*@__PURE__*/ new Scene();
-const _defaultCamera = /*@__PURE__*/ new Camera();
+const _defaultScene = new Scene();
+const _defaultCamera = new Camera();
 
 /**
  * This module manages the render contexts of the renderer.

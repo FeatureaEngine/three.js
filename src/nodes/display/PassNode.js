@@ -12,7 +12,7 @@ import {RenderTarget} from '../../core/RenderTarget.js';
 
 /** @module PassNode **/
 
-const _size = /*@__PURE__*/ new Vector2();
+const _size = new Vector2();
 
 /**
  * Represents the texture of a pass node.

@@ -6,7 +6,7 @@ import {varying, float} from '../../nodes/tsl/TSLBase.js';
 
 import {LineDashedMaterial} from '../LineDashedMaterial.js';
 
-const _defaultValues = /*@__PURE__*/ new LineDashedMaterial();
+const _defaultValues = new LineDashedMaterial();
 
 /**
  * Node material version of `LineDashedMaterial`.

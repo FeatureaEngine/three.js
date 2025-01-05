@@ -420,7 +420,7 @@ class Color {
 
 }
 
-const _color = /*@__PURE__*/ new Color();
+const _color = new Color();
 
 Color.NAMES = _colorKeywords;
 

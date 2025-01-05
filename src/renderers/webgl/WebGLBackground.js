@@ -11,8 +11,8 @@ import {ShaderLib} from '../shaders/ShaderLib.js';
 import {cloneUniforms, getUnlitUniformColorSpace} from '../shaders/UniformsUtils.js';
 
 const _rgb = {r: 0, b: 0, g: 0};
-const _e1 = /*@__PURE__*/ new Euler();
-const _m1 = /*@__PURE__*/ new Matrix4();
+const _e1 = new Euler();
+const _m1 = new Matrix4();
 
 function WebGLBackground(renderer, cubemaps, cubeuvmaps, state, objects, alpha, premultipliedAlpha) {
     const clearColor = new Color(0x000000);

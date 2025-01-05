@@ -43,9 +43,9 @@ const EXTRA_LOD_SIGMA = [0.125, 0.215, 0.35, 0.446, 0.526, 0.582];
 // samples and exit early, but not recompile the shader.
 const MAX_SAMPLES = 20;
 
-const _flatCamera = /*@__PURE__*/ new OrthographicCamera(-1, 1, 1, -1, 0, 1);
-const _cubeCamera = /*@__PURE__*/ new PerspectiveCamera(90, 1);
-const _clearColor = /*@__PURE__*/ new Color();
+const _flatCamera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const _cubeCamera = new PerspectiveCamera(90, 1);
+const _clearColor = new Color();
 let _oldTarget = null;
 let _oldActiveCubeFace = 0;
 let _oldActiveMipmapLevel = 0;

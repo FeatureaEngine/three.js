@@ -7,7 +7,7 @@ import {float, vec4} from '../../nodes/tsl/TSLBase.js';
 
 import {MeshNormalMaterial} from '../MeshNormalMaterial.js';
 
-const _defaultValues = /*@__PURE__*/ new MeshNormalMaterial();
+const _defaultValues = new MeshNormalMaterial();
 
 /**
  * Node material version of `MeshNormalMaterial`.

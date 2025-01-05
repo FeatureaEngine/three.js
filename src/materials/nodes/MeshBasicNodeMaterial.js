@@ -8,7 +8,7 @@ import {diffuseColor} from '../../nodes/core/PropertyNode.js';
 
 import {MeshBasicMaterial} from '../MeshBasicMaterial.js';
 
-const _defaultValues = /*@__PURE__*/ new MeshBasicMaterial();
+const _defaultValues = new MeshBasicMaterial();
 
 /**
  * Node material version of `MeshBasicMaterial`.

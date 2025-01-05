@@ -1,13 +1,13 @@
 import {LinearSRGBColorSpace, LinearTransfer, NoColorSpace, SRGBColorSpace, SRGBTransfer} from '../constants.js';
 import {Matrix3} from './Matrix3.js';
 
-const LINEAR_REC709_TO_XYZ = /*@__PURE__*/ new Matrix3().set(
+const LINEAR_REC709_TO_XYZ = new Matrix3().set(
     0.4123908, 0.3575843, 0.1804808,
     0.2126390, 0.7151687, 0.0721923,
     0.0193308, 0.1191948, 0.9505322
 );
 
-const XYZ_TO_LINEAR_REC709 = /*@__PURE__*/ new Matrix3().set(
+const XYZ_TO_LINEAR_REC709 = new Matrix3().set(
     3.2409699, -1.5373832, -0.4986108,
     -0.9692436, 1.8759675, 0.0415551,
     0.0556301, -0.2039770, 1.0569715

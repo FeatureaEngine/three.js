@@ -7,15 +7,15 @@ import {LineBasicMaterial} from '../materials/LineBasicMaterial.js';
 import {BufferGeometry} from '../core/BufferGeometry.js';
 import {Float32BufferAttribute} from '../core/BufferAttribute.js';
 
-const _vStart = /*@__PURE__*/ new Vector3();
-const _vEnd = /*@__PURE__*/ new Vector3();
+const _vStart = new Vector3();
+const _vEnd = new Vector3();
 
-const _inverseMatrix = /*@__PURE__*/ new Matrix4();
-const _ray = /*@__PURE__*/ new Ray();
-const _sphere = /*@__PURE__*/ new Sphere();
+const _inverseMatrix = new Matrix4();
+const _ray = new Ray();
+const _sphere = new Sphere();
 
-const _intersectPointOnRay = /*@__PURE__*/ new Vector3();
-const _intersectPointOnSegment = /*@__PURE__*/ new Vector3();
+const _intersectPointOnRay = new Vector3();
+const _intersectPointOnSegment = new Vector3();
 
 class Line extends Object3D {
 

@@ -109,7 +109,7 @@ class Rhino3dmLoader extends Loader {
             .then(() => {
                 if (worker && taskID) {
                     this._releaseTask(worker, taskID);
-                    //this.debug();
+                    // this.debug();
                 }
             });
         // Cache the task result.
@@ -166,7 +166,7 @@ class Rhino3dmLoader extends Loader {
                 side: DoubleSide
             });
         }
-        //console.log(material)
+        // console.log(material)
         const mat = new MeshPhysicalMaterial({
             color: new Color(material.diffuseColor.r / 255.0, material.diffuseColor.g / 255.0, material.diffuseColor.b / 255.0),
             emissive: new Color(material.emissionColor.r, material.emissionColor.g, material.emissionColor.b),
@@ -195,7 +195,7 @@ class Rhino3dmLoader extends Loader {
             mat.thickness = pbr.subsurface;
         }
         if (material.pbrSupported && material.pbr.opacity === 0 && material.transparency === 1) {
-            //some compromises
+            // some compromises
             mat.opacity = 0.2;
             mat.transmission = 1.00;
         }
@@ -204,7 +204,7 @@ class Rhino3dmLoader extends Loader {
             const texture = material.textures[i];
             if (texture.image !== null) {
                 const map = textureLoader.load(texture.image);
-                //console.log(texture.type )
+                // console.log(texture.type )
                 switch (texture.type) {
                     case 'Bump':
                         mat.bumpMap = map;

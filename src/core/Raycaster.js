@@ -2,7 +2,7 @@ import {Matrix4} from '../math/Matrix4.js';
 import {Ray} from '../math/Ray.js';
 import {Layers} from './Layers.js';
 
-const _matrix = /*@__PURE__*/ new Matrix4();
+const _matrix = new Matrix4();
 
 class Raycaster {
 

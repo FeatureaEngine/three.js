@@ -9,7 +9,7 @@ import {float, vec2, vec3, vec4} from '../../nodes/tsl/TSLBase.js';
 import {SpriteMaterial} from '../SpriteMaterial.js';
 import {reference} from '../../nodes/accessors/ReferenceBaseNode.js';
 
-const _defaultValues = /*@__PURE__*/ new SpriteMaterial();
+const _defaultValues = new SpriteMaterial();
 
 /**
  * Node material version of `SpriteMaterial`.

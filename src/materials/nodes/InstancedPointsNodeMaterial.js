@@ -11,7 +11,7 @@ import {viewport} from '../../nodes/display/ScreenNode.js';
 
 import {PointsMaterial} from '../PointsMaterial.js';
 
-const _defaultValues = /*@__PURE__*/ new PointsMaterial();
+const _defaultValues = new PointsMaterial();
 
 /**
  * Unlike WebGL, WebGPU can render point primitives only with a size

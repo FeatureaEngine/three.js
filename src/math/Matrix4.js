@@ -323,8 +323,8 @@ class Matrix4 {
         const n21 = te[1], n22 = te[5], n23 = te[9], n24 = te[13];
         const n31 = te[2], n32 = te[6], n33 = te[10], n34 = te[14];
         const n41 = te[3], n42 = te[7], n43 = te[11], n44 = te[15];
-        //TODO: make this more efficient
-        //( based on http://www.euclideanspace.com/maths/algebra/matrix/functions/inverse/fourD/index.htm )
+        // TODO: make this more efficient
+        // (based on http://www.euclideanspace.com/maths/algebra/matrix/functions/inverse/fourD/index.htm)
         return (
             n41 * (
                 +n14 * n23 * n32
@@ -715,12 +715,12 @@ class Matrix4 {
 
 }
 
-const _v1 = /*@__PURE__*/ new Vector3();
-const _m1 = /*@__PURE__*/ new Matrix4();
-const _zero = /*@__PURE__*/ new Vector3(0, 0, 0);
-const _one = /*@__PURE__*/ new Vector3(1, 1, 1);
-const _x = /*@__PURE__*/ new Vector3();
-const _y = /*@__PURE__*/ new Vector3();
-const _z = /*@__PURE__*/ new Vector3();
+const _v1 = new Vector3();
+const _m1 = new Matrix4();
+const _zero = new Vector3(0, 0, 0);
+const _one = new Vector3(1, 1, 1);
+const _x = new Vector3();
+const _y = new Vector3();
+const _z = new Vector3();
 
 export {Matrix4};

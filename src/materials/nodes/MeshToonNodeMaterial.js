@@ -3,7 +3,7 @@ import ToonLightingModel from '../../nodes/functions/ToonLightingModel.js';
 
 import {MeshToonMaterial} from '../MeshToonMaterial.js';
 
-const _defaultValues = /*@__PURE__*/ new MeshToonMaterial();
+const _defaultValues = new MeshToonMaterial();
 
 /**
  * Node material version of `MeshToonMaterial`.

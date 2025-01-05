@@ -29,12 +29,12 @@ import {DoubleSide, BackSide, FrontSide, SRGBColorSpace, NoToneMapping, LinearFi
 
 /** @module Renderer **/
 
-const _scene = /*@__PURE__*/ new Scene();
-const _drawingBufferSize = /*@__PURE__*/ new Vector2();
-const _screen = /*@__PURE__*/ new Vector4();
-const _frustum = /*@__PURE__*/ new Frustum();
-const _projScreenMatrix = /*@__PURE__*/ new Matrix4();
-const _vector4 = /*@__PURE__*/ new Vector4();
+const _scene = new Scene();
+const _drawingBufferSize = new Vector2();
+const _screen = new Vector4();
+const _frustum = new Frustum();
+const _projScreenMatrix = new Matrix4();
+const _vector4 = new Vector4();
 
 /**
  * Base class for renderers.

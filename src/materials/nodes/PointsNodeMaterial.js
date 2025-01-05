@@ -2,7 +2,7 @@ import NodeMaterial from './NodeMaterial.js';
 
 import {PointsMaterial} from '../PointsMaterial.js';
 
-const _defaultValues = /*@__PURE__*/ new PointsMaterial();
+const _defaultValues = new PointsMaterial();
 
 /**
  * Node material version of `PointsMaterial`.

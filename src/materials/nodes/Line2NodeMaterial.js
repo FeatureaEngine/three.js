@@ -22,7 +22,7 @@ import {viewportSharedTexture} from '../../nodes/display/ViewportSharedTextureNo
 import {LineDashedMaterial} from '../LineDashedMaterial.js';
 import {NoBlending} from '../../constants.js';
 
-const _defaultValues = /*@__PURE__*/ new LineDashedMaterial();
+const _defaultValues = new LineDashedMaterial();
 
 /**
  * This node material can be used to render lines with a size larger than one

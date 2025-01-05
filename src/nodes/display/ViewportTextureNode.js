@@ -9,7 +9,7 @@ import {LinearMipmapLinearFilter} from '../../constants.js';
 
 /** @module ViewportTextureNode **/
 
-const _size = /*@__PURE__*/ new Vector2();
+const _size = new Vector2();
 
 /**
  * A special type of texture node which represents the data of the current viewport

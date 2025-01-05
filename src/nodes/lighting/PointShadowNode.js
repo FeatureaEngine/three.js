@@ -13,7 +13,7 @@ import {BasicShadowMap} from '../../constants.js';
 
 /** @module PointShadowNode **/
 
-const _clearColor = /*@__PURE__*/ new Color();
+const _clearColor = new Color();
 
 // cubeToUV() maps a 3D direction vector suitable for cube texture mapping to a 2D
 // vector suitable for 2D texture mapping. This code uses the following layout for the
@@ -121,9 +121,9 @@ const pointShadowFilter = /*@__PURE__*/ Fn(({filterFn, depthTexture, shadowCoord
 
 });
 
-const _viewport = /*@__PURE__*/ new Vector4();
-const _viewportSize = /*@__PURE__*/ new Vector2();
-const _shadowMapSize = /*@__PURE__*/ new Vector2();
+const _viewport = new Vector4();
+const _viewportSize = new Vector2();
+const _shadowMapSize = new Vector2();
 
 
 /**

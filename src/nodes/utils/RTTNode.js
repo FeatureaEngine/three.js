@@ -11,7 +11,7 @@ import {HalfFloatType} from '../../constants.js';
 
 /** @module RTTNode **/
 
-const _size = /*@__PURE__*/ new Vector2();
+const _size = new Vector2();
 
 /**
  * `RTTNode` takes another node and uses it with a `QuadMesh` to render into a texture (RTT).

@@ -50,7 +50,7 @@ import {mix, pow2, min} from '../../nodes/math/MathNode.js';
 
 import {MeshPhysicalMaterial} from '../MeshPhysicalMaterial.js';
 
-const _defaultValues = /*@__PURE__*/ new MeshPhysicalMaterial();
+const _defaultValues = new MeshPhysicalMaterial();
 
 /**
  * Node material version of `MeshPhysicalMaterial`.

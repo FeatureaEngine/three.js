@@ -58,16 +58,16 @@ class MultiDrawRenderList {
 
 }
 
-const _matrix = /*@__PURE__*/ new Matrix4();
-const _whiteColor = /*@__PURE__*/ new Color(1, 1, 1);
-const _frustum = /*@__PURE__*/ new Frustum();
-const _box = /*@__PURE__*/ new Box3();
-const _sphere = /*@__PURE__*/ new Sphere();
-const _vector = /*@__PURE__*/ new Vector3();
-const _forward = /*@__PURE__*/ new Vector3();
-const _temp = /*@__PURE__*/ new Vector3();
-const _renderList = /*@__PURE__*/ new MultiDrawRenderList();
-const _mesh = /*@__PURE__*/ new Mesh();
+const _matrix = new Matrix4();
+const _whiteColor = new Color(1, 1, 1);
+const _frustum = new Frustum();
+const _box = new Box3();
+const _sphere = new Sphere();
+const _vector = new Vector3();
+const _forward = new Vector3();
+const _temp = new Vector3();
+const _renderList = new MultiDrawRenderList();
+const _mesh = new Mesh();
 const _batchIntersects = [];
 
 // copies data from attribute "src" into "target" starting at "targetOffset"

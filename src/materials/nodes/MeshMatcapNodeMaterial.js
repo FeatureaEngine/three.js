@@ -7,7 +7,7 @@ import {matcapUV} from '../../nodes/utils/MatcapUVNode.js';
 
 import {MeshMatcapMaterial} from '../MeshMatcapMaterial.js';
 
-const _defaultValues = /*@__PURE__*/ new MeshMatcapMaterial();
+const _defaultValues = new MeshMatcapMaterial();
 
 /**
  * Node material version of `MeshMatcapMaterial`.

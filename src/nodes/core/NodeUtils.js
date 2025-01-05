@@ -116,7 +116,7 @@ export function* getNodeChildren(node, toJSON = false) {
 
 }
 
-const typeFromLength = /*@__PURE__*/ new Map([
+const typeFromLength = new Map([
     [1, 'float'],
     [2, 'vec2'],
     [3, 'vec3'],
@@ -125,7 +125,7 @@ const typeFromLength = /*@__PURE__*/ new Map([
     [16, 'mat4']
 ]);
 
-const dataFromObject = /*@__PURE__*/ new WeakMap();
+const dataFromObject = new WeakMap();
 
 /**
  * Returns the data type for the given the length.

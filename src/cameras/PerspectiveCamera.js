@@ -3,9 +3,9 @@ import {RAD2DEG, DEG2RAD} from '../math/MathUtils.js';
 import {Vector2} from '../math/Vector2.js';
 import {Vector3} from '../math/Vector3.js';
 
-const _v3 = /*@__PURE__*/ new Vector3();
-const _minTarget = /*@__PURE__*/ new Vector2();
-const _maxTarget = /*@__PURE__*/ new Vector2();
+const _v3 = new Vector3();
+const _minTarget = new Vector2();
+const _maxTarget = new Vector2();
 
 
 class PerspectiveCamera extends Camera {

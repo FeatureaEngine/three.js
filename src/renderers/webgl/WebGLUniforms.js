@@ -48,13 +48,13 @@ import {Data3DTexture} from '../../textures/Data3DTexture.js';
 import {DepthTexture} from '../../textures/DepthTexture.js';
 import {LessEqualCompare} from '../../constants.js';
 
-const emptyTexture = /*@__PURE__*/ new Texture();
+const emptyTexture = new Texture();
 
-const emptyShadowTexture = /*@__PURE__*/ new DepthTexture(1, 1);
+const emptyShadowTexture = new DepthTexture(1, 1);
 
-const emptyArrayTexture = /*@__PURE__*/ new DataArrayTexture();
-const empty3dTexture = /*@__PURE__*/ new Data3DTexture();
-const emptyCubeTexture = /*@__PURE__*/ new CubeTexture();
+const emptyArrayTexture = new DataArrayTexture();
+const empty3dTexture = new Data3DTexture();
+const emptyCubeTexture = new CubeTexture();
 
 // --- Utilities ---
 

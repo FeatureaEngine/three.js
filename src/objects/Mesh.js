@@ -9,20 +9,20 @@ import {BackSide, FrontSide} from '../constants.js';
 import {MeshBasicMaterial} from '../materials/MeshBasicMaterial.js';
 import {BufferGeometry} from '../core/BufferGeometry.js';
 
-const _inverseMatrix = /*@__PURE__*/ new Matrix4();
-const _ray = /*@__PURE__*/ new Ray();
-const _sphere = /*@__PURE__*/ new Sphere();
-const _sphereHitAt = /*@__PURE__*/ new Vector3();
+const _inverseMatrix = new Matrix4();
+const _ray = new Ray();
+const _sphere = new Sphere();
+const _sphereHitAt = new Vector3();
 
-const _vA = /*@__PURE__*/ new Vector3();
-const _vB = /*@__PURE__*/ new Vector3();
-const _vC = /*@__PURE__*/ new Vector3();
+const _vA = new Vector3();
+const _vB = new Vector3();
+const _vC = new Vector3();
 
-const _tempA = /*@__PURE__*/ new Vector3();
-const _morphA = /*@__PURE__*/ new Vector3();
+const _tempA = new Vector3();
+const _morphA = new Vector3();
 
-const _intersectionPoint = /*@__PURE__*/ new Vector3();
-const _intersectionPointWorld = /*@__PURE__*/ new Vector3();
+const _intersectionPoint = new Vector3();
+const _intersectionPointWorld = new Vector3();
 
 class Mesh extends Object3D {
 

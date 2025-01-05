@@ -278,6 +278,6 @@ class Matrix3 {
 
 }
 
-const _m3 = /*@__PURE__*/ new Matrix3();
+const _m3 = new Matrix3();
 
 export {Matrix3};

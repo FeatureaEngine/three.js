@@ -2,7 +2,7 @@ import NodeMaterial from './NodeMaterial.js';
 
 import {LineBasicMaterial} from '../LineBasicMaterial.js';
 
-const _defaultValues = /*@__PURE__*/ new LineBasicMaterial();
+const _defaultValues = new LineBasicMaterial();
 
 /**
  * Node material version of `LineBasicMaterial`.

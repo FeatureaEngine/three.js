@@ -1,21 +1,21 @@
 import {Vector3} from './Vector3.js';
 import {Vector4} from './Vector4.js';
 
-const _v0 = /*@__PURE__*/ new Vector3();
-const _v1 = /*@__PURE__*/ new Vector3();
-const _v2 = /*@__PURE__*/ new Vector3();
-const _v3 = /*@__PURE__*/ new Vector3();
+const _v0 = new Vector3();
+const _v1 = new Vector3();
+const _v2 = new Vector3();
+const _v3 = new Vector3();
 
-const _vab = /*@__PURE__*/ new Vector3();
-const _vac = /*@__PURE__*/ new Vector3();
-const _vbc = /*@__PURE__*/ new Vector3();
-const _vap = /*@__PURE__*/ new Vector3();
-const _vbp = /*@__PURE__*/ new Vector3();
-const _vcp = /*@__PURE__*/ new Vector3();
+const _vab = new Vector3();
+const _vac = new Vector3();
+const _vbc = new Vector3();
+const _vap = new Vector3();
+const _vbp = new Vector3();
+const _vcp = new Vector3();
 
-const _v40 = /*@__PURE__*/ new Vector4();
-const _v41 = /*@__PURE__*/ new Vector4();
-const _v42 = /*@__PURE__*/ new Vector4();
+const _v40 = new Vector4();
+const _v41 = new Vector4();
+const _v42 = new Vector4();
 
 class Triangle {
 

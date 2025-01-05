@@ -21,7 +21,7 @@ import {getDataFromObject} from '../core/NodeUtils.js';
 
 /** @module ShadowNode **/
 
-const shadowMaterialLib = /*@__PURE__*/ new WeakMap();
+const shadowMaterialLib = new WeakMap();
 const linearDistance = /*@__PURE__*/ Fn(([position, cameraNear, cameraFar]) => {
     let dist = positionWorld.sub(position).length();
     dist = dist.sub(cameraNear).div(cameraFar.sub(cameraNear));
@@ -263,7 +263,7 @@ const _shadowFilterLib = [BasicShadowFilter, PCFShadowFilter, PCFSoftShadowFilte
 //
 
 let _rendererState;
-const _quadMesh = /*@__PURE__*/ new QuadMesh();
+const _quadMesh = new QuadMesh();
 
 /**
  * Represents the default shadow implementation for lighting nodes.

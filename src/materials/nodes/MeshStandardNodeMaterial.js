@@ -9,7 +9,7 @@ import {float, vec3, vec4} from '../../nodes/tsl/TSLBase.js';
 
 import {MeshStandardMaterial} from '../MeshStandardMaterial.js';
 
-const _defaultValues = /*@__PURE__*/ new MeshStandardMaterial();
+const _defaultValues = new MeshStandardMaterial();
 
 /**
  * Node material version of `MeshStandardMaterial`.

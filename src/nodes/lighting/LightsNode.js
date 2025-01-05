@@ -19,7 +19,7 @@ const getLightNodeById = (id, lightNodes) => {
 
 };
 
-const _lightsNodeRef = /*@__PURE__*/ new WeakMap();
+const _lightsNodeRef = new WeakMap();
 
 /**
  * This node represents the scene's lighting and manages the lighting model's life cycle

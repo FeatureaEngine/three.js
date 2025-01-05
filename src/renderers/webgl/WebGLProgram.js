@@ -44,7 +44,7 @@ function handleSource(string, errorLine) {
     return lines2.join('\n');
 }
 
-const _m0 = /*@__PURE__*/ new Matrix3();
+const _m0 = new Matrix3();
 
 function getEncodingComponents(colorSpace) {
     ColorManagement._getMatrix(_m0, ColorManagement.workingColorSpace, colorSpace);
@@ -117,7 +117,7 @@ function getToneMappingFunction(functionName, toneMapping) {
     return 'vec3 ' + functionName + '( vec3 color ) { return ' + toneMappingName + 'ToneMapping( color ); }';
 }
 
-const _v0 = /*@__PURE__*/ new Vector3();
+const _v0 = new Vector3();
 
 function getLuminanceFunction() {
     ColorManagement.getLuminanceCoefficients(_v0);

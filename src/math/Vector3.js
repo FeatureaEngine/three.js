@@ -501,7 +501,7 @@ class Vector3 {
 
 }
 
-const _vector = /*@__PURE__*/ new Vector3();
-const _quaternion = /*@__PURE__*/ new Quaternion();
+const _vector = new Vector3();
+const _quaternion = new Quaternion();
 
 export {Vector3};

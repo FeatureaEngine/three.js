@@ -3,8 +3,8 @@ import {getUnlitUniformColorSpace} from '../shaders/UniformsUtils.js';
 import {Euler} from '../../math/Euler.js';
 import {Matrix4} from '../../math/Matrix4.js';
 
-const _e1 = /*@__PURE__*/ new Euler();
-const _m1 = /*@__PURE__*/ new Matrix4();
+const _e1 = new Euler();
+const _m1 = new Matrix4();
 
 function WebGLMaterials(renderer, properties) {
     function refreshTransformUniform(map, uniform) {
