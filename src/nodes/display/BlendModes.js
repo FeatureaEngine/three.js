@@ -67,23 +67,19 @@ export const blendColor = Fn(([base, blend]) => {
 export const burn = (...params) => { // @deprecated, r171
     console.warn('THREE.TSL: "burn" has been renamed. Use "blendBurn" instead.');
     return blendBurn(params);
-
 };
 
 export const dodge = (...params) => { // @deprecated, r171
     console.warn('THREE.TSL: "dodge" has been renamed. Use "blendDodge" instead.');
     return blendDodge(params);
-
 };
 
 export const screen = (...params) => { // @deprecated, r171
     console.warn('THREE.TSL: "screen" has been renamed. Use "blendScreen" instead.');
     return blendScreen(params);
-
 };
 
 export const overlay = (...params) => { // @deprecated, r171
     console.warn('THREE.TSL: "overlay" has been renamed. Use "blendOverlay" instead.');
     return blendOverlay(params);
-
 };

@@ -29,17 +29,14 @@ export const frameId = uniform(0, 'uint').setGroup(renderGroup).onRenderUpdate((
 export const timerLocal = (timeScale = 1) => { // @deprecated, r170
     console.warn('TSL: timerLocal() is deprecated. Use "time" instead.');
     return time.mul(timeScale);
-
 };
 
 export const timerGlobal = (timeScale = 1) => { // @deprecated, r170
     console.warn('TSL: timerGlobal() is deprecated. Use "time" instead.');
     return time.mul(timeScale);
-
 };
 
 export const timerDelta = (timeScale = 1) => { // @deprecated, r170
     console.warn('TSL: timerDelta() is deprecated. Use "deltaTime" instead.');
     return deltaTime.mul(timeScale);
-
 };

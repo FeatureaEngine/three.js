@@ -21,7 +21,6 @@ export const mx_aastep = (threshold, value) => {
     value = float(value);
     const afwidth = vec2(value.dFdx(), value.dFdy()).length().mul(0.70710678118654757);
     return smoothstep(threshold.sub(afwidth), threshold.add(afwidth), value);
-
 };
 
 const _ramp = (a, b, uv, p) => mix(a, b, uv[p].clamp());
@@ -37,7 +36,6 @@ export const mx_transform_uv = (uv_scale = 1, uv_offset = 0, uv_geo = uv()) => u
 export const mx_safepower = (in1, in2 = 1) => {
     in1 = float(in1);
     return in1.abs().pow(in2).mul(in1.sign());
-
 };
 
 export const mx_contrast = (input, amount = 1, pivot = .5) => float(input).sub(pivot).mul(amount).add(pivot);
@@ -49,7 +47,6 @@ export const mx_noise_vec4 = (texcoord = uv(), amplitude = 1, pivot = 0) => {
     texcoord = texcoord.convert('vec2|vec3'); // overloading type
     const noise_vec4 = vec4(mx_perlin_noise_vec3(texcoord), mx_perlin_noise_float(texcoord.add(vec2(19, 73))));
     return noise_vec4.mul(amplitude).add(pivot);
-
 };
 
 export const mx_worley_noise_float = (texcoord = uv(), jitter = 1) => worley_noise_float(texcoord.convert('vec2|vec3'), jitter, int(1));

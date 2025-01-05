@@ -190,7 +190,6 @@ export const viewZToLogarithmicDepth = (viewZ, near, far) => {
     const numerator = log2(viewZ.negate().div(near));
     const denominator = log2(far.div(near));
     return numerator.div(denominator);
-
 };
 
 /**
@@ -208,7 +207,6 @@ export const logarithmicDepthToViewZ = (depth, near, far) => {
     // a negative viewZ).
     const exponent = depth.mul(log(far.div(near)));
     return float(Math.E).pow(exponent).mul(near).negate();
-
 };
 
 /**

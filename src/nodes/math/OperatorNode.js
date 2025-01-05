@@ -426,7 +426,6 @@ addMethodChaining('shiftRight', shiftRight);
 export const remainder = (...params) => { // @deprecated, r168
     console.warn('TSL.OperatorNode: .remainder() has been renamed to .modInt().');
     return modInt(...params);
-
 };
 
 addMethodChaining('remainder', remainder);

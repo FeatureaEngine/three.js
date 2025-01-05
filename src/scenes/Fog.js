@@ -14,7 +14,8 @@ class Fog {
         return new Fog(this.color, this.near, this.far);
     }
 
-    toJSON( /* meta */) {
+    // noinspection JSUnusedLocalSymbols
+    toJSON(meta) {
         return {
             type: 'Fog',
             name: this.name,

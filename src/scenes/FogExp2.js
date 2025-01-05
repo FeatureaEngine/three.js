@@ -13,7 +13,8 @@ class FogExp2 {
         return new FogExp2(this.color, this.density);
     }
 
-    toJSON( /* meta */) {
+    // noinspection JSUnusedLocalSymbols
+    toJSON(meta) {
         return {
             type: 'FogExp2',
             name: this.name,

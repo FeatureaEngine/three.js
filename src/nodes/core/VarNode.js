@@ -96,7 +96,6 @@ addMethodChaining('toVar', (...params) => createVar(...params).append());
 export const temp = (node) => { // @deprecated, r170
     console.warn('TSL: "temp" is deprecated. Use ".toVar()" instead.');
     return createVar(node);
-
 };
 
 addMethodChaining('temp', temp);

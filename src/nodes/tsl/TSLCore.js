@@ -103,7 +103,6 @@ const ShaderNodeObject = function (obj, altType = null) {
         return Fn(obj);
     }
     return obj;
-
 };
 
 const ShaderNodeObjects = function (objects, altType = null) {
@@ -111,7 +110,6 @@ const ShaderNodeObjects = function (objects, altType = null) {
         objects[name] = nodeObject(objects[name], altType);
     }
     return objects;
-
 };
 
 const ShaderNodeArray = function (array, altType = null) {
@@ -120,7 +118,6 @@ const ShaderNodeArray = function (array, altType = null) {
         array[i] = nodeObject(array[i], altType);
     }
     return array;
-
 };
 
 const ShaderNodeProxy = function (NodeClass, scope = null, factor = null, settings = null) {
@@ -144,7 +141,6 @@ const ShaderNodeProxy = function (NodeClass, scope = null, factor = null, settin
 
 const ShaderNodeImmutable = function (NodeClass, ...params) {
     return nodeObject(new NodeClass(...nodeArray(params)));
-
 };
 
 class ShaderCallNodeInternal extends Node {
@@ -300,7 +296,6 @@ const ConvertType = function (type, cacheMap = null) {
         const nodes = params.map(param => getConstNode(param));
         return nodeObject(new JoinNode(nodes, type));
     };
-
 };
 
 // exports
@@ -345,13 +340,11 @@ export const Fn = (jsFunc, nodeType) => {
         return fn;
     };
     return fn;
-
 };
 
 export const tslFn = (...params) => { // @deprecated, r168
     console.warn('TSL.ShaderNode: tslFn() has been renamed to Fn().');
     return Fn(...params);
-
 };
 
 //
@@ -369,7 +362,6 @@ export const setCurrentStack = (stack) => {
         //throw new Error( 'Stack already defined.' );
     }
     currentStack = stack;
-
 };
 
 export const getCurrentStack = () => currentStack;

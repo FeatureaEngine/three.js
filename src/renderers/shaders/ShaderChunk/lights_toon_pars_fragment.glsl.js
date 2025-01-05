@@ -3,7 +3,6 @@ varying vec3 vViewPosition;
 
 struct ToonMaterial {
 	vec3 diffuseColor;
-
 };
 
 void RE_Direct_Toon( const in IncidentLight directLight, const in vec3 geometryPosition, const in vec3 geometryNormal, const in vec3 geometryViewDir, const in vec3 geometryClearcoatNormal, const in ToonMaterial material, inout ReflectedLight reflectedLight ) {

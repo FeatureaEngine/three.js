@@ -44,7 +44,6 @@ const bicubic = (textureNode, texelSize, lod) => {
     const a = g0(fuv.y).mul(add(g0x.mul(textureNode.sample(p0).level(lod)), g1x.mul(textureNode.sample(p1).level(lod))));
     const b = g1(fuv.y).mul(add(g0x.mul(textureNode.sample(p2).level(lod)), g1x.mul(textureNode.sample(p3).level(lod))));
     return a.add(b);
-
 };
 
 /**

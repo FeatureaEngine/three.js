@@ -111,7 +111,6 @@ UPNG.toRGBA8 = function (out) {
         else if (frm.dispose == 2) for (var j = 0; j < len; j++) img[j] = prev[j];
     }
     return frms;
-
 };
 
 UPNG.toRGBA8.decodeImage = function (data, w, h, out) {
@@ -238,7 +237,6 @@ UPNG.toRGBA8.decodeImage = function (data, w, h, out) {
     }
     //console.log(Date.now()-time);
     return bf;
-
 };
 
 
@@ -352,7 +350,6 @@ UPNG.decode = function (buff) {
     delete out.interlace;
     delete out.filter;
     return out;
-
 };
 
 UPNG.decode._decompress = function (out, dd, w, h) {
@@ -362,13 +359,11 @@ UPNG.decode._decompress = function (out, dd, w, h) {
     if (out.interlace == 0) dd = UPNG.decode._filterZero(dd, out, 0, w, h);
     else if (out.interlace == 1) dd = UPNG.decode._readInterlace(dd, out);
     return dd;
-
 };
 
 UPNG.decode._inflate = function (data, buff) {
     var out = UPNG['inflateRaw'](new Uint8Array(data.buffer, 2, data.length - 6), buff);
     return out;
-
 };
 
 UPNG.inflateRaw = function () {
@@ -725,13 +720,11 @@ UPNG.decode._readInterlace = function (data, out) {
         pass = pass + 1;
     }
     return img;
-
 };
 
 UPNG.decode._getBPP = function (out) {
     var noc = [1, null, 3, 1, 2, null, 4][out.ctype];
     return noc * out.depth;
-
 };
 
 UPNG.decode._filterZero = function (data, out, off, w, h) {
@@ -760,7 +753,6 @@ UPNG.decode._filterZero = function (data, out, off, w, h) {
         }
     }
     return data;
-
 };
 
 UPNG.decode._paeth = function (a, b, c) {
@@ -768,7 +760,6 @@ UPNG.decode._paeth = function (a, b, c) {
     if (pa * pa <= pb * pb && pa * pa <= pc * pc) return a;
     else if (pb * pb <= pc * pc) return b;
     return c;
-
 };
 
 UPNG.decode._IHDR = function (data, offset, out) {
@@ -787,7 +778,6 @@ UPNG.decode._IHDR = function (data, offset, out) {
     offset++;
     out.interlace = data[offset];
     offset++;
-
 };
 
 UPNG._bin = {
@@ -886,7 +876,6 @@ UPNG._copyTile = function (sb, sw, sh, tb, tw, th, xoff, yoff, mode) {
             }
         }
     return true;
-
 };
 
 export {RGBMLoader};

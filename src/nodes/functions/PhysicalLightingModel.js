@@ -183,13 +183,11 @@ const XYZ_TO_REC709 = mat3(
 const Fresnel0ToIor = (fresnel0) => {
     const sqrtF0 = fresnel0.sqrt();
     return vec3(1.0).add(sqrtF0).div(vec3(1.0).sub(sqrtF0));
-
 };
 
 // ior is a value between 1.0 and 3.0. 1.0 is air interface
 const IorToFresnel0 = (transmittedIor, incidentIor) => {
     return transmittedIor.sub(incidentIor).div(transmittedIor.add(incidentIor)).pow2();
-
 };
 
 // Fresnel equations for dielectric/dielectric interfaces.
@@ -205,7 +203,6 @@ const evalSensitivity = (OPD, shift) => {
     xyz = vec3(xyz.x.add(x), xyz.y, xyz.z).div(1.0685e-7);
     const rgb = XYZ_TO_REC709.mul(xyz);
     return rgb;
-
 };
 
 const evalIridescence = Fn(({outsideIOR, eta2, cosTheta1, thinFilmThickness, baseF0}) => {

@@ -93,7 +93,6 @@ const createRadianceContext = (roughnessNode, normalViewNode) => {
             return roughnessNode;
         }
     };
-
 };
 
 const createIrradianceContext = (normalWorldNode) => {
@@ -105,5 +104,4 @@ const createIrradianceContext = (normalWorldNode) => {
             return float(1.0);
         }
     };
-
 };

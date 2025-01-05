@@ -1,3 +1,5 @@
+// noinspection JSAssignmentUsedAsCondition
+
 import {clamp, euclideanModulo, lerp} from './MathUtils.js';
 import {ColorManagement, LinearToSRGB, SRGBToLinear} from './ColorManagement.js';
 import {SRGBColorSpace} from '../constants.js';

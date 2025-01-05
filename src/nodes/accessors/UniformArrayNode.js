@@ -271,5 +271,4 @@ export const uniformArray = (values, nodeType) => nodeObject(new UniformArrayNod
 export const uniforms = (values, nodeType) => { // @deprecated, r168
     console.warn('TSL.UniformArrayNode: uniforms() has been renamed to uniformArray().');
     return nodeObject(new UniformArrayNode(values, nodeType));
-
 };

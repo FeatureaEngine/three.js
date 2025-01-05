@@ -854,7 +854,6 @@ export const smoothstepElement = (x, low, high) => smoothstep(low, high, x);
 export const atan2 = (y, x) => { // @deprecated, r172
     console.warn('THREE.TSL: "atan2" is overloaded. Use "atan" instead.');
     return atan(y, x);
-
 };
 
 // GLSL alias function

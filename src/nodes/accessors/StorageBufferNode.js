@@ -281,5 +281,4 @@ export const storage = (value, type = null, count = 0) => nodeObject(new Storage
 export const storageObject = (value, type, count) => { // @deprecated, r171
     console.warn('THREE.TSL: "storageObject()" is deprecated. Use "storage().setPBO( true )" instead.');
     return storage(value, type, count).setPBO(true);
-
 };

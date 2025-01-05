@@ -110,7 +110,6 @@ const nativeFn = (code, includes = [], language = '') => {
     const fn = (...params) => functionNode.call(...params);
     fn.functionNode = functionNode;
     return fn;
-
 };
 
 export const glslFn = (code, includes) => nativeFn(code, includes, 'glsl');

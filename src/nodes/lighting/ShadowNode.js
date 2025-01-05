@@ -36,7 +36,6 @@ const linearShadowDistance = (light) => {
     const farDistance = reference('far', 'float', camera).setGroup(renderGroup);
     const referencePosition = objectPosition(light);
     return linearDistance(referencePosition, nearDistance, farDistance);
-
 };
 
 const getShadowMaterial = (light) => {
@@ -52,7 +51,6 @@ const getShadowMaterial = (light) => {
         shadowMaterialLib.set(light, material);
     }
     return material;
-
 };
 
 /**

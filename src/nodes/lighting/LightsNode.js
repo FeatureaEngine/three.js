@@ -6,7 +6,6 @@ import {hashArray} from '../core/NodeUtils.js';
 
 const sortLights = (lights) => {
     return lights.sort((a, b) => a.id - b.id);
-
 };
 
 const getLightNodeById = (id, lightNodes) => {
@@ -16,7 +15,6 @@ const getLightNodeById = (id, lightNodes) => {
         }
     }
     return null;
-
 };
 
 const _lightsNodeRef = new WeakMap();

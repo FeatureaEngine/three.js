@@ -136,7 +136,6 @@ export const atomicFunc = (method, pointerNode, valueNode, storeNode = null) => 
     const node = atomicNode(method, pointerNode, valueNode, storeNode);
     node.append();
     return node;
-
 };
 
 /**
