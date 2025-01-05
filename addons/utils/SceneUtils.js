@@ -1,5 +1,4 @@
 import {BufferAttribute, BufferGeometry, Color, Group, Matrix4, Mesh, Vector3} from '../../libs/three/Three.js';
-
 import {deepCloneAttribute, mergeGroups} from './BufferGeometryUtils.js';
 
 const _color = /*@__PURE__*/new Color();

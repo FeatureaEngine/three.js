@@ -1,13 +1,11 @@
 import TempNode from '../core/TempNode.js';
 import {add} from '../math/OperatorNode.js';
-
 import {normalView, transformNormalToView} from '../accessors/Normal.js';
 import {positionView} from '../accessors/Position.js';
 import {TBNViewMatrix} from '../accessors/AccessorsUtils.js';
 import {uv} from '../accessors/UV.js';
 import {faceDirection} from './FrontFacingNode.js';
 import {Fn, nodeProxy, vec3} from '../tsl/TSLBase.js';
-
 import {ObjectSpaceNormalMap, TangentSpaceNormalMap} from '../../constants.js';
 
 /** @module NormalMapNode **/

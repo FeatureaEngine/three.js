@@ -103,7 +103,7 @@ class VRMLLoader extends Loader {
             const nodeTypes = [
                 'Anchor', 'Billboard', 'Collision', 'Group', 'Transform', // grouping nodes
                 'Inline', 'LOD', 'Switch', // special groups
-                'AudioClip', 'DirectionalLight', 'PointLight', 'Script', 'Shape', 'Sound', 'SpotLight', 'WorldInfo', // common nodes
+                'DirectionalLight', 'PointLight', 'Script', 'Shape', 'Sound', 'SpotLight', 'WorldInfo', // common nodes
                 'CylinderSensor', 'PlaneSensor', 'ProximitySensor', 'SphereSensor', 'TimeSensor', 'TouchSensor', 'VisibilitySensor', // sensors
                 'Box', 'Cone', 'Cylinder', 'ElevationGrid', 'Extrusion', 'IndexedFaceSet', 'IndexedLineSet', 'PointSet', 'Sphere', // geometries
                 'Color', 'Coordinate', 'Normal', 'TextureCoordinate', // geometric properties
@@ -475,7 +475,6 @@ class VRMLLoader extends Loader {
                 case 'Inline':
                 case 'LOD':
                 case 'Switch':
-                case 'AudioClip':
                 case 'DirectionalLight':
                 case 'PointLight':
                 case 'Script':

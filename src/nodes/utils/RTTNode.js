@@ -4,7 +4,6 @@ import {NodeUpdateType} from '../core/constants.js';
 import {uv} from '../accessors/UV.js';
 import NodeMaterial from '../../materials/nodes/NodeMaterial.js';
 import QuadMesh from '../../renderers/common/QuadMesh.js';
-
 import {RenderTarget} from '../../core/RenderTarget.js';
 import {Vector2} from '../../math/Vector2.js';
 import {HalfFloatType} from '../../constants.js';

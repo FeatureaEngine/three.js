@@ -7,7 +7,6 @@ import {nodeProxy, vec3, mat4} from '../tsl/TSLBase.js';
 import {NodeUpdateType} from '../core/constants.js';
 import {buffer} from '../accessors/BufferNode.js';
 import {instanceIndex} from '../core/IndexNode.js';
-
 import {InstancedInterleavedBuffer} from '../../core/InstancedInterleavedBuffer.js';
 import {InstancedBufferAttribute} from '../../core/InstancedBufferAttribute.js';
 import {DynamicDrawUsage} from '../../constants.js';

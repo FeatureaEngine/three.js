@@ -1,6 +1,5 @@
 import DataMap from './DataMap.js';
 import {AttributeType} from './Constants.js';
-
 import {Uint16BufferAttribute, Uint32BufferAttribute} from '../../core/BufferAttribute.js';
 
 /**

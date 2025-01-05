@@ -1,5 +1,4 @@
 import DataMap from './DataMap.js';
-
 import {Vector3} from '../../math/Vector3.js';
 import {DepthTexture} from '../../textures/DepthTexture.js';
 import {CubeReflectionMapping, CubeRefractionMapping, DepthFormat, DepthStencilFormat, EquirectangularReflectionMapping, EquirectangularRefractionMapping, UnsignedByteType, UnsignedInt248Type, UnsignedIntType} from '../../constants.js';

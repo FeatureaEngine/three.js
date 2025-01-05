@@ -4,7 +4,6 @@ import NodeBuilderState from './NodeBuilderState.js';
 import {cubeMapNode} from '../../../nodes/utils/CubeMapNode.js';
 import {NodeFrame} from '../../../nodes/Nodes.js';
 import {cubeTexture, densityFogFactor, fog, frameGroup, objectGroup, pmremTexture, rangeFogFactor, reference, renderGroup, screenUV, texture} from '../../../nodes/TSL.js';
-
 import {CubeUVReflectionMapping, EquirectangularReflectionMapping, EquirectangularRefractionMapping} from '../../../constants.js';
 import {hashArray} from '../../../nodes/core/NodeUtils.js';
 

@@ -1,6 +1,5 @@
 import {NodeUpdateType} from './constants.js';
 import {getCacheKey, getNodeChildren, hash} from './NodeUtils.js';
-
 import {EventDispatcher} from '../../core/EventDispatcher.js';
 import {MathUtils} from '../../math/MathUtils.js';
 

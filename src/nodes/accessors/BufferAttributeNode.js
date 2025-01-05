@@ -1,7 +1,6 @@
 import InputNode from '../core/InputNode.js';
 import {nodeObject, addMethodChaining} from '../tsl/TSLCore.js';
 import {varying} from '../core/VaryingNode.js';
-
 import {InterleavedBufferAttribute} from '../../core/InterleavedBufferAttribute.js';
 import {InterleavedBuffer} from '../../core/InterleavedBuffer.js';
 import {StaticDrawUsage, DynamicDrawUsage} from '../../constants.js';

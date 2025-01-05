@@ -1,6 +1,5 @@
 import Node from '../core/Node.js';
 import {float, nodeImmutable} from '../tsl/TSLBase.js';
-
 import {BackSide, WebGLCoordinateSystem} from '../../constants.js';
 
 /** @module FrontFacingNode **/

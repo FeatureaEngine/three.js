@@ -1,5 +1,4 @@
 import NodeMaterial from './NodeMaterial.js';
-
 import {LineBasicMaterial} from '../LineBasicMaterial.js';
 
 const _defaultValues = new LineBasicMaterial();

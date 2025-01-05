@@ -1,6 +1,5 @@
 import TempNode from '../core/TempNode.js';
 import {addMethodChaining, nodeObject} from '../tsl/TSLCore.js';
-
 import {NoColorSpace, NoToneMapping} from '../../constants.js';
 import {ColorManagement} from '../../math/ColorManagement.js';
 

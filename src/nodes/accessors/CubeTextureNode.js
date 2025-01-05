@@ -1,7 +1,6 @@
 import TextureNode from './TextureNode.js';
 import {reflectVector, refractVector} from './ReflectVector.js';
 import {nodeProxy, vec3} from '../tsl/TSLBase.js';
-
 import {CubeReflectionMapping, CubeRefractionMapping, WebGPUCoordinateSystem} from '../../constants.js';
 
 /** @module CubeTextureNode **/

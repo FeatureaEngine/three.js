@@ -1,7 +1,6 @@
 import ViewportTextureNode from './ViewportTextureNode.js';
 import {nodeProxy} from '../tsl/TSLBase.js';
 import {screenUV} from './ScreenNode.js';
-
 import {FramebufferTexture} from '../../textures/FramebufferTexture.js';
 
 /** @module ViewportSharedTextureNode **/

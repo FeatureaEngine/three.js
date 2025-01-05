@@ -5,7 +5,6 @@ import BasicLightMapNode from '../../nodes/lighting/BasicLightMapNode.js';
 import BasicLightingModel from '../../nodes/functions/BasicLightingModel.js';
 import {normalView} from '../../nodes/accessors/Normal.js';
 import {diffuseColor} from '../../nodes/core/PropertyNode.js';
-
 import {MeshBasicMaterial} from '../MeshBasicMaterial.js';
 
 const _defaultValues = new MeshBasicMaterial();

@@ -4,7 +4,6 @@ import {NodeUpdateType} from '../core/constants.js';
 import {nodeObject} from '../tsl/TSLBase.js';
 import {uniform} from '../core/UniformNode.js';
 import {perspectiveDepthToViewZ, viewZToOrthographicDepth} from './ViewportDepthNode.js';
-
 import {HalfFloatType} from '../../constants.js';
 import {Vector2} from '../../math/Vector2.js';
 import {DepthTexture} from '../../textures/DepthTexture.js';

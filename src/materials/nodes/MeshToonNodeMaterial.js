@@ -1,6 +1,5 @@
 import NodeMaterial from './NodeMaterial.js';
 import ToonLightingModel from '../../nodes/functions/ToonLightingModel.js';
-
 import {MeshToonMaterial} from '../MeshToonMaterial.js';
 
 const _defaultValues = new MeshToonMaterial();

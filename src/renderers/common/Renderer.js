@@ -18,7 +18,6 @@ import NodeLibrary from './nodes/NodeLibrary.js';
 import Lighting from './Lighting.js';
 
 import NodeMaterial from '../../materials/nodes/NodeMaterial.js';
-
 import {Scene} from '../../scenes/Scene.js';
 import {Frustum} from '../../math/Frustum.js';
 import {Matrix4} from '../../math/Matrix4.js';

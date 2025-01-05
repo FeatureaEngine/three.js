@@ -4,7 +4,6 @@ import {buffer} from '../accessors/BufferNode.js';
 import {instancedBufferAttribute} from '../accessors/BufferAttributeNode.js';
 import {instanceIndex} from '../core/IndexNode.js';
 import {float, nodeProxy} from '../tsl/TSLBase.js';
-
 import {Vector4} from '../../math/Vector4.js';
 import {MathUtils} from '../../math/MathUtils.js';
 import {InstancedBufferAttribute} from '../../core/InstancedBufferAttribute.js';

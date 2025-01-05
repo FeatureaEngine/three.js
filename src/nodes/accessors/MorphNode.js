@@ -8,7 +8,6 @@ import {normalLocal} from './Normal.js';
 import {textureLoad} from './TextureNode.js';
 import {instanceIndex, vertexIndex} from '../core/IndexNode.js';
 import {Loop} from '../utils/LoopNode.js';
-
 import {DataArrayTexture} from '../../textures/DataArrayTexture.js';
 import {Vector2} from '../../math/Vector2.js';
 import {Vector4} from '../../math/Vector4.js';

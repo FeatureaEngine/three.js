@@ -3,7 +3,6 @@ import {attribute} from '../../nodes/core/AttributeNode.js';
 import {materialLineDashOffset, materialLineDashSize, materialLineGapSize, materialLineScale} from '../../nodes/accessors/MaterialNode.js';
 import {dashSize, gapSize} from '../../nodes/core/PropertyNode.js';
 import {float, varying} from '../../nodes/tsl/TSLBase.js';
-
 import {LineDashedMaterial} from '../LineDashedMaterial.js';
 
 const _defaultValues = new LineDashedMaterial();

@@ -3,7 +3,6 @@ import {texture} from '../accessors/TextureNode.js';
 import {uniform} from '../core/UniformNode.js';
 import {lightViewPosition} from '../accessors/Lights.js';
 import {renderGroup} from '../core/UniformGroupNode.js';
-
 import {Matrix4} from '../../math/Matrix4.js';
 import {Vector3} from '../../math/Vector3.js';
 import {NodeUpdateType} from '../core/constants.js';

@@ -4,7 +4,6 @@ import {materialShininess, materialSpecular} from '../../nodes/accessors/Materia
 import {float} from '../../nodes/tsl/TSLBase.js';
 import BasicEnvironmentNode from '../../nodes/lighting/BasicEnvironmentNode.js';
 import PhongLightingModel from '../../nodes/functions/PhongLightingModel.js';
-
 import {MeshPhongMaterial} from '../MeshPhongMaterial.js';
 
 const _defaultValues = new MeshPhongMaterial();

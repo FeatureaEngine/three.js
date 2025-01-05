@@ -10,7 +10,6 @@ import {float, Fn, If, vec2, vec3, vec4} from '../../nodes/tsl/TSLBase.js';
 import {uv} from '../../nodes/accessors/UV.js';
 import {viewport} from '../../nodes/display/ScreenNode.js';
 import {viewportSharedTexture} from '../../nodes/display/ViewportSharedTextureNode.js';
-
 import {LineDashedMaterial} from '../LineDashedMaterial.js';
 import {NoBlending} from '../../constants.js';
 

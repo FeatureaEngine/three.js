@@ -1,7 +1,6 @@
 import NodeMaterial from './NodeMaterial.js';
 import BasicEnvironmentNode from '../../nodes/lighting/BasicEnvironmentNode.js';
 import PhongLightingModel from '../../nodes/functions/PhongLightingModel.js';
-
 import {MeshLambertMaterial} from '../MeshLambertMaterial.js';
 
 const _defaultValues = new MeshLambertMaterial();

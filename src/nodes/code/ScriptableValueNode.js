@@ -1,7 +1,6 @@
 import Node from '../core/Node.js';
 import {arrayBufferToBase64, base64ToArrayBuffer} from '../core/NodeUtils.js';
 import {float, nodeProxy} from '../tsl/TSLBase.js';
-
 import {EventDispatcher} from '../../core/EventDispatcher.js';
 
 /** @module ScriptableValueNode **/

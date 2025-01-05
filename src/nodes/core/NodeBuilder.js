@@ -10,9 +10,7 @@ import FunctionNode from '../code/FunctionNode.js';
 import NodeMaterial from '../../materials/nodes/NodeMaterial.js';
 import {getTypeFromLength} from './NodeUtils.js';
 import {defaultBuildStages, NodeUpdateType, shaderStages} from './constants.js';
-
 import {ColorNodeUniform, Matrix3NodeUniform, Matrix4NodeUniform, NumberNodeUniform, Vector2NodeUniform, Vector3NodeUniform, Vector4NodeUniform} from '../../renderers/common/nodes/NodeUniform.js';
-
 import {stack} from './StackNode.js';
 import {getCurrentStack, setCurrentStack} from '../tsl/TSLBase.js';
 
@@ -22,7 +20,6 @@ import ChainMap from '../../renderers/common/ChainMap.js';
 import PMREMGenerator from '../../renderers/common/extras/PMREMGenerator.js';
 
 import BindGroup from '../../renderers/common/BindGroup.js';
-
 import {IntType, LinearFilter, LinearMipmapLinearFilter, LinearMipmapNearestFilter, NearestMipmapLinearFilter, REVISION, UnsignedIntType} from '../../constants.js';
 import {RenderTarget} from '../../core/RenderTarget.js';
 import {Color} from '../../math/Color.js';

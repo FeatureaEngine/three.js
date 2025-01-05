@@ -1,5 +1,4 @@
 import {BackSide, CubeReflectionMapping, CubeRefractionMapping, CubeUVReflectionMapping, HalfFloatType, LinearFilter, LinearSRGBColorSpace, NoBlending, NoToneMapping, RGBAFormat} from '../constants.js';
-
 import {BufferAttribute} from '../core/BufferAttribute.js';
 import {BufferGeometry} from '../core/BufferGeometry.js';
 import {Mesh} from '../objects/Mesh.js';

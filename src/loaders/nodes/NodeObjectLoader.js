@@ -1,7 +1,6 @@
 import NodeLoader from './NodeLoader.js';
 import NodeMaterialLoader from './NodeMaterialLoader.js';
-
-import {ObjectLoader} from '../../loaders/ObjectLoader.js';
+import {ObjectLoader} from '../ObjectLoader';
 
 /**
  * A special type of object loader for loading 3D objects using

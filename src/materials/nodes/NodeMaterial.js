@@ -1,6 +1,5 @@
 import {Material} from '../Material.js';
 import {NormalBlending} from '../../constants.js';
-
 import {getCacheKey, getNodeChildren} from '../../nodes/core/NodeUtils.js';
 import {attribute} from '../../nodes/core/AttributeNode.js';
 import {diffuseColor, emissive, output, varyingProperty} from '../../nodes/core/PropertyNode.js';

@@ -8,7 +8,6 @@ import {cubeTexture} from '../../../nodes/accessors/CubeTextureNode.js';
 import {float, vec3} from '../../../nodes/tsl/TSLBase.js';
 import {uv} from '../../../nodes/accessors/UV.js';
 import {attribute} from '../../../nodes/core/AttributeNode.js';
-
 import {OrthographicCamera} from '../../../cameras/OrthographicCamera.js';
 import {Color} from '../../../math/Color.js';
 import {Vector3} from '../../../math/Vector3.js';

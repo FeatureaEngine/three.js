@@ -5,7 +5,6 @@ import {modelViewMatrix, modelWorldMatrix} from '../../nodes/accessors/ModelNode
 import {positionGeometry} from '../../nodes/accessors/Position.js';
 import {rotate} from '../../nodes/utils/RotateNode.js';
 import {float, vec2, vec3, vec4} from '../../nodes/tsl/TSLBase.js';
-
 import {SpriteMaterial} from '../SpriteMaterial.js';
 import {reference} from '../../nodes/accessors/ReferenceBaseNode.js';
 

@@ -2,9 +2,7 @@ import {GLSLNodeParser, NodeBuilder, TextureNode, vectorComponents} from '../../
 
 import NodeUniformBuffer from '../../common/nodes/NodeUniformBuffer.js';
 import NodeUniformsGroup from '../../common/nodes/NodeUniformsGroup.js';
-
 import {NodeSampledCubeTexture, NodeSampledTexture, NodeSampledTexture3D} from '../../common/nodes/NodeSampledTexture.js';
-
 import {
     ByteType,
     FloatType,

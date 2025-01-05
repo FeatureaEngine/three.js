@@ -1,5 +1,4 @@
 import {Color, DoubleSide, NoColorSpace,} from '../../libs/three/Three.js';
-
 import {strToU8, zipSync,} from '../../libs/fflate.module.js';
 
 class USDZExporter {

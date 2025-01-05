@@ -4,7 +4,6 @@ import {directionToColor} from '../../nodes/utils/Packing.js';
 import {materialOpacity} from '../../nodes/accessors/MaterialNode.js';
 import {transformedNormalView} from '../../nodes/accessors/Normal.js';
 import {float, vec4} from '../../nodes/tsl/TSLBase.js';
-
 import {MeshNormalMaterial} from '../MeshNormalMaterial.js';
 
 const _defaultValues = new MeshNormalMaterial();

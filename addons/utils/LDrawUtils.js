@@ -1,5 +1,4 @@
 import {BufferAttribute, BufferGeometry, Group, LineSegments, Matrix3, Mesh} from '../../libs/three/Three.js';
-
 import {mergeGeometries} from './BufferGeometryUtils.js';
 
 class LDrawUtils {

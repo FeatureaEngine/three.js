@@ -38,7 +38,6 @@ import {
     TextureLoader,
     Vector2
 } from '../../libs/three/Three.js';
-
 import {IFFParser} from './lwo/IFFParser.js';
 
 let _lwoTree;

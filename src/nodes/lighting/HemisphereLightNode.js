@@ -4,7 +4,6 @@ import {mix} from '../math/MathNode.js';
 import {normalView} from '../accessors/Normal.js';
 import {lightPosition} from '../accessors/Lights.js';
 import {renderGroup} from '../core/UniformGroupNode.js';
-
 import {Color} from '../../math/Color.js';
 
 /**

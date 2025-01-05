@@ -2,7 +2,6 @@ import DataMap from './DataMap.js';
 import Color4 from './Color4.js';
 import {backgroundBlurriness, backgroundIntensity, backgroundRotation, context, modelViewProjection, normalWorld, vec4} from '../../nodes/TSL.js';
 import NodeMaterial from '../../materials/nodes/NodeMaterial.js';
-
 import {Mesh} from '../../objects/Mesh.js';
 import {SphereGeometry} from '../../geometries/SphereGeometry.js';
 import {BackSide, LinearSRGBColorSpace} from '../../constants.js';

@@ -47,7 +47,6 @@ import {TBNViewMatrix} from '../../nodes/accessors/AccessorsUtils.js';
 import PhysicalLightingModel from '../../nodes/functions/PhysicalLightingModel.js';
 import MeshStandardNodeMaterial from './MeshStandardNodeMaterial.js';
 import {min, mix, pow2} from '../../nodes/math/MathNode.js';
-
 import {MeshPhysicalMaterial} from '../MeshPhysicalMaterial.js';
 
 const _defaultValues = new MeshPhysicalMaterial();

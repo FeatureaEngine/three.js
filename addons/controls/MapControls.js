@@ -1,5 +1,4 @@
 import {MOUSE, TOUCH} from '../../libs/three/Three.js';
-
 import {OrbitControls} from './OrbitControls.js';
 
 // MapControls performs orbiting, dollying (zooming), and panning.

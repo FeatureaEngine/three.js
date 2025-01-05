@@ -8,7 +8,6 @@ import {lengthSq, smoothstep} from '../../nodes/math/MathNode.js';
 import {float, Fn, vec4} from '../../nodes/tsl/TSLBase.js';
 import {uv} from '../../nodes/accessors/UV.js';
 import {viewport} from '../../nodes/display/ScreenNode.js';
-
 import {PointsMaterial} from '../PointsMaterial.js';
 
 const _defaultValues = new PointsMaterial();
