@@ -9,6 +9,7 @@ import {Vector3} from '../../libs/three/Three.js';
  *
  */
 class STLExporter {
+
     parse(scene, options = {}) {
         options = Object.assign({
             binary: false

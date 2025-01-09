@@ -13,6 +13,7 @@ import {Curve, Vector3} from '../../libs/three/Three.js';
 // GrannyKnot
 
 class GrannyKnot extends Curve {
+
     getPoint(t, optionalTarget = new Vector3()) {
         const point = optionalTarget;
         t = 2 * Math.PI * t;
@@ -68,6 +69,7 @@ class VivianiCurve extends Curve {
 // KnotCurve
 
 class KnotCurve extends Curve {
+
     getPoint(t, optionalTarget = new Vector3()) {
         const point = optionalTarget;
         t *= 2 * Math.PI;
@@ -85,6 +87,7 @@ class KnotCurve extends Curve {
 // HelixCurve
 
 class HelixCurve extends Curve {
+
     getPoint(t, optionalTarget = new Vector3()) {
         const point = optionalTarget;
         const a = 30; // radius

@@ -13,6 +13,7 @@ import {Color, ColorManagement, Matrix3, SRGBColorSpace, Vector3} from '../../li
  * http://paulbourke.net/dataformats/ply/
  */
 class PLYExporter {
+
     parse(object, onDone, options = {}) {
         // Iterate over the valid meshes in the object
         function traverseMeshes(cb) {

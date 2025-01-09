@@ -12,6 +12,7 @@ import * as BufferGeometryUtils from '../utils/BufferGeometryUtils.js';
 const _cb = new Vector3(), _ab = new Vector3();
 
 class SimplifyModifier {
+
     modify(geometry, count) {
         geometry = geometry.clone();
         // currently morphAttributes are not supported

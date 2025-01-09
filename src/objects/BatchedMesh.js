@@ -106,6 +106,7 @@ function copyArrayContents(src, target) {
 }
 
 class BatchedMesh extends Mesh {
+
     constructor(maxInstanceCount, maxVertexCount, maxIndexCount = maxVertexCount * 2, material) {
         super(new BufferGeometry(), material);
         this.isBatchedMesh = true;

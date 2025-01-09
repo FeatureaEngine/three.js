@@ -42,6 +42,7 @@ import {
 import {TGALoader} from '../loaders/TGALoader.js';
 
 class ColladaLoader extends Loader {
+
     load(url, onLoad, onProgress, onError) {
         const scope = this;
         const path = (scope.path === '') ? LoaderUtils.extractUrlBase(url) : scope.path;

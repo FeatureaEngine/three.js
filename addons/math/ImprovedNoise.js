@@ -30,6 +30,7 @@ function grad(hash, x, y, z) {
 }
 
 class ImprovedNoise {
+
     noise(x, y, z) {
         const floorX = Math.floor(x), floorY = Math.floor(y), floorZ = Math.floor(z);
         const X = floorX & 255, Y = floorY & 255, Z = floorZ & 255;

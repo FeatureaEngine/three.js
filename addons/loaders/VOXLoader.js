@@ -1,6 +1,7 @@
 import {BufferGeometry, Color, Data3DTexture, FileLoader, Float32BufferAttribute, LinearFilter, Loader, Mesh, MeshStandardMaterial, NearestFilter, RedFormat, SRGBColorSpace} from '../../libs/three/Three.js';
 
 class VOXLoader extends Loader {
+
     load(url, onLoad, onProgress, onError) {
         const scope = this;
         const loader = new FileLoader(scope.manager);

@@ -525,6 +525,7 @@ class MaterialParser {
 }
 
 class GeometryParser {
+
     parse(geoData, layer) {
         const geometry = new BufferGeometry();
         geometry.setAttribute('position', new Float32BufferAttribute(geoData.points, 3));

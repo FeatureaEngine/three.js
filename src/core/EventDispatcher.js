@@ -2,6 +2,7 @@
  * https://github.com/mrdoob/eventdispatcher.js/
  */
 class EventDispatcher {
+
     addEventListener(type, listener) {
         if (this._listeners === undefined) this._listeners = {};
         const listeners = this._listeners;

@@ -6,6 +6,7 @@ const _B = new Vector3();
 const _C = new Vector3();
 
 class EdgeSplitModifier {
+
     modify(geometry, cutOffAngle, tryKeepNormals = true) {
         function computeNormals() {
             normals = new Float32Array(indexes.length * 3);

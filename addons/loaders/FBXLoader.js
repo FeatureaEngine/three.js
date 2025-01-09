@@ -1546,6 +1546,7 @@ class GeometryParser {
 
 // parse animation data from FBXTree
 class AnimationParser {
+
     // take raw animation clips and turn them into three.js animation clips
     parse() {
         const animationClips = [];
@@ -1962,6 +1963,7 @@ class AnimationParser {
 
 // parse an FBX file in ASCII format
 class TextParser {
+
     getPrevNode() {
         return this.nodeStack[this.currentIndent - 2];
     }
@@ -2176,6 +2178,7 @@ class TextParser {
 
 // Parse an FBX file in Binary format
 class BinaryParser {
+
     parse(buffer) {
         const reader = new BinaryReader(buffer);
         reader.skip(23); // skip magic 23 bytes
@@ -2541,6 +2544,7 @@ class BinaryReader {
 // FBXTree holds a representation of the FBX data, returned by the TextParser ( FBX ASCII format)
 // and BinaryParser( FBX Binary format)
 class FBXTree {
+
     add(key, val) {
         this[key] = val;
     }

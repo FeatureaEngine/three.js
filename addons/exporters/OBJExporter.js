@@ -1,6 +1,7 @@
 import {Color, ColorManagement, Matrix3, SRGBColorSpace, Vector2, Vector3} from '../../libs/three/Three.js';
 
 class OBJExporter {
+
     parse(object) {
         let output = '';
         let indexVertex = 0;

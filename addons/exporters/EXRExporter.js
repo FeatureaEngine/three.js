@@ -15,6 +15,7 @@ const ZIPS_COMPRESSION = 2;
 const ZIP_COMPRESSION = 3;
 
 class EXRExporter {
+
     async parse(arg1, arg2, arg3) {
         if (!arg1 || !(arg1.isWebGLRenderer || arg1.isWebGPURenderer || arg1.isDataTexture)) {
             throw Error('EXRExporter.parse: Unsupported first parameter, expected instance of WebGLRenderer or DataTexture.');

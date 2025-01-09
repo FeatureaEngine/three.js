@@ -19,6 +19,7 @@ import {
 import * as fflate from '../../libs/fflate.module.js';
 
 class USDAParser {
+
     parse(text) {
         const data = {};
         const lines = text.split('\n');

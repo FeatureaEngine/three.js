@@ -11,6 +11,7 @@ import {hashArray, hashString} from '../core/NodeUtils.js';
  * @augments Map
  */
 class Resources extends Map {
+
     get(key, callback = null, ...params) {
         if (this.has(key)) return super.get(key);
         if (callback !== null) {

@@ -3,6 +3,7 @@ import {CanvasTexture, FileLoader, Loader, NearestFilter, SRGBColorSpace} from '
 import lottie from '../../libs/lottie_canvas.module.js';
 
 class LottieLoader extends Loader {
+
     setQuality(value) {
         this._quality = value;
     }

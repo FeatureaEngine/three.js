@@ -6,6 +6,7 @@ const _event = {type: '', data: _pointer};
 const _raycaster = new Raycaster();
 
 class InteractiveGroup extends Group {
+
     listenToPointerEvents(renderer, camera) {
         const scope = this;
         const raycaster = new Raycaster();

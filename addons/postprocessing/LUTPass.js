@@ -38,6 +38,7 @@ const LUTShader = {
 };
 
 class LUTPass extends ShaderPass {
+
     constructor(options = {}) {
         super(LUTShader);
         this.lut = options.lut || null;
